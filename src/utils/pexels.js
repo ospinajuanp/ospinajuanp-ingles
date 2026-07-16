@@ -5,11 +5,12 @@ export function hasPexelsKey() {
   return typeof API_KEY === 'string' && API_KEY.trim().length > 0
 }
 
-export async function fetchPexelsPhoto(query) {
+export async function fetchPexelsPhoto(query, page = 1) {
   if (!hasPexelsKey()) return null
   if (!query) return null
 
-  const url = `${API_BASE}/search?query=${encodeURIComponent(query)}&per_page=1&orientation=landscape`
+  const safePage = Math.max(1, Math.floor(page))
+  const url = `${API_BASE}/search?query=${encodeURIComponent(query)}&per_page=1&orientation=landscape&page=${safePage}`
 
   try {
     const res = await fetch(url, {

@@ -1,7 +1,7 @@
 const CATEGORIES = [
-  { name: 'A', max: 10.0, prob: 0.6 },
-  { name: 'B', max: 500.0, prob: 0.25 },
-  { name: 'C', max: 1000.0, prob: 0.15 },
+  { name: 'A', max: 10.0, prob: 0.5 },
+  { name: 'B', max: 500.0, prob: 0.30 },
+  { name: 'C', max: 1000.0, prob: 0.20 },
 ]
 
 export function bucketOf(weight) {

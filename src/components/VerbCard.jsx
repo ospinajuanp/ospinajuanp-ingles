@@ -1,11 +1,11 @@
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import ConjugationGrid from './ConjugationGrid'
 import SentencesList from './SentencePill'
 import NavButtons from './NavButtons'
 import HeroIllustration from './HeroIllustration'
 import AudioButton from './AudioButton'
 import ImageCredit from './ImageCredit'
-import { getCachedImage, setCachedImage } from '../utils/imageCache'
+import { addCachedImage, getCachedImages } from '../utils/imageCache'
 import { fetchPexelsPhoto, hasPexelsKey } from '../utils/pexels'
 
 const SWIPE_THRESHOLD = 70
@@ -24,25 +24,27 @@ function VerbImage({ verb }) {
   const hasCustom = Boolean(verb.imagen?.trim())
   const pexelsAvailable = hasPexelsKey()
 
-  const cachedAtMount = !hasCustom && word ? getCachedImage(word) : null
+  const cachedAtMount = !hasCustom && word ? getCachedImages(word) : null
+  const initialPhoto = cachedAtMount?.[0] ?? null
 
   const [src, setSrc] = useState(() => {
     if (hasCustom) return verb.imagen
     if (!pexelsAvailable) return picsumUrl(verb)
-    return cachedAtMount?.url ?? null
+    return initialPhoto?.url ?? null
   })
-  const [credit, setCredit] = useState(() => cachedAtMount)
+  const [credit, setCredit] = useState(() => initialPhoto)
   const [stage, setStage] = useState(() => {
     if (hasCustom) return 'custom'
     if (!pexelsAvailable) return 'picsum'
-    return cachedAtMount ? 'pexels' : 'svg'
+    return initialPhoto ? 'pexels' : 'svg'
   })
   const [picsumFailed, setPicsumFailed] = useState(false)
+  const [refreshing, setRefreshing] = useState(false)
   const audioWord = word
 
   useEffect(() => {
     if (hasCustom || !word) return
-    if (getCachedImage(word)) return
+    if (getCachedImages(word)) return
     if (!pexelsAvailable) return
 
     let cancelled = false
@@ -50,7 +52,7 @@ function VerbImage({ verb }) {
     fetchPexelsPhoto(word).then((result) => {
       if (cancelled) return
       if (result) {
-        setCachedImage(word, result)
+        addCachedImage(word, result)
         setSrc(result.url)
         setCredit(result)
         setStage('pexels')
@@ -65,6 +67,24 @@ function VerbImage({ verb }) {
     }
   }, [word, hasCustom, pexelsAvailable, verb])
 
+  const refreshImage = useCallback(async () => {
+    if (!word || hasCustom || !pexelsAvailable || refreshing) return
+    const existing = getCachedImages(word) ?? []
+    const nextPage = existing.length + 1
+    setRefreshing(true)
+    try {
+      const result = await fetchPexelsPhoto(word, nextPage)
+      if (result) {
+        addCachedImage(word, result)
+        setSrc(result.url)
+        setCredit(result)
+        setStage('pexels')
+      }
+    } finally {
+      setRefreshing(false)
+    }
+  }, [word, hasCustom, pexelsAvailable, refreshing])
+
   const onImgError = () => {
     if (stage === 'pexels') {
       setSrc(picsumUrl(verb))
@@ -74,6 +94,8 @@ function VerbImage({ verb }) {
       setPicsumFailed(true)
     }
   }
+
+  const canRefresh = !hasCustom && pexelsAvailable && Boolean(word)
 
   if (hasCustom) {
     return (
@@ -111,15 +133,21 @@ function VerbImage({ verb }) {
       ) : null}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-slate-900/10" />
       <ImageCredit credit={credit} />
-      <VerbImageOverlay audioWord={audioWord} />
+      <VerbImageOverlay
+        audioWord={audioWord}
+        onRefresh={refreshImage}
+        canRefresh={canRefresh}
+        refreshing={refreshing}
+      />
     </div>
   )
 }
 
-function VerbImageOverlay({ audioWord }) {
+function VerbImageOverlay({ audioWord, onRefresh, canRefresh, refreshing }) {
   const buttonRef = useRef(null)
 
   const handleOverlayClick = (e) => {
+    if (e.target.closest('button[data-overlay-control]')) return
     const btn = buttonRef.current
     if (btn && (e.target === btn || btn.contains(e.target))) return
     btn?.click()
@@ -139,6 +167,51 @@ function VerbImageOverlay({ audioWord }) {
           <AudioButton ref={buttonRef} key={audioWord} word={audioWord} />
         </div>
       </div>
+      {canRefresh ? (
+        <button
+          type="button"
+          data-overlay-control="refresh"
+          onClick={(e) => {
+            e.stopPropagation()
+            onRefresh?.()
+          }}
+          disabled={refreshing}
+          aria-label="Buscar otra foto"
+          title="Buscar otra foto"
+          className="absolute top-2 right-2 z-20 inline-flex size-9 items-center justify-center rounded-full bg-slate-900/50 text-white shadow-md backdrop-blur-sm transition hover:scale-105 hover:bg-slate-900/70 active:scale-95 disabled:opacity-50 disabled:hover:scale-100 motion-reduce:animate-none"
+        >
+          {refreshing ? (
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="size-4 animate-spin motion-reduce:animate-none"
+              aria-hidden="true"
+            >
+              <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+            </svg>
+          ) : (
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="size-4"
+              aria-hidden="true"
+            >
+              <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z" />
+              <circle cx="12" cy="13" r="3.5" />
+              <path d="M21 8l-2-2" />
+              <path d="m17 6 4 4" />
+            </svg>
+          )}
+        </button>
+      ) : null}
     </>
   )
 }

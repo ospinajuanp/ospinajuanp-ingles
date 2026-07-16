@@ -4,10 +4,13 @@ function normalize(word) {
   return word?.trim().toLowerCase() ?? ''
 }
 
-export function getCachedImage(word) {
+export function getCachedImages(word) {
   return cache.get(normalize(word)) ?? null
 }
 
-export function setCachedImage(word, data) {
-  cache.set(normalize(word), data)
+export function addCachedImage(word, data) {
+  const key = normalize(word)
+  const arr = cache.get(key) ?? []
+  arr.push(data)
+  cache.set(key, arr)
 }
