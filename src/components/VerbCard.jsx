@@ -127,6 +127,14 @@ export default function VerbCard({
   const startRef = useRef(null)
   const lastRef = useRef({ x: 0, y: 0 })
 
+  const verbKey = currentVerb?.id ?? currentVerb?.infinitivo?.ing ?? null
+  const [trackedVerbKey, setTrackedVerbKey] = useState(verbKey)
+  if (trackedVerbKey !== verbKey) {
+    setTrackedVerbKey(verbKey)
+  }
+  const shouldAnimateVerbEnter =
+    trackedVerbKey !== null && trackedVerbKey !== verbKey
+
   function handleTouchStart(e) {
     if (!e.touches || e.touches.length !== 1) return
     const t = e.touches[0]
@@ -193,7 +201,13 @@ export default function VerbCard({
         />
       </div>
 
-      <div className="space-y-8 p-5 sm:p-7 md:p-8">
+      <div
+        key={verbKey}
+        className={
+          'space-y-8 p-5 sm:p-7 md:p-8 ' +
+          (shouldAnimateVerbEnter ? 'animate-verb-enter motion-reduce:animate-none' : '')
+        }
+      >
         <header className="text-center">
           <h1 className="text-5xl font-bold tracking-tight text-indigo-600 sm:text-6xl">
             {inf?.ing}
