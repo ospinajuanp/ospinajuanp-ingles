@@ -121,6 +121,7 @@ export default function VerbCard({
   total,
   onPrev,
   onNext,
+  onShuffle,
 }) {
   const articleRef = useRef(null)
   const startRef = useRef(null)
@@ -186,6 +187,7 @@ export default function VerbCard({
         <NavButtons
           onPrev={onPrev}
           onNext={onNext}
+          onShuffle={onShuffle}
           currentIndex={currentIndex}
           total={total}
         />

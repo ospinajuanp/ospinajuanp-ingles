@@ -153,6 +153,7 @@ export default function App() {
               total={v.total}
               onPrev={v.prev}
               onNext={v.next}
+              onShuffle={v.shuffle}
             />
           </div>
         )}

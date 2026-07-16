@@ -104,6 +104,12 @@ export function useVerbos() {
   const next = useCallback(() => goTo(currentIndex + 1), [goTo, currentIndex])
   const prev = useCallback(() => goTo(currentIndex - 1), [goTo, currentIndex])
 
+  const shuffle = useCallback(() => {
+    if (filtered.length === 0) return
+    const idx = pickWeightedIndex(filtered, WEIGHT_MAP)
+    setCurrentIndex(idx)
+  }, [filtered])
+
   useEffect(() => {
     function onKey(e) {
       if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return
@@ -150,6 +156,7 @@ export function useVerbos() {
     conjugationEntries,
     next,
     prev,
+    shuffle,
     goTo,
     total: filtered.length,
   }
