@@ -70,15 +70,26 @@ function VerbImage({ verb }) {
 }
 
 function VerbImageOverlay({ audioWord }) {
+  const buttonRef = useRef(null)
+
+  const handleOverlayClick = (e) => {
+    const btn = buttonRef.current
+    if (btn && (e.target === btn || btn.contains(e.target))) return
+    btn?.click()
+  }
+
   return (
     <>
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-slate-900/30 opacity-100 transition-opacity duration-300 md:opacity-0 md:group-hover:opacity-100 md:bg-slate-900/50 md:backdrop-blur-[2px]"
+        className="pointer-events-none absolute inset-0 bg-slate-900/30 opacity-100 transition-opacity duration-300 md:opacity-0 md:group-hover:opacity-100 md:bg-slate-900/50 md:backdrop-blur-[2px]"
       />
-      <div className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center">
-        <div className="pointer-events-auto transition-transform duration-300 group-hover:scale-110">
-          <AudioButton key={audioWord} word={audioWord} />
+      <div
+        className="absolute inset-0 z-10 flex cursor-pointer items-center justify-center"
+        onClick={handleOverlayClick}
+      >
+        <div className="transition-transform duration-300 group-hover:scale-110">
+          <AudioButton ref={buttonRef} key={audioWord} word={audioWord} />
         </div>
       </div>
     </>

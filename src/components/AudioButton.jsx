@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { forwardRef, useCallback, useEffect, useRef, useState } from 'react'
 import {
   getCachedAudio,
   isUnavailable,
@@ -29,7 +29,7 @@ async function fetchAudioUrl(word) {
   return { url, reason: url ? null : 'no-audio' }
 }
 
-export default function AudioButton({ word }) {
+export default forwardRef(function AudioButton({ word }, ref) {
   const audioRef = useRef(null)
   const isMountedRef = useRef(true)
   const [state, setState] = useState(() => {
@@ -214,6 +214,7 @@ export default function AudioButton({ word }) {
 
   return (
     <button
+      ref={ref}
       type="button"
       onClick={handleClick}
       disabled={!word || state === 'unavailable' || state === 'loading'}
@@ -235,4 +236,4 @@ export default function AudioButton({ word }) {
       {icon}
     </button>
   )
-}
+})
