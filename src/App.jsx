@@ -6,22 +6,13 @@ import { useVerbos } from './hooks/useVerbos'
 
 function BrandIcon() {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="size-5"
-      aria-hidden="true"
-    >
-      <path d="M4 5h12a3 3 0 0 1 3 3v11" />
-      <path d="M2 5h14" />
-      <path d="M5 8h9" />
-      <circle cx="7" cy="19" r="2" />
-      <circle cx="17" cy="19" r="2" />
-    </svg>
+    <img
+      src="/icon.ico"
+      alt=""
+      width="32"
+      height="32"
+      className="size-10 shrink-0 rounded-xl"
+    />
   )
 }
 
@@ -106,10 +97,7 @@ export default function App() {
     <div className="min-h-screen bg-slate-50 text-slate-800">
       <Header>
         <div className="flex items-center gap-3">
-          <div
-            className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-slate-900 text-white shadow-sm"
-            aria-hidden="true"
-          >
+          <div className="shrink-0 overflow-hidden rounded-xl shadow-sm ring-1 ring-slate-200/80" aria-hidden="true">
             <BrandIcon />
           </div>
           <div className="min-w-0">
