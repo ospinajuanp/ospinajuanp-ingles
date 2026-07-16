@@ -77,17 +77,16 @@ export function useVerbos() {
   }, [allVerbs, search, category, subcategory])
 
   const lastFilteredLen = useRef(filtered.length)
-  const isFirstEffectRun = useRef(true)
   useEffect(() => {
-    if (isFirstEffectRun.current) {
-      isFirstEffectRun.current = false
-      lastFilteredLen.current = filtered.length
-      return
-    }
-    if (filtered.length !== lastFilteredLen.current) {
+    // The only transition that comes from an empty filtered list is the
+    // initial data load. Skip resetting the index in that case so the
+    // weighted-random pick survives. Filter/search changes always move
+    // between two non-empty lengths.
+    const cameFromEmpty = lastFilteredLen.current === 0
+    if (!cameFromEmpty && filtered.length !== lastFilteredLen.current) {
       setCurrentIndex(0)
-      lastFilteredLen.current = filtered.length
     }
+    lastFilteredLen.current = filtered.length
   }, [filtered.length])
 
   const current = filtered[currentIndex] ?? null

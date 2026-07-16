@@ -42006,1802 +42006,1802 @@
     ],
     "compuestos": [
       {
-        "id": "",
+        "id": 700,
         "imagen": "",
         "infinitivo": {
-          "esp": "",
-          "ing": ""
+          "esp": "sumar",
+          "ing": "add up"
         },
         "pasadoSimple": {
-          "esp": "",
-          "ing": ""
+          "esp": "sumó",
+          "ing": "added up"
         },
         "participio": {
-          "esp": "",
-          "ing": ""
+          "esp": "sumado",
+          "ing": "added up"
         },
         "gerundio": {
-          "esp": "",
-          "ing": ""
+          "esp": "sumando",
+          "ing": "adding up"
         },
         "futuro": {
-          "esp": "",
-          "ing": ""
+          "esp": "sumará",
+          "ing": "will add up"
         },
         "condicional": {
-          "esp": "",
-          "ing": ""
+          "esp": "sumaría",
+          "ing": "would add up"
         },
         "oraciones": {
           "infinitivo": {
             "pronombre": "yo",
-            "ing": "",
-            "esp": ""
+            "ing": "I add up the numbers daily.",
+            "esp": "Yo sumo los números a diario."
           },
           "pasadoSimple": {
             "pronombre": "tu",
-            "ing": "",
-            "esp": ""
+            "ing": "You added up the bill.",
+            "esp": "Tú sumaste la cuenta."
           },
           "participio": {
             "pronombre": "el_ella",
-            "ing": "",
-            "esp": ""
+            "ing": "She has added up the costs.",
+            "esp": "Ella ha sumado los costos."
           },
           "gerundio": {
             "pronombre": "ellos",
-            "ing": "",
-            "esp": ""
+            "ing": "They are adding up the votes.",
+            "esp": "Ellos están sumando los votos."
           },
           "futuro": {
             "pronombre": "nosotros",
-            "ing": "",
-            "esp": ""
+            "ing": "We will add up the totals.",
+            "esp": "Nosotros sumaremos los totales."
           },
           "condicional": {
             "pronombre": "eso",
-            "ing": "",
-            "esp": ""
+            "ing": "That would add up quickly.",
+            "esp": "Eso se sumaría rápido."
           }
         }
       },
       {
-        "id": "",
+        "id": 701,
         "imagen": "",
         "infinitivo": {
-          "esp": "",
-          "ing": ""
+          "esp": "invitar a salir",
+          "ing": "ask out"
         },
         "pasadoSimple": {
-          "esp": "",
-          "ing": ""
+          "esp": "invitó a salir",
+          "ing": "asked out"
         },
         "participio": {
-          "esp": "",
-          "ing": ""
+          "esp": "invitado a salir",
+          "ing": "asked out"
         },
         "gerundio": {
-          "esp": "",
-          "ing": ""
+          "esp": "invitando a salir",
+          "ing": "asking out"
         },
         "futuro": {
-          "esp": "",
-          "ing": ""
+          "esp": "invitar a salirá",
+          "ing": "will ask out"
         },
         "condicional": {
-          "esp": "",
-          "ing": ""
+          "esp": "invitar a saliría",
+          "ing": "would ask out"
         },
         "oraciones": {
           "infinitivo": {
             "pronombre": "yo",
-            "ing": "",
-            "esp": ""
+            "ing": "I ask her out next week.",
+            "esp": "Yo la invito a salir la próxima semana."
           },
           "pasadoSimple": {
             "pronombre": "tu",
-            "ing": "",
-            "esp": ""
+            "ing": "You asked her out last night.",
+            "esp": "Tú la invitaste a salir anoche."
           },
           "participio": {
             "pronombre": "el_ella",
-            "ing": "",
-            "esp": ""
+            "ing": "She has asked him out already.",
+            "esp": "Ella ya lo ha invitado a salir."
           },
           "gerundio": {
             "pronombre": "ellos",
-            "ing": "",
-            "esp": ""
+            "ing": "They are asking each other out.",
+            "esp": "Ellos se están invitando a salir mutuamente."
           },
           "futuro": {
             "pronombre": "nosotros",
-            "ing": "",
-            "esp": ""
+            "ing": "We will ask her out soon.",
+            "esp": "Nosotros la invitaremos a salir pronto."
           },
           "condicional": {
             "pronombre": "eso",
-            "ing": "",
-            "esp": ""
+            "ing": "That move would ask anyone out.",
+            "esp": "Ese movimiento invitaría a salir a cualquiera."
           }
         }
       },
       {
-        "id": "",
+        "id": 702,
         "imagen": "",
         "infinitivo": {
-          "esp": "",
-          "ing": ""
+          "esp": "respaldar",
+          "ing": "back up"
         },
         "pasadoSimple": {
-          "esp": "",
-          "ing": ""
+          "esp": "respaldó",
+          "ing": "backed up"
         },
         "participio": {
-          "esp": "",
-          "ing": ""
+          "esp": "respaldado",
+          "ing": "backed up"
         },
         "gerundio": {
-          "esp": "",
-          "ing": ""
+          "esp": "respaldando",
+          "ing": "backing up"
         },
         "futuro": {
-          "esp": "",
-          "ing": ""
+          "esp": "respaldará",
+          "ing": "will back up"
         },
         "condicional": {
-          "esp": "",
-          "ing": ""
+          "esp": "respaldaría",
+          "ing": "would back up"
         },
         "oraciones": {
           "infinitivo": {
             "pronombre": "yo",
-            "ing": "",
-            "esp": ""
+            "ing": "I back up my files weekly.",
+            "esp": "Yo respaldo mis archivos semanalmente."
           },
           "pasadoSimple": {
             "pronombre": "tu",
-            "ing": "",
-            "esp": ""
+            "ing": "You backed up the truck.",
+            "esp": "Tú respaldaste el camión."
           },
           "participio": {
             "pronombre": "el_ella",
-            "ing": "",
-            "esp": ""
+            "ing": "She has backed up the data.",
+            "esp": "Ella ha respaldado los datos."
           },
           "gerundio": {
             "pronombre": "ellos",
-            "ing": "",
-            "esp": ""
+            "ing": "They are backing up the project.",
+            "esp": "Ellos están respaldando el proyecto."
           },
           "futuro": {
             "pronombre": "nosotros",
-            "ing": "",
-            "esp": ""
+            "ing": "We will back up your claim.",
+            "esp": "Nosotros respaldaremos tu afirmación."
           },
           "condicional": {
             "pronombre": "eso",
-            "ing": "",
-            "esp": ""
+            "ing": "That drive would back up fast.",
+            "esp": "Esa unidad se respaldaría rápido."
           }
         }
       },
       {
-        "id": "",
+        "id": 703,
         "imagen": "",
         "infinitivo": {
-          "esp": "",
-          "ing": ""
+          "esp": "explotar",
+          "ing": "blow up"
         },
         "pasadoSimple": {
-          "esp": "",
-          "ing": ""
+          "esp": "explotó",
+          "ing": "blew up"
         },
         "participio": {
-          "esp": "",
-          "ing": ""
+          "esp": "explotado",
+          "ing": "blown up"
         },
         "gerundio": {
-          "esp": "",
-          "ing": ""
+          "esp": "explotando",
+          "ing": "blowing up"
         },
         "futuro": {
-          "esp": "",
-          "ing": ""
+          "esp": "explotará",
+          "ing": "will blow up"
         },
         "condicional": {
-          "esp": "",
-          "ing": ""
+          "esp": "explotaría",
+          "ing": "would blow up"
         },
         "oraciones": {
           "infinitivo": {
             "pronombre": "yo",
-            "ing": "",
-            "esp": ""
+            "ing": "I blow up balloons at parties.",
+            "esp": "Yo inflo globos en las fiestas."
           },
           "pasadoSimple": {
             "pronombre": "tu",
-            "ing": "",
-            "esp": ""
+            "ing": "You blew up the building.",
+            "esp": "Tú explotaste el edificio."
           },
           "participio": {
             "pronombre": "el_ella",
-            "ing": "",
-            "esp": ""
+            "ing": "The bomb has blown up.",
+            "esp": "La bomba ha explotado."
           },
           "gerundio": {
             "pronombre": "ellos",
-            "ing": "",
-            "esp": ""
+            "ing": "They are blowing up the bridge.",
+            "esp": "Ellos están volando el puente."
           },
           "futuro": {
             "pronombre": "nosotros",
-            "ing": "",
-            "esp": ""
+            "ing": "We will blow up the inflatable.",
+            "esp": "Nosotros inflaremos el inflable."
           },
           "condicional": {
             "pronombre": "eso",
-            "ing": "",
-            "esp": ""
+            "ing": "That bomb would blow up easily.",
+            "esp": "Esa bomba explotaría fácilmente."
           }
         }
       },
       {
-        "id": "",
+        "id": 704,
         "imagen": "",
         "infinitivo": {
-          "esp": "",
-          "ing": ""
+          "esp": "descomponerse",
+          "ing": "break down"
         },
         "pasadoSimple": {
-          "esp": "",
-          "ing": ""
+          "esp": "se descompuso",
+          "ing": "broke down"
         },
         "participio": {
-          "esp": "",
-          "ing": ""
+          "esp": "descompuesto",
+          "ing": "broken down"
         },
         "gerundio": {
-          "esp": "",
-          "ing": ""
+          "esp": "descomponiéndose",
+          "ing": "breaking down"
         },
         "futuro": {
-          "esp": "",
-          "ing": ""
+          "esp": "se descompondrá",
+          "ing": "will break down"
         },
         "condicional": {
-          "esp": "",
-          "ing": ""
+          "esp": "se descompondría",
+          "ing": "would break down"
         },
         "oraciones": {
           "infinitivo": {
             "pronombre": "yo",
-            "ing": "",
-            "esp": ""
+            "ing": "I break down the boxes for recycling.",
+            "esp": "Yo desarmo las cajas para reciclar."
           },
           "pasadoSimple": {
             "pronombre": "tu",
-            "ing": "",
-            "esp": ""
+            "ing": "You broke down in tears.",
+            "esp": "Tú te desmoronaste en llanto."
           },
           "participio": {
             "pronombre": "el_ella",
-            "ing": "",
-            "esp": ""
+            "ing": "The car has broken down again.",
+            "esp": "El coche se ha descompuesto otra vez."
           },
           "gerundio": {
             "pronombre": "ellos",
-            "ing": "",
-            "esp": ""
+            "ing": "They are breaking down the barriers.",
+            "esp": "Ellos están derribando barreras."
           },
           "futuro": {
             "pronombre": "nosotros",
-            "ing": "",
-            "esp": ""
+            "ing": "We will break down the costs.",
+            "esp": "Nosotros desglosaremos los costos."
           },
           "condicional": {
             "pronombre": "eso",
-            "ing": "",
-            "esp": ""
+            "ing": "That machine would break down easily.",
+            "esp": "Esa máquina se descompondría fácilmente."
           }
         }
       },
       {
-        "id": "",
+        "id": 705,
         "imagen": "",
         "infinitivo": {
-          "esp": "",
-          "ing": ""
+          "esp": "entrar forzando",
+          "ing": "break in"
         },
         "pasadoSimple": {
-          "esp": "",
-          "ing": ""
+          "esp": "entró forzando",
+          "ing": "broke in"
         },
         "participio": {
-          "esp": "",
-          "ing": ""
+          "esp": "entrado forzando",
+          "ing": "broken in"
         },
         "gerundio": {
-          "esp": "",
-          "ing": ""
+          "esp": "entrando forzando",
+          "ing": "breaking in"
         },
         "futuro": {
-          "esp": "",
-          "ing": ""
+          "esp": "entrar forzandoá",
+          "ing": "will break in"
         },
         "condicional": {
-          "esp": "",
-          "ing": ""
+          "esp": "entrar forzandoía",
+          "ing": "would break in"
         },
         "oraciones": {
           "infinitivo": {
             "pronombre": "yo",
-            "ing": "",
-            "esp": ""
+            "ing": "I break in my new shoes gradually.",
+            "esp": "Yo ablando mis zapatos nuevos gradualmente."
           },
           "pasadoSimple": {
             "pronombre": "tu",
-            "ing": "",
-            "esp": ""
+            "ing": "You broke in last night.",
+            "esp": "Tú entraste forzando anoche."
           },
           "participio": {
             "pronombre": "el_ella",
-            "ing": "",
-            "esp": ""
+            "ing": "The thief has broken in.",
+            "esp": "El ladrón ha entrado forzando."
           },
           "gerundio": {
             "pronombre": "ellos",
-            "ing": "",
-            "esp": ""
+            "ing": "They are breaking in the new employees.",
+            "esp": "Ellos están entrenando a los empleados nuevos."
           },
           "futuro": {
             "pronombre": "nosotros",
-            "ing": "",
-            "esp": ""
+            "ing": "We will break in the new car.",
+            "esp": "Nosotros le haremos el rodaje al coche nuevo."
           },
           "condicional": {
             "pronombre": "eso",
-            "ing": "",
-            "esp": ""
+            "ing": "That lock would break in easily.",
+            "esp": "Esa cerradura se forzaría fácilmente."
           }
         }
       },
       {
-        "id": "",
+        "id": 706,
         "imagen": "",
         "infinitivo": {
-          "esp": "",
-          "ing": ""
+          "esp": "estallar",
+          "ing": "break out"
         },
         "pasadoSimple": {
-          "esp": "",
-          "ing": ""
+          "esp": "estalló",
+          "ing": "broke out"
         },
         "participio": {
-          "esp": "",
-          "ing": ""
+          "esp": "estallado",
+          "ing": "broken out"
         },
         "gerundio": {
-          "esp": "",
-          "ing": ""
+          "esp": "estallando",
+          "ing": "breaking out"
         },
         "futuro": {
-          "esp": "",
-          "ing": ""
+          "esp": "estallará",
+          "ing": "will break out"
         },
         "condicional": {
-          "esp": "",
-          "ing": ""
+          "esp": "estallaría",
+          "ing": "would break out"
         },
         "oraciones": {
           "infinitivo": {
             "pronombre": "yo",
-            "ing": "",
-            "esp": ""
+            "ing": "I break out in a rash sometimes.",
+            "esp": "A mí me sale sarpullido a veces."
           },
           "pasadoSimple": {
             "pronombre": "tu",
-            "ing": "",
-            "esp": ""
+            "ing": "War broke out in 1939.",
+            "esp": "La guerra estalló en 1939."
           },
           "participio": {
             "pronombre": "el_ella",
-            "ing": "",
-            "esp": ""
+            "ing": "Fire has broken out downtown.",
+            "esp": "Se ha declarado un incendio en el centro."
           },
           "gerundio": {
             "pronombre": "ellos",
-            "ing": "",
-            "esp": ""
+            "ing": "They are breaking out of prison.",
+            "esp": "Ellos se están escapando de la prisión."
           },
           "futuro": {
             "pronombre": "nosotros",
-            "ing": "",
-            "esp": ""
+            "ing": "We will break out the champagne.",
+            "esp": "Nosotros sacaremos el champán."
           },
           "condicional": {
             "pronombre": "eso",
-            "ing": "",
-            "esp": ""
+            "ing": "That fight would break out easily.",
+            "esp": "Esa pelea estallaría fácilmente."
           }
         }
       },
       {
-        "id": "",
+        "id": 707,
         "imagen": "",
         "infinitivo": {
-          "esp": "",
-          "ing": ""
+          "esp": "terminar",
+          "ing": "break up"
         },
         "pasadoSimple": {
-          "esp": "",
-          "ing": ""
+          "esp": "terminó",
+          "ing": "broke up"
         },
         "participio": {
-          "esp": "",
-          "ing": ""
+          "esp": "terminado",
+          "ing": "broken up"
         },
         "gerundio": {
-          "esp": "",
-          "ing": ""
+          "esp": "terminando",
+          "ing": "breaking up"
         },
         "futuro": {
-          "esp": "",
-          "ing": ""
+          "esp": "terminará",
+          "ing": "will break up"
         },
         "condicional": {
-          "esp": "",
-          "ing": ""
+          "esp": "terminaría",
+          "ing": "would break up"
         },
         "oraciones": {
           "infinitivo": {
             "pronombre": "yo",
-            "ing": "",
-            "esp": ""
+            "ing": "I break up the fight when possible.",
+            "esp": "Yo separo la pelea cuando es posible."
           },
           "pasadoSimple": {
             "pronombre": "tu",
-            "ing": "",
-            "esp": ""
+            "ing": "You broke up with her.",
+            "esp": "Tú terminaste con ella."
           },
           "participio": {
             "pronombre": "el_ella",
-            "ing": "",
-            "esp": ""
+            "ing": "They have broken up recently.",
+            "esp": "Ellos han terminado recientemente."
           },
           "gerundio": {
             "pronombre": "ellos",
-            "ing": "",
-            "esp": ""
+            "ing": "They are breaking up the company.",
+            "esp": "Ellos están disolviendo la empresa."
           },
           "futuro": {
             "pronombre": "nosotros",
-            "ing": "",
-            "esp": ""
+            "ing": "We will break up the meeting.",
+            "esp": "Nosotros terminaremos la reunión."
           },
           "condicional": {
             "pronombre": "eso",
-            "ing": "",
-            "esp": ""
+            "ing": "That couple would break up easily.",
+            "esp": "Esa pareja terminaría fácilmente."
           }
         }
       },
       {
-        "id": "",
+        "id": 708,
         "imagen": "",
         "infinitivo": {
-          "esp": "",
-          "ing": ""
+          "esp": "criar",
+          "ing": "bring up"
         },
         "pasadoSimple": {
-          "esp": "",
-          "ing": ""
+          "esp": "crió",
+          "ing": "brought up"
         },
         "participio": {
-          "esp": "",
-          "ing": ""
+          "esp": "criado",
+          "ing": "brought up"
         },
         "gerundio": {
-          "esp": "",
-          "ing": ""
+          "esp": "criando",
+          "ing": "bringing up"
         },
         "futuro": {
-          "esp": "",
-          "ing": ""
+          "esp": "criará",
+          "ing": "will bring up"
         },
         "condicional": {
-          "esp": "",
-          "ing": ""
+          "esp": "criaría",
+          "ing": "would bring up"
         },
         "oraciones": {
           "infinitivo": {
             "pronombre": "yo",
-            "ing": "",
-            "esp": ""
+            "ing": "I bring up sensitive topics carefully.",
+            "esp": "Yo menciono temas sensibles con cuidado."
           },
           "pasadoSimple": {
             "pronombre": "tu",
-            "ing": "",
-            "esp": ""
+            "ing": "You brought up the issue.",
+            "esp": "Tú mencionaste el tema."
           },
           "participio": {
             "pronombre": "el_ella",
-            "ing": "",
-            "esp": ""
+            "ing": "She was brought up by her grandmother.",
+            "esp": "Ella fue criada por su abuela."
           },
           "gerundio": {
             "pronombre": "ellos",
-            "ing": "",
-            "esp": ""
+            "ing": "They are bringing up the children.",
+            "esp": "Ellos están criando a los niños."
           },
           "futuro": {
             "pronombre": "nosotros",
-            "ing": "",
-            "esp": ""
+            "ing": "We will bring up the issue.",
+            "esp": "Nosotros plantearemos el tema."
           },
           "condicional": {
             "pronombre": "eso",
-            "ing": "",
-            "esp": ""
+            "ing": "That topic would bring up memories.",
+            "esp": "Ese tema traería recuerdos."
           }
         }
       },
       {
-        "id": "",
+        "id": 709,
         "imagen": "",
         "infinitivo": {
-          "esp": "",
-          "ing": ""
+          "esp": "devolver la llamada",
+          "ing": "call back"
         },
         "pasadoSimple": {
-          "esp": "",
-          "ing": ""
+          "esp": "devolvió la llamada",
+          "ing": "called back"
         },
         "participio": {
-          "esp": "",
-          "ing": ""
+          "esp": "devuelto la llamada",
+          "ing": "called back"
         },
         "gerundio": {
-          "esp": "",
-          "ing": ""
+          "esp": "devolviendo la llamada",
+          "ing": "calling back"
         },
         "futuro": {
-          "esp": "",
-          "ing": ""
+          "esp": "devolver la llamadaá",
+          "ing": "will call back"
         },
         "condicional": {
-          "esp": "",
-          "ing": ""
+          "esp": "devolver la llamadaía",
+          "ing": "would call back"
         },
         "oraciones": {
           "infinitivo": {
             "pronombre": "yo",
-            "ing": "",
-            "esp": ""
+            "ing": "I call back when I have time.",
+            "esp": "Yo devuelvo la llamada cuando tengo tiempo."
           },
           "pasadoSimple": {
             "pronombre": "tu",
-            "ing": "",
-            "esp": ""
+            "ing": "You called back later.",
+            "esp": "Tú devolviste la llamada después."
           },
           "participio": {
             "pronombre": "el_ella",
-            "ing": "",
-            "esp": ""
+            "ing": "She has called back twice.",
+            "esp": "Ella ha devuelto la llamada dos veces."
           },
           "gerundio": {
             "pronombre": "ellos",
-            "ing": "",
-            "esp": ""
+            "ing": "They are calling back customers.",
+            "esp": "Ellos están devolviendo llamadas a clientes."
           },
           "futuro": {
             "pronombre": "nosotros",
-            "ing": "",
-            "esp": ""
+            "ing": "We will call back tomorrow.",
+            "esp": "Nosotros devolveremos la llamada mañana."
           },
           "condicional": {
             "pronombre": "eso",
-            "ing": "",
-            "esp": ""
+            "ing": "That phone would call back later.",
+            "esp": "Ese teléfono devolvería la llamada después."
           }
         }
       },
       {
-        "id": "",
+        "id": 710,
         "imagen": "",
         "infinitivo": {
-          "esp": "",
-          "ing": ""
+          "esp": "cancelar",
+          "ing": "call off"
         },
         "pasadoSimple": {
-          "esp": "",
-          "ing": ""
+          "esp": "canceló",
+          "ing": "called off"
         },
         "participio": {
-          "esp": "",
-          "ing": ""
+          "esp": "cancelado",
+          "ing": "called off"
         },
         "gerundio": {
-          "esp": "",
-          "ing": ""
+          "esp": "cancelando",
+          "ing": "calling off"
         },
         "futuro": {
-          "esp": "",
-          "ing": ""
+          "esp": "cancelará",
+          "ing": "will call off"
         },
         "condicional": {
-          "esp": "",
-          "ing": ""
+          "esp": "cancelaría",
+          "ing": "would call off"
         },
         "oraciones": {
           "infinitivo": {
             "pronombre": "yo",
-            "ing": "",
-            "esp": ""
+            "ing": "I call off meetings when busy.",
+            "esp": "Yo cancelo reuniones cuando estoy ocupado."
           },
           "pasadoSimple": {
             "pronombre": "tu",
-            "ing": "",
-            "esp": ""
+            "ing": "You called off the wedding.",
+            "esp": "Tú cancelaste la boda."
           },
           "participio": {
             "pronombre": "el_ella",
-            "ing": "",
-            "esp": ""
+            "ing": "She has called off the trip.",
+            "esp": "Ella ha cancelado el viaje."
           },
           "gerundio": {
             "pronombre": "ellos",
-            "ing": "",
-            "esp": ""
+            "ing": "They are calling off the search.",
+            "esp": "Ellos están cancelando la búsqueda."
           },
           "futuro": {
             "pronombre": "nosotros",
-            "ing": "",
-            "esp": ""
+            "ing": "We will call off the strike.",
+            "esp": "Nosotros cancelaremos la huelga."
           },
           "condicional": {
             "pronombre": "eso",
-            "ing": "",
-            "esp": ""
+            "ing": "That match would call off quickly.",
+            "esp": "Ese partido se cancelaría rápido."
           }
         }
       },
       {
-        "id": "",
+        "id": 711,
         "imagen": "",
         "infinitivo": {
-          "esp": "",
-          "ing": ""
+          "esp": "continuar",
+          "ing": "carry on"
         },
         "pasadoSimple": {
-          "esp": "",
-          "ing": ""
+          "esp": "continuó",
+          "ing": "carried on"
         },
         "participio": {
-          "esp": "",
-          "ing": ""
+          "esp": "continuado",
+          "ing": "carried on"
         },
         "gerundio": {
-          "esp": "",
-          "ing": ""
+          "esp": "continuando",
+          "ing": "carrying on"
         },
         "futuro": {
-          "esp": "",
-          "ing": ""
+          "esp": "continuará",
+          "ing": "will carry on"
         },
         "condicional": {
-          "esp": "",
-          "ing": ""
+          "esp": "continuaría",
+          "ing": "would carry on"
         },
         "oraciones": {
           "infinitivo": {
             "pronombre": "yo",
-            "ing": "",
-            "esp": ""
+            "ing": "I carry on despite the challenges.",
+            "esp": "Yo continúo a pesar de los desafíos."
           },
           "pasadoSimple": {
             "pronombre": "tu",
-            "ing": "",
-            "esp": ""
+            "ing": "You carried on with your life.",
+            "esp": "Tú continuaste con tu vida."
           },
           "participio": {
             "pronombre": "el_ella",
-            "ing": "",
-            "esp": ""
+            "ing": "She has carried on the tradition.",
+            "esp": "Ella ha continuado la tradición."
           },
           "gerundio": {
             "pronombre": "ellos",
-            "ing": "",
-            "esp": ""
+            "ing": "They are carrying on the conversation.",
+            "esp": "Ellos están continuando la conversación."
           },
           "futuro": {
             "pronombre": "nosotros",
-            "ing": "",
-            "esp": ""
+            "ing": "We will carry on regardless.",
+            "esp": "Nosotros continuaremos sin importar nada."
           },
           "condicional": {
             "pronombre": "eso",
-            "ing": "",
-            "esp": ""
+            "ing": "That noise would carry on forever.",
+            "esp": "Ese ruido continuaría para siempre."
           }
         }
       },
       {
-        "id": "",
+        "id": 712,
         "imagen": "",
         "infinitivo": {
-          "esp": "",
-          "ing": ""
+          "esp": "registrarse",
+          "ing": "check in"
         },
         "pasadoSimple": {
-          "esp": "",
-          "ing": ""
+          "esp": "se registró",
+          "ing": "checked in"
         },
         "participio": {
-          "esp": "",
-          "ing": ""
+          "esp": "registrado",
+          "ing": "checked in"
         },
         "gerundio": {
-          "esp": "",
-          "ing": ""
+          "esp": "registrándose",
+          "ing": "checking in"
         },
         "futuro": {
-          "esp": "",
-          "ing": ""
+          "esp": "se registrará",
+          "ing": "will check in"
         },
         "condicional": {
-          "esp": "",
-          "ing": ""
+          "esp": "se registraría",
+          "ing": "would check in"
         },
         "oraciones": {
           "infinitivo": {
             "pronombre": "yo",
-            "ing": "",
-            "esp": ""
+            "ing": "I check in at the hotel by three.",
+            "esp": "Yo me registro en el hotel antes de las tres."
           },
           "pasadoSimple": {
             "pronombre": "tu",
-            "ing": "",
-            "esp": ""
+            "ing": "You checked in at the airport.",
+            "esp": "Tú te registraste en el aeropuerto."
           },
           "participio": {
             "pronombre": "el_ella",
-            "ing": "",
-            "esp": ""
+            "ing": "She has checked in online.",
+            "esp": "Ella se ha registrado en línea."
           },
           "gerundio": {
             "pronombre": "ellos",
-            "ing": "",
-            "esp": ""
+            "ing": "They are checking in now.",
+            "esp": "Ellos se están registrando ahora."
           },
           "futuro": {
             "pronombre": "nosotros",
-            "ing": "",
-            "esp": ""
+            "ing": "We will check in at noon.",
+            "esp": "Nosotros nos registraremos al mediodía."
           },
           "condicional": {
             "pronombre": "eso",
-            "ing": "",
-            "esp": ""
+            "ing": "That guest would check in early.",
+            "esp": "Ese huésped se registraría temprano."
           }
         }
       },
       {
-        "id": "",
+        "id": 713,
         "imagen": "",
         "infinitivo": {
-          "esp": "",
-          "ing": ""
+          "esp": "salir",
+          "ing": "check out"
         },
         "pasadoSimple": {
-          "esp": "",
-          "ing": ""
+          "esp": "salió",
+          "ing": "checked out"
         },
         "participio": {
-          "esp": "",
-          "ing": ""
+          "esp": "salido",
+          "ing": "checked out"
         },
         "gerundio": {
-          "esp": "",
-          "ing": ""
+          "esp": "saliendo",
+          "ing": "checking out"
         },
         "futuro": {
-          "esp": "",
-          "ing": ""
+          "esp": "saldrá",
+          "ing": "will check out"
         },
         "condicional": {
-          "esp": "",
-          "ing": ""
+          "esp": "saldría",
+          "ing": "would check out"
         },
         "oraciones": {
           "infinitivo": {
             "pronombre": "yo",
-            "ing": "",
-            "esp": ""
+            "ing": "I check out books at the library.",
+            "esp": "Yo saco libros de la biblioteca."
           },
           "pasadoSimple": {
             "pronombre": "tu",
-            "ing": "",
-            "esp": ""
+            "ing": "You checked out at noon.",
+            "esp": "Tú saliste al mediodía."
           },
           "participio": {
             "pronombre": "el_ella",
-            "ing": "",
-            "esp": ""
+            "ing": "She has checked out the hotel.",
+            "esp": "Ella ha salido del hotel."
           },
           "gerundio": {
             "pronombre": "ellos",
-            "ing": "",
-            "esp": ""
+            "ing": "They are checking out the latest models.",
+            "esp": "Ellos están revisando los últimos modelos."
           },
           "futuro": {
             "pronombre": "nosotros",
-            "ing": "",
-            "esp": ""
+            "ing": "We will check out at ten.",
+            "esp": "Nosotros saldremos a las diez."
           },
           "condicional": {
             "pronombre": "eso",
-            "ing": "",
-            "esp": ""
+            "ing": "That book would check out quickly.",
+            "esp": "Ese libro se sacaría rápido."
           }
         }
       },
       {
-        "id": "",
+        "id": 714,
         "imagen": "",
         "infinitivo": {
-          "esp": "",
-          "ing": ""
+          "esp": "limpiar",
+          "ing": "clean up"
         },
         "pasadoSimple": {
-          "esp": "",
-          "ing": ""
+          "esp": "limpió",
+          "ing": "cleaned up"
         },
         "participio": {
-          "esp": "",
-          "ing": ""
+          "esp": "limpiado",
+          "ing": "cleaned up"
         },
         "gerundio": {
-          "esp": "",
-          "ing": ""
+          "esp": "limpiando",
+          "ing": "cleaning up"
         },
         "futuro": {
-          "esp": "",
-          "ing": ""
+          "esp": "limpiará",
+          "ing": "will clean up"
         },
         "condicional": {
-          "esp": "",
-          "ing": ""
+          "esp": "limpiaría",
+          "ing": "would clean up"
         },
         "oraciones": {
           "infinitivo": {
             "pronombre": "yo",
-            "ing": "",
-            "esp": ""
+            "ing": "I clean up after the kids.",
+            "esp": "Yo limpio después de los niños."
           },
           "pasadoSimple": {
             "pronombre": "tu",
-            "ing": "",
-            "esp": ""
+            "ing": "You cleaned up the mess.",
+            "esp": "Tú limpiaste el desastre."
           },
           "participio": {
             "pronombre": "el_ella",
-            "ing": "",
-            "esp": ""
+            "ing": "She has cleaned up the kitchen.",
+            "esp": "Ella ha limpiado la cocina."
           },
           "gerundio": {
             "pronombre": "ellos",
-            "ing": "",
-            "esp": ""
+            "ing": "They are cleaning up the park.",
+            "esp": "Ellos están limpiando el parque."
           },
           "futuro": {
             "pronombre": "nosotros",
-            "ing": "",
-            "esp": ""
+            "ing": "We will clean up after the party.",
+            "esp": "Nosotros limpiaremos después de la fiesta."
           },
           "condicional": {
             "pronombre": "eso",
-            "ing": "",
-            "esp": ""
+            "ing": "That mess would clean up easily.",
+            "esp": "Ese desastre se limpiaría fácilmente."
           }
         }
       },
       {
-        "id": "",
+        "id": 715,
         "imagen": "",
         "infinitivo": {
-          "esp": "",
-          "ing": ""
+          "esp": "encontrar",
+          "ing": "come across"
         },
         "pasadoSimple": {
-          "esp": "",
-          "ing": ""
+          "esp": "se encontró",
+          "ing": "came across"
         },
         "participio": {
-          "esp": "",
-          "ing": ""
+          "esp": "encontrado",
+          "ing": "come across"
         },
         "gerundio": {
-          "esp": "",
-          "ing": ""
+          "esp": "encontrándose",
+          "ing": "coming across"
         },
         "futuro": {
-          "esp": "",
-          "ing": ""
+          "esp": "se encontrará",
+          "ing": "will come across"
         },
         "condicional": {
-          "esp": "",
-          "ing": ""
+          "esp": "se encontraría",
+          "ing": "would come across"
         },
         "oraciones": {
           "infinitivo": {
             "pronombre": "yo",
-            "ing": "",
-            "esp": ""
+            "ing": "I come across old photos sometimes.",
+            "esp": "Yo encuentro fotos viejas a veces."
           },
           "pasadoSimple": {
             "pronombre": "tu",
-            "ing": "",
-            "esp": ""
+            "ing": "You came across a deer yesterday.",
+            "esp": "Tú te encontraste con un ciervo ayer."
           },
           "participio": {
             "pronombre": "el_ella",
-            "ing": "",
-            "esp": ""
+            "ing": "She has come across a solution.",
+            "esp": "Ella ha encontrado una solución."
           },
           "gerundio": {
             "pronombre": "ellos",
-            "ing": "",
-            "esp": ""
+            "ing": "They are coming across obstacles.",
+            "esp": "Ellos se están encontrando con obstáculos."
           },
           "futuro": {
             "pronombre": "nosotros",
-            "ing": "",
-            "esp": ""
+            "ing": "We will come across old friends.",
+            "esp": "Nosotros nos encontraremos con viejos amigos."
           },
           "condicional": {
             "pronombre": "eso",
-            "ing": "",
-            "esp": ""
+            "ing": "That idea would come across well.",
+            "esp": "Esa idea se encontraría bien."
           }
         }
       },
       {
-        "id": "",
+        "id": 716,
         "imagen": "",
         "infinitivo": {
-          "esp": "",
-          "ing": ""
+          "esp": "venir",
+          "ing": "come along"
         },
         "pasadoSimple": {
-          "esp": "",
-          "ing": ""
+          "esp": "vino",
+          "ing": "came along"
         },
         "participio": {
-          "esp": "",
-          "ing": ""
+          "esp": "venido",
+          "ing": "come along"
         },
         "gerundio": {
-          "esp": "",
-          "ing": ""
+          "esp": "viniendo",
+          "ing": "coming along"
         },
         "futuro": {
-          "esp": "",
-          "ing": ""
+          "esp": "venirá",
+          "ing": "will come along"
         },
         "condicional": {
-          "esp": "",
-          "ing": ""
+          "esp": "veniría",
+          "ing": "would come along"
         },
         "oraciones": {
           "infinitivo": {
             "pronombre": "yo",
-            "ing": "",
-            "esp": ""
+            "ing": "I come along to support you.",
+            "esp": "Yo vengo para apoyarte."
           },
           "pasadoSimple": {
             "pronombre": "tu",
-            "ing": "",
-            "esp": ""
+            "ing": "You came along at the right time.",
+            "esp": "Tú viniste en el momento justo."
           },
           "participio": {
             "pronombre": "el_ella",
-            "ing": "",
-            "esp": ""
+            "ing": "She has come along nicely.",
+            "esp": "Ella ha venido bien."
           },
           "gerundio": {
             "pronombre": "ellos",
-            "ing": "",
-            "esp": ""
+            "ing": "They are coming along to the party.",
+            "esp": "Ellos vienen a la fiesta."
           },
           "futuro": {
             "pronombre": "nosotros",
-            "ing": "",
-            "esp": ""
+            "ing": "We will come along if invited.",
+            "esp": "Nosotros vendremos si nos invitan."
           },
           "condicional": {
             "pronombre": "eso",
-            "ing": "",
-            "esp": ""
+            "ing": "That opportunity would come along rarely.",
+            "esp": "Esa oportunidad vendría raramente."
           }
         }
       },
       {
-        "id": "",
+        "id": 717,
         "imagen": "",
         "infinitivo": {
-          "esp": "",
-          "ing": ""
+          "esp": "volver",
+          "ing": "come back"
         },
         "pasadoSimple": {
-          "esp": "",
-          "ing": ""
+          "esp": "volvió",
+          "ing": "came back"
         },
         "participio": {
-          "esp": "",
-          "ing": ""
+          "esp": "vuelto",
+          "ing": "come back"
         },
         "gerundio": {
-          "esp": "",
-          "ing": ""
+          "esp": "volviendo",
+          "ing": "coming back"
         },
         "futuro": {
-          "esp": "",
-          "ing": ""
+          "esp": "volverá",
+          "ing": "will come back"
         },
         "condicional": {
-          "esp": "",
-          "ing": ""
+          "esp": "volvería",
+          "ing": "would come back"
         },
         "oraciones": {
           "infinitivo": {
             "pronombre": "yo",
-            "ing": "",
-            "esp": ""
+            "ing": "I come back home by six.",
+            "esp": "Yo vuelvo a casa antes de las seis."
           },
           "pasadoSimple": {
             "pronombre": "tu",
-            "ing": "",
-            "esp": ""
+            "ing": "You came back late.",
+            "esp": "Tú volviste tarde."
           },
           "participio": {
             "pronombre": "el_ella",
-            "ing": "",
-            "esp": ""
+            "ing": "She has come back from vacation.",
+            "esp": "Ella ha vuelto de vacaciones."
           },
           "gerundio": {
             "pronombre": "ellos",
-            "ing": "",
-            "esp": ""
+            "ing": "They are coming back tomorrow.",
+            "esp": "Ellos vuelven mañana."
           },
           "futuro": {
             "pronombre": "nosotros",
-            "ing": "",
-            "esp": ""
+            "ing": "We will come back soon.",
+            "esp": "Nosotros volveremos pronto."
           },
           "condicional": {
             "pronombre": "eso",
-            "ing": "",
-            "esp": ""
+            "ing": "That trend would come back.",
+            "esp": "Esa moda volvería."
           }
         }
       },
       {
-        "id": "",
+        "id": 718,
         "imagen": "",
         "infinitivo": {
-          "esp": "",
-          "ing": ""
+          "esp": "entrar",
+          "ing": "come in"
         },
         "pasadoSimple": {
-          "esp": "",
-          "ing": ""
+          "esp": "entró",
+          "ing": "came in"
         },
         "participio": {
-          "esp": "",
-          "ing": ""
+          "esp": "entrado",
+          "ing": "come in"
         },
         "gerundio": {
-          "esp": "",
-          "ing": ""
+          "esp": "entrando",
+          "ing": "coming in"
         },
         "futuro": {
-          "esp": "",
-          "ing": ""
+          "esp": "entrará",
+          "ing": "will come in"
         },
         "condicional": {
-          "esp": "",
-          "ing": ""
+          "esp": "entraría",
+          "ing": "would come in"
         },
         "oraciones": {
           "infinitivo": {
             "pronombre": "yo",
-            "ing": "",
-            "esp": ""
+            "ing": "I come in from the rain.",
+            "esp": "Yo entro de la lluvia."
           },
           "pasadoSimple": {
             "pronombre": "tu",
-            "ing": "",
-            "esp": ""
+            "ing": "You came in late.",
+            "esp": "Tú entraste tarde."
           },
           "participio": {
             "pronombre": "el_ella",
-            "ing": "",
-            "esp": ""
+            "ing": "She has come in first place.",
+            "esp": "Ella ha quedado en primer lugar."
           },
           "gerundio": {
             "pronombre": "ellos",
-            "ing": "",
-            "esp": ""
+            "ing": "They are coming in from outside.",
+            "esp": "Ellos están entrando de afuera."
           },
           "futuro": {
             "pronombre": "nosotros",
-            "ing": "",
-            "esp": ""
+            "ing": "We will come in through the front.",
+            "esp": "Nosotros entraremos por el frente."
           },
           "condicional": {
             "pronombre": "eso",
-            "ing": "",
-            "esp": ""
+            "ing": "That color would come in handy.",
+            "esp": "Ese color vendría bien."
           }
         }
       },
       {
-        "id": "",
+        "id": 719,
         "imagen": "",
         "infinitivo": {
-          "esp": "",
-          "ing": ""
+          "esp": "animarse",
+          "ing": "come on"
         },
         "pasadoSimple": {
-          "esp": "",
-          "ing": ""
+          "esp": "se animó",
+          "ing": "came on"
         },
         "participio": {
-          "esp": "",
-          "ing": ""
+          "esp": "animado",
+          "ing": "come on"
         },
         "gerundio": {
-          "esp": "",
-          "ing": ""
+          "esp": "animándose",
+          "ing": "coming on"
         },
         "futuro": {
-          "esp": "",
-          "ing": ""
+          "esp": "se animará",
+          "ing": "will come on"
         },
         "condicional": {
-          "esp": "",
-          "ing": ""
+          "esp": "se animaría",
+          "ing": "would come on"
         },
         "oraciones": {
           "infinitivo": {
             "pronombre": "yo",
-            "ing": "",
-            "esp": ""
+            "ing": "Come on, let's go!",
+            "esp": "¡Venga, vamos!"
           },
           "pasadoSimple": {
             "pronombre": "tu",
-            "ing": "",
-            "esp": ""
+            "ing": "You came on too strong.",
+            "esp": "Tú fuiste demasiado intenso."
           },
           "participio": {
             "pronombre": "el_ella",
-            "ing": "",
-            "esp": ""
+            "ing": "She has come on strong lately.",
+            "esp": "Ella ha sido intensa últimamente."
           },
           "gerundio": {
             "pronombre": "ellos",
-            "ing": "",
-            "esp": ""
+            "ing": "They are coming on to the dance.",
+            "esp": "Ellos vienen al baile."
           },
           "futuro": {
             "pronombre": "nosotros",
-            "ing": "",
-            "esp": ""
+            "ing": "We will come on the trip.",
+            "esp": "Nosotros iremos al viaje."
           },
           "condicional": {
             "pronombre": "eso",
-            "ing": "",
-            "esp": ""
+            "ing": "That cold would come on suddenly.",
+            "esp": "Ese resfriado vendría de repente."
           }
         }
       },
       {
-        "id": "",
+        "id": 720,
         "imagen": "",
         "infinitivo": {
-          "esp": "",
-          "ing": ""
+          "esp": "salir",
+          "ing": "come out"
         },
         "pasadoSimple": {
-          "esp": "",
-          "ing": ""
+          "esp": "salió",
+          "ing": "came out"
         },
         "participio": {
-          "esp": "",
-          "ing": ""
+          "esp": "salido",
+          "ing": "come out"
         },
         "gerundio": {
-          "esp": "",
-          "ing": ""
+          "esp": "saliendo",
+          "ing": "coming out"
         },
         "futuro": {
-          "esp": "",
-          "ing": ""
+          "esp": "salirá",
+          "ing": "will come out"
         },
         "condicional": {
-          "esp": "",
-          "ing": ""
+          "esp": "saliría",
+          "ing": "would come out"
         },
         "oraciones": {
           "infinitivo": {
             "pronombre": "yo",
-            "ing": "",
-            "esp": ""
+            "ing": "I come out of the shower.",
+            "esp": "Yo salgo de la ducha."
           },
           "pasadoSimple": {
             "pronombre": "tu",
-            "ing": "",
-            "esp": ""
+            "ing": "You came out of the closet.",
+            "esp": "Tú saliste del clóset."
           },
           "participio": {
             "pronombre": "el_ella",
-            "ing": "",
-            "esp": ""
+            "ing": "The book has come out today.",
+            "esp": "El libro ha salido hoy."
           },
           "gerundio": {
             "pronombre": "ellos",
-            "ing": "",
-            "esp": ""
+            "ing": "They are coming out to play.",
+            "esp": "Ellos salen a jugar."
           },
           "futuro": {
             "pronombre": "nosotros",
-            "ing": "",
-            "esp": ""
+            "ing": "We will come out tomorrow.",
+            "esp": "Nosotros saldremos mañana."
           },
           "condicional": {
             "pronombre": "eso",
-            "ing": "",
-            "esp": ""
+            "ing": "That stain would come out easily.",
+            "esp": "Esa mancha saldría fácilmente."
           }
         }
       },
       {
-        "id": "",
+        "id": 721,
         "imagen": "",
         "infinitivo": {
-          "esp": "",
-          "ing": ""
+          "esp": "surgir",
+          "ing": "come up"
         },
         "pasadoSimple": {
-          "esp": "",
-          "ing": ""
+          "esp": "surgió",
+          "ing": "came up"
         },
         "participio": {
-          "esp": "",
-          "ing": ""
+          "esp": "surgido",
+          "ing": "come up"
         },
         "gerundio": {
-          "esp": "",
-          "ing": ""
+          "esp": "surgiendo",
+          "ing": "coming up"
         },
         "futuro": {
-          "esp": "",
-          "ing": ""
+          "esp": "surgirá",
+          "ing": "will come up"
         },
         "condicional": {
-          "esp": "",
-          "ing": ""
+          "esp": "surgiría",
+          "ing": "would come up"
         },
         "oraciones": {
           "infinitivo": {
             "pronombre": "yo",
-            "ing": "",
-            "esp": ""
+            "ing": "I come up with ideas daily.",
+            "esp": "Yo se me ocurren ideas a diario."
           },
           "pasadoSimple": {
             "pronombre": "tu",
-            "ing": "",
-            "esp": ""
+            "ing": "You came up with a solution.",
+            "esp": "Tú se te ocurrió una solución."
           },
           "participio": {
             "pronombre": "el_ella",
-            "ing": "",
-            "esp": ""
+            "ing": "An issue has come up.",
+            "esp": "Ha surgido un problema."
           },
           "gerundio": {
             "pronombre": "ellos",
-            "ing": "",
-            "esp": ""
+            "ing": "They are coming up with excuses.",
+            "esp": "Ellos se están inventando excusas."
           },
           "futuro": {
             "pronombre": "nosotros",
-            "ing": "",
-            "esp": ""
+            "ing": "We will come up next month.",
+            "esp": "Nosotros subiremos el próximo mes."
           },
           "condicional": {
             "pronombre": "eso",
-            "ing": "",
-            "esp": ""
+            "ing": "That topic would come up eventually.",
+            "esp": "Ese tema surgiría eventualmente."
           }
         }
       },
       {
-        "id": "",
+        "id": 722,
         "imagen": "",
         "infinitivo": {
-          "esp": "",
-          "ing": ""
+          "esp": "cortar",
+          "ing": "cut off"
         },
         "pasadoSimple": {
-          "esp": "",
-          "ing": ""
+          "esp": "cortó",
+          "ing": "cut off"
         },
         "participio": {
-          "esp": "",
-          "ing": ""
+          "esp": "cortado",
+          "ing": "cut off"
         },
         "gerundio": {
-          "esp": "",
-          "ing": ""
+          "esp": "cortando",
+          "ing": "cutting off"
         },
         "futuro": {
-          "esp": "",
-          "ing": ""
+          "esp": "cortará",
+          "ing": "will cut off"
         },
         "condicional": {
-          "esp": "",
-          "ing": ""
+          "esp": "cortaría",
+          "ing": "would cut off"
         },
         "oraciones": {
           "infinitivo": {
             "pronombre": "yo",
-            "ing": "",
-            "esp": ""
+            "ing": "I cut off the crusts on sandwiches.",
+            "esp": "Yo quito las cortezas de los sándwiches."
           },
           "pasadoSimple": {
             "pronombre": "tu",
-            "ing": "",
-            "esp": ""
+            "ing": "You cut off the power.",
+            "esp": "Tú cortaste la electricidad."
           },
           "participio": {
             "pronombre": "el_ella",
-            "ing": "",
-            "esp": ""
+            "ing": "She has cut off her hair.",
+            "esp": "Ella se ha cortado el pelo."
           },
           "gerundio": {
             "pronombre": "ellos",
-            "ing": "",
-            "esp": ""
+            "ing": "They are cutting off negotiations.",
+            "esp": "Ellos están cortando las negociaciones."
           },
           "futuro": {
             "pronombre": "nosotros",
-            "ing": "",
-            "esp": ""
+            "ing": "We will cut off the tags.",
+            "esp": "Nosotros quitaremos las etiquetas."
           },
           "condicional": {
             "pronombre": "eso",
-            "ing": "",
-            "esp": ""
+            "ing": "That call would cut off suddenly.",
+            "esp": "Esa llamada se cortaría de repente."
           }
         }
       },
       {
-        "id": "",
+        "id": 723,
         "imagen": "",
         "infinitivo": {
-          "esp": "",
-          "ing": ""
+          "esp": "rehacer",
+          "ing": "do over"
         },
         "pasadoSimple": {
-          "esp": "",
-          "ing": ""
+          "esp": "rehízo",
+          "ing": "did over"
         },
         "participio": {
-          "esp": "",
-          "ing": ""
+          "esp": "rehecho",
+          "ing": "done over"
         },
         "gerundio": {
-          "esp": "",
-          "ing": ""
+          "esp": "rehaciendo",
+          "ing": "doing over"
         },
         "futuro": {
-          "esp": "",
-          "ing": ""
+          "esp": "rehará",
+          "ing": "will do over"
         },
         "condicional": {
-          "esp": "",
-          "ing": ""
+          "esp": "reharía",
+          "ing": "would do over"
         },
         "oraciones": {
           "infinitivo": {
             "pronombre": "yo",
-            "ing": "",
-            "esp": ""
+            "ing": "I do over my homework when wrong.",
+            "esp": "Yo rehago la tarea cuando está mal."
           },
           "pasadoSimple": {
             "pronombre": "tu",
-            "ing": "",
-            "esp": ""
+            "ing": "You did over the project.",
+            "esp": "Tú rehiciste el proyecto."
           },
           "participio": {
             "pronombre": "el_ella",
-            "ing": "",
-            "esp": ""
+            "ing": "She has done over the design.",
+            "esp": "Ella ha rehecho el diseño."
           },
           "gerundio": {
             "pronombre": "ellos",
-            "ing": "",
-            "esp": ""
+            "ing": "They are doing over the kitchen.",
+            "esp": "Ellos están rehaciendo la cocina."
           },
           "futuro": {
             "pronombre": "nosotros",
-            "ing": "",
-            "esp": ""
+            "ing": "We will do over the exam.",
+            "esp": "Nosotros reharemos el examen."
           },
           "condicional": {
             "pronombre": "eso",
-            "ing": "",
-            "esp": ""
+            "ing": "That task would do over easily.",
+            "esp": "Esa tarea se rehará fácilmente."
           }
         }
       },
       {
-        "id": "",
+        "id": 724,
         "imagen": "",
         "infinitivo": {
-          "esp": "",
-          "ing": ""
+          "esp": "pasar",
+          "ing": "drop by"
         },
         "pasadoSimple": {
-          "esp": "",
-          "ing": ""
+          "esp": "pasó",
+          "ing": "dropped by"
         },
         "participio": {
-          "esp": "",
-          "ing": ""
+          "esp": "pasado",
+          "ing": "dropped by"
         },
         "gerundio": {
-          "esp": "",
-          "ing": ""
+          "esp": "pasando",
+          "ing": "dropping by"
         },
         "futuro": {
-          "esp": "",
-          "ing": ""
+          "esp": "pasará",
+          "ing": "will drop by"
         },
         "condicional": {
-          "esp": "",
-          "ing": ""
+          "esp": "pasaría",
+          "ing": "would drop by"
         },
         "oraciones": {
           "infinitivo": {
             "pronombre": "yo",
-            "ing": "",
-            "esp": ""
+            "ing": "I drop by the office often.",
+            "esp": "Yo paso por la oficina a menudo."
           },
           "pasadoSimple": {
             "pronombre": "tu",
-            "ing": "",
-            "esp": ""
+            "ing": "You dropped by yesterday.",
+            "esp": "Tú pasaste ayer."
           },
           "participio": {
             "pronombre": "el_ella",
-            "ing": "",
-            "esp": ""
+            "ing": "She has dropped by for coffee.",
+            "esp": "Ella ha pasado a tomar café."
           },
           "gerundio": {
             "pronombre": "ellos",
-            "ing": "",
-            "esp": ""
+            "ing": "They are dropping by later.",
+            "esp": "Ellos pasan más tarde."
           },
           "futuro": {
             "pronombre": "nosotros",
-            "ing": "",
-            "esp": ""
+            "ing": "We will drop by your house.",
+            "esp": "Nosotros pasaremos por tu casa."
           },
           "condicional": {
             "pronombre": "eso",
-            "ing": "",
-            "esp": ""
+            "ing": "That friend would drop by often.",
+            "esp": "Ese amigo pasaría a menudo."
           }
         }
       },
       {
-        "id": "",
+        "id": 725,
         "imagen": "",
         "infinitivo": {
-          "esp": "",
-          "ing": ""
+          "esp": "dejar",
+          "ing": "drop off"
         },
         "pasadoSimple": {
-          "esp": "",
-          "ing": ""
+          "esp": "dejó",
+          "ing": "dropped off"
         },
         "participio": {
-          "esp": "",
-          "ing": ""
+          "esp": "dejado",
+          "ing": "dropped off"
         },
         "gerundio": {
-          "esp": "",
-          "ing": ""
+          "esp": "dejando",
+          "ing": "dropping off"
         },
         "futuro": {
-          "esp": "",
-          "ing": ""
+          "esp": "dejará",
+          "ing": "will drop off"
         },
         "condicional": {
-          "esp": "",
-          "ing": ""
+          "esp": "dejaría",
+          "ing": "would drop off"
         },
         "oraciones": {
           "infinitivo": {
             "pronombre": "yo",
-            "ing": "",
-            "esp": ""
+            "ing": "I drop off the kids at school.",
+            "esp": "Yo dejo a los niños en la escuela."
           },
           "pasadoSimple": {
             "pronombre": "tu",
-            "ing": "",
-            "esp": ""
+            "ing": "You dropped off the package.",
+            "esp": "Tú dejaste el paquete."
           },
           "participio": {
             "pronombre": "el_ella",
-            "ing": "",
-            "esp": ""
+            "ing": "She dropped off to sleep.",
+            "esp": "Ella se quedó dormida."
           },
           "gerundio": {
             "pronombre": "ellos",
-            "ing": "",
-            "esp": ""
+            "ing": "They are dropping off donations.",
+            "esp": "Ellos están dejando donaciones."
           },
           "futuro": {
             "pronombre": "nosotros",
-            "ing": "",
-            "esp": ""
+            "ing": "We will drop off at noon.",
+            "esp": "Nosotros nos dormiremos al mediodía."
           },
           "condicional": {
             "pronombre": "eso",
-            "ing": "",
-            "esp": ""
+            "ing": "That passenger would drop off here.",
+            "esp": "Ese pasajero se bajaría aquí."
           }
         }
       },
       {
-        "id": "",
+        "id": 726,
         "imagen": "",
         "infinitivo": {
-          "esp": "",
-          "ing": ""
+          "esp": "comer fuera",
+          "ing": "eat out"
         },
         "pasadoSimple": {
-          "esp": "",
-          "ing": ""
+          "esp": "comió fuera",
+          "ing": "ate out"
         },
         "participio": {
-          "esp": "",
-          "ing": ""
+          "esp": "comido fuera",
+          "ing": "eaten out"
         },
         "gerundio": {
-          "esp": "",
-          "ing": ""
+          "esp": "comiendo fuera",
+          "ing": "eating out"
         },
         "futuro": {
-          "esp": "",
-          "ing": ""
+          "esp": "comer fueraá",
+          "ing": "will eat out"
         },
         "condicional": {
-          "esp": "",
-          "ing": ""
+          "esp": "comer fueraía",
+          "ing": "would eat out"
         },
         "oraciones": {
           "infinitivo": {
             "pronombre": "yo",
-            "ing": "",
-            "esp": ""
+            "ing": "I eat out on weekends.",
+            "esp": "Yo como fuera los fines de semana."
           },
           "pasadoSimple": {
             "pronombre": "tu",
-            "ing": "",
-            "esp": ""
+            "ing": "You ate out last night.",
+            "esp": "Tú comiste fuera anoche."
           },
           "participio": {
             "pronombre": "el_ella",
-            "ing": "",
-            "esp": ""
+            "ing": "She has eaten out at that place.",
+            "esp": "Ella ha comido fuera en ese lugar."
           },
           "gerundio": {
             "pronombre": "ellos",
-            "ing": "",
-            "esp": ""
+            "ing": "They are eating out for lunch.",
+            "esp": "Ellos están comiendo fuera para almorzar."
           },
           "futuro": {
             "pronombre": "nosotros",
-            "ing": "",
-            "esp": ""
+            "ing": "We will eat out tonight.",
+            "esp": "Nosotros comeremos fuera esta noche."
           },
           "condicional": {
             "pronombre": "eso",
-            "ing": "",
-            "esp": ""
+            "ing": "That restaurant would eat out well.",
+            "esp": "Ese restaurante comería fuera bien."
           }
         }
       },
       {
-        "id": "",
+        "id": 727,
         "imagen": "",
         "infinitivo": {
-          "esp": "",
-          "ing": ""
+          "esp": "terminar",
+          "ing": "end up"
         },
         "pasadoSimple": {
-          "esp": "",
-          "ing": ""
+          "esp": "terminó",
+          "ing": "ended up"
         },
         "participio": {
-          "esp": "",
-          "ing": ""
+          "esp": "terminado",
+          "ing": "ended up"
         },
         "gerundio": {
-          "esp": "",
-          "ing": ""
+          "esp": "terminando",
+          "ing": "ending up"
         },
         "futuro": {
-          "esp": "",
-          "ing": ""
+          "esp": "terminará",
+          "ing": "will end up"
         },
         "condicional": {
-          "esp": "",
-          "ing": ""
+          "esp": "terminaría",
+          "ing": "would end up"
         },
         "oraciones": {
           "infinitivo": {
             "pronombre": "yo",
-            "ing": "",
-            "esp": ""
+            "ing": "I end up working late often.",
+            "esp": "Yo termino trabajando hasta tarde a menudo."
           },
           "pasadoSimple": {
             "pronombre": "tu",
-            "ing": "",
-            "esp": ""
+            "ing": "You ended up in the wrong place.",
+            "esp": "Tú terminaste en el lugar equivocado."
           },
           "participio": {
             "pronombre": "el_ella",
-            "ing": "",
-            "esp": ""
+            "ing": "She has ended up happy.",
+            "esp": "Ella ha terminado feliz."
           },
           "gerundio": {
             "pronombre": "ellos",
-            "ing": "",
-            "esp": ""
+            "ing": "They are ending up together.",
+            "esp": "Ellos están terminando juntos."
           },
           "futuro": {
             "pronombre": "nosotros",
-            "ing": "",
-            "esp": ""
+            "ing": "We will end up rich.",
+            "esp": "Nosotros terminaremos ricos."
           },
           "condicional": {
             "pronombre": "eso",
-            "ing": "",
-            "esp": ""
+            "ing": "That plan would end up badly.",
+            "esp": "Ese plan terminaría mal."
           }
         }
       },
       {
-        "id": "",
+        "id": 728,
         "imagen": "",
         "infinitivo": {
-          "esp": "",
-          "ing": ""
+          "esp": "desmoronarse",
+          "ing": "fall apart"
         },
         "pasadoSimple": {
-          "esp": "",
-          "ing": ""
+          "esp": "se desmoronó",
+          "ing": "fell apart"
         },
         "participio": {
-          "esp": "",
-          "ing": ""
+          "esp": "desmoronado",
+          "ing": "fallen apart"
         },
         "gerundio": {
-          "esp": "",
-          "ing": ""
+          "esp": "desmoronándose",
+          "ing": "falling apart"
         },
         "futuro": {
-          "esp": "",
-          "ing": ""
+          "esp": "se desmoronará",
+          "ing": "will fall apart"
         },
         "condicional": {
-          "esp": "",
-          "ing": ""
+          "esp": "se desmoronaría",
+          "ing": "would fall apart"
         },
         "oraciones": {
           "infinitivo": {
             "pronombre": "yo",
-            "ing": "",
-            "esp": ""
+            "ing": "I fall apart under pressure.",
+            "esp": "Yo me desmorono bajo presión."
           },
           "pasadoSimple": {
             "pronombre": "tu",
-            "ing": "",
-            "esp": ""
+            "ing": "You fell apart after the news.",
+            "esp": "Tú te desmoronaste después de la noticia."
           },
           "participio": {
             "pronombre": "el_ella",
-            "ing": "",
-            "esp": ""
+            "ing": "The cake has fallen apart.",
+            "esp": "El pastel se ha desmoronado."
           },
           "gerundio": {
             "pronombre": "ellos",
-            "ing": "",
-            "esp": ""
+            "ing": "They are falling apart as a team.",
+            "esp": "Ellos se están desmoronando como equipo."
           },
           "futuro": {
             "pronombre": "nosotros",
-            "ing": "",
-            "esp": ""
+            "ing": "We will fall apart without sleep.",
+            "esp": "Nosotros nos desmoronaremos sin sueño."
           },
           "condicional": {
             "pronombre": "eso",
-            "ing": "",
-            "esp": ""
+            "ing": "That plan would fall apart easily.",
+            "esp": "Ese plan se desmoronaría fácilmente."
           }
         }
       },
       {
-        "id": "",
+        "id": 729,
         "imagen": "",
         "infinitivo": {
-          "esp": "",
-          "ing": ""
+          "esp": "atrasarse",
+          "ing": "fall behind"
         },
         "pasadoSimple": {
-          "esp": "",
-          "ing": ""
+          "esp": "se atrasó",
+          "ing": "fell behind"
         },
         "participio": {
-          "esp": "",
-          "ing": ""
+          "esp": "atrasado",
+          "ing": "fallen behind"
         },
         "gerundio": {
-          "esp": "",
-          "ing": ""
+          "esp": "atrasándose",
+          "ing": "falling behind"
         },
         "futuro": {
-          "esp": "",
-          "ing": ""
+          "esp": "se atrasará",
+          "ing": "will fall behind"
         },
         "condicional": {
-          "esp": "",
-          "ing": ""
+          "esp": "se atrasaría",
+          "ing": "would fall behind"
         },
         "oraciones": {
           "infinitivo": {
             "pronombre": "yo",
-            "ing": "",
-            "esp": ""
+            "ing": "I fall behind when I skip classes.",
+            "esp": "Yo me atraso cuando falto a clases."
           },
           "pasadoSimple": {
             "pronombre": "tu",
-            "ing": "",
-            "esp": ""
+            "ing": "You fell behind on payments.",
+            "esp": "Tú te atrasaste en los pagos."
           },
           "participio": {
             "pronombre": "el_ella",
-            "ing": "",
-            "esp": ""
+            "ing": "She has fallen behind the class.",
+            "esp": "Ella se ha atrasado con la clase."
           },
           "gerundio": {
             "pronombre": "ellos",
-            "ing": "",
-            "esp": ""
+            "ing": "They are falling behind schedule.",
+            "esp": "Ellos se están atrasando con el cronograma."
           },
           "futuro": {
             "pronombre": "nosotros",
-            "ing": "",
-            "esp": ""
+            "ing": "We will fall behind without effort.",
+            "esp": "Nosotros nos atrasaremos sin esfuerzo."
           },
           "condicional": {
             "pronombre": "eso",
-            "ing": "",
-            "esp": ""
+            "ing": "That student would fall behind quickly.",
+            "esp": "Ese estudiante se atrasaría rápido."
           }
         }
       },
