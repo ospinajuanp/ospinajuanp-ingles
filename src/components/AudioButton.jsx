@@ -1,7 +1,9 @@
 import { forwardRef, useCallback, useEffect, useRef, useState } from 'react'
 import {
   getCachedAudio,
+  isTTSSupported,
   isUnavailable,
+  markTTSSupported,
   setCachedAudio,
   setUnavailable,
 } from '../utils/audioCache'
@@ -29,9 +31,46 @@ async function fetchAudioUrl(word) {
   return { url, reason: url ? null : 'no-audio' }
 }
 
+function speakWithSpeechSynthesis(word) {
+  return new Promise((resolve, reject) => {
+    if (typeof window === 'undefined' || !('speechSynthesis' in window)) {
+      reject(new Error('SpeechSynthesis not available'))
+      return
+    }
+    const synth = window.speechSynthesis
+    try {
+      synth.cancel()
+    } catch {
+      // ignore cancel errors
+    }
+
+    const utterance = new SpeechSynthesisUtterance(word)
+    utterance.lang = 'en-US'
+    utterance.rate = 0.9
+    utterance.pitch = 1
+
+    let settled = false
+    const settle = (fn, value) => {
+      if (settled) return
+      settled = true
+      fn(value)
+    }
+
+    utterance.onend = () => settle(resolve)
+    utterance.onerror = (e) => settle(reject, new Error(e?.error || 'TTS error'))
+
+    try {
+      synth.speak(utterance)
+    } catch (err) {
+      settle(reject, err)
+    }
+  })
+}
+
 export default forwardRef(function AudioButton({ word }, ref) {
   const audioRef = useRef(null)
   const isMountedRef = useRef(true)
+  const ttsActiveRef = useRef(false)
   const [state, setState] = useState(() => {
     if (!word) return 'unavailable'
     if (isUnavailable(word)) return 'unavailable'
@@ -47,7 +86,30 @@ export default forwardRef(function AudioButton({ word }, ref) {
         audio.pause()
         audio.removeAttribute('src')
       }
+      if (ttsActiveRef.current && typeof window !== 'undefined' && 'speechSynthesis' in window) {
+        try {
+          window.speechSynthesis.cancel()
+        } catch {
+          // ignore
+        }
+      }
     }
+  }, [])
+
+  const stopPlayback = useCallback(() => {
+    const audio = audioRef.current
+    if (audio) {
+      audio.pause()
+      audio.currentTime = 0
+    }
+    if (ttsActiveRef.current && typeof window !== 'undefined' && 'speechSynthesis' in window) {
+      try {
+        window.speechSynthesis.cancel()
+      } catch {
+        // ignore
+      }
+    }
+    ttsActiveRef.current = false
   }, [])
 
   const playUrl = useCallback((url) => {
@@ -62,23 +124,11 @@ export default forwardRef(function AudioButton({ word }, ref) {
         if (isMountedRef.current) setState('error')
       }
       audioRef.current = a
-      a.src = url
-      a.currentTime = 0
-      const p = a.play()
-      if (p && typeof p.then === 'function') {
-        p.then(() => {
-          if (isMountedRef.current) setState('playing')
-        }).catch(() => {
-          if (isMountedRef.current) setState('error')
-        })
-      } else {
-        setState('playing')
-      }
-      return
     }
-    audioRef.current.src = url
-    audioRef.current.currentTime = 0
-    const p = audioRef.current.play()
+    const audio = audioRef.current
+    audio.src = url
+    audio.currentTime = 0
+    const p = audio.play()
     if (p && typeof p.then === 'function') {
       p.then(() => {
         if (isMountedRef.current) setState('playing')
@@ -90,11 +140,28 @@ export default forwardRef(function AudioButton({ word }, ref) {
     }
   }, [])
 
+  const playTTS = useCallback(async () => {
+    setState('playing')
+    ttsActiveRef.current = true
+    try {
+      await speakWithSpeechSynthesis(word)
+      if (isMountedRef.current) {
+        ttsActiveRef.current = false
+        setState('idle')
+      }
+    } catch {
+      if (isMountedRef.current) {
+        ttsActiveRef.current = false
+        setState('error')
+      }
+    }
+  }, [word])
+
   const handleClick = useCallback(async () => {
     if (!word) return
 
     if (state === 'playing') {
-      audioRef.current?.pause()
+      stopPlayback()
       setState('idle')
       return
     }
@@ -107,25 +174,47 @@ export default forwardRef(function AudioButton({ word }, ref) {
       return
     }
 
+    if (isTTSSupported(word)) {
+      playTTS()
+      return
+    }
+
     setState('loading')
     try {
       const { url, reason } = await fetchAudioUrl(word)
       if (!isMountedRef.current) {
         if (url) setCachedAudio(word, url)
-        else if (reason) setUnavailable(word)
+        else if (reason === 'missing') setUnavailable(word)
+        else if (reason === 'no-audio') markTTSSupported(word)
         return
       }
-      if (reason) {
+
+      if (url) {
+        setCachedAudio(word, url)
+        playUrl(url)
+        return
+      }
+
+      if (reason === 'no-audio') {
+        try {
+          await speakWithSpeechSynthesis(word)
+          markTTSSupported(word)
+          if (isMountedRef.current) setState('idle')
+        } catch {
+          setUnavailable(word)
+          if (isMountedRef.current) setState('unavailable')
+        }
+        return
+      }
+
+      if (reason === 'missing') {
         setUnavailable(word)
         setState('unavailable')
-        return
       }
-      setCachedAudio(word, url)
-      playUrl(url)
     } catch {
       if (isMountedRef.current) setState('error')
     }
-  }, [word, state, playUrl])
+  }, [word, state, playUrl, playTTS, stopPlayback])
 
   const baseClass =
     'group/audio inline-flex size-12 items-center justify-center rounded-full bg-white/95 text-indigo-600 shadow-lg ring-1 ring-black/5 backdrop-blur-sm transition hover:scale-105 hover:bg-white hover:shadow-xl active:scale-95 disabled:opacity-50 disabled:hover:scale-100 disabled:hover:bg-white/95 motion-reduce:animate-none'
