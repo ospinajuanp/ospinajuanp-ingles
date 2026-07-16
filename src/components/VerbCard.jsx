@@ -178,7 +178,7 @@ function VerbImageOverlay({ audioWord, onRefresh, canRefresh, refreshing }) {
           disabled={refreshing}
           aria-label="Buscar otra foto"
           title="Buscar otra foto"
-          className="absolute top-2 right-2 z-20 inline-flex size-9 items-center justify-center rounded-full bg-slate-900/50 text-white shadow-md backdrop-blur-sm transition hover:scale-105 hover:bg-slate-900/70 active:scale-95 disabled:opacity-50 disabled:hover:scale-100 motion-reduce:animate-none"
+          className="absolute top-2 right-2 z-30 inline-flex size-9 items-center justify-center rounded-full bg-slate-900/50 text-white shadow-md backdrop-blur-sm transition hover:scale-105 hover:bg-slate-900/70 active:scale-95 disabled:opacity-50 disabled:hover:scale-100 motion-reduce:animate-none"
         >
           {refreshing ? (
             <svg

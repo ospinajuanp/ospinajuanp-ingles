@@ -9,7 +9,7 @@ export default function ImageCredit({ credit }) {
       target="_blank"
       rel="noopener noreferrer"
       onClick={(e) => e.stopPropagation()}
-      className="absolute bottom-2 right-2 z-20 inline-flex items-center gap-1 rounded-full bg-slate-900/60 px-2.5 py-1 text-[0.65rem] font-medium text-white backdrop-blur-sm transition hover:bg-slate-900/80"
+      className="absolute bottom-2 right-2 z-30 inline-flex items-center gap-1 rounded-full bg-slate-900/60 px-2.5 py-1 text-[0.65rem] font-medium text-white backdrop-blur-sm transition hover:bg-slate-900/80"
       aria-label={`Foto por ${credit.photographer} en Pexels`}
     >
       <svg
