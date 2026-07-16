@@ -256,4 +256,9 @@ random verb without reloading.
 
 ## License
 
-Personal project — no public license yet.
+This project is licensed under the [Polyform Noncommercial License 1.0.0](LICENSE.md).
+
+You are free to view, fork, and modify the code for personal, educational, or portfolio purposes.
+**Commercial use is not permitted** without a separate written agreement from the author.
+
+(c) 2026 Juan Pablo Ospina Restrepo.

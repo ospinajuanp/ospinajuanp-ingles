@@ -1,8 +1,9 @@
 {
   "name": "ospinajuanp-ingles",
-  "private": true,
   "version": "0.1.0",
+  "private": true,
   "type": "module",
+  "license": "PolyForm-Noncommercial-1.0.0",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
