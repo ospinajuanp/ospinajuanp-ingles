@@ -31,31 +31,61 @@ async function fetchAudioUrl(word) {
 
 export default function AudioButton({ word }) {
   const audioRef = useRef(null)
+  const isMountedRef = useRef(true)
   const [state, setState] = useState(() => {
     if (!word) return 'unavailable'
     if (isUnavailable(word)) return 'unavailable'
-    return getCachedAudio(word) ? 'idle' : 'idle'
+    return 'idle'
   })
 
   useEffect(() => {
+    isMountedRef.current = true
     return () => {
-      // eslint-disable-next-line react-hooks/exhaustive-deps
+      isMountedRef.current = false
       const audio = audioRef.current
       if (audio) {
         audio.pause()
         audio.removeAttribute('src')
-        audio.load()
       }
     }
   }, [])
 
-  const play = useCallback(() => {
-    const el = audioRef.current
-    if (!el) return
-    el.currentTime = 0
-    const p = el.play()
+  const playUrl = useCallback((url) => {
+    if (!url) return
+    if (!audioRef.current) {
+      const a = new Audio()
+      a.preload = 'none'
+      a.onended = () => {
+        if (isMountedRef.current) setState('idle')
+      }
+      a.onerror = () => {
+        if (isMountedRef.current) setState('error')
+      }
+      // eslint-disable-next-line react-hooks/immutability
+      audioRef.current = a
+      a.src = url
+      a.currentTime = 0
+      const p = a.play()
+      if (p && typeof p.then === 'function') {
+        p.then(() => {
+          if (isMountedRef.current) setState('playing')
+        }).catch(() => {
+          if (isMountedRef.current) setState('error')
+        })
+      } else {
+        setState('playing')
+      }
+      return
+    }
+    audioRef.current.src = url
+    audioRef.current.currentTime = 0
+    const p = audioRef.current.play()
     if (p && typeof p.then === 'function') {
-      p.then(() => setState('playing')).catch(() => setState('error'))
+      p.then(() => {
+        if (isMountedRef.current) setState('playing')
+      }).catch(() => {
+        if (isMountedRef.current) setState('error')
+      })
     } else {
       setState('playing')
     }
@@ -74,26 +104,29 @@ export default function AudioButton({ word }) {
 
     const cached = getCachedAudio(word)
     if (cached) {
-      play()
+      playUrl(cached)
       return
     }
 
     setState('loading')
     try {
       const { url, reason } = await fetchAudioUrl(word)
+      if (!isMountedRef.current) {
+        if (url) setCachedAudio(word, url)
+        else if (reason) setUnavailable(word)
+        return
+      }
       if (reason) {
         setUnavailable(word)
         setState('unavailable')
         return
       }
       setCachedAudio(word, url)
-      play()
+      playUrl(url)
     } catch {
-      setState('error')
+      if (isMountedRef.current) setState('error')
     }
-  }, [word, state, play])
-
-  const audioUrl = word ? getCachedAudio(word) : null
+  }, [word, state, playUrl])
 
   const baseClass =
     'group/audio inline-flex size-12 items-center justify-center rounded-full bg-white/95 text-indigo-600 shadow-lg ring-1 ring-black/5 backdrop-blur-sm transition hover:scale-105 hover:bg-white hover:shadow-xl active:scale-95 disabled:opacity-50 disabled:hover:scale-100 disabled:hover:bg-white/95 motion-reduce:animate-none'
@@ -181,37 +214,26 @@ export default function AudioButton({ word }) {
   }
 
   return (
-    <>
-      {audioUrl ? (
-        <audio
-          ref={audioRef}
-          src={audioUrl}
-          preload="none"
-          onEnded={() => setState('idle')}
-          onError={() => setState('error')}
-        />
-      ) : null}
-      <button
-        type="button"
-        onClick={handleClick}
-        disabled={!word || state === 'unavailable' || state === 'loading'}
-        aria-label={ariaLabel}
-        title={
-          state === 'unavailable'
-            ? 'Sin pronunciación disponible'
-            : state === 'error'
-              ? 'Error al cargar, reintentar'
-              : 'Escuchar'
-        }
-        className={
-          baseClass +
-          (state === 'playing'
-            ? ' animate-pulse motion-reduce:animate-none ring-2 ring-indigo-300'
-            : '')
-        }
-      >
-        {icon}
-      </button>
-    </>
+    <button
+      type="button"
+      onClick={handleClick}
+      disabled={!word || state === 'unavailable' || state === 'loading'}
+      aria-label={ariaLabel}
+      title={
+        state === 'unavailable'
+          ? 'Sin pronunciación disponible'
+          : state === 'error'
+            ? 'Error al cargar, reintentar'
+            : 'Escuchar'
+      }
+      className={
+        baseClass +
+        (state === 'playing'
+          ? ' animate-pulse motion-reduce:animate-none ring-2 ring-indigo-300'
+          : '')
+      }
+    >
+      {icon}
+    </button>
   )
 }
