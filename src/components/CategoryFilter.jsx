@@ -38,11 +38,16 @@ export default function CategoryFilter({
     function onKey(e) {
       if (e.key === 'Escape') setOpen(false)
     }
+    function onScroll() {
+      setOpen(false)
+    }
     document.addEventListener('mousedown', onPointer)
     document.addEventListener('keydown', onKey)
+    window.addEventListener('scroll', onScroll, { passive: true, capture: true })
     return () => {
       document.removeEventListener('mousedown', onPointer)
       document.removeEventListener('keydown', onKey)
+      window.removeEventListener('scroll', onScroll, { capture: true })
     }
   }, [open])
 
@@ -68,7 +73,7 @@ export default function CategoryFilter({
   }
 
   return (
-    <div ref={containerRef} className="relative inline-block text-left">
+    <div ref={containerRef} className="relative block w-full text-left sm:inline-block sm:w-auto">
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
@@ -124,7 +129,7 @@ export default function CategoryFilter({
         <div
           role="dialog"
           aria-label="Filtros"
-          className="absolute right-0 z-40 mt-2 w-72 origin-top-right overflow-hidden rounded-xl border border-slate-200 bg-white shadow-xl ring-1 ring-black/5"
+          className="absolute right-0 z-40 mt-2 w-72 max-w-[calc(100vw-1rem)] origin-top-right overflow-hidden rounded-xl border border-slate-200 bg-white shadow-xl ring-1 ring-black/5"
         >
           <div className="border-b border-slate-100 p-3">
             <div className="mb-2 flex items-center justify-between">
