@@ -62,6 +62,37 @@ export function useVerbos() {
 
   const categories = useMemo(() => collectCategories(allVerbs), [allVerbs])
 
+  const counts = useMemo(() => {
+    const byCategory = new Map()
+    const bySubcategory = new Map()
+    for (const item of allVerbs) {
+      if (item.category) {
+        const cat = byCategory.get(item.category) ?? { total: 0, sub: new Map() }
+        cat.total += 1
+        byCategory.set(item.category, cat)
+      }
+      if (item.category && item.subcategory) {
+        const key = `${item.category}::${item.subcategory}`
+        bySubcategory.set(key, (bySubcategory.get(key) ?? 0) + 1)
+      }
+    }
+    return {
+      total: allVerbs.length,
+      byCategory,
+      bySubcategory,
+      subTotal: (category) => {
+        let n = 0
+        for (const item of allVerbs) if (item.category === category) n += 1
+        return n
+      },
+      subForCategory: (cat) => {
+        let n = 0
+        for (const item of allVerbs) if (item.category === cat) n += 1
+        return n
+      },
+    }
+  }, [allVerbs])
+
   const filtered = useMemo(() => {
     const q = search.trim().toLowerCase()
     return allVerbs.filter(({ verb, category: cat, subcategory: sub }) => {
@@ -148,6 +179,7 @@ export function useVerbos() {
     subcategory,
     setSubcategory,
     categories,
+    counts,
     filtered,
     currentIndex,
     current,

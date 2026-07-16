@@ -120,13 +120,14 @@ export default function App() {
         </div>
 
         <div className="lg:justify-self-end">
-          <CategoryFilter
-            categories={v.categories}
-            category={v.category}
-            setCategory={v.setCategory}
-            subcategory={v.subcategory}
-            setSubcategory={v.setSubcategory}
-          />
+<CategoryFilter
+              categories={v.categories}
+              category={v.category}
+              setCategory={v.setCategory}
+              subcategory={v.subcategory}
+              setSubcategory={v.setSubcategory}
+              counts={v.counts}
+            />
         </div>
       </Header>
 
