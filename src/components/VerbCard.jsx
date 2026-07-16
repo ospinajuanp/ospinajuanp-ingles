@@ -3,6 +3,7 @@ import ConjugationGrid from './ConjugationGrid'
 import SentencesList from './SentencePill'
 import NavButtons from './NavButtons'
 import HeroIllustration from './HeroIllustration'
+import AudioButton from './AudioButton'
 
 const SWIPE_THRESHOLD = 70
 const SWIPE_AXIS_RATIO = 1.5
@@ -24,6 +25,7 @@ function VerbImage({ verb }) {
   const initial = verb.imagen?.trim() ? verb.imagen : remoteFallbackUrl(verb)
   const [src, setSrc] = useState(initial)
   const [stage, setStage] = useState(verb.imagen?.trim() ? 'custom' : 'remote')
+  const audioWord = verb.infinitivo?.ing ?? null
 
   const onError = () => {
     if (stage === 'custom' || stage === 'remote') {
@@ -34,14 +36,19 @@ function VerbImage({ verb }) {
 
   if (stage === 'picsum') {
     return (
-      <img
-        src={src}
-        alt={verb.infinitivo?.ing ?? ''}
-        loading="lazy"
-        decoding="async"
-        onError={onError}
-        className="h-44 w-full object-cover sm:h-52 md:h-56"
-      />
+      <div className="relative">
+        <img
+          src={src}
+          alt={verb.infinitivo?.ing ?? ''}
+          loading="lazy"
+          decoding="async"
+          onError={onError}
+          className="h-44 w-full object-cover sm:h-52 md:h-56"
+        />
+        <div className="absolute right-3 top-3 z-10">
+          <AudioButton key={audioWord} word={audioWord} />
+        </div>
+      </div>
     )
   }
 
@@ -59,6 +66,9 @@ function VerbImage({ verb }) {
         />
       ) : null}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-slate-900/10" />
+      <div className="absolute right-3 top-3 z-10">
+        <AudioButton key={audioWord} word={audioWord} />
+      </div>
     </div>
   )
 }
