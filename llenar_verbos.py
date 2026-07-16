@@ -13706,12 +13706,437 @@ BLOQUE_TECNOLOGIA_3 = [
 ]
 
 
+
+BLOQUE_TECNOLOGIA_4 = [
+    {
+        "ing_inf": "design", "esp_inf": "diseñar",
+        "pasado_ing": "designed", "pasado_esp": "diseñó",
+        "participio_ing": "designed", "participio_esp": "diseñado",
+        "gerundio_ing": "designing", "gerundio_esp": "diseñando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I design logos for clients.","esp": "Yo diseño logos para clientes."},
+            "pasadoSimple": {"ing": "You designed the website.","esp": "Tú diseñaste el sitio web."},
+            "participio":   {"ing": "She has designed the layout.","esp": "Ella ha diseñado el diseño."},
+            "gerundio":     {"ing": "They are designing the app.","esp": "Ellos están diseñando la app."},
+            "futuro":       {"ing": "We will design tomorrow.","esp": "Nosotros diseñaremos mañana."},
+            "condicional":  {"ing": "That designer would create beautifully.","esp": "Esa diseñadora crearía hermosamente."}
+        }
+    },
+    {
+        "ing_inf": "detect", "esp_inf": "detectar",
+        "pasado_ing": "detected", "pasado_esp": "detectó",
+        "participio_ing": "detected", "participio_esp": "detectado",
+        "gerundio_ing": "detecting", "gerundio_esp": "detectando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I detect errors daily.","esp": "Yo detecto errores a diario."},
+            "pasadoSimple": {"ing": "You detected the malware.","esp": "Tú detectaste el malware."},
+            "participio":   {"ing": "She has detected the issue.","esp": "Ella ha detectado el problema."},
+            "gerundio":     {"ing": "They are detecting threats.","esp": "Ellos están detectando amenazas."},
+            "futuro":       {"ing": "We will detect later.","esp": "Nosotros detectaremos después."},
+            "condicional":  {"ing": "That scanner would detect quickly.","esp": "Ese escáner detectaría rápido."}
+        }
+    },
+    {
+        "ing_inf": "develop", "esp_inf": "desarrollar",
+        "pasado_ing": "developed", "pasado_esp": "desarrolló",
+        "participio_ing": "developed", "participio_esp": "desarrollado",
+        "gerundio_ing": "developing", "gerundio_esp": "desarrollando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I develop apps daily.","esp": "Yo desarrollo apps a diario."},
+            "pasadoSimple": {"ing": "You developed the system.","esp": "Tú desarrollaste el sistema."},
+            "participio":   {"ing": "She has developed the algorithm.","esp": "Ella ha desarrollado el algoritmo."},
+            "gerundio":     {"ing": "They are developing new features.","esp": "Ellos están desarrollando nuevas funciones."},
+            "futuro":       {"ing": "We will develop next year.","esp": "Nosotros desarrollaremos el próximo año."},
+            "condicional":  {"ing": "That team would develop fast.","esp": "Ese equipo desarrollaría rápido."}
+        }
+    },
+    {
+        "ing_inf": "display", "esp_inf": "mostrar",
+        "pasado_ing": "displayed", "pasado_esp": "mostró",
+        "participio_ing": "displayed", "participio_esp": "mostrado",
+        "gerundio_ing": "displaying", "gerundio_esp": "mostrando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I display data on the screen.","esp": "Yo muestro datos en la pantalla."},
+            "pasadoSimple": {"ing": "You displayed the chart.","esp": "Tú mostraste el gráfico."},
+            "participio":   {"ing": "She has displayed the results.","esp": "Ella ha mostrado los resultados."},
+            "gerundio":     {"ing": "They are displaying ads.","esp": "Ellos están mostrando anuncios."},
+            "futuro":       {"ing": "We will display tomorrow.","esp": "Nosotros mostraremos mañana."},
+            "condicional":  {"ing": "That screen would display clearly.","esp": "Esa pantalla mostraría claramente."}
+        }
+    },
+    {
+        "ing_inf": "distribute", "esp_inf": "distribuir",
+        "pasado_ing": "distributed", "pasado_esp": "distribuyó",
+        "participio_ing": "distributed", "participio_esp": "distribuido",
+        "gerundio_ing": "distributing", "gerundio_esp": "distribuyendo",
+        "oraciones": {
+            "infinitivo":   {"ing": "I distribute the workload daily.","esp": "Yo distribuyo la carga de trabajo a diario."},
+            "pasadoSimple": {"ing": "You distributed the newsletter.","esp": "Tú distribuiste el boletín."},
+            "participio":   {"ing": "She has distributed the funds.","esp": "Ella ha distribuido los fondos."},
+            "gerundio":     {"ing": "They are distributing the software.","esp": "Ellos están distribuyendo el software."},
+            "futuro":       {"ing": "We will distribute later.","esp": "Nosotros distribuiremos después."},
+            "condicional":  {"ing": "That server would distribute loads.","esp": "Ese servidor distribuiría cargas."}
+        }
+    },
+    {
+        "ing_inf": "edit", "esp_inf": "editar",
+        "pasado_ing": "edited", "pasado_esp": "editó",
+        "participio_ing": "edited", "participio_esp": "editado",
+        "gerundio_ing": "editing", "gerundio_esp": "editando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I edit documents daily.","esp": "Yo edito documentos a diario."},
+            "pasadoSimple": {"ing": "You edited the file.","esp": "Tú editaste el archivo."},
+            "participio":   {"ing": "She has edited the video.","esp": "Ella ha editado el video."},
+            "gerundio":     {"ing": "They are editing the text.","esp": "Ellos están editando el texto."},
+            "futuro":       {"ing": "We will edit tomorrow.","esp": "Nosotros editaremos mañana."},
+            "condicional":  {"ing": "That tool would edit easily.","esp": "Esa herramienta editaría fácilmente."}
+        }
+    },
+    {
+        "ing_inf": "emulate", "esp_inf": "emular",
+        "pasado_ing": "emulated", "pasado_esp": "emuló",
+        "participio_ing": "emulated", "participio_esp": "emulado",
+        "gerundio_ing": "emulating", "gerundio_esp": "emulando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I emulate the original design.","esp": "Yo emulo el diseño original."},
+            "pasadoSimple": {"ing": "You emulated the environment.","esp": "Tú emulaste el entorno."},
+            "participio":   {"ing": "She has emulated the system.","esp": "Ella ha emulado el sistema."},
+            "gerundio":     {"ing": "They are emulating the device.","esp": "Ellos están emulando el dispositivo."},
+            "futuro":       {"ing": "We will emulate later.","esp": "Nosotros emularemos después."},
+            "condicional":  {"ing": "That emulator would work perfectly.","esp": "Ese emulador funcionaría perfectamente."}
+        }
+    },
+    {
+        "ing_inf": "enable", "esp_inf": "habilitar",
+        "pasado_ing": "enabled", "pasado_esp": "habilitó",
+        "participio_ing": "enabled", "participio_esp": "habilitado",
+        "gerundio_ing": "enabling", "gerundio_esp": "habilitando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I enable features as needed.","esp": "Yo habilito funciones según sea necesario."},
+            "pasadoSimple": {"ing": "You enabled the option.","esp": "Tú habilitaste la opción."},
+            "participio":   {"ing": "She has enabled two-factor.","esp": "Ella ha habilitado la autenticación de dos factores."},
+            "gerundio":     {"ing": "They are enabling the feature.","esp": "Ellos están habilitando la función."},
+            "futuro":       {"ing": "We will enable tomorrow.","esp": "Nosotros habilitaremos mañana."},
+            "condicional":  {"ing": "That setting would enable easily.","esp": "Esa configuración habilitaría fácilmente."}
+        }
+    },
+    {
+        "ing_inf": "encode", "esp_inf": "codificar",
+        "pasado_ing": "encoded", "pasado_esp": "codificó",
+        "participio_ing": "encoded", "participio_esp": "codificado",
+        "gerundio_ing": "encoding", "gerundio_esp": "codificando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I encode the video daily.","esp": "Yo codifico el video a diario."},
+            "pasadoSimple": {"ing": "You encoded the file.","esp": "Tú codificaste el archivo."},
+            "participio":   {"ing": "She has encoded the data.","esp": "Ella ha codificado los datos."},
+            "gerundio":     {"ing": "They are encoding now.","esp": "Ellos están codificando ahora."},
+            "futuro":       {"ing": "We will encode tomorrow.","esp": "Nosotros codificaremos mañana."},
+            "condicional":  {"ing": "That codec would encode fast.","esp": "Ese códec codificaría rápido."}
+        }
+    },
+    {
+        "ing_inf": "enter", "esp_inf": "ingresar",
+        "pasado_ing": "entered", "pasado_esp": "ingresó",
+        "participio_ing": "entered", "participio_esp": "ingresado",
+        "gerundio_ing": "entering", "gerundio_esp": "ingresando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I enter data daily.","esp": "Yo ingreso datos a diario."},
+            "pasadoSimple": {"ing": "You entered the password.","esp": "Tú ingresaste la contraseña."},
+            "participio":   {"ing": "She has entered the contest.","esp": "Ella ha ingresado al concurso."},
+            "gerundio":     {"ing": "They are entering data now.","esp": "Ellos están ingresando datos ahora."},
+            "futuro":       {"ing": "We will enter tomorrow.","esp": "Nosotros ingresaremos mañana."},
+            "condicional":  {"ing": "That form would enter easily.","esp": "Ese formulario ingresaría fácilmente."}
+        }
+    },
+    {
+        "ing_inf": "erase", "esp_inf": "borrar",
+        "pasado_ing": "erased", "pasado_esp": "borró",
+        "participio_ing": "erased", "participio_esp": "borrado",
+        "gerundio_ing": "erasing", "gerundio_esp": "borrando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I erase the data daily.","esp": "Yo borro los datos a diario."},
+            "pasadoSimple": {"ing": "You erased the file.","esp": "Tú borraste el archivo."},
+            "participio":   {"ing": "She has erased the disk.","esp": "Ella ha borrado el disco."},
+            "gerundio":     {"ing": "They are erasing the data.","esp": "Ellos están borrando los datos."},
+            "futuro":       {"ing": "We will erase later.","esp": "Nosotros borraremos después."},
+            "condicional":  {"ing": "That tool would erase securely.","esp": "Esa herramienta borraría seguramente."}
+        }
+    },
+    {
+        "ing_inf": "escape", "esp_inf": "escapar",
+        "pasado_ing": "escaped", "pasado_esp": "escapó",
+        "participio_ing": "escaped", "participio_esp": "escapado",
+        "gerundio_ing": "escaping", "gerundio_esp": "escapando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I escape from the city weekly.","esp": "Yo escapo de la ciudad semanalmente."},
+            "pasadoSimple": {"ing": "You escaped the bug.","esp": "Tú escapaste del error."},
+            "participio":   {"ing": "She has escaped the loop.","esp": "Ella ha escapado del bucle."},
+            "gerundio":     {"ing": "They are escaping the error.","esp": "Ellos están escapando del error."},
+            "futuro":       {"ing": "We will escape tomorrow.","esp": "Nosotros escaparemos mañana."},
+            "condicional":  {"ing": "That code would escape safely.","esp": "Ese código escaparía seguramente."}
+        }
+    },
+    {
+        "ing_inf": "evaluate", "esp_inf": "evaluar",
+        "pasado_ing": "evaluated", "pasado_esp": "evaluó",
+        "participio_ing": "evaluated", "participio_esp": "evaluado",
+        "gerundio_ing": "evaluating", "gerundio_esp": "evaluando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I evaluate code weekly.","esp": "Yo evalúo código semanalmente."},
+            "pasadoSimple": {"ing": "You evaluated the performance.","esp": "Tú evaluaste el rendimiento."},
+            "participio":   {"ing": "She has evaluated the results.","esp": "Ella ha evaluado los resultados."},
+            "gerundio":     {"ing": "They are evaluating the code.","esp": "Ellos están evaluando el código."},
+            "futuro":       {"ing": "We will evaluate tomorrow.","esp": "Nosotros evaluaremos mañana."},
+            "condicional":  {"ing": "That tool would evaluate quickly.","esp": "Esa herramienta evaluaría rápido."}
+        }
+    },
+    {
+        "ing_inf": "extract", "esp_inf": "extraer",
+        "pasado_ing": "extracted", "pasado_esp": "extrajo",
+        "participio_ing": "extracted", "participio_esp": "extraído",
+        "gerundio_ing": "extracting", "gerundio_esp": "extrayendo",
+        "oraciones": {
+            "infinitivo":   {"ing": "I extract data daily.","esp": "Yo extraigo datos a diario."},
+            "pasadoSimple": {"ing": "You extracted the file.","esp": "Tú extrajiste el archivo."},
+            "participio":   {"ing": "She has extracted the archive.","esp": "Ella ha extraído el archivo."},
+            "gerundio":     {"ing": "They are extracting now.","esp": "Ellos están extrayendo ahora."},
+            "futuro":       {"ing": "We will extract later.","esp": "Nosotros extraeremos después."},
+            "condicional":  {"ing": "That tool would extract fast.","esp": "Esa herramienta extraería rápido."}
+        }
+    },
+    {
+        "ing_inf": "fetch", "esp_inf": "obtener",
+        "pasado_ing": "fetched", "pasado_esp": "obtuvo",
+        "participio_ing": "fetched", "participio_esp": "obtenido",
+        "gerundio_ing": "fetching", "gerundio_esp": "obteniendo",
+        "oraciones": {
+            "infinitivo":   {"ing": "I fetch data from the API.","esp": "Yo obtengo datos de la API."},
+            "pasadoSimple": {"ing": "You fetched the resource.","esp": "Tú obtuviste el recurso."},
+            "participio":   {"ing": "She has fetched the results.","esp": "Ella ha obtenido los resultados."},
+            "gerundio":     {"ing": "They are fetching the data.","esp": "Ellos están obteniendo los datos."},
+            "futuro":       {"ing": "We will fetch later.","esp": "Nosotros obtendremos después."},
+            "condicional":  {"ing": "That call would fetch quickly.","esp": "Esa llamada obtendría rápido."}
+        }
+    },
+    {
+        "ing_inf": "finalize", "esp_inf": "finalizar",
+        "pasado_ing": "finalized", "pasado_esp": "finalizó",
+        "participio_ing": "finalized", "participio_esp": "finalizado",
+        "gerundio_ing": "finalizing", "gerundio_esp": "finalizando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I finalize the report daily.","esp": "Yo finalizo el informe a diario."},
+            "pasadoSimple": {"ing": "You finalized the deal.","esp": "Tú finalizaste el trato."},
+            "participio":   {"ing": "She has finalized the plan.","esp": "Ella ha finalizado el plan."},
+            "gerundio":     {"ing": "They are finalizing the details.","esp": "Ellos están finalizando los detalles."},
+            "futuro":       {"ing": "We will finalize tomorrow.","esp": "Nosotros finalizaremos mañana."},
+            "condicional":  {"ing": "That team would finalize easily.","esp": "Ese equipo finalizaría fácilmente."}
+        }
+    },
+    {
+        "ing_inf": "find", "esp_inf": "encontrar",
+        "pasado_ing": "found", "pasado_esp": "encontró",
+        "participio_ing": "found", "participio_esp": "encontrado",
+        "gerundio_ing": "finding", "gerundio_esp": "encontrando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I find bugs in code daily.","esp": "Yo encuentro errores en código a diario."},
+            "pasadoSimple": {"ing": "You found the issue.","esp": "Tú encontraste el problema."},
+            "participio":   {"ing": "She has found the answer.","esp": "Ella ha encontrado la respuesta."},
+            "gerundio":     {"ing": "They are finding solutions.","esp": "Ellos están encontrando soluciones."},
+            "futuro":       {"ing": "We will find later.","esp": "Nosotros encontraremos después."},
+            "condicional":  {"ing": "That search would find quickly.","esp": "Esa búsqueda encontraría rápido."}
+        }
+    },
+    {
+        "ing_inf": "fix", "esp_inf": "arreglar",
+        "pasado_ing": "fixed", "pasado_esp": "arregló",
+        "participio_ing": "fixed", "participio_esp": "arreglado",
+        "gerundio_ing": "fixing", "gerundio_esp": "arreglando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I fix bugs daily.","esp": "Yo arreglo errores a diario."},
+            "pasadoSimple": {"ing": "You fixed the issue.","esp": "Tú arreglaste el problema."},
+            "participio":   {"ing": "She has fixed the bug.","esp": "Ella ha arreglado el error."},
+            "gerundio":     {"ing": "They are fixing the code.","esp": "Ellos están arreglando el código."},
+            "futuro":       {"ing": "We will fix tomorrow.","esp": "Nosotros arreglaremos mañana."},
+            "condicional":  {"ing": "That patch would fix quickly.","esp": "Ese parche arreglaría rápido."}
+        }
+    },
+    {
+        "ing_inf": "flash", "esp_inf": "flashear",
+        "pasado_ing": "flashed", "pasado_esp": "flasheó",
+        "participio_ing": "flashed", "participio_esp": "flasheado",
+        "gerundio_ing": "flashing", "gerundio_esp": "flasheando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I flash the device weekly.","esp": "Yo flasheo el dispositivo semanalmente."},
+            "pasadoSimple": {"ing": "You flashed the phone.","esp": "Tú flasheaste el teléfono."},
+            "participio":   {"ing": "She has flashed the firmware.","esp": "Ella ha flasheado el firmware."},
+            "gerundio":     {"ing": "They are flashing the device.","esp": "Ellos están flasheando el dispositivo."},
+            "futuro":       {"ing": "We will flash later.","esp": "Nosotros flashearemos después."},
+            "condicional":  {"ing": "That tool would flash safely.","esp": "Esa herramienta flashearía seguramente."}
+        }
+    },
+    {
+        "ing_inf": "forward", "esp_inf": "reenviar",
+        "pasado_ing": "forwarded", "pasado_esp": "reenvió",
+        "participio_ing": "forwarded", "participio_esp": "reenviado",
+        "gerundio_ing": "forwarding", "gerundio_esp": "reenviando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I forward emails daily.","esp": "Yo reenvío correos a diario."},
+            "pasadoSimple": {"ing": "You forwarded the message.","esp": "Tú reenviaste el mensaje."},
+            "participio":   {"ing": "She has forwarded the request.","esp": "Ella ha reenviado la solicitud."},
+            "gerundio":     {"ing": "They are forwarding emails.","esp": "Ellos están reenviando correos."},
+            "futuro":       {"ing": "We will forward tomorrow.","esp": "Nosotros reenviaremos mañana."},
+            "condicional":  {"ing": "That tool would forward quickly.","esp": "Esa herramienta reenviaría rápido."}
+        }
+    },
+    {
+        "ing_inf": "freeze", "esp_inf": "congelar",
+        "pasado_ing": "froze", "pasado_esp": "congeló",
+        "participio_ing": "frozen", "participio_esp": "congelado",
+        "gerundio_ing": "freezing", "gerundio_esp": "congelando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I freeze the account rarely.","esp": "Yo congelo la cuenta raramente."},
+            "pasadoSimple": {"ing": "You froze the system.","esp": "Tú congelaste el sistema."},
+            "participio":   {"ing": "She has frozen the assets.","esp": "Ella ha congelado los activos."},
+            "gerundio":     {"ing": "They are freezing the code.","esp": "Ellos están congelando el código."},
+            "futuro":       {"ing": "We will freeze later.","esp": "Nosotros congelaremos después."},
+            "condicional":  {"ing": "That system would freeze safely.","esp": "Ese sistema se congelaría seguramente."}
+        }
+    },
+    {
+        "ing_inf": "generate", "esp_inf": "generar",
+        "pasado_ing": "generated", "pasado_esp": "generó",
+        "participio_ing": "generated", "participio_esp": "generado",
+        "gerundio_ing": "generating", "gerundio_esp": "generando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I generate reports daily.","esp": "Yo genero informes a diario."},
+            "pasadoSimple": {"ing": "You generated the report.","esp": "Tú generaste el informe."},
+            "participio":   {"ing": "She has generated the code.","esp": "Ella ha generado el código."},
+            "gerundio":     {"ing": "They are generating IDs.","esp": "Ellos están generando IDs."},
+            "futuro":       {"ing": "We will generate tomorrow.","esp": "Nosotros generaremos mañana."},
+            "condicional":  {"ing": "That function would generate fast.","esp": "Esa función generaría rápido."}
+        }
+    },
+    {
+        "ing_inf": "hide", "esp_inf": "esconder",
+        "pasado_ing": "hid", "pasado_esp": "escondió",
+        "participio_ing": "hidden", "participio_esp": "escondido",
+        "gerundio_ing": "hiding", "gerundio_esp": "escondiendo",
+        "oraciones": {
+            "infinitivo":   {"ing": "I hide files in folders.","esp": "Yo escondo archivos en carpetas."},
+            "pasadoSimple": {"ing": "You hid the data.","esp": "Tú escondiste los datos."},
+            "participio":   {"ing": "She has hidden the folder.","esp": "Ella ha escondido la carpeta."},
+            "gerundio":     {"ing": "They are hiding the code.","esp": "Ellos están escondiendo el código."},
+            "futuro":       {"ing": "We will hide tomorrow.","esp": "Nosotros esconderemos mañana."},
+            "condicional":  {"ing": "That function would hide well.","esp": "Esa función escondería bien."}
+        }
+    },
+    {
+        "ing_inf": "identify", "esp_inf": "identificar",
+        "pasado_ing": "identified", "pasado_esp": "identificó",
+        "participio_ing": "identified", "participio_esp": "identificado",
+        "gerundio_ing": "identifying", "gerundio_esp": "identificando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I identify issues daily.","esp": "Yo identifico problemas a diario."},
+            "pasadoSimple": {"ing": "You identified the bug.","esp": "Tú identificaste el error."},
+            "participio":   {"ing": "She has identified the problem.","esp": "Ella ha identificado el problema."},
+            "gerundio":     {"ing": "They are identifying issues.","esp": "Ellos están identificando problemas."},
+            "futuro":       {"ing": "We will identify tomorrow.","esp": "Nosotros identificaremos mañana."},
+            "condicional":  {"ing": "That tool would identify quickly.","esp": "Esa herramienta identificaría rápido."}
+        }
+    },
+    {
+        "ing_inf": "import", "esp_inf": "importar",
+        "pasado_ing": "imported", "pasado_esp": "importó",
+        "participio_ing": "imported", "participio_esp": "importado",
+        "gerundio_ing": "importing", "gerundio_esp": "importando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I import modules daily.","esp": "Yo importo módulos a diario."},
+            "pasadoSimple": {"ing": "You imported the library.","esp": "Tú importaste la biblioteca."},
+            "participio":   {"ing": "She has imported the data.","esp": "Ella ha importado los datos."},
+            "gerundio":     {"ing": "They are importing files.","esp": "Ellos están importando archivos."},
+            "futuro":       {"ing": "We will import later.","esp": "Nosotros importaremos después."},
+            "condicional":  {"ing": "That function would import fast.","esp": "Esa función importaría rápido."}
+        }
+    },
+    {
+        "ing_inf": "index", "esp_inf": "indexar",
+        "pasado_ing": "indexed", "pasado_esp": "indexó",
+        "participio_ing": "indexed", "participio_esp": "indexado",
+        "gerundio_ing": "indexing", "gerundio_esp": "indexando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I index documents daily.","esp": "Yo indexo documentos a diario."},
+            "pasadoSimple": {"ing": "You indexed the pages.","esp": "Tú indexaste las páginas."},
+            "participio":   {"ing": "She has indexed the data.","esp": "Ella ha indexado los datos."},
+            "gerundio":     {"ing": "They are indexing now.","esp": "Ellos están indexando ahora."},
+            "futuro":       {"ing": "We will index tomorrow.","esp": "Nosotros indexaremos mañana."},
+            "condicional":  {"ing": "That engine would index fast.","esp": "Ese motor indexaría rápido."}
+        }
+    },
+    {
+        "ing_inf": "inhibit", "esp_inf": "inhibir",
+        "pasado_ing": "inhibited", "pasado_esp": "inhibió",
+        "participio_ing": "inhibited", "participio_esp": "inhibido",
+        "gerundio_ing": "inhibiting", "gerundio_esp": "inhibiendo",
+        "oraciones": {
+            "infinitivo":   {"ing": "I inhibit the process rarely.","esp": "Yo inhibo el proceso raramente."},
+            "pasadoSimple": {"ing": "You inhibited the function.","esp": "Tú inhibiste la función."},
+            "participio":   {"ing": "She has inhibited the reaction.","esp": "Ella ha inhibido la reacción."},
+            "gerundio":     {"ing": "They are inhibiting the enzyme.","esp": "Ellos están inhibiendo la enzima."},
+            "futuro":       {"ing": "We will inhibit if needed.","esp": "Nosotros inhibiremos si es necesario."},
+            "condicional":  {"ing": "That drug would inhibit easily.","esp": "Esa droga inhibiría fácilmente."}
+        }
+    },
+    {
+        "ing_inf": "inject", "esp_inf": "inyectar",
+        "pasado_ing": "injected", "pasado_esp": "inyectó",
+        "participio_ing": "injected", "participio_esp": "inyectado",
+        "gerundio_ing": "injecting", "gerundio_esp": "inyectando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I inject dependencies daily.","esp": "Yo inyecto dependencias a diario."},
+            "pasadoSimple": {"ing": "You injected the script.","esp": "Tú inyectaste el script."},
+            "participio":   {"ing": "She has injected the code.","esp": "Ella ha inyectado el código."},
+            "gerundio":     {"ing": "They are injecting services.","esp": "Ellos están inyectando servicios."},
+            "futuro":       {"ing": "We will inject later.","esp": "Nosotros inyectaremos después."},
+            "condicional":  {"ing": "That framework would inject easily.","esp": "Ese framework inyectaría fácilmente."}
+        }
+    },
+    {
+        "ing_inf": "input", "esp_inf": "ingresar",
+        "pasado_ing": "input/inputted", "pasado_esp": "ingresó",
+        "participio_ing": "input/inputted", "participio_esp": "ingresado",
+        "gerundio_ing": "inputting", "gerundio_esp": "ingresando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I input data daily.","esp": "Yo ingreso datos a diario."},
+            "pasadoSimple": {"ing": "You inputted the password.","esp": "Tú ingresaste la contraseña."},
+            "participio":   {"ing": "She has inputted the values.","esp": "Ella ha ingresado los valores."},
+            "gerundio":     {"ing": "They are inputting data.","esp": "Ellos están ingresando datos."},
+            "futuro":       {"ing": "We will input later.","esp": "Nosotros ingresaremos después."},
+            "condicional":  {"ing": "That form would input easily.","esp": "Ese formulario ingresaría fácilmente."}
+        }
+    },
+    {
+        "ing_inf": "inspect", "esp_inf": "inspeccionar",
+        "pasado_ing": "inspected", "pasado_esp": "inspeccionó",
+        "participio_ing": "inspected", "participio_esp": "inspeccionado",
+        "gerundio_ing": "inspecting", "gerundio_esp": "inspeccionando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I inspect the code daily.","esp": "Yo inspecciono el código a diario."},
+            "pasadoSimple": {"ing": "You inspected the package.","esp": "Tú inspeccionaste el paquete."},
+            "participio":   {"ing": "She has inspected the device.","esp": "Ella ha inspeccionado el dispositivo."},
+            "gerundio":     {"ing": "They are inspecting now.","esp": "Ellos están inspeccionando ahora."},
+            "futuro":       {"ing": "We will inspect tomorrow.","esp": "Nosotros inspeccionaremos mañana."},
+            "condicional":  {"ing": "That tool would inspect easily.","esp": "Esa herramienta inspeccionaría fácilmente."}
+        }
+    }
+]
+
+
 if __name__ == "__main__":
-    procesar_bloque(BLOQUE_TECNOLOGIA_3, "tecnologia", 60)
+    procesar_bloque(BLOQUE_TECNOLOGIA_4, "tecnologia", 90)
     aplicar_correcciones(CORRECCIONES, "simples")
 
     with open(RUTA_JSON, "r", encoding="utf-8") as f:
         check = json.load(f)
-    print("\nVerbo #920 (centralize) muestra:")
+    print("\nVerbo #950 (erase) muestra:")
     print(json.dumps(check["tecnologia"][10], indent=2, ensure_ascii=False))
     print(f"\nTotal tecnologia: {sum(1 for v in check['tecnologia'] if v['id'] != '')}/150")
