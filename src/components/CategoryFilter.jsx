@@ -10,17 +10,18 @@ function pretty(key) {
   return PRETTY_NAMES[key] ?? key.charAt(0).toUpperCase() + key.slice(1)
 }
 
-function Chip({ active, onClick, children }) {
+function Pill({ active, onClick, children, ariaLabel }) {
   return (
     <button
       type="button"
       onClick={onClick}
       aria-pressed={active}
+      aria-label={ariaLabel}
       className={
-        'whitespace-nowrap rounded-full border px-4 py-2 text-sm font-semibold transition active:scale-95 ' +
+        'whitespace-nowrap rounded-full px-3 py-1.5 text-xs font-semibold transition active:scale-95 sm:text-sm ' +
         (active
-          ? 'border-indigo-600 bg-indigo-600 text-white shadow-sm'
-          : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:bg-slate-50 hover:text-slate-800')
+          ? 'bg-slate-900 text-white shadow-sm'
+          : 'bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900')
       }
     >
       {children}
@@ -41,13 +42,13 @@ export default function CategoryFilter({
   const showSubs = activeCat?.subcategories?.length > 0
 
   return (
-    <div className="space-y-3">
-      <div className="flex gap-2 overflow-x-auto pb-1 -mx-4 px-4 [&::-webkit-scrollbar]:hidden [scrollbar-width:none]">
-        <Chip active={category === 'all'} onClick={() => setCategory('all')}>
+    <div className="space-y-2">
+      <div className="flex flex-wrap items-center gap-2">
+        <Pill active={category === 'all'} onClick={() => setCategory('all')}>
           Todas
-        </Chip>
+        </Pill>
         {categories.map(({ category: cat }) => (
-          <Chip
+          <Pill
             key={cat}
             active={category === cat}
             onClick={() => {
@@ -56,23 +57,26 @@ export default function CategoryFilter({
             }}
           >
             {pretty(cat)}
-          </Chip>
+          </Pill>
         ))}
       </div>
 
       {showSubs && (
-        <div className="flex gap-2 overflow-x-auto pb-1 -mx-4 px-4 [&::-webkit-scrollbar]:hidden [scrollbar-width:none]">
-          <Chip active={subcategory === 'all'} onClick={() => setSubcategory('all')}>
+        <div className="flex flex-wrap items-center gap-1.5 pl-2 sm:gap-2 sm:pl-3">
+          <span className="text-[0.65rem] font-bold uppercase tracking-[0.12em] text-slate-400">
+            ·
+          </span>
+          <Pill active={subcategory === 'all'} onClick={() => setSubcategory('all')}>
             Todas
-          </Chip>
+          </Pill>
           {activeCat.subcategories.map((sub) => (
-            <Chip
+            <Pill
               key={sub}
               active={subcategory === sub}
               onClick={() => setSubcategory(sub)}
             >
               {pretty(sub)}
-            </Chip>
+            </Pill>
           ))}
         </div>
       )}

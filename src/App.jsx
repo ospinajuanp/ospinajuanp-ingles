@@ -4,38 +4,32 @@ import CategoryFilter from './components/CategoryFilter'
 import VerbCard from './components/VerbCard'
 import { useVerbos } from './hooks/useVerbos'
 
-function Header() {
+function BrandIcon() {
   return (
-    <header className="border-b border-slate-200/80 bg-white/80 backdrop-blur-md">
-      <div className="mx-auto flex max-w-3xl items-center gap-3 px-4 py-4 sm:px-6">
-        <div
-          className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-indigo-600 text-white shadow-sm"
-          aria-hidden="true"
-        >
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="size-5"
-          >
-            <path d="M4 5h12a3 3 0 0 1 3 3v11" />
-            <path d="M2 5h14" />
-            <path d="M5 8h9" />
-            <path d="M9 19a2 2 0 1 1-2-2" />
-            <path d="M19 19a2 2 0 1 1-2-2" />
-          </svg>
-        </div>
-        <div className="min-w-0">
-          <h1 className="truncate text-base font-bold text-slate-800 sm:text-lg">
-            Verbos en Inglés
-          </h1>
-          <p className="truncate text-xs text-slate-500 sm:text-sm">
-            Aprende conjugando, una frase a la vez
-          </p>
-        </div>
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="size-5"
+      aria-hidden="true"
+    >
+      <path d="M4 5h12a3 3 0 0 1 3 3v11" />
+      <path d="M2 5h14" />
+      <path d="M5 8h9" />
+      <circle cx="7" cy="19" r="2" />
+      <circle cx="17" cy="19" r="2" />
+    </svg>
+  )
+}
+
+function Header({ children }) {
+  return (
+    <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/85 backdrop-blur-md">
+      <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-3 sm:px-6 sm:py-4 lg:grid lg:grid-cols-[1fr_2fr_1fr] lg:items-center lg:gap-8">
+        {children}
       </div>
     </header>
   )
@@ -44,21 +38,24 @@ function Header() {
 function LoadingSkeleton() {
   return (
     <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-      <div className="h-56 w-full animate-pulse bg-slate-100 sm:h-64 md:h-72" />
-      <div className="space-y-7 p-5 sm:p-7">
+      <div className="h-44 w-full animate-pulse bg-slate-100 sm:h-52 md:h-56" />
+      <div className="space-y-8 p-5 sm:p-7 md:p-8">
         <div className="space-y-3 text-center">
           <div className="mx-auto h-12 w-40 animate-pulse rounded-lg bg-slate-100" />
           <div className="mx-auto h-6 w-32 animate-pulse rounded-lg bg-slate-100" />
         </div>
-        <div className="grid grid-cols-2 gap-3">
-          {Array.from({ length: 5 }).map((_, i) => (
-            <div key={i} className="h-14 animate-pulse rounded-xl bg-slate-100" />
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+          {Array.from({ length: 6 }).map((_, i) => (
+            <div key={i} className="h-16 animate-pulse rounded-xl bg-slate-100" />
           ))}
         </div>
-        <div className="space-y-2">
+        <div className="space-y-2.5">
           {Array.from({ length: 3 }).map((_, i) => (
-            <div key={i} className="h-20 animate-pulse rounded-xl bg-slate-100" />
+            <div key={i} className="h-24 animate-pulse rounded-xl bg-slate-100" />
           ))}
+        </div>
+        <div className="flex justify-center">
+          <div className="h-12 w-64 animate-pulse rounded-full bg-slate-100" />
         </div>
       </div>
     </div>
@@ -107,19 +104,40 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-800">
-      <Header />
+      <Header>
+        <div className="flex items-center gap-3">
+          <div
+            className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-slate-900 text-white shadow-sm"
+            aria-hidden="true"
+          >
+            <BrandIcon />
+          </div>
+          <div className="min-w-0">
+            <h1 className="truncate text-base font-bold text-slate-900 sm:text-lg">
+              Verbos en Inglés
+            </h1>
+            <p className="hidden truncate text-xs text-slate-500 sm:block">
+              Aprende conjugando, una frase a la vez
+            </p>
+          </div>
+        </div>
 
-      <main className="mx-auto max-w-3xl space-y-5 px-4 py-5 pb-32 sm:px-6 sm:py-6">
-        <SearchBar value={v.search} onChange={v.setSearch} />
+        <div className="lg:mx-auto lg:w-full lg:max-w-xl">
+          <SearchBar value={v.search} onChange={v.setSearch} />
+        </div>
 
-        <CategoryFilter
-          categories={v.categories}
-          category={v.category}
-          setCategory={v.setCategory}
-          subcategory={v.subcategory}
-          setSubcategory={v.setSubcategory}
-        />
+        <div className="lg:justify-self-end">
+          <CategoryFilter
+            categories={v.categories}
+            category={v.category}
+            setCategory={v.setCategory}
+            subcategory={v.subcategory}
+            setSubcategory={v.setSubcategory}
+          />
+        </div>
+      </Header>
 
+      <main className="mx-auto max-w-4xl px-4 py-6 sm:px-6 sm:py-8">
         {v.loading ? (
           <LoadingSkeleton />
         ) : v.error ? (
@@ -137,14 +155,6 @@ export default function App() {
               onNext={v.next}
             />
           </div>
-        )}
-
-        {!v.loading && !v.error && v.total > 0 && (
-          <p className="pt-2 text-center text-xs text-slate-400">
-            Usa las flechas <kbd className="rounded border border-slate-200 bg-white px-1.5 py-0.5 font-mono text-[0.65rem]">←</kbd>{' '}
-            <kbd className="rounded border border-slate-200 bg-white px-1.5 py-0.5 font-mono text-[0.65rem]">→</kbd>{' '}
-            para cambiar de verbo.
-          </p>
         )}
       </main>
     </div>

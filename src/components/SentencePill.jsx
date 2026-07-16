@@ -42,22 +42,67 @@ export function SentencePill({ timeKey, data }) {
           setRevealed((r) => !r)
         }
       }}
-      className="group cursor-pointer rounded-xl border border-slate-100 bg-white px-4 py-3 transition hover:border-indigo-200 hover:bg-indigo-50/40 hover:shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-200"
+      aria-pressed={revealed}
+      className="group cursor-pointer rounded-xl border border-slate-100 bg-white p-4 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-indigo-200 hover:bg-gradient-to-br hover:from-white hover:to-indigo-50/60 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-200"
     >
-      <div className="flex items-center gap-2 text-[0.65rem] font-bold uppercase tracking-[0.12em] text-slate-400">
-        <span className="rounded-full bg-indigo-50 px-2 py-0.5 text-indigo-600">
-          {pronombreLabel(data.pronombre)}
+      <div className="flex items-center justify-between gap-2">
+        <div className="flex items-center gap-2">
+          <span className="rounded-full bg-indigo-100 px-2.5 py-1 text-[0.65rem] font-bold uppercase tracking-[0.12em] text-indigo-700">
+            {pronombreLabel(data.pronombre)}
+          </span>
+          <span className="text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-slate-400">
+            {TIME_LABEL[timeKey] ?? timeKey}
+          </span>
+        </div>
+
+        <span
+          className={
+            'inline-flex size-7 items-center justify-center rounded-full border transition ' +
+            (revealed
+              ? 'border-indigo-200 bg-indigo-50 text-indigo-600'
+              : 'border-slate-100 bg-slate-50 text-slate-400 group-hover:border-indigo-200 group-hover:text-indigo-500')
+          }
+          aria-hidden="true"
+        >
+          {revealed ? (
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="size-4"
+            >
+              <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7S2 12 2 12z" />
+              <circle cx="12" cy="12" r="3" />
+            </svg>
+          ) : (
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="size-4"
+            >
+              <path d="M17.94 17.94A10.94 10.94 0 0 1 12 19c-7 0-10-7-10-7a18.45 18.45 0 0 1 4.06-5.94" />
+              <path d="M9.9 4.24A10.94 10.94 0 0 1 12 4c7 0 10 7 10 7a18.5 18.5 0 0 1-2.16 3.19" />
+              <path d="M14.12 14.12A3 3 0 1 1 9.88 9.88" />
+              <path d="m1 1 22 22" />
+            </svg>
+          )}
         </span>
-        <span>{TIME_LABEL[timeKey] ?? timeKey}</span>
       </div>
 
-      <p className="mt-1.5 text-lg font-medium leading-snug text-slate-800">
+      <p className="mt-3 text-lg font-medium leading-snug text-slate-800">
         {data.ing}
       </p>
 
       <p
         className={
-          'mt-1 text-base leading-snug text-slate-500 transition-all duration-300 ease-out select-none ' +
+          'mt-2 text-base leading-snug text-slate-500 transition-all duration-300 ease-out select-none ' +
           (revealed
             ? 'blur-0 opacity-100'
             : 'blur-sm opacity-60 group-hover:blur-0 group-hover:opacity-100')
@@ -80,7 +125,7 @@ export default function SentencesList({ oraciones }) {
   }
 
   return (
-    <div className="space-y-2">
+    <div className="space-y-2.5">
       {oraciones.map(({ timeKey, data }) => (
         <SentencePill key={timeKey} timeKey={timeKey} data={data} />
       ))}
