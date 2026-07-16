@@ -130,11 +130,11 @@ export function useVerbos() {
   const conjugationEntries = useMemo(() => {
     if (!currentVerb) return []
     return [
-      { time: 'Pasado', value: currentVerb.pasadoSimple?.ing },
-      { time: 'Participio', value: currentVerb.participio?.ing },
-      { time: 'Gerundio', value: currentVerb.gerundio?.ing },
-      { time: 'Futuro', value: currentVerb.futuro?.ing },
-      { time: 'Condicional', value: currentVerb.condicional?.ing },
+      { time: 'Pasado', value: currentVerb.pasadoSimple?.ing, valueEsp: currentVerb.pasadoSimple?.esp },
+      { time: 'Participio', value: currentVerb.participio?.ing, valueEsp: currentVerb.participio?.esp },
+      { time: 'Gerundio', value: currentVerb.gerundio?.ing, valueEsp: currentVerb.gerundio?.esp },
+      { time: 'Futuro', value: currentVerb.futuro?.ing, valueEsp: currentVerb.futuro?.esp },
+      { time: 'Condicional', value: currentVerb.condicional?.ing, valueEsp: currentVerb.condicional?.esp },
     ]
   }, [currentVerb])
 

@@ -10698,3 +10698,454 @@ if __name__ == "__main__":
     print("\nVerbo #715 (come across) muestra:")
     print(json.dumps(check["generales"]["compuestos"][15], indent=2, ensure_ascii=False))
     print(f"\nTotal compuestos: {sum(1 for v in check['generales']['compuestos'] if v['id'] != '')}/150")
+
+
+BLOQUE_COMPUESTOS_2 = [
+    {
+        "ing_inf": "figure out", "esp_inf": "resolver",
+        "pasado_ing": "figured out", "pasado_esp": "resolvió",
+        "participio_ing": "figured out", "participio_esp": "resuelto",
+        "gerundio_ing": "figuring out", "gerundio_esp": "resolviendo",
+        "oraciones": {
+            "infinitivo":   {"ing": "I figure out the problem quickly.","esp": "Yo resuelvo el problema rápidamente."},
+            "pasadoSimple": {"ing": "You figured out the puzzle.","esp": "Tú resolviste el rompecabezas."},
+            "participio":   {"ing": "She has figured out the answer.","esp": "Ella ha descubierto la respuesta."},
+            "gerundio":     {"ing": "They are figuring out the solution.","esp": "Ellos están descubriendo la solución."},
+            "futuro":       {"ing": "We will figure it out.","esp": "Nosotros lo resolveremos."},
+            "condicional":  {"ing": "That puzzle would figure out easily.","esp": "Ese rompecabezas se resolvería fácilmente."}
+        }
+    },
+    {
+        "ing_inf": "fill in", "esp_inf": "rellenar",
+        "pasado_ing": "filled in", "pasado_esp": "rellenó",
+        "participio_ing": "filled in", "participio_esp": "rellenado",
+        "gerundio_ing": "filling in", "gerundio_esp": "rellenando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I fill in the form online.","esp": "Yo relleno el formulario en línea."},
+            "pasadoSimple": {"ing": "You filled in the blanks.","esp": "Tú rellenaste los espacios."},
+            "participio":   {"ing": "She has filled in the application.","esp": "Ella ha rellenado la solicitud."},
+            "gerundio":     {"ing": "They are filling in for the manager.","esp": "Ellos están sustituyendo al gerente."},
+            "futuro":       {"ing": "We will fill in later.","esp": "Nosotros rellenaremos después."},
+            "condicional":  {"ing": "That form would fill in quickly.","esp": "Ese formulario se rellenaría rápido."}
+        }
+    },
+    {
+        "ing_inf": "fill out", "esp_inf": "rellenar",
+        "pasado_ing": "filled out", "pasado_esp": "rellenó",
+        "participio_ing": "filled out", "participio_esp": "rellenado",
+        "gerundio_ing": "filling out", "gerundio_esp": "rellenando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I fill out the tax form yearly.","esp": "Yo relleno el formulario de impuestos cada año."},
+            "pasadoSimple": {"ing": "You filled out the survey.","esp": "Tú rellenaste la encuesta."},
+            "participio":   {"ing": "She has filled out the report.","esp": "Ella ha rellenado el informe."},
+            "gerundio":     {"ing": "They are filling out the application.","esp": "Ellos están rellenando la solicitud."},
+            "futuro":       {"ing": "We will fill out tomorrow.","esp": "Nosotros rellenaremos mañana."},
+            "condicional":  {"ing": "That form would fill out easily.","esp": "Ese formulario se rellenaría fácilmente."}
+        }
+    },
+    {
+        "ing_inf": "find out", "esp_inf": "descubrir",
+        "pasado_ing": "found out", "pasado_esp": "descubrió",
+        "participio_ing": "found out", "participio_esp": "descubierto",
+        "gerundio_ing": "finding out", "gerundio_esp": "descubriendo",
+        "oraciones": {
+            "infinitivo":   {"ing": "I find out the news daily.","esp": "Yo descubro las noticias a diario."},
+            "pasadoSimple": {"ing": "You found out the truth.","esp": "Tú descubriste la verdad."},
+            "participio":   {"ing": "She has found out the results.","esp": "Ella ha descubierto los resultados."},
+            "gerundio":     {"ing": "They are finding out the details.","esp": "Ellos están descubriendo los detalles."},
+            "futuro":       {"ing": "We will find out tomorrow.","esp": "Nosotros descubriremos mañana."},
+            "condicional":  {"ing": "That mystery would find out easily.","esp": "Ese misterio se descubriría fácilmente."}
+        }
+    },
+    {
+        "ing_inf": "get along", "esp_inf": "llevarse bien",
+        "pasado_ing": "got along", "pasado_esp": "se llevó bien",
+        "participio_ing": "gotten along", "participio_esp": "llevado bien",
+        "gerundio_ing": "getting along", "gerundio_esp": "llevándose bien",
+        "futuro_esp": "se llevará bien", "cond_esp": "se llevaría bien",
+        "oraciones": {
+            "infinitivo":   {"ing": "I get along with my coworkers.","esp": "Yo me llevo bien con mis compañeros."},
+            "pasadoSimple": {"ing": "You got along with everyone.","esp": "Tú te llevaste bien con todos."},
+            "participio":   {"ing": "She has gotten along well.","esp": "Ella se ha llevado bien."},
+            "gerundio":     {"ing": "They are getting along better.","esp": "Ellos se están llevando mejor."},
+            "futuro":       {"ing": "We will get along fine.","esp": "Nosotros nos llevaremos bien."},
+            "condicional":  {"ing": "That couple would get along well.","esp": "Esa pareja se llevaría bien."}
+        }
+    },
+    {
+        "ing_inf": "get around", "esp_inf": "moverse",
+        "pasado_ing": "got around", "pasado_esp": "se movió",
+        "participio_ing": "gotten around", "participio_esp": "movido",
+        "gerundio_ing": "getting around", "gerundio_esp": "moviéndose",
+        "futuro_esp": "se moverá", "cond_esp": "se movería",
+        "oraciones": {
+            "infinitivo":   {"ing": "I get around by bike daily.","esp": "Yo me muevo en bicicleta a diario."},
+            "pasadoSimple": {"ing": "You got around the rules.","esp": "Tú te las arreglaste para saltarte las reglas."},
+            "participio":   {"ing": "She has gotten around the issue.","esp": "Ella se ha movido alrededor del problema."},
+            "gerundio":     {"ing": "They are getting around to it.","esp": "Ellos están llegando a eso."},
+            "futuro":       {"ing": "We will get around the table.","esp": "Nosotros rodearemos la mesa."},
+            "condicional":  {"ing": "That rumor would get around fast.","esp": "Ese rumor se difundiría rápido."}
+        }
+    },
+    {
+        "ing_inf": "get away", "esp_inf": "escaparse",
+        "pasado_ing": "got away", "pasado_esp": "se escapó",
+        "participio_ing": "gotten away", "participio_esp": "escapado",
+        "gerundio_ing": "getting away", "gerundio_esp": "escapándose",
+        "futuro_esp": "se escapará", "cond_esp": "se escaparía",
+        "oraciones": {
+            "infinitivo":   {"ing": "I get away from the city on weekends.","esp": "Yo me escapo de la ciudad los fines de semana."},
+            "pasadoSimple": {"ing": "You got away with the crime.","esp": "Tú te saliste con la tuya en el crimen."},
+            "participio":   {"ing": "She has gotten away for the holiday.","esp": "Ella se ha escapado para las vacaciones."},
+            "gerundio":     {"ing": "They are getting away early.","esp": "Ellos se están escapando temprano."},
+            "futuro":       {"ing": "We will get away tomorrow.","esp": "Nosotros nos escaparemos mañana."},
+            "condicional":  {"ing": "That criminal would get away easily.","esp": "Ese criminal se escaparía fácilmente."}
+        }
+    },
+    {
+        "ing_inf": "get back", "esp_inf": "volver",
+        "pasado_ing": "got back", "pasado_esp": "volvió",
+        "participio_ing": "gotten back", "participio_esp": "vuelto",
+        "gerundio_ing": "getting back", "gerundio_esp": "volviendo",
+        "futuro_esp": "volverá", "cond_esp": "volvería",
+        "oraciones": {
+            "infinitivo":   {"ing": "I get back from work at six.","esp": "Yo vuelvo del trabajo a las seis."},
+            "pasadoSimple": {"ing": "You got back my book.","esp": "Tú me devolviste mi libro."},
+            "participio":   {"ing": "She has gotten back on her feet.","esp": "Ella se ha recuperado."},
+            "gerundio":     {"ing": "They are getting back together.","esp": "Ellos están volviendo juntos."},
+            "futuro":       {"ing": "We will get back to you.","esp": "Nosotros te responderemos."},
+            "condicional":  {"ing": "That thief would get back easily.","esp": "Ese ladrón volvería fácilmente."}
+        }
+    },
+    {
+        "ing_inf": "get in", "esp_inf": "entrar",
+        "pasado_ing": "got in", "pasado_esp": "entró",
+        "participio_ing": "gotten in", "participio_esp": "entrado",
+        "gerundio_ing": "getting in", "gerundio_esp": "entrando",
+        "futuro_esp": "entrará", "cond_esp": "entraría",
+        "oraciones": {
+            "infinitivo":   {"ing": "I get in trouble often.","esp": "Yo me meto en problemas a menudo."},
+            "pasadoSimple": {"ing": "You got in the car.","esp": "Tú entraste al coche."},
+            "participio":   {"ing": "She has gotten in trouble.","esp": "Ella se ha metido en problemas."},
+            "gerundio":     {"ing": "They are getting in line.","esp": "Ellos se están poniendo en fila."},
+            "futuro":       {"ing": "We will get in by noon.","esp": "Nosotros entraremos al mediodía."},
+            "condicional":  {"ing": "That thief would get in easily.","esp": "Ese ladrón entraría fácilmente."}
+        }
+    },
+    {
+        "ing_inf": "get off", "esp_inf": "bajarse",
+        "pasado_ing": "got off", "pasado_esp": "se bajó",
+        "participio_ing": "gotten off", "participio_esp": "bajado",
+        "gerundio_ing": "getting off", "gerundio_esp": "bajándose",
+        "futuro_esp": "se bajará", "cond_esp": "se bajaría",
+        "oraciones": {
+            "infinitivo":   {"ing": "I get off work at five.","esp": "Yo salgo del trabajo a las cinco."},
+            "pasadoSimple": {"ing": "You got off the bus.","esp": "Tú te bajaste del autobús."},
+            "participio":   {"ing": "She has gotten off lightly.","esp": "Ella se ha librado fácilmente."},
+            "gerundio":     {"ing": "They are getting off the train.","esp": "Ellos se están bajando del tren."},
+            "futuro":       {"ing": "We will get off at the next stop.","esp": "Nosotros nos bajaremos en la próxima parada."},
+            "condicional":  {"ing": "That passenger would get off here.","esp": "Ese pasajero se bajaría aquí."}
+        }
+    },
+    {
+        "ing_inf": "get on", "esp_inf": "subirse",
+        "pasado_ing": "got on", "pasado_esp": "se subió",
+        "participio_ing": "gotten on", "participio_esp": "subido",
+        "gerundio_ing": "getting on", "gerundio_esp": "subiendo",
+        "futuro_esp": "se subirá", "cond_esp": "se subiría",
+        "oraciones": {
+            "infinitivo":   {"ing": "I get on the bus daily.","esp": "Yo me subo al autobús a diario."},
+            "pasadoSimple": {"ing": "You got on the train.","esp": "Tú te subiste al tren."},
+            "participio":   {"ing": "She has gotten on well with him.","esp": "Ella se ha llevado bien con él."},
+            "gerundio":     {"ing": "They are getting on with life.","esp": "Ellos están continuando con la vida."},
+            "futuro":       {"ing": "We will get on the plane.","esp": "Nosotros nos subiremos al avión."},
+            "condicional":  {"ing": "That rider would get on quickly.","esp": "Ese jinete se subiría rápido."}
+        }
+    },
+    {
+        "ing_inf": "get out", "esp_inf": "salir",
+        "pasado_ing": "got out", "pasado_esp": "salió",
+        "participio_ing": "gotten out", "participio_esp": "salido",
+        "gerundio_ing": "getting out", "gerundio_esp": "saliendo",
+        "futuro_esp": "saldrá", "cond_esp": "saldría",
+        "oraciones": {
+            "infinitivo":   {"ing": "I get out of bed early.","esp": "Yo salgo de la cama temprano."},
+            "pasadoSimple": {"ing": "You got out of the car.","esp": "Tú saliste del coche."},
+            "participio":   {"ing": "She has gotten out of trouble.","esp": "Ella ha salido del problema."},
+            "gerundio":     {"ing": "They are getting out of the house.","esp": "Ellos están saliendo de la casa."},
+            "futuro":       {"ing": "We will get out soon.","esp": "Nosotros saldremos pronto."},
+            "condicional":  {"ing": "That stain would get out easily.","esp": "Esa mancha saldría fácilmente."}
+        }
+    },
+    {
+        "ing_inf": "get over", "esp_inf": "recuperarse",
+        "pasado_ing": "got over", "pasado_esp": "se recuperó",
+        "participio_ing": "gotten over", "participio_esp": "recuperado",
+        "gerundio_ing": "getting over", "gerundio_esp": "recuperándose",
+        "futuro_esp": "se recuperará", "cond_esp": "se recuperaría",
+        "oraciones": {
+            "infinitivo":   {"ing": "I get over colds quickly.","esp": "Yo me recupero de resfriados rápidamente."},
+            "pasadoSimple": {"ing": "You got over the breakup.","esp": "Tú te recuperaste de la ruptura."},
+            "participio":   {"ing": "She has gotten over the flu.","esp": "Ella se ha recuperado de la gripe."},
+            "gerundio":     {"ing": "They are getting over the loss.","esp": "Ellos se están recuperando de la pérdida."},
+            "futuro":       {"ing": "We will get over this.","esp": "Nosotros superaremos esto."},
+            "condicional":  {"ing": "That obstacle would get over easily.","esp": "Ese obstáculo se superaría fácilmente."}
+        }
+    },
+    {
+        "ing_inf": "get together", "esp_inf": "reunirse",
+        "pasado_ing": "got together", "pasado_esp": "se reunió",
+        "participio_ing": "gotten together", "participio_esp": "reunido",
+        "gerundio_ing": "getting together", "gerundio_esp": "reuniéndose",
+        "futuro_esp": "se reunirá", "cond_esp": "se reuniría",
+        "oraciones": {
+            "infinitivo":   {"ing": "I get together with friends weekly.","esp": "Yo me reúno con amigos semanalmente."},
+            "pasadoSimple": {"ing": "You got together with the team.","esp": "Tú te reuniste con el equipo."},
+            "participio":   {"ing": "They have gotten together often.","esp": "Ellos se han reunido a menudo."},
+            "gerundio":     {"ing": "They are getting together for dinner.","esp": "Ellos se están reuniendo para cenar."},
+            "futuro":       {"ing": "We will get together tomorrow.","esp": "Nosotros nos reuniremos mañana."},
+            "condicional":  {"ing": "That group would get together often.","esp": "Ese grupo se reuniría a menudo."}
+        }
+    },
+    {
+        "ing_inf": "get up", "esp_inf": "levantarse",
+        "pasado_ing": "got up", "pasado_esp": "se levantó",
+        "participio_ing": "gotten up", "participio_esp": "levantado",
+        "gerundio_ing": "getting up", "gerundio_esp": "levantándose",
+        "futuro_esp": "se levantará", "cond_esp": "se levantaría",
+        "oraciones": {
+            "infinitivo":   {"ing": "I get up at six daily.","esp": "Yo me levanto a las seis a diario."},
+            "pasadoSimple": {"ing": "You got up early.","esp": "Tú te levantaste temprano."},
+            "participio":   {"ing": "She has gotten up now.","esp": "Ella se ha levantado ahora."},
+            "gerundio":     {"ing": "They are getting up slowly.","esp": "Ellos se están levantando lentamente."},
+            "futuro":       {"ing": "We will get up refreshed.","esp": "Nosotros nos levantaremos refrescados."},
+            "condicional":  {"ing": "That alarm would get anyone up.","esp": "Esa alarma levantaría a cualquiera."}
+        }
+    },
+    {
+        "ing_inf": "give away", "esp_inf": "regalar",
+        "pasado_ing": "gave away", "pasado_esp": "regaló",
+        "participio_ing": "given away", "participio_esp": "regalado",
+        "gerundio_ing": "giving away", "gerundio_esp": "regalando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I give away books I don't read.","esp": "Yo regalo libros que no leo."},
+            "pasadoSimple": {"ing": "You gave away the secret.","esp": "Tú revelaste el secreto."},
+            "participio":   {"ing": "She has given away all her old clothes.","esp": "Ella ha regalado toda su ropa vieja."},
+            "gerundio":     {"ing": "They are giving away free samples.","esp": "Ellos están regalando muestras gratis."},
+            "futuro":       {"ing": "We will give away the prizes.","esp": "Nosotros regalaremos los premios."},
+            "condicional":  {"ing": "That promoter would give away anything.","esp": "Ese promotor regalaría cualquier cosa."}
+        }
+    },
+    {
+        "ing_inf": "give back", "esp_inf": "devolver",
+        "pasado_ing": "gave back", "pasado_esp": "devolvió",
+        "participio_ing": "given back", "participio_esp": "devuelto",
+        "gerundio_ing": "giving back", "gerundio_esp": "devolviendo",
+        "futuro_esp": "devolverá", "cond_esp": "devolvería",
+        "oraciones": {
+            "infinitivo":   {"ing": "I give back borrowed books.","esp": "Yo devuelvo libros prestados."},
+            "pasadoSimple": {"ing": "You gave back the money.","esp": "Tú devolviste el dinero."},
+            "participio":   {"ing": "She has given back the ring.","esp": "Ella ha devuelto el anillo."},
+            "gerundio":     {"ing": "They are giving back to charity.","esp": "Ellos están retribuyendo a la caridad."},
+            "futuro":       {"ing": "We will give back the favor.","esp": "Nosotros devolveremos el favor."},
+            "condicional":  {"ing": "That thief would give back nothing.","esp": "Ese ladrón no devolvería nada."}
+        }
+    },
+    {
+        "ing_inf": "give in", "esp_inf": "ceder",
+        "pasado_ing": "gave in", "pasado_esp": "cedió",
+        "participio_ing": "given in", "participio_esp": "cedido",
+        "gerundio_ing": "giving in", "gerundio_esp": "cediendo",
+        "oraciones": {
+            "infinitivo":   {"ing": "I give in to temptation sometimes.","esp": "Yo cedo a la tentación a veces."},
+            "pasadoSimple": {"ing": "You gave in to the demands.","esp": "Tú cediste a las demandas."},
+            "participio":   {"ing": "She has given in to pressure.","esp": "Ella ha cedido a la presión."},
+            "gerundio":     {"ing": "They are giving in to demands.","esp": "Ellos están cediendo a las demandas."},
+            "futuro":       {"ing": "We will give in if needed.","esp": "Nosotros cederemos si es necesario."},
+            "condicional":  {"ing": "That negotiator would give in easily.","esp": "Ese negociador cedería fácilmente."}
+        }
+    },
+    {
+        "ing_inf": "give up", "esp_inf": "rendirse",
+        "pasado_ing": "gave up", "pasado_esp": "se rindió",
+        "participio_ing": "given up", "participio_esp": "rendido",
+        "gerundio_ing": "giving up", "gerundio_esp": "rindiéndose",
+        "futuro_esp": "se rendirá", "cond_esp": "se rendiría",
+        "oraciones": {
+            "infinitivo":   {"ing": "I give up smoking this year.","esp": "Yo me rindo con el fumar este año."},
+            "pasadoSimple": {"ing": "You gave up the fight.","esp": "Tú te rendiste en la pelea."},
+            "participio":   {"ing": "She has given up on him.","esp": "Ella se ha dado por vencida con él."},
+            "gerundio":     {"ing": "They are giving up cigarettes.","esp": "Ellos están dejando los cigarrillos."},
+            "futuro":       {"ing": "We will give up if necessary.","esp": "Nosotros nos rendiremos si es necesario."},
+            "condicional":  {"ing": "That champion would never give up.","esp": "Ese campeón nunca se rendiría."}
+        }
+    },
+    {
+        "ing_inf": "go ahead", "esp_inf": "adelantarse",
+        "pasado_ing": "went ahead", "pasado_esp": "se adelantó",
+        "participio_ing": "gone ahead", "participio_esp": "adelantado",
+        "gerundio_ing": "going ahead", "gerundio_esp": "adelantándose",
+        "futuro_esp": "se adelantará", "cond_esp": "se adelantaría",
+        "oraciones": {
+            "infinitivo":   {"ing": "I go ahead with my plans.","esp": "Yo adelante con mis planes."},
+            "pasadoSimple": {"ing": "You went ahead without me.","esp": "Tú te adelantaste sin mí."},
+            "participio":   {"ing": "She has gone ahead with the wedding.","esp": "Ella se ha adelantado con la boda."},
+            "gerundio":     {"ing": "They are going ahead despite doubts.","esp": "Ellos se están adelantando a pesar de las dudas."},
+            "futuro":       {"ing": "We will go ahead next week.","esp": "Nosotros nos adelantaremos la próxima semana."},
+            "condicional":  {"ing": "That team would go ahead confidently.","esp": "Ese equipo se adelantaría con confianza."}
+        }
+    },
+    {
+        "ing_inf": "go away", "esp_inf": "irse",
+        "pasado_ing": "went away", "pasado_esp": "se fue",
+        "participio_ing": "gone away", "participio_esp": "ido",
+        "gerundio_ing": "going away", "gerundio_esp": "yéndose",
+        "futuro_esp": "se irá", "cond_esp": "se iría",
+        "oraciones": {
+            "infinitivo":   {"ing": "I go away on vacation yearly.","esp": "Yo me voy de vacaciones cada año."},
+            "pasadoSimple": {"ing": "You went away for the weekend.","esp": "Tú te fuiste por el fin de semana."},
+            "participio":   {"ing": "She has gone away on business.","esp": "Ella se ha ido por negocios."},
+            "gerundio":     {"ing": "They are going away for the summer.","esp": "Ellos se están yendo para el verano."},
+            "futuro":       {"ing": "We will go away tomorrow.","esp": "Nosotros nos iremos mañana."},
+            "condicional":  {"ing": "That pain would go away soon.","esp": "Ese dolor se iría pronto."}
+        }
+    },
+    {
+        "ing_inf": "go back", "esp_inf": "volver",
+        "pasado_ing": "went back", "pasado_esp": "volvió",
+        "participio_ing": "gone back", "participio_esp": "vuelto",
+        "gerundio_ing": "going back", "gerundio_esp": "volviendo",
+        "futuro_esp": "volverá", "cond_esp": "volvería",
+        "oraciones": {
+            "infinitivo":   {"ing": "I go back home at six.","esp": "Yo vuelvo a casa a las seis."},
+            "pasadoSimple": {"ing": "You went back to school.","esp": "Tú volviste a la escuela."},
+            "participio":   {"ing": "She has gone back to work.","esp": "Ella ha vuelto al trabajo."},
+            "gerundio":     {"ing": "They are going back home.","esp": "Ellos están volviendo a casa."},
+            "futuro":       {"ing": "We will go back tomorrow.","esp": "Nosotros volveremos mañana."},
+            "condicional":  {"ing": "That trend would go back soon.","esp": "Esa moda volvería pronto."}
+        }
+    },
+    {
+        "ing_inf": "go in", "esp_inf": "entrar",
+        "pasado_ing": "went in", "pasado_esp": "entró",
+        "participio_ing": "gone in", "participio_esp": "entrado",
+        "gerundio_ing": "going in", "gerundio_esp": "entrando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I go in through the back door.","esp": "Yo entro por la puerta trasera."},
+            "pasadoSimple": {"ing": "You went in the wrong room.","esp": "Tú entraste en la habitación equivocada."},
+            "participio":   {"ing": "She has gone in for surgery.","esp": "Ella ha entrado a cirugía."},
+            "gerundio":     {"ing": "They are going in early.","esp": "Ellos están entrando temprano."},
+            "futuro":       {"ing": "We will go in at noon.","esp": "Nosotros entraremos al mediodía."},
+            "condicional":  {"ing": "That employee would go in late.","esp": "Ese empleado entraría tarde."}
+        }
+    },
+    {
+        "ing_inf": "go off", "esp_inf": "sonar",
+        "pasado_ing": "went off", "pasado_esp": "sonó",
+        "participio_ing": "gone off", "participio_esp": "sonado",
+        "gerundio_ing": "going off", "gerundio_esp": "sonando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I go off to the gym after work.","esp": "Yo me voy al gimnasio después del trabajo."},
+            "pasadoSimple": {"ing": "You went off on a tangent.","esp": "Tú te fuiste por las ramas."},
+            "participio":   {"ing": "The alarm has gone off twice.","esp": "La alarma ha sonado dos veces."},
+            "gerundio":     {"ing": "They are going off duty.","esp": "Ellos están saliendo de servicio."},
+            "futuro":       {"ing": "We will go off at midnight.","esp": "Nosotros nos iremos a medianoche."},
+            "condicional":  {"ing": "That bomb would go off easily.","esp": "Esa bomba explotaría fácilmente."}
+        }
+    },
+    {
+        "ing_inf": "go on", "esp_inf": "continuar",
+        "pasado_ing": "went on", "pasado_esp": "continuó",
+        "participio_ing": "gone on", "participio_esp": "continuado",
+        "gerundio_ing": "going on", "gerundio_esp": "continuando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I go on walks daily.","esp": "Yo sigo caminando a diario."},
+            "pasadoSimple": {"ing": "You went on vacation.","esp": "Tú seguiste de vacaciones."},
+            "participio":   {"ing": "She has gone on with her life.","esp": "Ella ha seguido con su vida."},
+            "gerundio":     {"ing": "They are going on about the topic.","esp": "Ellos están hablando del tema extensamente."},
+            "futuro":       {"ing": "We will go on with the plan.","esp": "Nosotros seguiremos con el plan."},
+            "condicional":  {"ing": "That meeting would go on forever.","esp": "Esa reunión continuaría para siempre."}
+        }
+    },
+    {
+        "ing_inf": "go out", "esp_inf": "salir",
+        "pasado_ing": "went out", "pasado_esp": "salió",
+        "participio_ing": "gone out", "participio_esp": "salido",
+        "gerundio_ing": "going out", "gerundio_esp": "saliendo",
+        "oraciones": {
+            "infinitivo":   {"ing": "I go out with friends weekly.","esp": "Yo salgo con amigos semanalmente."},
+            "pasadoSimple": {"ing": "You went out last night.","esp": "Tú saliste anoche."},
+            "participio":   {"ing": "The fire has gone out.","esp": "El fuego se ha apagado."},
+            "gerundio":     {"ing": "They are going out to dinner.","esp": "Ellos están saliendo a cenar."},
+            "futuro":       {"ing": "We will go out tonight.","esp": "Nosotros saldremos esta noche."},
+            "condicional":  {"ing": "That light would go out soon.","esp": "Esa luz se apagaría pronto."}
+        }
+    },
+    {
+        "ing_inf": "go over", "esp_inf": "revisar",
+        "pasado_ing": "went over", "pasado_esp": "revisó",
+        "participio_ing": "gone over", "participio_esp": "revisado",
+        "gerundio_ing": "going over", "gerundio_esp": "revisando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I go over my notes before tests.","esp": "Yo reviso mis apuntes antes de los exámenes."},
+            "pasadoSimple": {"ing": "You went over the contract.","esp": "Tú revisaste el contrato."},
+            "participio":   {"ing": "She has gone over the plan.","esp": "Ella ha revisado el plan."},
+            "gerundio":     {"ing": "They are going over the details.","esp": "Ellos están revisando los detalles."},
+            "futuro":       {"ing": "We will go over this tomorrow.","esp": "Nosotros revisaremos esto mañana."},
+            "condicional":  {"ing": "That team would go over the strategy.","esp": "Ese equipo revisaría la estrategia."}
+        }
+    },
+    {
+        "ing_inf": "go through", "esp_inf": "atravesar",
+        "pasado_ing": "went through", "pasado_esp": "atravesó",
+        "participio_ing": "gone through", "participio_esp": "atravesado",
+        "gerundio_ing": "going through", "gerundio_esp": "atravesando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I go through a lot of coffee.","esp": "Yo paso por mucho café."},
+            "pasadoSimple": {"ing": "You went through the tunnel.","esp": "Tú atravesaste el túnel."},
+            "participio":   {"ing": "She has gone through a divorce.","esp": "Ella ha pasado por un divorcio."},
+            "gerundio":     {"ing": "They are going through hard times.","esp": "Ellos están pasando por momentos difíciles."},
+            "futuro":       {"ing": "We will go through customs.","esp": "Nosotros pasaremos por la aduana."},
+            "condicional":  {"ing": "That report would go through quickly.","esp": "Ese informe pasaría rápido."}
+        }
+    },
+    {
+        "ing_inf": "grow up", "esp_inf": "crecer",
+        "pasado_ing": "grew up", "pasado_esp": "creció",
+        "participio_ing": "grown up", "participio_esp": "crecido",
+        "gerundio_ing": "growing up", "gerundio_esp": "creciendo",
+        "oraciones": {
+            "infinitivo":   {"ing": "I grow up every day.","esp": "Yo crezco cada día."},
+            "pasadoSimple": {"ing": "You grew up in a small town.","esp": "Tú creciste en un pueblo pequeño."},
+            "participio":   {"ing": "She has grown up so fast.","esp": "Ella ha crecido tan rápido."},
+            "gerundio":     {"ing": "They are growing up healthy.","esp": "Ellos están creciendo sanos."},
+            "futuro":       {"ing": "We will grow up together.","esp": "Nosotros creceremos juntos."},
+            "condicional":  {"ing": "That child would grow up strong.","esp": "Ese niño crecería fuerte."}
+        }
+    },
+    {
+        "ing_inf": "hand in", "esp_inf": "entregar",
+        "pasado_ing": "handed in", "pasado_esp": "entregó",
+        "participio_ing": "handed in", "participio_esp": "entregado",
+        "gerundio_ing": "handing in", "gerundio_esp": "entregando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I hand in my homework on time.","esp": "Yo entrego mi tarea a tiempo."},
+            "pasadoSimple": {"ing": "You handed in your resignation.","esp": "Tú entregaste tu renuncia."},
+            "participio":   {"ing": "She has handed in the report.","esp": "Ella ha entregado el informe."},
+            "gerundio":     {"ing": "They are handing in their tests.","esp": "Ellos están entregando sus exámenes."},
+            "futuro":       {"ing": "We will hand in the keys.","esp": "Nosotros entregaremos las llaves."},
+            "condicional":  {"ing": "That student would hand in late.","esp": "Ese estudiante entregaría tarde."}
+        }
+    }
+]
+
+
+if __name__ == "__main__":
+    procesar_bloque(BLOQUE_COMPUESTOS_2, "compuestos", 30)
+    aplicar_correcciones(CORRECCIONES, "simples")
+
+    with open(RUTA_JSON, "r", encoding="utf-8") as f:
+        check = json.load(f)
+    print("\nVerbo #745 (give away) muestra:")
+    print(json.dumps(check["generales"]["compuestos"][15], indent=2, ensure_ascii=False))
+    print(f"\nTotal compuestos: {sum(1 for v in check['generales']['compuestos'] if v['id'] != '')}/150")
