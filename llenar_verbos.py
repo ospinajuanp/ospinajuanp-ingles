@@ -7245,11 +7245,1728 @@ BLOQUE_IRREGULARES_3 = [
 ]
 
 
+BLOQUE_IRREGULARES_4 = [
+    {
+        "ing_inf": "strike", "esp_inf": "golpear",
+        "pasado_ing": "struck", "pasado_esp": "golpeó",
+        "participio_ing": "struck/stricken", "participio_esp": "golpeado",
+        "gerundio_ing": "striking", "gerundio_esp": "golpeando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I strike a balance between work and life.","esp": "Yo encuentro un equilibrio entre trabajo y vida."},
+            "pasadoSimple": {"ing": "You struck the nail hard.","esp": "Tú golpeaste el clavo con fuerza."},
+            "participio":   {"ing": "She has struck a deal.","esp": "Ella ha cerrado un trato."},
+            "gerundio":     {"ing": "They are striking for better wages.","esp": "Ellos están en huelga por mejores salarios."},
+            "futuro":       {"ing": "We will strike at dawn.","esp": "Nosotros atacaremos al amanecer."},
+            "condicional":  {"ing": "That clock would strike twelve.","esp": "Ese reloj daría las doce."}
+        }
+    },
+    {
+        "ing_inf": "swear", "esp_inf": "jurar",
+        "pasado_ing": "swore", "pasado_esp": "juró",
+        "participio_ing": "sworn", "participio_esp": "jurado",
+        "gerundio_ing": "swearing", "gerundio_esp": "jurando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I swear by my mother's cooking.","esp": "Yo juro por la cocina de mi madre."},
+            "pasadoSimple": {"ing": "You swore an oath yesterday.","esp": "Tú juraste ayer."},
+            "participio":   {"ing": "She has sworn to tell the truth.","esp": "Ella ha jurado decir la verdad."},
+            "gerundio":     {"ing": "They are swearing at each other.","esp": "Ellos se están maldiciendo."},
+            "futuro":       {"ing": "We will swear in the witnesses.","esp": "Nosotros tomaremos juramento a los testigos."},
+            "condicional":  {"ing": "That would swear anyone to secrecy.","esp": "Eso obligaría a cualquiera a guardar el secreto."}
+        }
+    },
+    {
+        "ing_inf": "sweep", "esp_inf": "barrer",
+        "pasado_ing": "swept", "pasado_esp": "barrió",
+        "participio_ing": "swept", "participio_esp": "barrido",
+        "gerundio_ing": "sweeping", "gerundio_esp": "barriendo",
+        "oraciones": {
+            "infinitivo":   {"ing": "I sweep the floor every morning.","esp": "Yo barro el piso cada mañana."},
+            "pasadoSimple": {"ing": "You swept the chimney.","esp": "Tú barriste la chimenea."},
+            "participio":   {"ing": "She has swept the competition.","esp": "Ella ha arrasado en la competencia."},
+            "gerundio":     {"ing": "They are sweeping the leaves.","esp": "Ellos están barriendo las hojas."},
+            "futuro":       {"ing": "We will sweep the deck.","esp": "Nosotros barreremos la cubierta."},
+            "condicional":  {"ing": "That broom would sweep easily.","esp": "Esa escoba barrería fácilmente."}
+        }
+    },
+    {
+        "ing_inf": "swim", "esp_inf": "nadar",
+        "pasado_ing": "swam", "pasado_esp": "nadó",
+        "participio_ing": "swum", "participio_esp": "nadado",
+        "gerundio_ing": "swimming", "gerundio_esp": "nadando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I swim every weekend at the pool.","esp": "Yo nado cada fin de semana en la piscina."},
+            "pasadoSimple": {"ing": "You swam across the lake.","esp": "Tú nadaste a través del lago."},
+            "participio":   {"ing": "She has swum in the ocean.","esp": "Ella ha nadado en el océano."},
+            "gerundio":     {"ing": "They are swimming competitively.","esp": "Ellos están nadando competitivamente."},
+            "futuro":       {"ing": "We will swim tomorrow morning.","esp": "Nosotros nadaremos mañana por la mañana."},
+            "condicional":  {"ing": "That fish would swim away.","esp": "Ese pez nadaría lejos."}
+        }
+    },
+    {
+        "ing_inf": "swing", "esp_inf": "columpiarse",
+        "pasado_ing": "swung", "pasado_esp": "se columpió",
+        "participio_ing": "swung", "participio_esp": "columpiado",
+        "gerundio_ing": "swinging", "gerundio_esp": "columpiándose",
+        "futuro_esp": "se columpiará", "cond_esp": "se columpiaría",
+        "oraciones": {
+            "infinitivo":   {"ing": "I swing at the playground daily.","esp": "Yo me columpio en el parque cada día."},
+            "pasadoSimple": {"ing": "You swung the bat hard.","esp": "Tú balanceaste el bate con fuerza."},
+            "participio":   {"ing": "The door has swung open.","esp": "La puerta se ha abierto de golpe."},
+            "gerundio":     {"ing": "They are swinging on the ropes.","esp": "Ellos están columpiándose en las cuerdas."},
+            "futuro":       {"ing": "We will swing by later.","esp": "Nosotros pasaremos después."},
+            "condicional":  {"ing": "That pendulum would swing forever.","esp": "Ese péndulo oscilaría para siempre."}
+        }
+    },
+    {
+        "ing_inf": "take", "esp_inf": "tomar",
+        "pasado_ing": "took", "pasado_esp": "tomó",
+        "participio_ing": "taken", "participio_esp": "tomado",
+        "gerundio_ing": "taking", "gerundio_esp": "tomando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I take the bus to work.","esp": "Yo tomo el autobús al trabajo."},
+            "pasadoSimple": {"ing": "You took the last cookie.","esp": "Tú tomaste la última galleta."},
+            "participio":   {"ing": "She has taken the exam.","esp": "Ella ha tomado el examen."},
+            "gerundio":     {"ing": "They are taking photos.","esp": "Ellos están tomando fotos."},
+            "futuro":       {"ing": "We will take a break.","esp": "Nosotros tomaremos un descanso."},
+            "condicional":  {"ing": "That pill would take effect.","esp": "Esa pastilla haría efecto."}
+        }
+    },
+    {
+        "ing_inf": "teach", "esp_inf": "enseñar",
+        "pasado_ing": "taught", "pasado_esp": "enseñó",
+        "participio_ing": "taught", "participio_esp": "enseñado",
+        "gerundio_ing": "teaching", "gerundio_esp": "enseñando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I teach English at the school.","esp": "Yo enseño inglés en la escuela."},
+            "pasadoSimple": {"ing": "You taught me to swim.","esp": "Tú me enseñaste a nadar."},
+            "participio":   {"ing": "She has taught for ten years.","esp": "Ella ha enseñado durante diez años."},
+            "gerundio":     {"ing": "They are teaching the kids.","esp": "Ellos están enseñando a los niños."},
+            "futuro":       {"ing": "We will teach next semester.","esp": "Nosotros enseñaremos el próximo semestre."},
+            "condicional":  {"ing": "That class would teach anyone.","esp": "Esa clase enseñaría a cualquiera."}
+        }
+    },
+    {
+        "ing_inf": "tear", "esp_inf": "rasgar",
+        "pasado_ing": "tore", "pasado_esp": "rasgó",
+        "participio_ing": "torn", "participio_esp": "rasgado",
+        "gerundio_ing": "tearing", "gerundio_esp": "rasgando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I tear up at sad movies.","esp": "Yo lloro en películas tristes."},
+            "pasadoSimple": {"ing": "You tore the paper.","esp": "Tú rasgaste el papel."},
+            "participio":   {"ing": "She has torn her dress.","esp": "Ella ha roto su vestido."},
+            "gerundio":     {"ing": "They are tearing down the building.","esp": "Ellos están demoliendo el edificio."},
+            "futuro":       {"ing": "We will tear up the contract.","esp": "Nosotros romperemos el contrato."},
+            "condicional":  {"ing": "That fabric would tear easily.","esp": "Esa tela se rasgaría fácilmente."}
+        }
+    },
+    {
+        "ing_inf": "tell", "esp_inf": "decir",
+        "pasado_ing": "told", "pasado_esp": "dijo",
+        "participio_ing": "told", "participio_esp": "dicho",
+        "gerundio_ing": "telling", "gerundio_esp": "diciendo",
+        "futuro_esp": "dirá", "cond_esp": "diría",
+        "oraciones": {
+            "infinitivo":   {"ing": "I tell the truth always.","esp": "Yo digo la verdad siempre."},
+            "pasadoSimple": {"ing": "You told me yesterday.","esp": "Tú me dijiste ayer."},
+            "participio":   {"ing": "She has told the truth.","esp": "Ella ha dicho la verdad."},
+            "gerundio":     {"ing": "They are telling jokes.","esp": "Ellos están contando chistes."},
+            "futuro":       {"ing": "We will tell you tomorrow.","esp": "Nosotros te diremos mañana."},
+            "condicional":  {"ing": "That would tell us everything.","esp": "Eso nos diría todo."}
+        }
+    },
+    {
+        "ing_inf": "think", "esp_inf": "pensar",
+        "pasado_ing": "thought", "pasado_esp": "pensó",
+        "participio_ing": "thought", "participio_esp": "pensado",
+        "gerundio_ing": "thinking", "gerundio_esp": "pensando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I think before I act.","esp": "Yo pienso antes de actuar."},
+            "pasadoSimple": {"ing": "You thought it was funny.","esp": "Tú pensaste que era gracioso."},
+            "participio":   {"ing": "She has thought it through.","esp": "Ella lo ha pensado bien."},
+            "gerundio":     {"ing": "They are thinking about it.","esp": "Ellos están pensando en ello."},
+            "futuro":       {"ing": "We will think about your offer.","esp": "Nosotros pensaremos en tu oferta."},
+            "condicional":  {"ing": "That would make anyone think.","esp": "Eso haría pensar a cualquiera."}
+        }
+    },
+    {
+        "ing_inf": "throw", "esp_inf": "lanzar",
+        "pasado_ing": "threw", "pasado_esp": "lanzó",
+        "participio_ing": "thrown", "participio_esp": "lanzado",
+        "gerundio_ing": "throwing", "gerundio_esp": "lanzando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I throw the ball to my dog.","esp": "Yo le lanzo la pelota a mi perro."},
+            "pasadoSimple": {"ing": "You threw the trash away.","esp": "Tú tiraste la basura."},
+            "participio":   {"ing": "She has thrown the party.","esp": "Ella ha organizado la fiesta."},
+            "gerundio":     {"ing": "They are throwing stones.","esp": "Ellos están lanzando piedras."},
+            "futuro":       {"ing": "We will throw a surprise party.","esp": "Nosotros haremos una fiesta sorpresa."},
+            "condicional":  {"ing": "That pitcher would throw fast.","esp": "Ese lanzador lanzaría rápido."}
+        }
+    },
+    {
+        "ing_inf": "understand", "esp_inf": "entender",
+        "pasado_ing": "understood", "pasado_esp": "entendió",
+        "participio_ing": "understood", "participio_esp": "entendido",
+        "gerundio_ing": "understanding", "gerundio_esp": "entendiendo",
+        "oraciones": {
+            "infinitivo":   {"ing": "I understand the problem.","esp": "Yo entiendo el problema."},
+            "pasadoSimple": {"ing": "You understood my point.","esp": "Tú entendiste mi punto."},
+            "participio":   {"ing": "She has understood the instructions.","esp": "Ella ha entendido las instrucciones."},
+            "gerundio":     {"ing": "They are understanding more.","esp": "Ellos están entendiendo más."},
+            "futuro":       {"ing": "We will understand eventually.","esp": "Nosotros entenderemos eventualmente."},
+            "condicional":  {"ing": "That would help anyone understand.","esp": "Eso ayudaría a cualquiera a entender."}
+        }
+    },
+    {
+        "ing_inf": "wake", "esp_inf": "despertarse",
+        "pasado_ing": "woke", "pasado_esp": "se despertó",
+        "participio_ing": "woken", "participio_esp": "despertado",
+        "gerundio_ing": "waking", "gerundio_esp": "despertándose",
+        "futuro_esp": "se despertará", "cond_esp": "se despertaría",
+        "oraciones": {
+            "infinitivo":   {"ing": "I wake up at six daily.","esp": "Yo me despierto a las seis a diario."},
+            "pasadoSimple": {"ing": "You woke up late.","esp": "Tú te despertaste tarde."},
+            "participio":   {"ing": "She has woken up early.","esp": "Ella se ha despertado temprano."},
+            "gerundio":     {"ing": "They are waking up now.","esp": "Ellos se están despertando ahora."},
+            "futuro":       {"ing": "We will wake up refreshed.","esp": "Nosotros nos despertaremos refrescados."},
+            "condicional":  {"ing": "That noise would wake anyone.","esp": "Ese ruido despertaría a cualquiera."}
+        }
+    },
+    {
+        "ing_inf": "wear", "esp_inf": "usar",
+        "pasado_ing": "wore", "pasado_esp": "usó",
+        "participio_ing": "worn", "participio_esp": "usado",
+        "gerundio_ing": "wearing", "gerundio_esp": "usando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I wear glasses for reading.","esp": "Yo uso gafas para leer."},
+            "pasadoSimple": {"ing": "You wore a nice dress.","esp": "Tú usaste un vestido bonito."},
+            "participio":   {"ing": "She has worn that hat often.","esp": "Ella ha usado ese sombrero a menudo."},
+            "gerundio":     {"ing": "They are wearing masks.","esp": "Ellos están usando mascarillas."},
+            "futuro":       {"ing": "We will wear costumes.","esp": "Nosotros usaremos disfraces."},
+            "condicional":  {"ing": "That fabric would wear well.","esp": "Esa tela se gastaría bien."}
+        }
+    },
+    {
+        "ing_inf": "weep", "esp_inf": "llorar",
+        "pasado_ing": "wept", "pasado_esp": "lloró",
+        "participio_ing": "wept", "participio_esp": "llorado",
+        "gerundio_ing": "weeping", "gerundio_esp": "llorando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I weep at sad movies.","esp": "Yo lloro en películas tristes."},
+            "pasadoSimple": {"ing": "You wept at the funeral.","esp": "Tú lloraste en el funeral."},
+            "participio":   {"ing": "She has wept for hours.","esp": "Ella ha llorado por horas."},
+            "gerundio":     {"ing": "They are weeping for joy.","esp": "Ellos están llorando de alegría."},
+            "futuro":       {"ing": "We will weep with them.","esp": "Nosotros lloraremos con ellos."},
+            "condicional":  {"ing": "That story would make anyone weep.","esp": "Esa historia haría llorar a cualquiera."}
+        }
+    },
+    {
+        "ing_inf": "win", "esp_inf": "ganar",
+        "pasado_ing": "won", "pasado_esp": "ganó",
+        "participio_ing": "won", "participio_esp": "ganado",
+        "gerundio_ing": "winning", "gerundio_esp": "ganando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I win at chess sometimes.","esp": "Yo gano al ajedrez a veces."},
+            "pasadoSimple": {"ing": "You won the lottery.","esp": "Tú ganaste la lotería."},
+            "participio":   {"ing": "She has won three awards.","esp": "Ella ha ganado tres premios."},
+            "gerundio":     {"ing": "They are winning the game.","esp": "Ellos están ganando el juego."},
+            "futuro":       {"ing": "We will win the championship.","esp": "Nosotros ganaremos el campeonato."},
+            "condicional":  {"ing": "That team would win easily.","esp": "Ese equipo ganaría fácilmente."}
+        }
+    },
+    {
+        "ing_inf": "write", "esp_inf": "escribir",
+        "pasado_ing": "wrote", "pasado_esp": "escribió",
+        "participio_ing": "written", "participio_esp": "escrito",
+        "gerundio_ing": "writing", "gerundio_esp": "escribiendo",
+        "oraciones": {
+            "infinitivo":   {"ing": "I write in my journal daily.","esp": "Yo escribo en mi diario a diario."},
+            "pasadoSimple": {"ing": "You wrote a beautiful poem.","esp": "Tú escribiste un poema hermoso."},
+            "participio":   {"ing": "She has written three books.","esp": "Ella ha escrito tres libros."},
+            "gerundio":     {"ing": "They are writing code now.","esp": "Ellos están escribiendo código ahora."},
+            "futuro":       {"ing": "We will write the report.","esp": "Nosotros escribiremos el informe."},
+            "condicional":  {"ing": "That author would write beautifully.","esp": "Ese autor escribiría hermosamente."}
+        }
+    },
+    {
+        "ing_inf": "arise", "esp_inf": "surgir",
+        "pasado_ing": "arose", "pasado_esp": "surgió",
+        "participio_ing": "arisen", "participio_esp": "surgido",
+        "gerundio_ing": "arising", "gerundio_esp": "surgiendo",
+        "oraciones": {
+            "infinitivo":   {"ing": "I see problems arise daily.","esp": "Yo veo problemas surgir a diario."},
+            "pasadoSimple": {"ing": "You arose from poverty.","esp": "Tú surgiste de la pobreza."},
+            "participio":   {"ing": "The issue has arisen unexpectedly.","esp": "El problema ha surgido inesperadamente."},
+            "gerundio":     {"ing": "They are arising from their seats.","esp": "Ellos se están levantando de sus asientos."},
+            "futuro":       {"ing": "We will arise to the challenge.","esp": "Nosotros surgiremos ante el desafío."},
+            "condicional":  {"ing": "That problem would arise later.","esp": "Ese problema surgiría después."}
+        }
+    },
+    {
+        "ing_inf": "awake", "esp_inf": "despertarse",
+        "pasado_ing": "awoke", "pasado_esp": "se despertó",
+        "participio_ing": "awoken", "participio_esp": "despierto",
+        "gerundio_ing": "awaking", "gerundio_esp": "despertándose",
+        "futuro_esp": "se despertará", "cond_esp": "se despertaría",
+        "oraciones": {
+            "infinitivo":   {"ing": "I awake refreshed after sleep.","esp": "Yo me despierto descansado después de dormir."},
+            "pasadoSimple": {"ing": "You awoke to the alarm.","esp": "Tú te despertaste con la alarma."},
+            "participio":   {"ing": "She has awoken early today.","esp": "Ella se ha despertado temprano hoy."},
+            "gerundio":     {"ing": "They are awaking to reality.","esp": "Ellos se están despertando a la realidad."},
+            "futuro":       {"ing": "We will awake refreshed.","esp": "Nosotros nos despertaremos descansados."},
+            "condicional":  {"ing": "That would awake anyone.","esp": "Eso despertaría a cualquiera."}
+        }
+    },
+    {
+        "ing_inf": "bear", "esp_inf": "soportar",
+        "pasado_ing": "bore", "pasado_esp": "soportó",
+        "participio_ing": "borne", "participio_esp": "soportado",
+        "gerundio_ing": "bearing", "gerundio_esp": "soportando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I bear the responsibility alone.","esp": "Yo soporto la responsabilidad solo."},
+            "pasadoSimple": {"ing": "You bore the weight well.","esp": "Tú soportaste bien el peso."},
+            "participio":   {"ing": "She has borne three children.","esp": "Ella ha dado a luz a tres niños."},
+            "gerundio":     {"ing": "They are bearing gifts.","esp": "Ellos están llevando regalos."},
+            "futuro":       {"ing": "We will bear the cost.","esp": "Nosotros soportaremos el costo."},
+            "condicional":  {"ing": "That would bear any weight.","esp": "Eso soportaría cualquier peso."}
+        }
+    },
+    {
+        "ing_inf": "beat", "esp_inf": "vencer",
+        "pasado_ing": "beat", "pasado_esp": "venció",
+        "participio_ing": "beaten", "participio_esp": "vencido",
+        "gerundio_ing": "beating", "gerundio_esp": "venciendo",
+        "oraciones": {
+            "infinitivo":   {"ing": "I beat the eggs for the cake.","esp": "Yo bate los huevos para el pastel."},
+            "pasadoSimple": {"ing": "You beat the record.","esp": "Tú venciste el récord."},
+            "participio":   {"ing": "She has beaten all opponents.","esp": "Ella ha vencido a todos los oponentes."},
+            "gerundio":     {"ing": "They are beating the drums.","esp": "Ellos están tocando los tambores."},
+            "futuro":       {"ing": "We will beat the deadline.","esp": "Nosotros venceremos el plazo."},
+            "condicional":  {"ing": "That team would beat anyone.","esp": "Ese equipo vencería a cualquiera."}
+        }
+    },
+    {
+        "ing_inf": "bend", "esp_inf": "doblar",
+        "pasado_ing": "bent", "pasado_esp": "dobló",
+        "participio_ing": "bent", "participio_esp": "doblado",
+        "gerundio_ing": "bending", "gerundio_esp": "doblando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I bend the rules sometimes.","esp": "Yo doblo las reglas a veces."},
+            "pasadoSimple": {"ing": "You bent the wire.","esp": "Tú doblaste el alambre."},
+            "participio":   {"ing": "She has bent over backward.","esp": "Ella se ha inclinado hacia atrás."},
+            "gerundio":     {"ing": "They are bending the rules.","esp": "Ellos están doblando las reglas."},
+            "futuro":       {"ing": "We will bend but not break.","esp": "Nosotros nos doblaremos pero no romperemos."},
+            "condicional":  {"ing": "That branch would bend easily.","esp": "Esa rama se doblaría fácilmente."}
+        }
+    },
+    {
+        "ing_inf": "bet", "esp_inf": "apostar",
+        "pasado_ing": "bet", "pasado_esp": "apostó",
+        "participio_ing": "bet", "participio_esp": "apostado",
+        "gerundio_ing": "betting", "gerundio_esp": "apostando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I bet on horses sometimes.","esp": "Yo apuesto a los caballos a veces."},
+            "pasadoSimple": {"ing": "You bet all your money.","esp": "Tú apostaste todo tu dinero."},
+            "participio":   {"ing": "She has bet on the underdog.","esp": "Ella ha apostado al más débil."},
+            "gerundio":     {"ing": "They are betting on the game.","esp": "Ellos están apostando al juego."},
+            "futuro":       {"ing": "We will bet on ourselves.","esp": "Nosotros apostaremos por nosotros mismos."},
+            "condicional":  {"ing": "That would bet on anything.","esp": "Eso apostaría a cualquier cosa."}
+        }
+    },
+    {
+        "ing_inf": "bind", "esp_inf": "atar",
+        "pasado_ing": "bound", "pasado_esp": "ató",
+        "participio_ing": "bound", "participio_esp": "atado",
+        "gerundio_ing": "binding", "gerundio_esp": "atando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I bind the books together.","esp": "Yo ato los libros juntos."},
+            "pasadoSimple": {"ing": "You bound the rope tightly.","esp": "Tú ataste la cuerda con fuerza."},
+            "participio":   {"ing": "The contract has bound them legally.","esp": "El contrato los ha vinculado legalmente."},
+            "gerundio":     {"ing": "They are binding the agreement.","esp": "Ellos están formalizando el acuerdo."},
+            "futuro":       {"ing": "We will bind the documents.","esp": "Nosotros encuadernaremos los documentos."},
+            "condicional":  {"ing": "That contract would bind anyone.","esp": "Ese contrato vincularía a cualquiera."}
+        }
+    },
+    {
+        "ing_inf": "bleed", "esp_inf": "sangrar",
+        "pasado_ing": "bled", "pasado_esp": "sangró",
+        "participio_ing": "bled", "participio_esp": "sangrado",
+        "gerundio_ing": "bleeding", "gerundio_esp": "sangrando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I bleed easily from cuts.","esp": "Yo sangro fácilmente por cortes."},
+            "pasadoSimple": {"ing": "You bled a lot yesterday.","esp": "Tú sangraste mucho ayer."},
+            "participio":   {"ing": "She has bled from the wound.","esp": "Ella ha sangrado por la herida."},
+            "gerundio":     {"ing": "They are bleeding heavily.","esp": "Ellos están sangrando mucho."},
+            "futuro":       {"ing": "We will bleed for the cause.","esp": "Nosotros sangraremos por la causa."},
+            "condicional":  {"ing": "That cut would bleed badly.","esp": "Ese corte sangraría mucho."}
+        }
+    },
+    {
+        "ing_inf": "breed", "esp_inf": "criar",
+        "pasado_ing": "bred", "pasado_esp": "crió",
+        "participio_ing": "bred", "participio_esp": "criado",
+        "gerundio_ing": "breeding", "gerundio_esp": "criando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I breed dogs as a hobby.","esp": "Yo crio perros como pasatiempo."},
+            "pasadoSimple": {"ing": "You bred horses on the farm.","esp": "Tú criaste caballos en la granja."},
+            "participio":   {"ing": "She has bred award-winning cats.","esp": "Ella ha criado gatos premiados."},
+            "gerundio":     {"ing": "They are breeding cattle.","esp": "Ellos están criando ganado."},
+            "futuro":       {"ing": "We will breed awareness.","esp": "Nosotros crearemos conciencia."},
+            "condicional":  {"ing": "That situation would breed conflict.","esp": "Esa situación generaría conflicto."}
+        }
+    },
+    {
+        "ing_inf": "broadcast", "esp_inf": "transmitir",
+        "pasado_ing": "broadcast", "pasado_esp": "transmitió",
+        "participio_ing": "broadcast", "participio_esp": "transmitido",
+        "gerundio_ing": "broadcasting", "gerundio_esp": "transmitiendo",
+        "oraciones": {
+            "infinitivo":   {"ing": "I broadcast music online.","esp": "Yo transmito música en línea."},
+            "pasadoSimple": {"ing": "You broadcast the news yesterday.","esp": "Tú transmitiste la noticia ayer."},
+            "participio":   {"ing": "She has broadcast the show.","esp": "Ella ha transmitido el programa."},
+            "gerundio":     {"ing": "They are broadcasting live.","esp": "Ellos están transmitiendo en vivo."},
+            "futuro":       {"ing": "We will broadcast the event.","esp": "Nosotros transmitiremos el evento."},
+            "condicional":  {"ing": "That station would broadcast worldwide.","esp": "Esa estación transmitiría mundialmente."}
+        }
+    },
+    {
+        "ing_inf": "cast", "esp_inf": "lanzar",
+        "pasado_ing": "cast", "pasado_esp": "lanzó",
+        "participio_ing": "cast", "participio_esp": "lanzado",
+        "gerundio_ing": "casting", "gerundio_esp": "lanzando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I cast my vote every election.","esp": "Yo emito mi voto cada elección."},
+            "pasadoSimple": {"ing": "You cast the line into the water.","esp": "Tú lanzaste la línea al agua."},
+            "participio":   {"ing": "She has been cast in the movie.","esp": "Ella ha sido elegida para la película."},
+            "gerundio":     {"ing": "They are casting the actors.","esp": "Ellos están eligiendo a los actores."},
+            "futuro":       {"ing": "We will cast the spell.","esp": "Nosotros lanzaremos el hechizo."},
+            "condicional":  {"ing": "That actor would cast well.","esp": "Ese actor encajaría bien."}
+        }
+    },
+    {
+        "ing_inf": "cling", "esp_inf": "aferrarse",
+        "pasado_ing": "clung", "pasado_esp": "se aferró",
+        "participio_ing": "clung", "participio_esp": "aferrado",
+        "gerundio_ing": "clinging", "gerundio_esp": "aferrándose",
+        "futuro_esp": "se aferrará", "cond_esp": "se aferraría",
+        "oraciones": {
+            "infinitivo":   {"ing": "I cling to hope in tough times.","esp": "Yo me aferro a la esperanza en tiempos difíciles."},
+            "pasadoSimple": {"ing": "You clung to the rope.","esp": "Tú te aferraste a la cuerda."},
+            "participio":   {"ing": "She has clung to her beliefs.","esp": "Ella se ha aferrado a sus creencias."},
+            "gerundio":     {"ing": "They are clinging to each other.","esp": "Ellos se están aferrando el uno al otro."},
+            "futuro":       {"ing": "We will cling to hope.","esp": "Nosotros nos aferraremos a la esperanza."},
+            "condicional":  {"ing": "That smell would cling to clothes.","esp": "Ese olor se aferraría a la ropa."}
+        }
+    },
+    {
+        "ing_inf": "creep", "esp_inf": "arrastrarse",
+        "pasado_ing": "crept", "pasado_esp": "se arrastró",
+        "participio_ing": "crept", "participio_esp": "arrastrado",
+        "gerundio_ing": "creeping", "gerundio_esp": "arrastrándose",
+        "futuro_esp": "se arrastrará", "cond_esp": "se arrastraría",
+        "oraciones": {
+            "infinitivo":   {"ing": "I creep downstairs quietly.","esp": "Yo me arrastro escaleras abajo en silencio."},
+            "pasadoSimple": {"ing": "You crept up behind me.","esp": "Tú te arrastraste detrás de mí."},
+            "participio":   {"ing": "The vine has crept up the wall.","esp": "La enredadera se ha arrastrado por la pared."},
+            "gerundio":     {"ing": "They are creeping through the forest.","esp": "Ellos se están arrastrando por el bosque."},
+            "futuro":       {"ing": "We will creep forward slowly.","esp": "Nosotros nos arrastraremos lentamente."},
+            "condicional":  {"ing": "That sound would creep anyone out.","esp": "Ese sonido pondría nervioso a cualquiera."}
+        }
+    }
+]
+
+
+BLOQUE_IRREGULARES_5 = [
+    {
+        "ing_inf": "dwell", "esp_inf": "residir",
+        "pasado_ing": "dwelt", "pasado_esp": "residió",
+        "participio_ing": "dwelt", "participio_esp": "residido",
+        "gerundio_ing": "dwelling", "gerundio_esp": "residiendo",
+        "oraciones": {
+            "infinitivo":   {"ing": "I dwell on the past too much.","esp": "Yo me quedo pensando en el pasado demasiado."},
+            "pasadoSimple": {"ing": "You dwelt on that point.","esp": "Tú insististe en ese punto."},
+            "participio":   {"ing": "She has dwelt on negative thoughts.","esp": "Ella se ha quedado pensando en pensamientos negativos."},
+            "gerundio":     {"ing": "They are dwelling on the issue.","esp": "Ellos están insistiendo en el tema."},
+            "futuro":       {"ing": "We will dwell in peace.","esp": "Nosotros viviremos en paz."},
+            "condicional":  {"ing": "That memory would dwell forever.","esp": "Ese recuerdo perduraría para siempre."}
+        }
+    },
+    {
+        "ing_inf": "feed", "esp_inf": "alimentar",
+        "pasado_ing": "fed", "pasado_esp": "alimentó",
+        "participio_ing": "fed", "participio_esp": "alimentado",
+        "gerundio_ing": "feeding", "gerundio_esp": "alimentando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I feed my dog twice daily.","esp": "Yo alimento a mi perro dos veces al día."},
+            "pasadoSimple": {"ing": "You fed the baby at midnight.","esp": "Tú alimentaste al bebé a medianoche."},
+            "participio":   {"ing": "She has fed the hungry.","esp": "Ella ha alimentado a los hambrientos."},
+            "gerundio":     {"ing": "They are feeding the animals.","esp": "Ellos están alimentando a los animales."},
+            "futuro":       {"ing": "We will feed the family.","esp": "Nosotros alimentaremos a la familia."},
+            "condicional":  {"ing": "That data would feed the model.","esp": "Esos datos alimentarían el modelo."}
+        }
+    },
+    {
+        "ing_inf": "fling", "esp_inf": "lanzar",
+        "pasado_ing": "flung", "pasado_esp": "lanzó",
+        "participio_ing": "flung", "participio_esp": "lanzado",
+        "gerundio_ing": "flinging", "gerundio_esp": "lanzando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I fling myself into work.","esp": "Yo me lanzo al trabajo."},
+            "pasadoSimple": {"ing": "You flung the door open.","esp": "Tú lanzaste la puerta abierta."},
+            "participio":   {"ing": "She has flung caution aside.","esp": "Ella ha dejado la prudencia de lado."},
+            "gerundio":     {"ing": "They are flinging stones.","esp": "Ellos están lanzando piedras."},
+            "futuro":       {"ing": "We will fling the frisbee.","esp": "Nosotros lanzaremos el frisbee."},
+            "condicional":  {"ing": "That catapult would fling far.","esp": "Esa catapulta lanzaría lejos."}
+        }
+    },
+    {
+        "ing_inf": "forsake", "esp_inf": "abandonar",
+        "pasado_ing": "forsook", "pasado_esp": "abandonó",
+        "participio_ing": "forsaken", "participio_esp": "abandonado",
+        "gerundio_ing": "forsaking", "gerundio_esp": "abandonando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I forsake bad habits yearly.","esp": "Yo abandono malos hábitos cada año."},
+            "pasadoSimple": {"ing": "You forsook your old ways.","esp": "Tú abandonaste tus viejas costumbres."},
+            "participio":   {"ing": "She has forsaken her fears.","esp": "Ella ha abandonado sus miedos."},
+            "gerundio":     {"ing": "They are forsaking tradition.","esp": "Ellos están abandonando la tradición."},
+            "futuro":       {"ing": "We will forsake nothing.","esp": "Nosotros no abandonaremos nada."},
+            "condicional":  {"ing": "That would forsake all hope.","esp": "Eso abandonaría toda esperanza."}
+        }
+    },
+    {
+        "ing_inf": "grind", "esp_inf": "moler",
+        "pasado_ing": "ground", "pasado_esp": "molió",
+        "participio_ing": "ground", "participio_esp": "molido",
+        "gerundio_ing": "grinding", "gerundio_esp": "moliendo",
+        "oraciones": {
+            "infinitivo":   {"ing": "I grind coffee beans daily.","esp": "Yo muelo granos de café a diario."},
+            "pasadoSimple": {"ing": "You ground the spices.","esp": "Tú moliste las especias."},
+            "participio":   {"ing": "She has ground the wheat.","esp": "Ella ha molido el trigo."},
+            "gerundio":     {"ing": "They are grinding the meat.","esp": "Ellos están moliendo la carne."},
+            "futuro":       {"ing": "We will grind the corn.","esp": "Nosotros moleremos el maíz."},
+            "condicional":  {"ing": "That mill would grind quickly.","esp": "Ese molino molería rápido."}
+        }
+    },
+    {
+        "ing_inf": "heave", "esp_inf": "empujar",
+        "pasado_ing": "heaved", "pasado_esp": "empujó",
+        "participio_ing": "heaved", "participio_esp": "empujado",
+        "gerundio_ing": "heaving", "gerundio_esp": "empujando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I heave a sigh of relief.","esp": "Yo suspiro de alivio."},
+            "pasadoSimple": {"ing": "You heaved the box up.","esp": "Tú levantaste la caja."},
+            "participio":   {"ing": "She has heaved the anchor.","esp": "Ella ha levantado el ancla."},
+            "gerundio":     {"ing": "They are heaving bags around.","esp": "Ellos están moviendo bolsas."},
+            "futuro":       {"ing": "We will heave the trash out.","esp": "Nosotros sacaremos la basura."},
+            "condicional":  {"ing": "That wave would heave the boat.","esp": "Esa ola zarandearía el barco."}
+        }
+    },
+    {
+        "ing_inf": "knit", "esp_inf": "tejer",
+        "pasado_ing": "knitted", "pasado_esp": "tejió",
+        "participio_ing": "knitted", "participio_esp": "tejido",
+        "gerundio_ing": "knitting", "gerundio_esp": "tejiendo",
+        "oraciones": {
+            "infinitivo":   {"ing": "I knit scarves for gifts.","esp": "Yo tejo bufandas para regalos."},
+            "pasadoSimple": {"ing": "You knitted that sweater.","esp": "Tú tejiste ese suéter."},
+            "participio":   {"ing": "She has knitted baby clothes.","esp": "Ella ha tejido ropa de bebé."},
+            "gerundio":     {"ing": "They are knitting together.","esp": "Ellos están tejiendo juntos."},
+            "futuro":       {"ing": "We will knit all winter.","esp": "Nosotros tejeremos todo el invierno."},
+            "condicional":  {"ing": "That yarn would knit beautifully.","esp": "Ese hilo tejería hermosamente."}
+        }
+    },
+    {
+        "ing_inf": "leap", "esp_inf": "saltar",
+        "pasado_ing": "leapt", "pasado_esp": "saltó",
+        "participio_ing": "leapt", "participio_esp": "saltado",
+        "gerundio_ing": "leaping", "gerundio_esp": "saltando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I leap at new opportunities.","esp": "Yo aprovecho nuevas oportunidades."},
+            "pasadoSimple": {"ing": "You leapt over the puddle.","esp": "Tú saltaste el charco."},
+            "participio":   {"ing": "The frog has leapt into the pond.","esp": "La rana ha saltado al estanque."},
+            "gerundio":     {"ing": "They are leaping for joy.","esp": "Ellos están saltando de alegría."},
+            "futuro":       {"ing": "We will leap at the chance.","esp": "Nosotros aprovecharemos la oportunidad."},
+            "condicional":  {"ing": "That deer would leap high.","esp": "Ese ciervo saltaría alto."}
+        }
+    },
+    {
+        "ing_inf": "lean", "esp_inf": "apoyarse",
+        "pasado_ing": "leant/leaned", "pasado_esp": "se apoyó",
+        "participio_ing": "leant/leaned", "participio_esp": "apoyado",
+        "gerundio_ing": "leaning", "gerundio_esp": "apoyándose",
+        "futuro_esp": "se apoyará", "cond_esp": "se apoyaría",
+        "oraciones": {
+            "infinitivo":   {"ing": "I lean toward the left politically.","esp": "Yo me inclino hacia la izquierda políticamente."},
+            "pasadoSimple": {"ing": "You leant against the wall.","esp": "Tú te apoyaste contra la pared."},
+            "participio":   {"ing": "She has leant on her family.","esp": "Ella se ha apoyado en su familia."},
+            "gerundio":     {"ing": "They are leaning out the window.","esp": "Ellos se están asomando por la ventana."},
+            "futuro":       {"ing": "We will lean into the curve.","esp": "Nosotros nos inclinaremos en la curva."},
+            "condicional":  {"ing": "That ladder would lean dangerously.","esp": "Esa escalera se inclinaría peligrosamente."}
+        }
+    },
+    {
+        "ing_inf": "learn", "esp_inf": "aprender",
+        "pasado_ing": "learned/learnt", "pasado_esp": "aprendió",
+        "participio_ing": "learned/learnt", "participio_esp": "aprendido",
+        "gerundio_ing": "learning", "gerundio_esp": "aprendiendo",
+        "oraciones": {
+            "infinitivo":   {"ing": "I learn something new daily.","esp": "Yo aprendo algo nuevo cada día."},
+            "pasadoSimple": {"ing": "You learned to cook last year.","esp": "Tú aprendiste a cocinar el año pasado."},
+            "participio":   {"ing": "She has learned three languages.","esp": "Ella ha aprendido tres idiomas."},
+            "gerundio":     {"ing": "They are learning quickly.","esp": "Ellos están aprendiendo rápido."},
+            "futuro":       {"ing": "We will learn from mistakes.","esp": "Nosotros aprenderemos de los errores."},
+            "condicional":  {"ing": "That experience would teach anyone to learn.","esp": "Esa experiencia enseñaría a cualquiera a aprender."}
+        }
+    },
+    {
+        "ing_inf": "leave", "esp_inf": "dejar",
+        "pasado_ing": "left", "pasado_esp": "dejó",
+        "participio_ing": "left", "participio_esp": "dejado",
+        "gerundio_ing": "leaving", "gerundio_esp": "dejando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I leave work at six.","esp": "Yo salgo del trabajo a las seis."},
+            "pasadoSimple": {"ing": "You left your keys behind.","esp": "Tú dejaste tus llaves atrás."},
+            "participio":   {"ing": "She has left for the day.","esp": "Ella se ha ido por hoy."},
+            "gerundio":     {"ing": "They are leaving now.","esp": "Ellos se están yendo ahora."},
+            "futuro":       {"ing": "We will leave early.","esp": "Nosotros saldremos temprano."},
+            "condicional":  {"ing": "That would leave a mark.","esp": "Eso dejaría una marca."}
+        }
+    },
+    {
+        "ing_inf": "lend", "esp_inf": "prestar",
+        "pasado_ing": "lent", "pasado_esp": "prestó",
+        "participio_ing": "lent", "participio_esp": "prestado",
+        "gerundio_ing": "lending", "gerundio_esp": "prestando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I lend books to neighbors.","esp": "Yo presto libros a vecinos."},
+            "pasadoSimple": {"ing": "You lent me your car.","esp": "Tú me prestaste tu coche."},
+            "participio":   {"ing": "She has lent her support.","esp": "Ella ha prestado su apoyo."},
+            "gerundio":     {"ing": "They are lending money.","esp": "Ellos están prestando dinero."},
+            "futuro":       {"ing": "We will lend a hand.","esp": "Nosotros echaremos una mano."},
+            "condicional":  {"ing": "That bank would lend easily.","esp": "Ese banco prestaría fácilmente."}
+        }
+    },
+    {
+        "ing_inf": "mislead", "esp_inf": "engañar",
+        "pasado_ing": "misled", "pasado_esp": "engañó",
+        "participio_ing": "misled", "participio_esp": "engañado",
+        "gerundio_ing": "misleading", "gerundio_esp": "engañando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I mislead no one intentionally.","esp": "Yo no engaño a nadie a propósito."},
+            "pasadoSimple": {"ing": "You misled me yesterday.","esp": "Tú me engañaste ayer."},
+            "participio":   {"ing": "She has misled the public.","esp": "Ella ha engañado al público."},
+            "gerundio":     {"ing": "They are misleading voters.","esp": "Ellos están engañando a los votantes."},
+            "futuro":       {"ing": "We will mislead no one.","esp": "Nosotros no engañaremos a nadie."},
+            "condicional":  {"ing": "That label would mislead anyone.","esp": "Esa etiqueta engañaría a cualquiera."}
+        }
+    },
+    {
+        "ing_inf": "mistake", "esp_inf": "confundir",
+        "pasado_ing": "mistook", "pasado_esp": "confundió",
+        "participio_ing": "mistaken", "participio_esp": "confundido",
+        "gerundio_ing": "mistaking", "gerundio_esp": "confundiendo",
+        "oraciones": {
+            "infinitivo":   {"ing": "I mistake her for her sister.","esp": "Yo la confundo con su hermana."},
+            "pasadoSimple": {"ing": "You mistook the address.","esp": "Tú confundiste la dirección."},
+            "participio":   {"ing": "She has mistaken the date.","esp": "Ella ha confundido la fecha."},
+            "gerundio":     {"ing": "They are mistaking noise for music.","esp": "Ellos están confundiendo ruido con música."},
+            "futuro":       {"ing": "We will not mistake kindness for weakness.","esp": "Nosotros no confundiremos amabilidad con debilidad."},
+            "condicional":  {"ing": "That shadow would mistake anyone.","esp": "Esa sombra confundiría a cualquiera."}
+        }
+    },
+    {
+        "ing_inf": "outgrow", "esp_inf": "superar",
+        "pasado_ing": "outgrew", "pasado_esp": "superó",
+        "participio_ing": "outgrown", "participio_esp": "superado",
+        "gerundio_ing": "outgrowing", "gerundio_esp": "superando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I outgrow clothes quickly.","esp": "Yo supero la ropa rápidamente."},
+            "pasadoSimple": {"ing": "You outgrew your fears.","esp": "Tú superaste tus miedos."},
+            "participio":   {"ing": "She has outgrown the hobby.","esp": "Ella ha superado el pasatiempo."},
+            "gerundio":     {"ing": "They are outgrowing the house.","esp": "Ellos están quedándose sin espacio en la casa."},
+            "futuro":       {"ing": "We will outgrow this phase.","esp": "Nosotros superaremos esta fase."},
+            "condicional":  {"ing": "That trend would outgrow itself.","esp": "Esa tendencia se extinguiría sola."}
+        }
+    },
+    {
+        "ing_inf": "overdo", "esp_inf": "exagerar",
+        "pasado_ing": "overdid", "pasado_esp": "exageró",
+        "participio_ing": "overdone", "participio_esp": "exagerado",
+        "gerundio_ing": "overdoing", "gerundio_esp": "exagerando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I overdo it at the gym sometimes.","esp": "Yo me exijo demasiado en el gimnasio a veces."},
+            "pasadoSimple": {"ing": "You overdid the spices.","esp": "Tú te excediste con las especias."},
+            "participio":   {"ing": "She has overdone the workout.","esp": "Ella se ha excedido con el ejercicio."},
+            "gerundio":     {"ing": "They are overdoing the celebrations.","esp": "Ellos están exagerando las celebraciones."},
+            "futuro":       {"ing": "We will not overdo the decorations.","esp": "Nosotros no exageraremos las decoraciones."},
+            "condicional":  {"ing": "That joke would overdo it.","esp": "Esa broma exageraría."}
+        }
+    },
+    {
+        "ing_inf": "overcome", "esp_inf": "superar",
+        "pasado_ing": "overcame", "pasado_esp": "superó",
+        "participio_ing": "overcome", "participio_esp": "superado",
+        "gerundio_ing": "overcoming", "gerundio_esp": "superando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I overcome challenges daily.","esp": "Yo supero retos a diario."},
+            "pasadoSimple": {"ing": "You overcame your fear.","esp": "Tú superaste tu miedo."},
+            "participio":   {"ing": "She has overcome the obstacles.","esp": "Ella ha superado los obstáculos."},
+            "gerundio":     {"ing": "They are overcoming difficulties.","esp": "Ellos están superando dificultades."},
+            "futuro":       {"ing": "We will overcome this together.","esp": "Nosotros superaremos esto juntos."},
+            "condicional":  {"ing": "That obstacle would overcome anyone.","esp": "Ese obstáculo superaría a cualquiera."}
+        }
+    },
+    {
+        "ing_inf": "overeat", "esp_inf": "atracarse",
+        "pasado_ing": "overate", "pasado_esp": "se atracó",
+        "participio_ing": "overeaten", "participio_esp": "atracado",
+        "gerundio_ing": "overeating", "gerundio_esp": "atracándose",
+        "futuro_esp": "se atracará", "cond_esp": "se atracaría",
+        "oraciones": {
+            "infinitivo":   {"ing": "I overeat on holidays sometimes.","esp": "Yo como de más en las fiestas a veces."},
+            "pasadoSimple": {"ing": "You overate at the buffet.","esp": "Tú comiste de más en el bufé."},
+            "participio":   {"ing": "She has overeaten badly.","esp": "Ella ha comido demasiado."},
+            "gerundio":     {"ing": "They are overeating constantly.","esp": "Ellos están comiendo en exceso constantemente."},
+            "futuro":       {"ing": "We will overeat at dinner.","esp": "Nosotros comeremos de más en la cena."},
+            "condicional":  {"ing": "That feast would overeat anyone.","esp": "Esa fiesta haría que cualquiera comiera de más."}
+        }
+    },
+    {
+        "ing_inf": "overhear", "esp_inf": "oír",
+        "pasado_ing": "overheard", "pasado_esp": "oyó",
+        "participio_ing": "overheard", "participio_esp": "oído",
+        "gerundio_ing": "overhearing", "gerundio_esp": "oyendo",
+        "oraciones": {
+            "infinitivo":   {"ing": "I overhear conversations on the bus.","esp": "Yo oigo conversaciones en el autobús."},
+            "pasadoSimple": {"ing": "You overheard their secret.","esp": "Tú oíste su secreto por casualidad."},
+            "participio":   {"ing": "She has overheard the gossip.","esp": "Ella ha oído el chisme por casualidad."},
+            "gerundio":     {"ing": "They are overhearing the meeting.","esp": "Ellos están oyendo la reunión sin querer."},
+            "futuro":       {"ing": "We will overhear their conversation.","esp": "Nosotros oiremos su conversación sin querer."},
+            "condicional":  {"ing": "That microphone would overhear everything.","esp": "Ese micrófono oiría todo."}
+        }
+    },
+    {
+        "ing_inf": "overlay", "esp_inf": "superponer",
+        "pasado_ing": "overlaid", "pasado_esp": "superpuso",
+        "participio_ing": "overlaid", "participio_esp": "superpuesto",
+        "gerundio_ing": "overlaying", "gerundio_esp": "superponiendo",
+        "futuro_esp": "superpondrá", "cond_esp": "superpondría",
+        "oraciones": {
+            "infinitivo":   {"ing": "I overlay text on images.","esp": "Yo superpongo texto en imágenes."},
+            "pasadoSimple": {"ing": "You overlaid the maps yesterday.","esp": "Tú superpusiste los mapas ayer."},
+            "participio":   {"ing": "She has overlaid the patterns.","esp": "Ella ha superpuesto los patrones."},
+            "gerundio":     {"ing": "They are overlaying the videos.","esp": "Ellos están superponiendo los videos."},
+            "futuro":       {"ing": "We will overlay the images later.","esp": "Nosotros superpondremos las imágenes después."},
+            "condicional":  {"ing": "That texture would overlay nicely.","esp": "Esa textura se superpondría bien."}
+        }
+    },
+    {
+        "ing_inf": "override", "esp_inf": "anular",
+        "pasado_ing": "overrode", "pasado_esp": "anuló",
+        "participio_ing": "overridden", "participio_esp": "anulado",
+        "gerundio_ing": "overriding", "gerundio_esp": "anulando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I override the default settings.","esp": "Yo anulo la configuración predeterminada."},
+            "pasadoSimple": {"ing": "You overrode my decision.","esp": "Tú anulaste mi decisión."},
+            "participio":   {"ing": "She has overridden the system.","esp": "Ella ha anulado el sistema."},
+            "gerundio":     {"ing": "They are overriding the rules.","esp": "Ellos están anulando las reglas."},
+            "futuro":       {"ing": "We will override the veto.","esp": "Nosotros anularremos el veto."},
+            "condicional":  {"ing": "That command would override everything.","esp": "Ese comando anularía todo."}
+        }
+    },
+    {
+        "ing_inf": "oversleep", "esp_inf": "dormirse de más",
+        "pasado_ing": "overslept", "pasado_esp": "se durmió de más",
+        "participio_ing": "overslept", "participio_esp": "dormido de más",
+        "gerundio_ing": "oversleeping", "gerundio_esp": "durmiéndose de más",
+        "futuro_esp": "se dormirá de más", "cond_esp": "se dormiría de más",
+        "oraciones": {
+            "infinitivo":   {"ing": "I oversleep on weekends sometimes.","esp": "Yo duermo de más los fines de semana a veces."},
+            "pasadoSimple": {"ing": "You overslept and missed class.","esp": "Tú dormiste de más y perdiste clase."},
+            "participio":   {"ing": "She has overslept three times.","esp": "Ella ha dormido de más tres veces."},
+            "gerundio":     {"ing": "They are oversleeping the meeting.","esp": "Ellos están durmiendo de más para la reunión."},
+            "futuro":       {"ing": "We will oversleep if tired.","esp": "Nosotros dormiremos de más si estamos cansados."},
+            "condicional":  {"ing": "That alarm would oversleep anyone.","esp": "Esa alarma haría que cualquiera duerma de más."}
+        }
+    },
+    {
+        "ing_inf": "overtake", "esp_inf": "adelantar",
+        "pasado_ing": "overtook", "pasado_esp": "adelantó",
+        "participio_ing": "overtaken", "participio_esp": "adelantado",
+        "gerundio_ing": "overtaking", "gerundio_esp": "adelantando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I overtake slower cars carefully.","esp": "Yo adelanto coches más lentos con cuidado."},
+            "pasadoSimple": {"ing": "You overtook the truck.","esp": "Tú adelantaste al camión."},
+            "participio":   {"ing": "She has overtaken the competition.","esp": "Ella ha sobrepasado a la competencia."},
+            "gerundio":     {"ing": "They are overtaking us fast.","esp": "Ellos nos están adelantando rápido."},
+            "futuro":       {"ing": "We will overtake the leader.","esp": "Nosotros adelantaremos al líder."},
+            "condicional":  {"ing": "That wave would overtake the boat.","esp": "Esa ola sobrepasaría el barco."}
+        }
+    },
+    {
+        "ing_inf": "overthrow", "esp_inf": "derrocar",
+        "pasado_ing": "overthrew", "pasado_esp": "derrocó",
+        "participio_ing": "overthrown", "participio_esp": "derrocado",
+        "gerundio_ing": "overthrowing", "gerundio_esp": "derrocando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I overthrow old habits yearly.","esp": "Yo derrocó viejas costumbres cada año."},
+            "pasadoSimple": {"ing": "You overthrew the dictator.","esp": "Tú derrocaste al dictador."},
+            "participio":   {"ing": "She has overthrown the regime.","esp": "Ella ha derrocado al régimen."},
+            "gerundio":     {"ing": "They are overthrowing the king.","esp": "Ellos están derrocando al rey."},
+            "futuro":       {"ing": "We will overthrow the corrupt leader.","esp": "Nosotros derrocaremos al líder corrupto."},
+            "condicional":  {"ing": "That revolution would overthrow everything.","esp": "Esa revolución derrocaría todo."}
+        }
+    },
+    {
+        "ing_inf": "partake", "esp_inf": "participar",
+        "pasado_ing": "partook", "pasado_esp": "participó",
+        "participio_ing": "partaken", "participio_esp": "participado",
+        "gerundio_ing": "partaking", "gerundio_esp": "participando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I partake in family dinners.","esp": "Yo participo en cenas familiares."},
+            "pasadoSimple": {"ing": "You partook in the feast.","esp": "Tú participaste en el festín."},
+            "participio":   {"ing": "She has partaken of the meal.","esp": "Ella ha participado de la comida."},
+            "gerundio":     {"ing": "They are partaking in the ceremony.","esp": "Ellos están participando en la ceremonia."},
+            "futuro":       {"ing": "We will partake in the workshop.","esp": "Nosotros participaremos en el taller."},
+            "condicional":  {"ing": "That wine would partake of refinement.","esp": "Ese vino participaría de refinamiento."}
+        }
+    },
+    {
+        "ing_inf": "pay", "esp_inf": "pagar",
+        "pasado_ing": "paid", "pasado_esp": "pagó",
+        "participio_ing": "paid", "participio_esp": "pagado",
+        "gerundio_ing": "paying", "gerundio_esp": "pagando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I pay my bills on time.","esp": "Yo pago mis cuentas a tiempo."},
+            "pasadoSimple": {"ing": "You paid too much.","esp": "Tú pagaste demasiado."},
+            "participio":   {"ing": "She has paid off the loan.","esp": "Ella ha pagado el préstamo."},
+            "gerundio":     {"ing": "They are paying attention.","esp": "Ellos están prestando atención."},
+            "futuro":       {"ing": "We will pay in cash.","esp": "Nosotros pagaremos en efectivo."},
+            "condicional":  {"ing": "That investment would pay off.","esp": "Esa inversión valdría la pena."}
+        }
+    },
+    {
+        "ing_inf": "plead", "esp_inf": "suplicar",
+        "pasado_ing": "pleaded/pled", "pasado_esp": "suplicó",
+        "participio_ing": "pleaded/pled", "participio_esp": "suplicado",
+        "gerundio_ing": "pleading", "gerundio_esp": "suplicando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I plead for mercy sometimes.","esp": "Yo suplico clemencia a veces."},
+            "pasadoSimple": {"ing": "You pleaded your case well.","esp": "Tú defendiste tu caso bien."},
+            "participio":   {"ing": "She has pleaded not guilty.","esp": "Ella ha declarado no culpable."},
+            "gerundio":     {"ing": "They are pleading for help.","esp": "Ellos están suplicando ayuda."},
+            "futuro":       {"ing": "We will plead with the judge.","esp": "Nosotros rogaremos al juez."},
+            "condicional":  {"ing": "That attorney would plead well.","esp": "Ese abogado defendería bien."}
+        }
+    },
+    {
+        "ing_inf": "preset", "esp_inf": "preestablecer",
+        "pasado_ing": "preset", "pasado_esp": "preestableció",
+        "participio_ing": "preset", "participio_esp": "preestablecido",
+        "gerundio_ing": "presetting", "gerundio_esp": "preestableciendo",
+        "futuro_esp": "preestablecerá", "cond_esp": "preestablecería",
+        "oraciones": {
+            "infinitivo":   {"ing": "I preset the alarm clock nightly.","esp": "Yo preestablezco la alarma cada noche."},
+            "pasadoSimple": {"ing": "You preset the temperature.","esp": "Tú preestableciste la temperatura."},
+            "participio":   {"ing": "She has preset the options.","esp": "Ella ha preestablecido las opciones."},
+            "gerundio":     {"ing": "They are presetting the controls.","esp": "Ellos están preestableciendo los controles."},
+            "futuro":       {"ing": "We will preset the defaults.","esp": "Nosotros preestableceremos los predeterminados."},
+            "condicional":  {"ing": "That timer would preset automatically.","esp": "Ese temporizador se preestablecería automáticamente."}
+        }
+    },
+    {
+        "ing_inf": "prove", "esp_inf": "probar",
+        "pasado_ing": "proved", "pasado_esp": "probó",
+        "participio_ing": "proven", "participio_esp": "probado",
+        "gerundio_ing": "proving", "gerundio_esp": "probando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I prove theorems in math.","esp": "Yo pruebo teoremas en matemáticas."},
+            "pasadoSimple": {"ing": "You proved your point.","esp": "Tú probaste tu punto."},
+            "participio":   {"ing": "She has proven herself.","esp": "Ella se ha demostrado a sí misma."},
+            "gerundio":     {"ing": "They are proving their theory.","esp": "Ellos están probando su teoría."},
+            "futuro":       {"ing": "We will prove the hypothesis.","esp": "Nosotros probaremos la hipótesis."},
+            "condicional":  {"ing": "That evidence would prove anything.","esp": "Esa evidencia probaría cualquier cosa."}
+        }
+    },
+    {
+        "ing_inf": "quit", "esp_inf": "dejar",
+        "pasado_ing": "quit", "pasado_esp": "dejó",
+        "participio_ing": "quit", "participio_esp": "dejado",
+        "gerundio_ing": "quitting", "gerundio_esp": "dejando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I quit smoking last year.","esp": "Yo dejé de fumar el año pasado."},
+            "pasadoSimple": {"ing": "You quit the job.","esp": "Tú renunciaste al trabajo."},
+            "participio":   {"ing": "She has quit smoking.","esp": "Ella ha dejado de fumar."},
+            "gerundio":     {"ing": "They are quitting early today.","esp": "Ellos están saliendo temprano hoy."},
+            "futuro":       {"ing": "We will quit when tired.","esp": "Nosotros pararemos cuando estemos cansados."},
+            "condicional":  {"ing": "That habit would quit easily.","esp": "Ese hábito se dejaría fácilmente."}
+        }
+    }
+]
+
+
+BLOQUE_IRREGULARES_6 = [
+    {
+        "ing_inf": "rebuild", "esp_inf": "reconstruir",
+        "pasado_ing": "rebuilt", "pasado_esp": "reconstruyó",
+        "participio_ing": "rebuilt", "participio_esp": "reconstruido",
+        "gerundio_ing": "rebuilding", "gerundio_esp": "reconstruyendo",
+        "oraciones": {
+            "infinitivo":   {"ing": "I rebuild old furniture as a hobby.","esp": "Yo reconstruyo muebles viejos como pasatiempo."},
+            "pasadoSimple": {"ing": "You rebuilt the engine.","esp": "Tú reconstruiste el motor."},
+            "participio":   {"ing": "She has rebuilt her life.","esp": "Ella ha reconstruido su vida."},
+            "gerundio":     {"ing": "They are rebuilding the bridge.","esp": "Ellos están reconstruyendo el puente."},
+            "futuro":       {"ing": "We will rebuild after the storm.","esp": "Nosotros reconstruiremos después de la tormenta."},
+            "condicional":  {"ing": "That trust would rebuild slowly.","esp": "Esa confianza se reconstruiría lentamente."}
+        }
+    },
+    {
+        "ing_inf": "recast", "esp_inf": "redistribuir",
+        "pasado_ing": "recast", "pasado_esp": "redistribuyó",
+        "participio_ing": "recast", "participio_esp": "redistribuido",
+        "gerundio_ing": "recasting", "gerundio_esp": "redistribuyendo",
+        "oraciones": {
+            "infinitivo":   {"ing": "I recast the vote to another candidate.","esp": "Yo redistribuyo el voto a otro candidato."},
+            "pasadoSimple": {"ing": "You recast your ballot yesterday.","esp": "Tú redistribuiste tu papeleta ayer."},
+            "participio":   {"ing": "She has recast the role.","esp": "Ella ha redistribuido el papel."},
+            "gerundio":     {"ing": "They are recasting the play.","esp": "Ellos están redistribuyendo la obra."},
+            "futuro":       {"ing": "We will recast the decision.","esp": "Nosotros redistribuiremos la decisión."},
+            "condicional":  {"ing": "That would recast the vote.","esp": "Eso redistribuiría el voto."}
+        }
+    },
+    {
+        "ing_inf": "redo", "esp_inf": "rehacer",
+        "pasado_ing": "redid", "pasado_esp": "rehízo",
+        "participio_ing": "redone", "participio_esp": "rehecho",
+        "gerundio_ing": "redoing", "gerundio_esp": "rehaciendo",
+        "futuro_esp": "rehará", "cond_esp": "reharía",
+        "oraciones": {
+            "infinitivo":   {"ing": "I redo my homework until perfect.","esp": "Yo rehago mi tarea hasta que quede perfecta."},
+            "pasadoSimple": {"ing": "You redid the test.","esp": "Tú rehiciste el examen."},
+            "participio":   {"ing": "She has redone the work.","esp": "Ella ha rehecho el trabajo."},
+            "gerundio":     {"ing": "They are redoing the kitchen.","esp": "Ellos están rehaciendo la cocina."},
+            "futuro":       {"ing": "We will redo the budget.","esp": "Nosotros reharemos el presupuesto."},
+            "condicional":  {"ing": "That would redo the entire project.","esp": "Eso rehará todo el proyecto."}
+        }
+    },
+    {
+        "ing_inf": "relay", "esp_inf": "transmitir",
+        "pasado_ing": "relayed", "pasado_esp": "transmitió",
+        "participio_ing": "relayed", "participio_esp": "transmitido",
+        "gerundio_ing": "relaying", "gerundio_esp": "transmitiendo",
+        "oraciones": {
+            "infinitivo":   {"ing": "I relay messages at work.","esp": "Yo transmito mensajes en el trabajo."},
+            "pasadoSimple": {"ing": "You relayed the information.","esp": "Tú transmitiste la información."},
+            "participio":   {"ing": "She has relayed the news.","esp": "Ella ha transmitido la noticia."},
+            "gerundio":     {"ing": "They are relaying signals.","esp": "Ellos están transmitiendo señales."},
+            "futuro":       {"ing": "We will relay the message.","esp": "Nosotros transmitiremos el mensaje."},
+            "condicional":  {"ing": "That station would relay signals.","esp": "Esa estación transmitiría señales."}
+        }
+    },
+    {
+        "ing_inf": "remake", "esp_inf": "rehacer",
+        "pasado_ing": "remade", "pasado_esp": "rehízo",
+        "participio_ing": "remade", "participio_esp": "rehecho",
+        "gerundio_ing": "remaking", "gerundio_esp": "rehaciendo",
+        "futuro_esp": "rehará", "cond_esp": "reharía",
+        "oraciones": {
+            "infinitivo":   {"ing": "I remake recipes with healthier ingredients.","esp": "Yo rehago recetas con ingredientes más sanos."},
+            "pasadoSimple": {"ing": "You remade the movie.","esp": "Tú rehiciste la película."},
+            "participio":   {"ing": "She has remade the dress.","esp": "Ella ha rehecho el vestido."},
+            "gerundio":     {"ing": "They are remaking the classic film.","esp": "Ellos están rehaciendo la película clásica."},
+            "futuro":       {"ing": "We will remake the recipe.","esp": "Nosotros reharemos la receta."},
+            "condicional":  {"ing": "That sequel would remake the success.","esp": "Esa secuela replicaría el éxito."}
+        }
+    },
+    {
+        "ing_inf": "repay", "esp_inf": "reembolsar",
+        "pasado_ing": "repaid", "pasado_esp": "reembolsó",
+        "participio_ing": "repaid", "participio_esp": "reembolsado",
+        "gerundio_ing": "repaying", "gerundio_esp": "reembolsando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I repay loans on time.","esp": "Yo reembolso préstamos a tiempo."},
+            "pasadoSimple": {"ing": "You repaid the debt.","esp": "Tú reembolsaste la deuda."},
+            "participio":   {"ing": "She has repaid her kindness.","esp": "Ella ha reembolsado su amabilidad."},
+            "gerundio":     {"ing": "They are repaying the favor.","esp": "Ellos están reembolsando el favor."},
+            "futuro":       {"ing": "We will repay the favor.","esp": "Nosotros reembolsaremos el favor."},
+            "condicional":  {"ing": "That kindness would repay itself.","esp": "Esa amabilidad se pagaría sola."}
+        }
+    },
+    {
+        "ing_inf": "reset", "esp_inf": "restablecer",
+        "pasado_ing": "reset", "pasado_esp": "restableció",
+        "participio_ing": "reset", "participio_esp": "restablecido",
+        "gerundio_ing": "resetting", "gerundio_esp": "restableciendo",
+        "futuro_esp": "restablecerá", "cond_esp": "restablecería",
+        "oraciones": {
+            "infinitivo":   {"ing": "I reset the alarm every night.","esp": "Yo restablezco la alarma cada noche."},
+            "pasadoSimple": {"ing": "You reset the device.","esp": "Tú restableciste el dispositivo."},
+            "participio":   {"ing": "She has reset the counter.","esp": "Ella ha restablecido el contador."},
+            "gerundio":     {"ing": "They are resetting the system.","esp": "Ellos están restableciendo el sistema."},
+            "futuro":       {"ing": "We will reset the defaults.","esp": "Nosotros restableceremos los valores predeterminados."},
+            "condicional":  {"ing": "That button would reset everything.","esp": "Ese botón restablecería todo."}
+        }
+    },
+    {
+        "ing_inf": "retell", "esp_inf": "recontar",
+        "pasado_ing": "retold", "pasado_esp": "recontó",
+        "participio_ing": "retold", "participio_esp": "recontado",
+        "gerundio_ing": "retelling", "gerundio_esp": "recontando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I retell stories to my kids.","esp": "Yo reconto historias a mis hijos."},
+            "pasadoSimple": {"ing": "You retold the joke.","esp": "Tú recontaste el chiste."},
+            "participio":   {"ing": "She has retold the tale.","esp": "Ella ha recontado el cuento."},
+            "gerundio":     {"ing": "They are retelling the legend.","esp": "Ellos están recontando la leyenda."},
+            "futuro":       {"ing": "We will retell the story.","esp": "Nosotros recontaremos la historia."},
+            "condicional":  {"ing": "That tale would retell well.","esp": "Ese cuento se recontaría bien."}
+        }
+    },
+    {
+        "ing_inf": "rewrite", "esp_inf": "reescribir",
+        "pasado_ing": "rewrote", "pasado_esp": "reescribió",
+        "participio_ing": "rewritten", "participio_esp": "reescrito",
+        "gerundio_ing": "rewriting", "gerundio_esp": "reescribiendo",
+        "oraciones": {
+            "infinitivo":   {"ing": "I rewrite my drafts multiple times.","esp": "Yo reescribo mis borradores varias veces."},
+            "pasadoSimple": {"ing": "You rewrote the essay.","esp": "Tú reescribiste el ensayo."},
+            "participio":   {"ing": "She has rewritten the chapter.","esp": "Ella ha reescrito el capítulo."},
+            "gerundio":     {"ing": "They are rewriting the rules.","esp": "Ellos están reescribiendo las reglas."},
+            "futuro":       {"ing": "We will rewrite the code.","esp": "Nosotros reescribiremos el código."},
+            "condicional":  {"ing": "That law would rewrite history.","esp": "Esa ley reescribiría la historia."}
+        }
+    },
+    {
+        "ing_inf": "rid", "esp_inf": "librar",
+        "pasado_ing": "rid", "pasado_esp": "libró",
+        "participio_ing": "rid", "participio_esp": "librado",
+        "gerundio_ing": "ridding", "gerundio_esp": "librando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I rid the house of pests.","esp": "Yo libro la casa de plagas."},
+            "pasadoSimple": {"ing": "You rid yourself of doubts.","esp": "Tú te libraste de dudas."},
+            "participio":   {"ing": "She has rid herself of bad habits.","esp": "Ella se ha librado de malos hábitos."},
+            "gerundio":     {"ing": "They are ridding the garden of weeds.","esp": "Ellos están librando el jardín de maleza."},
+            "futuro":       {"ing": "We will rid the city of pollution.","esp": "Nosotros libraremos la ciudad de contaminación."},
+            "condicional":  {"ing": "That move would rid the problem.","esp": "Esa medida libraría del problema."}
+        }
+    },
+    {
+        "ing_inf": "rot", "esp_inf": "pudrirse",
+        "pasado_ing": "rotted", "pasado_esp": "se pudrió",
+        "participio_ing": "rotted", "participio_esp": "podrido",
+        "gerundio_ing": "rotting", "gerundio_esp": "pudriéndose",
+        "futuro_esp": "se pudrirá", "cond_esp": "se pudriría",
+        "oraciones": {
+            "infinitivo":   {"ing": "I let the wood rot for compost.","esp": "Yo dejo que la madera se pudra para compost."},
+            "pasadoSimple": {"ing": "You let the food rot.","esp": "Tú dejaste que la comida se pudriera."},
+            "participio":   {"ing": "The apple has rotted.","esp": "La manzana se ha podrido."},
+            "gerundio":     {"ing": "They are rotting in jail.","esp": "Ellos se están pudriendo en la cárcel."},
+            "futuro":       {"ing": "We will rot without exercise.","esp": "Nosotros nos pudriremos sin ejercicio."},
+            "condicional":  {"ing": "That food would rot quickly.","esp": "Esa comida se pudriría rápido."}
+        }
+    },
+    {
+        "ing_inf": "saw", "esp_inf": "serrar",
+        "pasado_ing": "sawed", "pasado_esp": "serrjó",
+        "participio_ing": "sawed", "participio_esp": "serrado",
+        "gerundio_ing": "sawing", "gerundio_esp": "serrando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I saw wood for the fireplace.","esp": "Yo serrucho madera para la chimenea."},
+            "pasadoSimple": {"ing": "You sawed the log yesterday.","esp": "Tú serrast el tronco ayer."},
+            "participio":   {"ing": "She has sawed the boards.","esp": "Ella ha serrado las tablas."},
+            "gerundio":     {"ing": "They are sawing the tree.","esp": "Ellos están serrando el árbol."},
+            "futuro":       {"ing": "We will saw the wood later.","esp": "Nosotros serrremos la madera después."},
+            "condicional":  {"ing": "That saw would cut easily.","esp": "Esa sierra cortaría fácilmente."}
+        }
+    },
+    {
+        "ing_inf": "send", "esp_inf": "enviar",
+        "pasado_ing": "sent", "pasado_esp": "envió",
+        "participio_ing": "sent", "participio_esp": "enviado",
+        "gerundio_ing": "sending", "gerundio_esp": "enviando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I send postcards from trips.","esp": "Yo envío postales desde viajes."},
+            "pasadoSimple": {"ing": "You sent the documents.","esp": "Tú enviaste los documentos."},
+            "participio":   {"ing": "She has sent the parcel.","esp": "Ella ha enviado el paquete."},
+            "gerundio":     {"ing": "They are sending troops.","esp": "Ellos están enviando tropas."},
+            "futuro":       {"ing": "We will send a reply.","esp": "Nosotros enviaremos una respuesta."},
+            "condicional":  {"ing": "That satellite would send signals.","esp": "Ese satélite enviaría señales."}
+        }
+    },
+    {
+        "ing_inf": "set", "esp_inf": "establecer",
+        "pasado_ing": "set", "pasado_esp": "estableció",
+        "participio_ing": "set", "participio_esp": "establecido",
+        "gerundio_ing": "setting", "gerundio_esp": "estableciendo",
+        "futuro_esp": "establecerá", "cond_esp": "establecería",
+        "oraciones": {
+            "infinitivo":   {"ing": "I set goals every January.","esp": "Yo establezco metas cada enero."},
+            "pasadoSimple": {"ing": "You set the time.","esp": "Tú estableciste el tiempo."},
+            "participio":   {"ing": "She has set the record straight.","esp": "Ella ha aclarado el asunto."},
+            "gerundio":     {"ing": "They are setting up the equipment.","esp": "Ellos están instalando el equipo."},
+            "futuro":       {"ing": "We will set the rules.","esp": "Nosotros estableceremos las reglas."},
+            "condicional":  {"ing": "That rule would set the standard.","esp": "Esa regla establecería el estándar."}
+        }
+    },
+    {
+        "ing_inf": "sew", "esp_inf": "coser",
+        "pasado_ing": "sewed", "pasado_esp": "cosió",
+        "participio_ing": "sewn", "participio_esp": "cosido",
+        "gerundio_ing": "sewing", "gerundio_esp": "cosiendo",
+        "oraciones": {
+            "infinitivo":   {"ing": "I sew buttons on shirts.","esp": "Yo cose botones en las camisas."},
+            "pasadoSimple": {"ing": "You sewed the dress yourself.","esp": "Tú cosiste el vestido tú misma."},
+            "participio":   {"ing": "She has sewn a quilt.","esp": "Ella ha cosido una colcha."},
+            "gerundio":     {"ing": "They are sewing costumes.","esp": "Ellos están cosiendo disfraces."},
+            "futuro":       {"ing": "We will sew the patches on.","esp": "Nosotros coseremos los parches."},
+            "condicional":  {"ing": "That machine would sew quickly.","esp": "Esa máquina cosería rápido."}
+        }
+    },
+    {
+        "ing_inf": "shed", "esp_inf": "derramar",
+        "pasado_ing": "shed", "pasado_esp": "derramó",
+        "participio_ing": "shed", "participio_esp": "derramado",
+        "gerundio_ing": "shedding", "gerundio_esp": "derramando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I shed a tear at the ending.","esp": "Yo derramo una lágrima al final."},
+            "pasadoSimple": {"ing": "You shed the old skin.","esp": "Tú derramaste la piel vieja."},
+            "participio":   {"ing": "The tree has shed its leaves.","esp": "El árbol ha derramado sus hojas."},
+            "gerundio":     {"ing": "They are shedding weight.","esp": "Ellos están perdiendo peso."},
+            "futuro":       {"ing": "We will shed light on this.","esp": "Nosotros aclararemos esto."},
+            "condicional":  {"ing": "That snake would shed soon.","esp": "Esa serpiente mudaría pronto."}
+        }
+    },
+    {
+        "ing_inf": "shine", "esp_inf": "brillar",
+        "pasado_ing": "shone", "pasado_esp": "brilló",
+        "participio_ing": "shone", "participio_esp": "brillado",
+        "gerundio_ing": "shining", "gerundio_esp": "brillando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I shine my shoes for work.","esp": "Yo brillo mis zapatos para el trabajo."},
+            "pasadoSimple": {"ing": "You shone the flashlight.","esp": "Tú enfocaste la linterna."},
+            "participio":   {"ing": "The sun has shone today.","esp": "El sol ha brillado hoy."},
+            "gerundio":     {"ing": "They are shining at school.","esp": "Ellos están brillando en la escuela."},
+            "futuro":       {"ing": "We will shine tomorrow.","esp": "Nosotros brillaremos mañana."},
+            "condicional":  {"ing": "That star would shine bright.","esp": "Esa estrella brillaría intensamente."}
+        }
+    },
+    {
+        "ing_inf": "shoe", "esp_inf": "calzar",
+        "pasado_ing": "shod", "pasado_esp": "calzó",
+        "participio_ing": "shod", "participio_esp": "calzado",
+        "gerundio_ing": "shoeing", "gerundio_esp": "calzando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I shoe my horse before riding.","esp": "Yo calzo mi caballo antes de montarlo."},
+            "pasadoSimple": {"ing": "You shod the horse yesterday.","esp": "Tú calzaste al caballo ayer."},
+            "participio":   {"ing": "The farrier has shod the horses.","esp": "El herrador ha calzado a los caballos."},
+            "gerundio":     {"ing": "They are shoeing the horses now.","esp": "Ellos están calzando a los caballos ahora."},
+            "futuro":       {"ing": "We will shoe all the horses.","esp": "Nosotros calzaremos a todos los caballos."},
+            "condicional":  {"ing": "That horse would shoe easily.","esp": "Ese caballo se calzaría fácilmente."}
+        }
+    },
+    {
+        "ing_inf": "shoot", "esp_inf": "disparar",
+        "pasado_ing": "shot", "pasado_esp": "disparó",
+        "participio_ing": "shot", "participio_esp": "disparado",
+        "gerundio_ing": "shooting", "gerundio_esp": "disparando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I shoot photos for fun.","esp": "Yo tomo fotos por diversión."},
+            "pasadoSimple": {"ing": "You shot the arrow.","esp": "Tú disparaste la flecha."},
+            "participio":   {"ing": "She has shot a short film.","esp": "Ella ha filmado un cortometraje."},
+            "gerundio":     {"ing": "They are shooting baskets.","esp": "Ellos están encestando."},
+            "futuro":       {"ing": "We will shoot the movie next week.","esp": "Nosotros filmaremos la película la próxima semana."},
+            "condicional":  {"ing": "That camera would shoot in HD.","esp": "Esa cámara filmaría en HD."}
+        }
+    },
+    {
+        "ing_inf": "shrink", "esp_inf": "encoger",
+        "pasado_ing": "shrank", "pasado_esp": "encogió",
+        "participio_ing": "shrunk", "participio_esp": "encogido",
+        "gerundio_ing": "shrinking", "gerundio_esp": "encogiendo",
+        "oraciones": {
+            "infinitivo":   {"ing": "I shrink from conflict.","esp": "Yo me echo atrás ante el conflicto."},
+            "pasadoSimple": {"ing": "You shrank the sweater.","esp": "Tú encogiste el suéter."},
+            "participio":   {"ing": "The fabric has shrunk in the wash.","esp": "La tela se ha encogido al lavarse."},
+            "gerundio":     {"ing": "They are shrinking the budget.","esp": "Ellos están recortando el presupuesto."},
+            "futuro":       {"ing": "We will shrink the image.","esp": "Nosotros encogeremos la imagen."},
+            "condicional":  {"ing": "That market would shrink soon.","esp": "Ese mercado se encogería pronto."}
+        }
+    },
+    {
+        "ing_inf": "shut", "esp_inf": "cerrar",
+        "pasado_ing": "shut", "pasado_esp": "cerró",
+        "participio_ing": "shut", "participio_esp": "cerrado",
+        "gerundio_ing": "shutting", "gerundio_esp": "cerrando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I shut the door quietly.","esp": "Yo cierro la puerta en silencio."},
+            "pasadoSimple": {"ing": "You shut the laptop.","esp": "Tú cerraste el portátil."},
+            "participio":   {"ing": "She has shut the door on him.","esp": "Ella le ha cerrado la puerta."},
+            "gerundio":     {"ing": "They are shutting down the server.","esp": "Ellos están cerrando el servidor."},
+            "futuro":       {"ing": "We will shut up and listen.","esp": "Nosotros nos callaremos y escucharemos."},
+            "condicional":  {"ing": "That window would shut tight.","esp": "Esa ventana se cerraría herméticamente."}
+        }
+    },
+    {
+        "ing_inf": "slay", "esp_inf": "asesinar",
+        "pasado_ing": "slew/slain", "pasado_esp": "asesinó",
+        "participio_ing": "slain", "participio_esp": "asesinado",
+        "gerundio_ing": "slaying", "gerundio_esp": "asesinando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I slay dragons in video games.","esp": "Yo asesino dragones en videojuegos."},
+            "pasadoSimple": {"ing": "You slew the boss.","esp": "Tú asesinaste al jefe final."},
+            "participio":   {"ing": "The hero has slain the dragon.","esp": "El héroe ha asesinado al dragón."},
+            "gerundio":     {"ing": "They are slaying the enemy.","esp": "Ellos están asesinando al enemigo."},
+            "futuro":       {"ing": "We will slay the competition.","esp": "Nosotros venceremos a la competencia."},
+            "condicional":  {"ing": "That dragon would slay anyone.","esp": "Ese dragón mataría a cualquiera."}
+        }
+    },
+    {
+        "ing_inf": "slide", "esp_inf": "deslizar",
+        "pasado_ing": "slid", "pasado_esp": "deslizó",
+        "participio_ing": "slid", "participio_esp": "deslizado",
+        "gerundio_ing": "sliding", "gerundio_esp": "deslizando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I slide into DMs sometimes.","esp": "Yo me deslizo a los mensajes directos a veces."},
+            "pasadoSimple": {"ing": "You slid down the hill.","esp": "Tú te deslizaste colina abajo."},
+            "participio":   {"ing": "She has slid the door closed.","esp": "Ella ha deslizado la puerta para cerrarla."},
+            "gerundio":     {"ing": "They are sliding on the ice.","esp": "Ellos se están deslizando sobre el hielo."},
+            "futuro":       {"ing": "We will slide the card through.","esp": "Nosotros deslizaremos la tarjeta."},
+            "condicional":  {"ing": "That drawer would slide smoothly.","esp": "Ese cajón se deslizaría suavemente."}
+        }
+    },
+    {
+        "ing_inf": "slit", "esp_inf": "rasgar",
+        "pasado_ing": "slit", "pasado_esp": "rasgó",
+        "participio_ing": "slit", "participio_esp": "rasgado",
+        "gerundio_ing": "slitting", "gerundio_esp": "rasgando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I slit the envelope open.","esp": "Yo rasgo el sobre para abrirlo."},
+            "pasadoSimple": {"ing": "You slit his throat.","esp": "Tú le cortaste la garganta."},
+            "participio":   {"ing": "She has slit the fabric.","esp": "Ella ha rasgado la tela."},
+            "gerundio":     {"ing": "They are slitting the paper.","esp": "Ellos están cortando el papel."},
+            "futuro":       {"ing": "We will slit the envelope.","esp": "Nosotros cortaremos el sobre."},
+            "condicional":  {"ing": "That blade would slit easily.","esp": "Esa cuchilla cortaría fácilmente."}
+        }
+    },
+    {
+        "ing_inf": "sneak", "esp_inf": "escabullirse",
+        "pasado_ing": "sneaked/snuck", "pasado_esp": "se escabulló",
+        "participio_ing": "snuck", "participio_esp": "escabullido",
+        "gerundio_ing": "sneaking", "gerundio_esp": "escabulléndose",
+        "futuro_esp": "se escabullirá", "cond_esp": "se escabulliría",
+        "oraciones": {
+            "infinitivo":   {"ing": "I sneak snacks after bedtime.","esp": "Yo me escabullo a buscar botanas después de dormir."},
+            "pasadoSimple": {"ing": "You snuck out last night.","esp": "Tú te escabulliste anoche."},
+            "participio":   {"ing": "She has snuck into the party.","esp": "Ella se ha escabullido en la fiesta."},
+            "gerundio":     {"ing": "They are sneaking up on us.","esp": "Ellos se nos están acercando sigilosamente."},
+            "futuro":       {"ing": "We will sneak away quietly.","esp": "Nosotros nos escabulliremos en silencio."},
+            "condicional":  {"ing": "That cat would sneak anywhere.","esp": "Ese gato se escabulliría en cualquier parte."}
+        }
+    },
+    {
+        "ing_inf": "sow", "esp_inf": "sembrar",
+        "pasado_ing": "sowed", "pasado_esp": "sembró",
+        "participio_ing": "sown", "participio_esp": "sembrado",
+        "gerundio_ing": "sowing", "gerundio_esp": "sembrando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I sow seeds in spring.","esp": "Yo siembro semillas en primavera."},
+            "pasadoSimple": {"ing": "You sowed doubt in their minds.","esp": "Tú sembraste duda en sus mentes."},
+            "participio":   {"ing": "She has sown the seeds.","esp": "Ella ha sembrado las semillas."},
+            "gerundio":     {"ing": "They are sowing wildflowers.","esp": "Ellos están sembrando flores silvestres."},
+            "futuro":       {"ing": "We will sow the field tomorrow.","esp": "Nosotros sembraremos el campo mañana."},
+            "condicional":  {"ing": "That rumor would sow discord.","esp": "Ese rumor sembraría discordia."}
+        }
+    },
+    {
+        "ing_inf": "speed", "esp_inf": "acelerar",
+        "pasado_ing": "sped", "pasado_esp": "aceleró",
+        "participio_ing": "sped", "participio_esp": "acelerado",
+        "gerundio_ing": "speeding", "gerundio_esp": "acelerando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I speed through homework.","esp": "Yo termino la tarea rápidamente."},
+            "pasadoSimple": {"ing": "You sped past the school.","esp": "Tú pasaste rápido por la escuela."},
+            "participio":   {"ing": "She has sped up the process.","esp": "Ella ha acelerado el proceso."},
+            "gerundio":     {"ing": "They are speeding down the highway.","esp": "Ellos están acelerando por la autopista."},
+            "futuro":       {"ing": "We will speed up production.","esp": "Nosotros aceleraremos la producción."},
+            "condicional":  {"ing": "That car would speed dangerously.","esp": "Ese coche aceleraría peligrosamente."}
+        }
+    },
+    {
+        "ing_inf": "spell", "esp_inf": "deletrear",
+        "pasado_ing": "spelled/spelt", "pasado_esp": "deletreó",
+        "participio_ing": "spelled/spelt", "participio_esp": "deletreado",
+        "gerundio_ing": "spelling", "gerundio_esp": "deletreando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I spell my name clearly.","esp": "Yo deletreo mi nombre con claridad."},
+            "pasadoSimple": {"ing": "You spelled the word wrong.","esp": "Tú deletreaste la palabra mal."},
+            "participio":   {"ing": "She has spelled disaster.","esp": "Ella ha significado desastre."},
+            "gerundio":     {"ing": "They are spelling the test.","esp": "Ellos están haciendo el examen de deletreo."},
+            "futuro":       {"ing": "We will spell out the rules.","esp": "Nosotros deletrearemos las reglas."},
+            "condicional":  {"ing": "That move would spell trouble.","esp": "Ese movimiento significaría problemas."}
+        }
+    },
+    {
+        "ing_inf": "spill", "esp_inf": "derramar",
+        "pasado_ing": "spilled/spilt", "pasado_esp": "derramó",
+        "participio_ing": "spilled/spilt", "participio_esp": "derramado",
+        "gerundio_ing": "spilling", "gerundio_esp": "derramando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I spill coffee on my desk.","esp": "Yo derramo café en mi escritorio."},
+            "pasadoSimple": {"ing": "You spilled the orange juice.","esp": "Tú derramaste el jugo de naranja."},
+            "participio":   {"ing": "She has spilled the beans.","esp": "Ella ha revelado el secreto."},
+            "gerundio":     {"ing": "They are spilling oil.","esp": "Ellos están derramando petróleo."},
+            "futuro":       {"ing": "We will spill the paint.","esp": "Nosotros derramaremos la pintura."},
+            "condicional":  {"ing": "That drink would spill easily.","esp": "Esa bebida se derramaría fácilmente."}
+        }
+    },
+    {
+        "ing_inf": "spin", "esp_inf": "girar",
+        "pasado_ing": "spun", "pasado_esp": "giró",
+        "participio_ing": "spun", "participio_esp": "girado",
+        "gerundio_ing": "spinning", "gerundio_esp": "girando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I spin yarn for fun.","esp": "Yo hilo lana por diversión."},
+            "pasadoSimple": {"ing": "You spun the wheel.","esp": "Tú giraste la rueda."},
+            "participio":   {"ing": "She has spun the story.","esp": "Ella ha dado un giro a la historia."},
+            "gerundio":     {"ing": "They are spinning the top.","esp": "Ellos están girando la peonza."},
+            "futuro":       {"ing": "We will spin the dreidel.","esp": "Nosotros giraremos la peonza."},
+            "condicional":  {"ing": "That wheel would spin forever.","esp": "Esa rueda giraría para siempre."}
+        }
+    }
+]
+
+
+BLOQUE_IRREGULARES_7 = [
+    {
+        "ing_inf": "spit", "esp_inf": "escupir",
+        "pasado_ing": "spat/spit", "pasado_esp": "escupió",
+        "participio_ing": "spat/spit", "participio_esp": "escupido",
+        "gerundio_ing": "spitting", "gerundio_esp": "escupiendo",
+        "oraciones": {
+            "infinitivo":   {"ing": "I spit out the seeds.","esp": "Yo escupo las semillas."},
+            "pasadoSimple": {"ing": "You spat at the bus.","esp": "Tú escupiste al autobús."},
+            "participio":   {"ing": "She has spit on the ground.","esp": "Ella ha escupido al suelo."},
+            "gerundio":     {"ing": "They are spitting seeds at each other.","esp": "Ellos se están escupiendo semillas."},
+            "futuro":       {"ing": "We will spit out the gum.","esp": "Nosotros escupiremos el chicle."},
+            "condicional":  {"ing": "That camel would spit far.","esp": "Ese camello escupiría lejos."}
+        }
+    },
+    {
+        "ing_inf": "split", "esp_inf": "dividir",
+        "pasado_ing": "split", "pasado_esp": "dividió",
+        "participio_ing": "split", "participio_esp": "dividido",
+        "gerundio_ing": "splitting", "gerundio_esp": "dividiendo",
+        "oraciones": {
+            "infinitivo":   {"ing": "I split the bill evenly.","esp": "Yo divido la cuenta en partes iguales."},
+            "pasadoSimple": {"ing": "You split the log.","esp": "Tú partiste el tronco."},
+            "participio":   {"ing": "She has split up with him.","esp": "Ella ha terminado con él."},
+            "gerundio":     {"ing": "They are splitting the costs.","esp": "Ellos están dividiendo los costos."},
+            "futuro":       {"ing": "We will split the work.","esp": "Nosotros dividiremos el trabajo."},
+            "condicional":  {"ing": "That decision would split the party.","esp": "Esa decisión dividiría al partido."}
+        }
+    },
+    {
+        "ing_inf": "spoil", "esp_inf": "arruinar",
+        "pasado_ing": "spoiled/spoilt", "pasado_esp": "arruinó",
+        "participio_ing": "spoiled/spoilt", "participio_esp": "arruinado",
+        "gerundio_ing": "spoiling", "gerundio_esp": "arruinando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I spoil my pets often.","esp": "Yo consiento a mis mascotas a menudo."},
+            "pasadoSimple": {"ing": "You spoiled the surprise.","esp": "Tú arruinaste la sorpresa."},
+            "participio":   {"ing": "She has spoiled the children.","esp": "Ella ha malcriado a los niños."},
+            "gerundio":     {"ing": "They are spoiling the food.","esp": "Ellos están echando a perder la comida."},
+            "futuro":       {"ing": "We will spoil the broth.","esp": "Nosotros arruinaremos el caldo."},
+            "condicional":  {"ing": "That rain would spoil the picnic.","esp": "Esa lluvia arruinaría el picnic."}
+        }
+    },
+    {
+        "ing_inf": "spread", "esp_inf": "extender",
+        "pasado_ing": "spread", "pasado_esp": "extendió",
+        "participio_ing": "spread", "participio_esp": "extendido",
+        "gerundio_ing": "spreading", "gerundio_esp": "extendiendo",
+        "oraciones": {
+            "infinitivo":   {"ing": "I spread butter on toast.","esp": "Yo unto mantequilla al pan tostado."},
+            "pasadoSimple": {"ing": "You spread the news quickly.","esp": "Tú difundiste la noticia rápidamente."},
+            "participio":   {"ing": "She has spread the tablecloth.","esp": "Ella ha extendido el mantel."},
+            "gerundio":     {"ing": "They are spreading rumors.","esp": "Ellos están difundiendo rumores."},
+            "futuro":       {"ing": "We will spread out later.","esp": "Nosotros nos dispersaremos después."},
+            "condicional":  {"ing": "That rumor would spread fast.","esp": "Ese rumor se difundiría rápido."}
+        }
+    },
+    {
+        "ing_inf": "spring", "esp_inf": "saltar",
+        "pasado_ing": "sprang", "pasado_esp": "saltó",
+        "participio_ing": "sprung", "participio_esp": "saltado",
+        "gerundio_ing": "springing", "gerundio_esp": "saltando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I spring out of bed early.","esp": "Yo salto de la cama temprano."},
+            "pasadoSimple": {"ing": "You sprang into action.","esp": "Tú saltaste a la acción."},
+            "participio":   {"ing": "She has sprung a leak.","esp": "Ella ha tenido una fuga."},
+            "gerundio":     {"ing": "They are springing a trap.","esp": "Ellos están tendiendo una trampa."},
+            "futuro":       {"ing": "We will spring for dinner.","esp": "Nosotros pagaremos la cena."},
+            "condicional":  {"ing": "That trap would spring easily.","esp": "Esa trampa se activaría fácilmente."}
+        }
+    },
+    {
+        "ing_inf": "stand", "esp_inf": "pararse",
+        "pasado_ing": "stood", "pasado_esp": "se paró",
+        "participio_ing": "stood", "participio_esp": "parado",
+        "gerundio_ing": "standing", "gerundio_esp": "parándose",
+        "futuro_esp": "se parará", "cond_esp": "se pararía",
+        "oraciones": {
+            "infinitivo":   {"ing": "I stand by my principles.","esp": "Yo defiendo mis principios."},
+            "pasadoSimple": {"ing": "You stood up for her.","esp": "Tú te pusiste de pie por ella."},
+            "participio":   {"ing": "She has stood the test of time.","esp": "Ella ha resistido la prueba del tiempo."},
+            "gerundio":     {"ing": "They are standing in line.","esp": "Ellos están haciendo cola."},
+            "futuro":       {"ing": "We will stand together.","esp": "Nosotros nos mantendremos unidos."},
+            "condicional":  {"ing": "That building would stand forever.","esp": "Ese edificio permanecería en pie para siempre."}
+        }
+    },
+    {
+        "ing_inf": "stave", "esp_inf": "evitar",
+        "pasado_ing": "staved/stove", "pasado_esp": "evitó",
+        "participio_ing": "staved/stove", "participio_esp": "evitado",
+        "gerundio_ing": "staving", "gerundio_esp": "evitando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I stave off hunger with snacks.","esp": "Yo evito el hambre con botanas."},
+            "pasadoSimple": {"ing": "You staved off the disaster.","esp": "Tú evitaste el desastre."},
+            "participio":   {"ing": "She has staved off bankruptcy.","esp": "Ella ha evitado la bancarrota."},
+            "gerundio":     {"ing": "They are staving off sleep.","esp": "Ellos están evitando dormir."},
+            "futuro":       {"ing": "We will stave off the cold.","esp": "Nosotros evitaremos el frío."},
+            "condicional":  {"ing": "That would stave off disaster.","esp": "Eso evitaría el desastre."}
+        }
+    },
+    {
+        "ing_inf": "steal", "esp_inf": "robar",
+        "pasado_ing": "stole", "pasado_esp": "robó",
+        "participio_ing": "stolen", "participio_esp": "robado",
+        "gerundio_ing": "stealing", "gerundio_esp": "robando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I steal glances at my phone.","esp": "Yo robo miradas a mi teléfono."},
+            "pasadoSimple": {"ing": "You stole my heart.","esp": "Tú robaste mi corazón."},
+            "participio":   {"ing": "She has stolen the show.","esp": "Ella ha robado el show."},
+            "gerundio":     {"ing": "They are stealing bases.","esp": "Ellos están robando bases."},
+            "futuro":       {"ing": "We will steal a march on them.","esp": "Nosotros nos adelantaremos a ellos."},
+            "condicional":  {"ing": "That thief would steal anything.","esp": "Ese ladrón robaría cualquier cosa."}
+        }
+    },
+    {
+        "ing_inf": "stick", "esp_inf": "pegar",
+        "pasado_ing": "stuck", "pasado_esp": "pegó",
+        "participio_ing": "stuck", "participio_esp": "pegado",
+        "gerundio_ing": "sticking", "gerundio_esp": "pegando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I stick to my routine.","esp": "Yo me apego a mi rutina."},
+            "pasadoSimple": {"ing": "You stuck the note on the fridge.","esp": "Tú pegaste la nota en el refrigerador."},
+            "participio":   {"ing": "She has stuck with the plan.","esp": "Ella se ha mantenido en el plan."},
+            "gerundio":     {"ing": "They are sticking around.","esp": "Ellos se están quedando."},
+            "futuro":       {"ing": "We will stick together.","esp": "Nosotros nos mantendremos unidos."},
+            "condicional":  {"ing": "That label would stick easily.","esp": "Esa etiqueta pegaría fácilmente."}
+        }
+    },
+    {
+        "ing_inf": "sting", "esp_inf": "picar",
+        "pasado_ing": "stung", "pasado_esp": "picó",
+        "participio_ing": "stung", "participio_esp": "picado",
+        "gerundio_ing": "stinging", "gerundio_esp": "picando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I sting easily with criticism.","esp": "Yo me siento atacado fácilmente con críticas."},
+            "pasadoSimple": {"ing": "You stung me with your words.","esp": "Tú me lastimaste con tus palabras."},
+            "participio":   {"ing": "The wasp has stung the child.","esp": "La avispa ha picado al niño."},
+            "gerundio":     {"ing": "They are stinging from defeat.","esp": "Ellos están sufriendo por la derrota."},
+            "futuro":       {"ing": "We will sting the attackers.","esp": "Nosotros contraatacaremos."},
+            "condicional":  {"ing": "That jellyfish would sting badly.","esp": "Esa medusa picaría mucho."}
+        }
+    },
+    {
+        "ing_inf": "stink", "esp_inf": "apestar",
+        "pasado_ing": "stank/stunk", "pasado_esp": "apestó",
+        "participio_ing": "stunk", "participio_esp": "apestado",
+        "gerundio_ing": "stinking", "gerundio_esp": "apestando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I stink at dancing.","esp": "Yo soy malísimo bailando."},
+            "pasadoSimple": {"ing": "You stank up the bathroom.","esp": "Tú apestaste el baño."},
+            "participio":   {"ing": "The trash has stunk all day.","esp": "La basura ha apestado todo el día."},
+            "gerundio":     {"ing": "They are stinking up the room.","esp": "Ellos están apestando el cuarto."},
+            "futuro":       {"ing": "We will stink after practice.","esp": "Nosotros oleremos mal después de la práctica."},
+            "condicional":  {"ing": "That fish would stink quickly.","esp": "Ese pez apestaría rápido."}
+        }
+    },
+    {
+        "ing_inf": "stride", "esp_inf": "avanzar",
+        "pasado_ing": "strode", "pasado_esp": "avanzó",
+        "participio_ing": "stridden", "participio_esp": "avanzado",
+        "gerundio_ing": "striding", "gerundio_esp": "avanzando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I stride confidently into meetings.","esp": "Yo entro con confianza a las reuniones."},
+            "pasadoSimple": {"ing": "You strode across the stage.","esp": "Tú cruzaste el escenario con zancadas."},
+            "participio":   {"ing": "She has stridden into history.","esp": "Ella ha entrado en la historia."},
+            "gerundio":     {"ing": "They are striding forward.","esp": "Ellos están avanzando."},
+            "futuro":       {"ing": "We will stride into the future.","esp": "Nosotros avanzaremos al futuro."},
+            "condicional":  {"ing": "That leader would stride confidently.","esp": "Ese líder avanzaría con confianza."}
+        }
+    },
+    {
+        "ing_inf": "strike", "esp_inf": "golpear",
+        "pasado_ing": "struck", "pasado_esp": "golpeó",
+        "participio_ing": "struck/stricken", "participio_esp": "golpeado",
+        "gerundio_ing": "striking", "gerundio_esp": "golpeando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I strike a balance daily.","esp": "Yo encuentro un equilibrio a diario."},
+            "pasadoSimple": {"ing": "You struck the ball hard.","esp": "Tú golpeaste la pelota con fuerza."},
+            "participio":   {"ing": "She has struck a chord.","esp": "Ella ha tocado la fibra sensible."},
+            "gerundio":     {"ing": "They are striking for better pay.","esp": "Ellos están en huelga por mejor salario."},
+            "futuro":       {"ing": "We will strike at midnight.","esp": "Nosotros atacaremos a medianoche."},
+            "condicional":  {"ing": "That clock would strike twelve.","esp": "Ese reloj daría las doce."}
+        }
+    },
+    {
+        "ing_inf": "string", "esp_inf": "ensartar",
+        "pasado_ing": "strung", "pasado_esp": "ensartó",
+        "participio_ing": "strung", "participio_esp": "ensartado",
+        "gerundio_ing": "stringing", "gerundio_esp": "ensartando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I string beads for jewelry.","esp": "Yo ensarto cuentas para joyería."},
+            "pasadoSimple": {"ing": "You strung the popcorn.","esp": "Tú ensartaste las palomitas."},
+            "participio":   {"ing": "She has strung the lights.","esp": "Ella ha ensartado las luces."},
+            "gerundio":     {"ing": "They are stringing the tennis racket.","esp": "Ellos están encordando la raqueta."},
+            "futuro":       {"ing": "We will string the lanterns.","esp": "Nosotros ensartaremos las linternas."},
+            "condicional":  {"ing": "That garland would string nicely.","esp": "Esa guirnalda ensartaría bien."}
+        }
+    },
+    {
+        "ing_inf": "strive", "esp_inf": "esforzarse",
+        "pasado_ing": "strove/strived", "pasado_esp": "se esforzó",
+        "participio_ing": "striven/strived", "participio_esp": "esforzado",
+        "gerundio_ing": "striving", "gerundio_esp": "esforzándose",
+        "futuro_esp": "se esforzará", "cond_esp": "se esforzaría",
+        "oraciones": {
+            "infinitivo":   {"ing": "I strive for excellence daily.","esp": "Yo me esfuerzo por la excelencia a diario."},
+            "pasadoSimple": {"ing": "You strove to be the best.","esp": "Tú te esforzaste por ser el mejor."},
+            "participio":   {"ing": "She has striven for perfection.","esp": "Ella se ha esforzado por la perfección."},
+            "gerundio":     {"ing": "They are striving to succeed.","esp": "Ellos se están esforzando por tener éxito."},
+            "futuro":       {"ing": "We will strive harder.","esp": "Nosotros nos esforzaremos más."},
+            "condicional":  {"ing": "That goal would make anyone strive.","esp": "Ese objetivo haría que cualquiera se esforzara."}
+        }
+    },
+    {
+        "ing_inf": "swear", "esp_inf": "jurar",
+        "pasado_ing": "swore", "pasado_esp": "juró",
+        "participio_ing": "sworn", "participio_esp": "jurado",
+        "gerundio_ing": "swearing", "gerundio_esp": "jurando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I swear on my life.","esp": "Yo juro por mi vida."},
+            "pasadoSimple": {"ing": "You swore loyalty.","esp": "Tú juraste lealtad."},
+            "participio":   {"ing": "She has sworn revenge.","esp": "Ella ha jurado venganza."},
+            "gerundio":     {"ing": "They are swearing at each other.","esp": "Ellos se están maldiciendo."},
+            "futuro":       {"ing": "We will swear in the president.","esp": "Nosotros tomaremos juramento al presidente."},
+            "condicional":  {"ing": "That oath would swear anyone in.","esp": "Ese juramento investiría a cualquiera."}
+        }
+    },
+    {
+        "ing_inf": "sweat", "esp_inf": "sudar",
+        "pasado_ing": "sweated", "pasado_esp": "sudó",
+        "participio_ing": "sweated", "participio_esp": "sudado",
+        "gerundio_ing": "sweating", "gerundio_esp": "sudando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I sweat when I exercise.","esp": "Yo sudo cuando hago ejercicio."},
+            "pasadoSimple": {"ing": "You sweated a lot yesterday.","esp": "Tú sudaste mucho ayer."},
+            "participio":   {"ing": "She has sweated through her shirt.","esp": "Ella ha empapado su camisa de sudor."},
+            "gerundio":     {"ing": "They are sweating bullets.","esp": "Ellos están sudando la gota gorda."},
+            "futuro":       {"ing": "We will sweat it out.","esp": "Nosotros sudaremos la fiebre."},
+            "condicional":  {"ing": "That effort would sweat anyone.","esp": "Ese esfuerzo haría sudar a cualquiera."}
+        }
+    },
+    {
+        "ing_inf": "sweep", "esp_inf": "barrer",
+        "pasado_ing": "swept", "pasado_esp": "barrió",
+        "participio_ing": "swept", "participio_esp": "barrido",
+        "gerundio_ing": "sweeping", "gerundio_esp": "barriendo",
+        "oraciones": {
+            "infinitivo":   {"ing": "I sweep the floor daily.","esp": "Yo barro el piso a diario."},
+            "pasadoSimple": {"ing": "You swept the garage.","esp": "Tú barriste el garaje."},
+            "participio":   {"ing": "She has swept the awards.","esp": "Ella ha arrasado en los premios."},
+            "gerundio":     {"ing": "They are sweeping the leaves.","esp": "Ellos están barriendo las hojas."},
+            "futuro":       {"ing": "We will sweep the deck.","esp": "Nosotros barreremos la cubierta."},
+            "condicional":  {"ing": "That broom would sweep easily.","esp": "Esa escoba barrería fácilmente."}
+        }
+    },
+    {
+        "ing_inf": "swell", "esp_inf": "hinchar",
+        "pasado_ing": "swelled", "pasado_esp": "hinchó",
+        "participio_ing": "swelled/swollen", "participio_esp": "hinchado",
+        "gerundio_ing": "swelling", "gerundio_esp": "hinchando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I swell with pride sometimes.","esp": "Yo me hincho de orgullo a veces."},
+            "pasadoSimple": {"ing": "You swelled the ranks.","esp": "Tú hinchaste las filas."},
+            "participio":   {"ing": "Her ankle has swollen badly.","esp": "Su tobillo se ha hinchado mucho."},
+            "gerundio":     {"ing": "They are swelling the crowd.","esp": "Ellos están haciendo crecer la multitud."},
+            "futuro":       {"ing": "We will swell the numbers.","esp": "Nosotros inflaremos los números."},
+            "condicional":  {"ing": "That river would swell dangerously.","esp": "Ese río se hincharía peligrosamente."}
+        }
+    },
+    {
+        "ing_inf": "swim", "esp_inf": "nadar",
+        "pasado_ing": "swam", "pasado_esp": "nadó",
+        "participio_ing": "swum", "participio_esp": "nadado",
+        "gerundio_ing": "swimming", "gerundio_esp": "nadando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I swim laps every morning.","esp": "Yo nado largos cada mañana."},
+            "pasadoSimple": {"ing": "You swam in the ocean.","esp": "Tú nadaste en el océano."},
+            "participio":   {"ing": "She has swum competitively.","esp": "Ella ha nadado competitivamente."},
+            "gerundio":     {"ing": "They are swimming with dolphins.","esp": "Ellos están nadando con delfines."},
+            "futuro":       {"ing": "We will swim at the lake.","esp": "Nosotros nadaremos en el lago."},
+            "condicional":  {"ing": "That fish would swim away.","esp": "Ese pez nadaría lejos."}
+        }
+    },
+    {
+        "ing_inf": "swing", "esp_inf": "columpiarse",
+        "pasado_ing": "swung", "pasado_esp": "se columpió",
+        "participio_ing": "swung", "participio_esp": "columpiado",
+        "gerundio_ing": "swinging", "gerundio_esp": "columpiándose",
+        "futuro_esp": "se columpiará", "cond_esp": "se columpiaría",
+        "oraciones": {
+            "infinitivo":   {"ing": "I swing at the park with my kids.","esp": "Yo me columpio en el parque con mis hijos."},
+            "pasadoSimple": {"ing": "You swung the bat hard.","esp": "Tú balanceaste el bate con fuerza."},
+            "participio":   {"ing": "The door has swung open.","esp": "La puerta se ha abierto de golpe."},
+            "gerundio":     {"ing": "They are swinging on the vines.","esp": "Ellos están columpiándose en las vides."},
+            "futuro":       {"ing": "We will swing by your house.","esp": "Nosotros pasaremos por tu casa."},
+            "condicional":  {"ing": "That pendulum would swing forever.","esp": "Ese péndulo oscilaría para siempre."}
+        }
+    },
+    {
+        "ing_inf": "take", "esp_inf": "tomar",
+        "pasado_ing": "took", "pasado_esp": "tomó",
+        "participio_ing": "taken", "participio_esp": "tomado",
+        "gerundio_ing": "taking", "gerundio_esp": "tomando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I take the train to work.","esp": "Yo tomo el tren al trabajo."},
+            "pasadoSimple": {"ing": "You took the test yesterday.","esp": "Tú tomaste el examen ayer."},
+            "participio":   {"ing": "She has taken a break.","esp": "Ella ha tomado un descanso."},
+            "gerundio":     {"ing": "They are taking photos.","esp": "Ellos están tomando fotos."},
+            "futuro":       {"ing": "We will take the trip next month.","esp": "Nosotros haremos el viaje el próximo mes."},
+            "condicional":  {"ing": "That medicine would take effect soon.","esp": "Esa medicina haría efecto pronto."}
+        }
+    },
+    {
+        "ing_inf": "teach", "esp_inf": "enseñar",
+        "pasado_ing": "taught", "pasado_esp": "enseñó",
+        "participio_ing": "taught", "participio_esp": "enseñado",
+        "gerundio_ing": "teaching", "gerundio_esp": "enseñando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I teach math at the high school.","esp": "Yo enseño matemáticas en la secundaria."},
+            "pasadoSimple": {"ing": "You taught me to drive.","esp": "Tú me enseñaste a manejar."},
+            "participio":   {"ing": "She has taught for twenty years.","esp": "Ella ha enseñado durante veinte años."},
+            "gerundio":     {"ing": "They are teaching yoga.","esp": "Ellos están enseñando yoga."},
+            "futuro":       {"ing": "We will teach next week.","esp": "Nosotros enseñaremos la próxima semana."},
+            "condicional":  {"ing": "That class would teach anyone.","esp": "Esa clase enseñaría a cualquiera."}
+        }
+    },
+    {
+        "ing_inf": "tear", "esp_inf": "rasgar",
+        "pasado_ing": "tore", "pasado_esp": "rasgó",
+        "participio_ing": "torn", "participio_esp": "rasgado",
+        "gerundio_ing": "tearing", "gerundio_esp": "rasgando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I tear up at the ending.","esp": "Yo lloro al final."},
+            "pasadoSimple": {"ing": "You tore the photo.","esp": "Tú rasgaste la foto."},
+            "participio":   {"ing": "She has torn her dress.","esp": "Ella ha roto su vestido."},
+            "gerundio":     {"ing": "They are tearing down the old building.","esp": "Ellos están demoliendo el edificio viejo."},
+            "futuro":       {"ing": "We will tear up the agreement.","esp": "Nosotros romperemos el acuerdo."},
+            "condicional":  {"ing": "That paper would tear easily.","esp": "Ese papel se rasgaría fácilmente."}
+        }
+    },
+    {
+        "ing_inf": "tell", "esp_inf": "decir",
+        "pasado_ing": "told", "pasado_esp": "dijo",
+        "participio_ing": "told", "participio_esp": "dicho",
+        "gerundio_ing": "telling", "gerundio_esp": "diciendo",
+        "futuro_esp": "dirá", "cond_esp": "diría",
+        "oraciones": {
+            "infinitivo":   {"ing": "I tell stories to my kids.","esp": "Yo cuento historias a mis hijos."},
+            "pasadoSimple": {"ing": "You told me the truth.","esp": "Tú me dijiste la verdad."},
+            "participio":   {"ing": "She has told everyone.","esp": "Ella ha contado a todos."},
+            "gerundio":     {"ing": "They are telling jokes.","esp": "Ellos están contando chistes."},
+            "futuro":       {"ing": "We will tell you tomorrow.","esp": "Nosotros te diremos mañana."},
+            "condicional":  {"ing": "That look would tell everything.","esp": "Esa mirada lo diría todo."}
+        }
+    },
+    {
+        "ing_inf": "think", "esp_inf": "pensar",
+        "pasado_ing": "thought", "pasado_esp": "pensó",
+        "participio_ing": "thought", "participio_esp": "pensado",
+        "gerundio_ing": "thinking", "gerundio_esp": "pensando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I think deeply about life.","esp": "Yo pienso profundamente sobre la vida."},
+            "pasadoSimple": {"ing": "You thought it through.","esp": "Tú lo pensaste bien."},
+            "participio":   {"ing": "She has thought about quitting.","esp": "Ella ha pensado en renunciar."},
+            "gerundio":     {"ing": "They are thinking creatively.","esp": "Ellos están pensando creativamente."},
+            "futuro":       {"ing": "We will think about your offer.","esp": "Nosotros pensaremos en tu oferta."},
+            "condicional":  {"ing": "That would make anyone think.","esp": "Eso haría pensar a cualquiera."}
+        }
+    },
+    {
+        "ing_inf": "thrive", "esp_inf": "prosperar",
+        "pasado_ing": "thrived/throve", "pasado_esp": "prosperó",
+        "participio_ing": "thrived/thriven", "participio_esp": "prosperado",
+        "gerundio_ing": "thriving", "gerundio_esp": "prosperando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I thrive under pressure.","esp": "Yo prospero bajo presión."},
+            "pasadoSimple": {"ing": "You thrived in the new job.","esp": "Tú prosperaste en el trabajo nuevo."},
+            "participio":   {"ing": "She has thrived since the move.","esp": "Ella ha prosperado desde la mudanza."},
+            "gerundio":     {"ing": "They are thriving at the new school.","esp": "Ellos están prosperando en la escuela nueva."},
+            "futuro":       {"ing": "We will thrive with effort.","esp": "Nosotros prosperaremos con esfuerzo."},
+            "condicional":  {"ing": "That business would thrive anywhere.","esp": "Ese negocio prosperaría en cualquier lugar."}
+        }
+    },
+    {
+        "ing_inf": "throw", "esp_inf": "lanzar",
+        "pasado_ing": "threw", "pasado_esp": "lanzó",
+        "participio_ing": "thrown", "participio_esp": "lanzado",
+        "gerundio_ing": "throwing", "gerundio_esp": "lanzando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I throw the ball far.","esp": "Yo lanzo la pelota lejos."},
+            "pasadoSimple": {"ing": "You threw a party.","esp": "Tú lanzaste una fiesta."},
+            "participio":   {"ing": "She has thrown out the trash.","esp": "Ella ha sacado la basura."},
+            "gerundio":     {"ing": "They are throwing stones.","esp": "Ellos están lanzando piedras."},
+            "futuro":       {"ing": "We will throw a surprise.","esp": "Nosotros haremos una sorpresa."},
+            "condicional":  {"ing": "That rock would throw far.","esp": "Esa roca volaría lejos."}
+        }
+    },
+    {
+        "ing_inf": "thrust", "esp_inf": "empujar",
+        "pasado_ing": "thrust", "pasado_esp": "empujó",
+        "participio_ing": "thrust", "participio_esp": "empujado",
+        "gerundio_ing": "thrusting", "gerundio_esp": "empujando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I thrust my hand into the fire.","esp": "Yo metí la mano en el fuego."},
+            "pasadoSimple": {"ing": "You thrust the door open.","esp": "Tú empujaste la puerta para abrirla."},
+            "participio":   {"ing": "She has thrust herself into work.","esp": "Ella se ha lanzado al trabajo."},
+            "gerundio":     {"ing": "They are thrusting forward.","esp": "Ellos están avanzando con fuerza."},
+            "futuro":       {"ing": "We will thrust ahead.","esp": "Nosotros nos abriremos paso."},
+            "condicional":  {"ing": "That sword would thrust deep.","esp": "Esa espada atravesaría profundo."}
+        }
+    },
+    {
+        "ing_inf": "tread", "esp_inf": "pisar",
+        "pasado_ing": "trod", "pasado_esp": "pisó",
+        "participio_ing": "trodden/trod", "participio_esp": "pisado",
+        "gerundio_ing": "treading", "gerundio_esp": "pisando",
+        "oraciones": {
+            "infinitivo":   {"ing": "I tread carefully around the boss.","esp": "Yo piso con cuidado alrededor del jefe."},
+            "pasadoSimple": {"ing": "You trod on the snake.","esp": "Tú pisaste la serpiente."},
+            "participio":   {"ing": "She has trodden this path before.","esp": "Ella ha pisado este camino antes."},
+            "gerundio":     {"ing": "They are treading water.","esp": "Ellos están pisando el agua (manteniéndose a flote)."},
+            "futuro":       {"ing": "We will tread carefully.","esp": "Nosotros pisaremos con cuidado."},
+            "condicional":  {"ing": "That path would tread lightly.","esp": "Ese camino se pisaría suavemente."}
+        }
+    }
+]
+
+
 if __name__ == "__main__":
-    procesar_bloque(BLOQUE_IRREGULARES_3, "irregulares", 60)
+    procesar_bloque(BLOQUE_IRREGULARES_7, "irregulares", 180)
     aplicar_correcciones(CORRECCIONES, "simples")
 
     with open(RUTA_JSON, "r", encoding="utf-8") as f:
         check = json.load(f)
-    print("\nVerbo #475 (shrink) muestra:")
+    print("\nVerbo #595 (strive) muestra:")
     print(json.dumps(check["generales"]["irregulares"][15], indent=2, ensure_ascii=False))
