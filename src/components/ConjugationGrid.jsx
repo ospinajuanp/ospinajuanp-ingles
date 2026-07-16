@@ -21,6 +21,8 @@ function ConjugationCell({ time, value, valueEsp }) {
       ? 'blur-0 opacity-100'
       : 'blur-sm opacity-60 group-hover:blur-0 group-hover:opacity-100')
 
+  const hasSpanish = Boolean(valueEsp)
+
   return (
     <div
       onMouseEnter={onEnter}
@@ -33,13 +35,56 @@ function ConjugationCell({ time, value, valueEsp }) {
       aria-label={`${time}: ${value}${valueEsp ? `, traducción: ${valueEsp}` : ''}`}
       className="group cursor-pointer rounded-xl border border-slate-100 bg-white px-3 py-2.5 transition-all hover:border-indigo-200 hover:bg-indigo-50/40 hover:shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-200 sm:px-4 sm:py-3"
     >
-      <div className="text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-slate-400">
-        {time}
+      <div className="flex items-center justify-between gap-2">
+        <div className="text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-slate-400">
+          {time}
+        </div>
+        {hasSpanish ? (
+          <span
+            className={
+              'inline-flex size-5 items-center justify-center rounded-full border transition ' +
+              (revealed
+                ? 'border-indigo-200 bg-indigo-50 text-indigo-600'
+                : 'border-slate-100 bg-slate-50 text-slate-400 group-hover:border-indigo-200 group-hover:text-indigo-500')
+            }
+            aria-hidden="true"
+          >
+            {revealed ? (
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="size-3"
+              >
+                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7S2 12 2 12z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+            ) : (
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="size-3"
+              >
+                <path d="M17.94 17.94A10.94 10.94 0 0 1 12 19c-7 0-10-7-10-7a18.45 18.45 0 0 1 4.06-5.94" />
+                <path d="M9.9 4.24A10.94 10.94 0 0 1 12 4c7 0 10 7 10 7a18.5 18.5 0 0 1-2.16 3.19" />
+                <path d="M14.12 14.12A3 3 0 1 1 9.88 9.88" />
+                <path d="m1 1 22 22" />
+              </svg>
+            )}
+          </span>
+        ) : null}
       </div>
       <div className="mt-0.5 truncate text-base font-semibold text-slate-800 sm:text-lg">
         {value || '—'}
       </div>
-      {valueEsp ? (
+      {hasSpanish ? (
         <div className={spanishClass} aria-hidden={!revealed}>
           {valueEsp}
         </div>
