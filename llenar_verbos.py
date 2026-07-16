@@ -12856,16 +12856,6 @@ BLOQUE_TECNOLOGIA_1 = [
 ]
 
 
-if __name__ == "__main__":
-    procesar_bloque(BLOQUE_TECNOLOGIA_2, "tecnologia", 30)
-    aplicar_correcciones(CORRECCIONES, "simples")
-
-    with open(RUTA_JSON, "r", encoding="utf-8") as f:
-        check = json.load(f)
-    print("\nVerbo #890 (initialize) muestra:")
-    print(json.dumps(check["tecnologia"][10], indent=2, ensure_ascii=False))
-    print(f"\nTotal tecnologia: {sum(1 for v in check['tecnologia'] if v['id'] != '')}/150")
-
 
 BLOQUE_TECNOLOGIA_2 = [
     {
@@ -13289,3 +13279,14 @@ BLOQUE_TECNOLOGIA_2 = [
         }
     }
 ]
+
+
+if __name__ == "__main__":
+    procesar_bloque(BLOQUE_TECNOLOGIA_2, "tecnologia", 30)
+    aplicar_correcciones(CORRECCIONES, "simples")
+
+    with open(RUTA_JSON, "r", encoding="utf-8") as f:
+        check = json.load(f)
+    print("\nVerbo #890 (initialize) muestra:")
+    print(json.dumps(check["tecnologia"][10], indent=2, ensure_ascii=False))
+    print(f"\nTotal tecnologia: {sum(1 for v in check['tecnologia'] if v['id'] != '')}/150")
