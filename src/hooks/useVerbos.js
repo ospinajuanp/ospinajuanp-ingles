@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { collectCategories, flattenVerbos } from '../utils/flatten'
+import { pickWeightedIndex } from '../utils/weightedRandom'
+import { WEIGHT_MAP } from '../data/weightedVerbs'
 
 const JSON_URL = `${import.meta.env.BASE_URL}verbos_estructura.json`
 
@@ -30,6 +32,8 @@ export function useVerbos() {
   const [subcategory, setSubcategory] = useState('all')
   const [currentIndex, setCurrentIndex] = useState(0)
 
+  const initialPickDone = useRef(false)
+
   useEffect(() => {
     let cancelled = false
     ;(async () => {
@@ -38,8 +42,13 @@ export function useVerbos() {
         if (!res.ok) throw new Error(`HTTP ${res.status}`)
         const json = await res.json()
         if (cancelled) return
-        setAllVerbs(flattenVerbos(json))
+        const flat = flattenVerbos(json)
+        setAllVerbs(flat)
         setLoading(false)
+        if (!initialPickDone.current) {
+          initialPickDone.current = true
+          setCurrentIndex(pickWeightedIndex(flat, WEIGHT_MAP))
+        }
       } catch (err) {
         if (cancelled) return
         setError(err)
@@ -68,7 +77,13 @@ export function useVerbos() {
   }, [allVerbs, search, category, subcategory])
 
   const lastFilteredLen = useRef(filtered.length)
+  const isFirstEffectRun = useRef(true)
   useEffect(() => {
+    if (isFirstEffectRun.current) {
+      isFirstEffectRun.current = false
+      lastFilteredLen.current = filtered.length
+      return
+    }
     if (filtered.length !== lastFilteredLen.current) {
       setCurrentIndex(0)
       lastFilteredLen.current = filtered.length
