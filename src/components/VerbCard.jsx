@@ -1,9 +1,12 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import ConjugationGrid from './ConjugationGrid'
 import SentencesList from './SentencePill'
 import NavButtons from './NavButtons'
 import HeroIllustration from './HeroIllustration'
 import AudioButton from './AudioButton'
+import ImageCredit from './ImageCredit'
+import { getCachedImage, setCachedImage } from '../utils/imageCache'
+import { fetchPexelsPhoto, hasPexelsKey } from '../utils/pexels'
 
 const SWIPE_THRESHOLD = 70
 const SWIPE_AXIS_RATIO = 1.5
@@ -11,59 +14,103 @@ const SWIPE_MAX_ABS = 240
 const DRAG_DAMPING = 0.32
 const DRAG_FADE_MAX = 0.25
 
-function remoteFallbackUrl(verb) {
-  const word = verb?.infinitivo?.ing ?? 'english'
-  return `https://source.unsplash.com/featured/?${encodeURIComponent(word)}`
-}
-
-function finalFallbackUrl(verb) {
+function picsumUrl(verb) {
   const word = verb?.infinitivo?.ing ?? 'english'
   return `https://picsum.photos/seed/${encodeURIComponent(word)}/800/400`
 }
 
 function VerbImage({ verb }) {
-  const initial = verb.imagen?.trim() ? verb.imagen : remoteFallbackUrl(verb)
-  const [src, setSrc] = useState(initial)
-  const [stage, setStage] = useState(verb.imagen?.trim() ? 'custom' : 'remote')
-  const audioWord = verb.infinitivo?.ing ?? null
+  const word = verb.infinitivo?.ing ?? null
+  const hasCustom = Boolean(verb.imagen?.trim())
+  const pexelsAvailable = hasPexelsKey()
 
-  const onError = () => {
-    if (stage === 'custom' || stage === 'remote') {
+  const cachedAtMount = !hasCustom && word ? getCachedImage(word) : null
+
+  const [src, setSrc] = useState(() => {
+    if (hasCustom) return verb.imagen
+    if (!pexelsAvailable) return picsumUrl(verb)
+    return cachedAtMount?.url ?? null
+  })
+  const [credit, setCredit] = useState(() => cachedAtMount)
+  const [stage, setStage] = useState(() => {
+    if (hasCustom) return 'custom'
+    if (!pexelsAvailable) return 'picsum'
+    return cachedAtMount ? 'pexels' : 'svg'
+  })
+  const [picsumFailed, setPicsumFailed] = useState(false)
+  const audioWord = word
+
+  useEffect(() => {
+    if (hasCustom || !word) return
+    if (getCachedImage(word)) return
+    if (!pexelsAvailable) return
+
+    let cancelled = false
+
+    fetchPexelsPhoto(word).then((result) => {
+      if (cancelled) return
+      if (result) {
+        setCachedImage(word, result)
+        setSrc(result.url)
+        setCredit(result)
+        setStage('pexels')
+      } else {
+        setSrc(picsumUrl(verb))
+        setStage('picsum')
+      }
+    })
+
+    return () => {
+      cancelled = true
+    }
+  }, [word, hasCustom, pexelsAvailable, verb])
+
+  const onImgError = () => {
+    if (stage === 'pexels') {
+      setSrc(picsumUrl(verb))
+      setCredit(null)
       setStage('picsum')
-      setSrc(finalFallbackUrl(verb))
+    } else if (stage === 'picsum' && !picsumFailed) {
+      setPicsumFailed(true)
     }
   }
 
-  if (stage === 'picsum') {
+  if (hasCustom) {
     return (
-      <div className="group relative">
+      <div className="group relative h-44 w-full overflow-hidden bg-slate-100 sm:h-52 md:h-56">
+        <HeroIllustration className="absolute inset-0 h-full w-full" />
         <img
           src={src}
           alt={verb.infinitivo?.ing ?? ''}
           loading="lazy"
           decoding="async"
-          onError={onError}
-          className="h-44 w-full object-cover sm:h-52 md:h-56"
+          onError={onImgError}
+          className="absolute inset-0 h-full w-full object-cover"
         />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-slate-900/10" />
+        <ImageCredit credit={credit} />
         <VerbImageOverlay audioWord={audioWord} />
       </div>
     )
   }
 
+  const showImg = Boolean(src) && !picsumFailed
+
   return (
     <div className="group relative h-44 w-full overflow-hidden bg-slate-100 sm:h-52 md:h-56">
       <HeroIllustration className="absolute inset-0 h-full w-full" />
-      {verb.imagen?.trim() ? (
+      {showImg ? (
         <img
           src={src}
           alt={verb.infinitivo?.ing ?? ''}
           loading="lazy"
           decoding="async"
-          onError={onError}
+          onError={onImgError}
           className="absolute inset-0 h-full w-full object-cover"
         />
       ) : null}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-slate-900/10" />
+      <ImageCredit credit={credit} />
       <VerbImageOverlay audioWord={audioWord} />
     </div>
   )

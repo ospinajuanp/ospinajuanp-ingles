@@ -27,8 +27,14 @@ per verb, and on-demand pronunciation audio pulled from the free
   the learner to try translating the English first.
 - **Pronunciation audio** — A centered play button on the hero image
   fetches the first audio URL from the Free Dictionary API and
-  plays it. Results are cached in memory; the whole image area is
-  the touch target.
+  plays it. Falls back to the browser's `SpeechSynthesis` API when
+  the Free Dictionary entry has no recording. Results are cached in
+  memory; the whole image area is the touch target.
+- **Hero images** — Curated photos from the [Pexels API](https://www.pexels.com/api/)
+  land on each verb with proper photographer attribution. Optional:
+  set `VITE_PEXELS_API_KEY` in `.env`. Without a key the app uses
+  deterministic [Picsum](https://picsum.photos) images and finally
+  the inline SVG forest illustration.
 - **Real-time search + filters** — Filter by category
   (Generales / Tecnología) and subcategory (Simples / Irregulares
   / Compuestos). Search matches both English infinitives and
@@ -60,6 +66,9 @@ Everything runs from a static `dist/` directory.
 
 - **Node.js ≥ 20** (the project is built and tested on v24).
 - **pnpm** (recommended). npm or yarn also work.
+- **Pexels API key** (optional, for curated photos per verb). Free tier:
+  200 requests/hour, 20,000/month. Without a key the app falls
+  back to Picsum + inline SVG.
 
 ## Installation
 
@@ -67,7 +76,20 @@ Everything runs from a static `dist/` directory.
 git clone https://github.com/ospinajuanp/ospinajuanp-ingles.git
 cd ospinajuanp-ingles
 pnpm install
+cp .env.example .env       # then paste your Pexels key (optional)
 ```
+
+### Optional: configure Pexels for verb hero images
+
+1. Sign up for a free key at <https://www.pexels.com/api/>.
+2. Open `.env` and paste it after `VITE_PEXELS_API_KEY=`.
+3. Restart `pnpm dev`. The first time you visit a verb, the app
+   fetches a curated photo from Pexels and caches it in memory
+   (see `src/utils/imageCache.js`). Subsequent visits are
+   instant.
+
+Without a key, verbs show Picsum images (deterministic per word)
+or the inline forest-path SVG.
 
 ## Usage
 
@@ -127,6 +149,7 @@ pnpm lint
 │   │   ├── CategoryFilter.jsx       # Pills for category / subcategory
 │   │   ├── ConjugationGrid.jsx      # 3-col grid with reveal-on-hover
 │   │   ├── HeroIllustration.jsx     # Inline-SVG forest-path fallback
+│   │   ├── ImageCredit.jsx          # Pill attribution for Pexels photos
 │   │   ├── NavButtons.jsx           # Prev / counter / next / shuffle
 │   │   ├── SearchBar.jsx            # Live filter input
 │   │   ├── SentencePill.jsx         # Sentence card with blur reveal
@@ -138,6 +161,8 @@ pnpm lint
 │   └── utils/
 │       ├── audioCache.js            # In-memory cache of resolved audio URLs
 │       ├── flatten.js               # Walk nested JSON → flat array
+│       ├── imageCache.js            # In-memory cache of Pexels photos
+│       ├── pexels.js                # fetchPexelsPhoto() with auth header
 │       ├── tips.js                  # Rotating conjugation tips
 │       └── weightedRandom.js        # 60 / 25 / 15 lottery
 └── GUIA_ESTILO.md                   # Spanish guide for filling the JSON
@@ -227,6 +252,14 @@ random verb without reloading.
 
 ## Architecture notes
 
+- **Image flow** in `VerbImage`: starts with the inline SVG as the
+  base layer so the user never sees a blank frame. State initializer
+  reads `imageCache` synchronously and seeds the URL from there if
+  it's a hit; otherwise the effect fires the async Pexels fetch
+  (when `VITE_PEXELS_API_KEY` is set). Any failure cascades to
+  Picsum, then to the SVG alone. Attribution lives in the
+  `ImageCredit` overlay, linked to the photographer's Pexels
+  profile.
 - **No global state** — everything lives in `useVerbos` or local
   component state.
 - **Audio playback** uses an imperative `new Audio()` instance per
