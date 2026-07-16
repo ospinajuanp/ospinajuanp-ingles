@@ -36,7 +36,7 @@ function VerbImage({ verb }) {
 
   if (stage === 'picsum') {
     return (
-      <div className="relative">
+      <div className="group relative">
         <img
           src={src}
           alt={verb.infinitivo?.ing ?? ''}
@@ -45,15 +45,13 @@ function VerbImage({ verb }) {
           onError={onError}
           className="h-44 w-full object-cover sm:h-52 md:h-56"
         />
-        <div className="absolute right-3 top-3 z-10">
-          <AudioButton key={audioWord} word={audioWord} />
-        </div>
+        <VerbImageOverlay audioWord={audioWord} />
       </div>
     )
   }
 
   return (
-    <div className="relative h-44 w-full overflow-hidden bg-slate-100 sm:h-52 md:h-56">
+    <div className="group relative h-44 w-full overflow-hidden bg-slate-100 sm:h-52 md:h-56">
       <HeroIllustration className="absolute inset-0 h-full w-full" />
       {verb.imagen?.trim() ? (
         <img
@@ -66,10 +64,24 @@ function VerbImage({ verb }) {
         />
       ) : null}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-slate-900/10" />
-      <div className="absolute right-3 top-3 z-10">
-        <AudioButton key={audioWord} word={audioWord} />
-      </div>
+      <VerbImageOverlay audioWord={audioWord} />
     </div>
+  )
+}
+
+function VerbImageOverlay({ audioWord }) {
+  return (
+    <>
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-slate-900/30 opacity-100 transition-opacity duration-300 md:opacity-0 md:group-hover:opacity-100 md:bg-slate-900/50 md:backdrop-blur-[2px]"
+      />
+      <div className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center">
+        <div className="pointer-events-auto transition-transform duration-300 group-hover:scale-110">
+          <AudioButton key={audioWord} word={audioWord} />
+        </div>
+      </div>
+    </>
   )
 }
 

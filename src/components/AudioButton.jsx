@@ -61,7 +61,6 @@ export default function AudioButton({ word }) {
       a.onerror = () => {
         if (isMountedRef.current) setState('error')
       }
-      // eslint-disable-next-line react-hooks/immutability
       audioRef.current = a
       a.src = url
       a.currentTime = 0
