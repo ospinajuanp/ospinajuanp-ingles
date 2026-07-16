@@ -11140,16 +11140,6 @@ BLOQUE_COMPUESTOS_2 = [
 ]
 
 
-if __name__ == "__main__":
-    procesar_bloque(BLOQUE_COMPUESTOS_3, "compuestos", 60)
-    aplicar_correcciones(CORRECCIONES, "simples")
-
-    with open(RUTA_JSON, "r", encoding="utf-8") as f:
-        check = json.load(f)
-    print("\nVerbo #775 (let down) muestra:")
-    print(json.dumps(check["generales"]["compuestos"][15], indent=2, ensure_ascii=False))
-    print(f"\nTotal compuestos: {sum(1 for v in check['generales']['compuestos'] if v['id'] != '')}/150")
-
 
 BLOQUE_COMPUESTOS_3 = [
     {
@@ -11573,3 +11563,14 @@ BLOQUE_COMPUESTOS_3 = [
         }
     }
 ]
+
+
+if __name__ == "__main__":
+    procesar_bloque(BLOQUE_COMPUESTOS_3, "compuestos", 60)
+    aplicar_correcciones(CORRECCIONES, "simples")
+
+    with open(RUTA_JSON, "r", encoding="utf-8") as f:
+        check = json.load(f)
+    print("\nVerbo #775 (let down) muestra:")
+    print(json.dumps(check["generales"]["compuestos"][15], indent=2, ensure_ascii=False))
+    print(f"\nTotal compuestos: {sum(1 for v in check['generales']['compuestos'] if v['id'] != '')}/150")
