@@ -3,6 +3,7 @@ import SearchBar from './components/SearchBar'
 import CategoryFilter from './components/CategoryFilter'
 import VerbCard from './components/VerbCard'
 import { useVerbos } from './hooks/useVerbos'
+import { checkPexelsStatus } from './utils/pexels'
 
 function BrandIcon() {
   return (
@@ -88,6 +89,10 @@ function ErrorState({ error, onRetry }) {
 export default function App() {
   const v = useVerbos()
   const [retryKey, setRetryKey] = useState(0)
+
+  useEffect(() => {
+    checkPexelsStatus()
+  }, [])
 
   useEffect(() => {
     if (v.error) console.error('[verbos] failed to load', v.error)
