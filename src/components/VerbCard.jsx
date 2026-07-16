@@ -203,6 +203,7 @@ export default function VerbCard({
 
       <div
         key={verbKey}
+        style={shouldAnimateVerbEnter ? { willChange: 'transform, opacity' } : undefined}
         className={
           'space-y-8 p-5 sm:p-7 md:p-8 ' +
           (shouldAnimateVerbEnter ? 'animate-verb-enter motion-reduce:animate-none' : '')

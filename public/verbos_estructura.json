@@ -52809,3602 +52809,3602 @@
       }
     },
     {
-      "id": "",
+      "id": 880,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "cifrar",
+        "ing": "encrypt"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "cifró",
+        "ing": "encrypted"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "cifrado",
+        "ing": "encrypted"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "cifrando",
+        "ing": "encrypting"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "cifrará",
+        "ing": "will encrypt"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "cifraría",
+        "ing": "would encrypt"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I encrypt sensitive files.",
+          "esp": "Yo cifro archivos sensibles."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You encrypted the data.",
+          "esp": "Tú cifraste los datos."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has encrypted the message.",
+          "esp": "Ella ha cifrado el mensaje."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are encrypting the connection.",
+          "esp": "Ellos están cifrando la conexión."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will encrypt later.",
+          "esp": "Nosotros cifremos después."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That tool would encrypt safely.",
+          "esp": "Esa herramienta cifraría seguramente."
         }
       }
     },
     {
-      "id": "",
+      "id": 881,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "descifrar",
+        "ing": "decrypt"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "descifró",
+        "ing": "decrypted"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "descifrado",
+        "ing": "decrypted"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "descifrando",
+        "ing": "decrypting"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "descifrará",
+        "ing": "will decrypt"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "descifraría",
+        "ing": "would decrypt"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I decrypt files with the key.",
+          "esp": "Yo descifro archivos con la clave."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You decrypted the message.",
+          "esp": "Tú descifraste el mensaje."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has decrypted the data.",
+          "esp": "Ella ha descifrado los datos."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are decrypting the file.",
+          "esp": "Ellos están descifrando el archivo."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will decrypt tomorrow.",
+          "esp": "Nosotros descifraremos mañana."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That algorithm would decrypt quickly.",
+          "esp": "Ese algoritmo descifraría rápido."
         }
       }
     },
     {
-      "id": "",
+      "id": 882,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "programar",
+        "ing": "code"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "programó",
+        "ing": "coded"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "programado",
+        "ing": "coded"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "programando",
+        "ing": "coding"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "programará",
+        "ing": "will code"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "programaría",
+        "ing": "would code"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I code in Python daily.",
+          "esp": "Yo programo en Python a diario."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You coded the algorithm.",
+          "esp": "Tú programaste el algoritmo."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has coded the new feature.",
+          "esp": "Ella ha programado la nueva función."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are coding the app.",
+          "esp": "Ellos están programando la app."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will code tomorrow.",
+          "esp": "Nosotros programaremos mañana."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That developer would code efficiently.",
+          "esp": "Esa desarrolladora programaría eficientemente."
         }
       }
     },
     {
-      "id": "",
+      "id": 883,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "depurar",
+        "ing": "debug"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "depuró",
+        "ing": "debugged"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "depurado",
+        "ing": "debugged"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "depurando",
+        "ing": "debugging"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "depurará",
+        "ing": "will debug"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "depuraría",
+        "ing": "would debug"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I debug code every day.",
+          "esp": "Yo depuro código cada día."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You debugged the program.",
+          "esp": "Tú depuraste el programa."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has debugged the issue.",
+          "esp": "Ella ha depurado el problema."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are debugging the system.",
+          "esp": "Ellos están depurando el sistema."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will debug tomorrow.",
+          "esp": "Nosotros depuraremos mañana."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That developer would debug quickly.",
+          "esp": "Esa desarrolladora depuraría rápido."
         }
       }
     },
     {
-      "id": "",
+      "id": 884,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "compilar",
+        "ing": "compile"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "compiló",
+        "ing": "compiled"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "compilado",
+        "ing": "compiled"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "compilando",
+        "ing": "compiling"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "compilará",
+        "ing": "will compile"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "compilaría",
+        "ing": "would compile"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I compile code daily.",
+          "esp": "Yo compilo código a diario."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You compiled the program.",
+          "esp": "Tú compilaste el programa."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has compiled the library.",
+          "esp": "Ella ha compilado la biblioteca."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are compiling the source.",
+          "esp": "Ellos están compilando el código fuente."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will compile later.",
+          "esp": "Nosotros compilaremos después."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That compiler would work fast.",
+          "esp": "Ese compilador funcionaría rápido."
         }
       }
     },
     {
-      "id": "",
+      "id": 885,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "ejecutar",
+        "ing": "run"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "ejecutó",
+        "ing": "ran"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "ejecutado",
+        "ing": "run"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "ejecutando",
+        "ing": "running"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "ejecutará",
+        "ing": "will run"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "ejecutaría",
+        "ing": "would run"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I run tests before deploy.",
+          "esp": "Yo ejecuto pruebas antes del despliegue."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You ran the program.",
+          "esp": "Tú ejecutaste el programa."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has run the simulation.",
+          "esp": "Ella ha ejecutado la simulación."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are running the server.",
+          "esp": "Ellos están ejecutando el servidor."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will run tomorrow.",
+          "esp": "Nosotros ejecutaremos mañana."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That script would run quickly.",
+          "esp": "Ese script se ejecutaría rápido."
         }
       }
     },
     {
-      "id": "",
+      "id": 886,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "ejecutar",
+        "ing": "execute"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "ejecutó",
+        "ing": "executed"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "ejecutado",
+        "ing": "executed"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "ejecutando",
+        "ing": "executing"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "ejecutará",
+        "ing": "will execute"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "ejecutaría",
+        "ing": "would execute"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I execute commands daily.",
+          "esp": "Yo ejecuto comandos a diario."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You executed the script.",
+          "esp": "Tú ejecutaste el script."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has executed the order.",
+          "esp": "Ella ha ejecutado la orden."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are executing the plan.",
+          "esp": "Ellos están ejecutando el plan."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will execute tomorrow.",
+          "esp": "Nosotros ejecutaremos mañana."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That command would execute fast.",
+          "esp": "Ese comando se ejecutaría rápido."
         }
       }
     },
     {
-      "id": "",
+      "id": 887,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "parchar",
+        "ing": "patch"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "parchó",
+        "ing": "patched"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "parchado",
+        "ing": "patched"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "parchando",
+        "ing": "patching"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "parchará",
+        "ing": "will patch"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "parcharía",
+        "ing": "would patch"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I patch the server weekly.",
+          "esp": "Yo parcho el servidor semanalmente."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You patched the bug.",
+          "esp": "Tú parchaste el error."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has patched the vulnerability.",
+          "esp": "Ella ha parchado la vulnerabilidad."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are patching now.",
+          "esp": "Ellos están parchando ahora."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will patch later.",
+          "esp": "Nosotros parcharemos después."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That update would patch quickly.",
+          "esp": "Esa actualización parchearía rápido."
         }
       }
     },
     {
-      "id": "",
+      "id": 888,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "configurar",
+        "ing": "configure"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "configuró",
+        "ing": "configured"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "configurado",
+        "ing": "configured"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "configurando",
+        "ing": "configuring"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "configurará",
+        "ing": "will configure"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "configuraría",
+        "ing": "would configure"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I configure the servers daily.",
+          "esp": "Yo configuro los servidores a diario."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You configured the router.",
+          "esp": "Tú configuraste el router."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has configured the app.",
+          "esp": "Ella ha configurado la app."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are configuring the network.",
+          "esp": "Ellos están configurando la red."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will configure tomorrow.",
+          "esp": "Nosotros configuraremos mañana."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That tool would configure easily.",
+          "esp": "Esa herramienta configuraría fácilmente."
         }
       }
     },
     {
-      "id": "",
+      "id": 889,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "inicializar",
+        "ing": "initialize"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "inicializó",
+        "ing": "initialized"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "inicializado",
+        "ing": "initialized"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "inicializando",
+        "ing": "initializing"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "inicializará",
+        "ing": "will initialize"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "inicializaría",
+        "ing": "would initialize"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I initialize the system on boot.",
+          "esp": "Yo inicializo el sistema al arrancar."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You initialized the database.",
+          "esp": "Tú inicializaste la base de datos."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has initialized the array.",
+          "esp": "Ella ha inicializado el arreglo."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are initializing the app.",
+          "esp": "Ellos están inicializando la app."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will initialize at startup.",
+          "esp": "Nosotros inicializaremos al arrancar."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That process would initialize fast.",
+          "esp": "Ese proceso se inicializaría rápido."
         }
       }
     },
     {
-      "id": "",
+      "id": 890,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "reiniciar",
+        "ing": "reboot"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "reinició",
+        "ing": "rebooted"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "reiniciado",
+        "ing": "rebooted"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "reiniciando",
+        "ing": "rebooting"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "reiniciará",
+        "ing": "will reboot"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "reiniciaría",
+        "ing": "would reboot"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I reboot my computer daily.",
+          "esp": "Yo reinicio mi computadora a diario."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You rebooted the server.",
+          "esp": "Tú reiniciaste el servidor."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has rebooted the system.",
+          "esp": "Ella ha reiniciado el sistema."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are rebooting the network.",
+          "esp": "Ellos están reiniciando la red."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will reboot tomorrow.",
+          "esp": "Nosotros reiniciaremos mañana."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That server would reboot quickly.",
+          "esp": "Ese servidor se reiniciaría rápido."
         }
       }
     },
     {
-      "id": "",
+      "id": 891,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "reiniciar",
+        "ing": "restart"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "reinició",
+        "ing": "restarted"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "reiniciado",
+        "ing": "restarted"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "reiniciando",
+        "ing": "restarting"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "reiniciará",
+        "ing": "will restart"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "reiniciaría",
+        "ing": "would restart"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I restart the app when it freezes.",
+          "esp": "Yo reinicio la app cuando se congela."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You restarted the service.",
+          "esp": "Tú reiniciaste el servicio."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has restarted the process.",
+          "esp": "Ella ha reiniciado el proceso."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are restarting the engine.",
+          "esp": "Ellos están reiniciando el motor."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will restart later.",
+          "esp": "Nosotros reiniciaremos después."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That machine would restart automatically.",
+          "esp": "Esa máquina se reiniciaría automáticamente."
         }
       }
     },
     {
-      "id": "",
+      "id": 892,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "apagar",
+        "ing": "shut down"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "apagó",
+        "ing": "shut down"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "apagado",
+        "ing": "shut down"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "apagando",
+        "ing": "shutting down"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "apagará",
+        "ing": "will shut down"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "apagaría",
+        "ing": "would shut down"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I shut down the computer nightly.",
+          "esp": "Yo apago la computadora cada noche."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You shut down the server.",
+          "esp": "Tú apagaste el servidor."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has shut down the system.",
+          "esp": "Ella ha apagado el sistema."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are shutting down now.",
+          "esp": "Ellos están apagando ahora."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will shut down at midnight.",
+          "esp": "Nosotros apagaremos a medianoche."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That server would shut down safely.",
+          "esp": "Ese servidor se apagaría seguramente."
         }
       }
     },
     {
-      "id": "",
+      "id": 893,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "solucionar",
+        "ing": "troubleshoot"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "solucionó",
+        "ing": "troubleshot"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "solucionado",
+        "ing": "troubleshot"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "solucionando",
+        "ing": "troubleshooting"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "solucionará",
+        "ing": "will troubleshoot"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "solucionaría",
+        "ing": "would troubleshoot"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I troubleshoot issues daily.",
+          "esp": "Yo soluciono problemas a diario."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You troubleshot the issue.",
+          "esp": "Tú solucionaste el problema."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has troubleshot the system.",
+          "esp": "Ella ha solucionado el sistema."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are troubleshooting now.",
+          "esp": "Ellos están solucionando ahora."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will troubleshoot tomorrow.",
+          "esp": "Nosotros solucionaremos mañana."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That technician would troubleshoot easily.",
+          "esp": "Esa técnica solucionaría fácilmente."
         }
       }
     },
     {
-      "id": "",
+      "id": 894,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "monitorear",
+        "ing": "monitor"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "monitoreó",
+        "ing": "monitored"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "monitoreado",
+        "ing": "monitored"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "monitoreando",
+        "ing": "monitoring"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "monitoreará",
+        "ing": "will monitor"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "monitorearía",
+        "ing": "would monitor"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I monitor the servers daily.",
+          "esp": "Yo monitoreo los servidores a diario."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You monitored the traffic.",
+          "esp": "Tú monitoreaste el tráfico."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has monitored the performance.",
+          "esp": "Ella ha monitoreado el rendimiento."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are monitoring the network.",
+          "esp": "Ellos están monitoreando la red."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will monitor 24/7.",
+          "esp": "Nosotros monitorearemos 24/7."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That tool would monitor perfectly.",
+          "esp": "Esa herramienta monitorearía perfectamente."
         }
       }
     },
     {
-      "id": "",
+      "id": 895,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "filtrar",
+        "ing": "filter"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "filtró",
+        "ing": "filtered"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "filtrado",
+        "ing": "filtered"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "filtrando",
+        "ing": "filtering"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "filtrará",
+        "ing": "will filter"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "filtraría",
+        "ing": "would filter"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I filter spam emails daily.",
+          "esp": "Yo filtro correos no deseados a diario."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You filtered the results.",
+          "esp": "Tú filtraste los resultados."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has filtered the data.",
+          "esp": "Ella ha filtrado los datos."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are filtering content.",
+          "esp": "Ellos están filtrando contenido."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will filter later.",
+          "esp": "Nosotros filtraremos después."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That filter would work fast.",
+          "esp": "Ese filtro funcionaría rápido."
         }
       }
     },
     {
-      "id": "",
+      "id": 896,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "formatear",
+        "ing": "format"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "formateó",
+        "ing": "formatted"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "formateado",
+        "ing": "formatted"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "formateando",
+        "ing": "formatting"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "formateará",
+        "ing": "will format"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "formatearía",
+        "ing": "would format"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I format the disk yearly.",
+          "esp": "Yo formateo el disco anualmente."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You formatted the text.",
+          "esp": "Tú formateaste el texto."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has formatted the document.",
+          "esp": "Ella ha formateado el documento."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are formatting the code.",
+          "esp": "Ellos están formateando el código."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will format tomorrow.",
+          "esp": "Nosotros formatearemos mañana."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That tool would format quickly.",
+          "esp": "Esa herramienta formatearía rápido."
         }
       }
     },
     {
-      "id": "",
+      "id": 897,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "particionar",
+        "ing": "partition"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "particionó",
+        "ing": "partitioned"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "particionado",
+        "ing": "partitioned"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "particionando",
+        "ing": "partitioning"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "particionará",
+        "ing": "will partition"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "particionaría",
+        "ing": "would partition"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I partition the drive daily.",
+          "esp": "Yo particiono el disco a diario."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You partitioned the disk.",
+          "esp": "Tú particionaste el disco."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has partitioned the data.",
+          "esp": "Ella ha particionado los datos."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are partitioning the table.",
+          "esp": "Ellos están particionando la tabla."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will partition later.",
+          "esp": "Nosotros particionaremos después."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That tool would partition efficiently.",
+          "esp": "Esa herramienta particionaría eficientemente."
         }
       }
     },
     {
-      "id": "",
+      "id": 898,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "mapear",
+        "ing": "map"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "mapeó",
+        "ing": "mapped"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "mapeado",
+        "ing": "mapped"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "mapeando",
+        "ing": "mapping"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "mapeará",
+        "ing": "will map"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "mapearía",
+        "ing": "would map"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I map the network weekly.",
+          "esp": "Yo mapeo la red semanalmente."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You mapped the database.",
+          "esp": "Tú mapeaste la base de datos."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has mapped the territory.",
+          "esp": "Ella ha mapeado el territorio."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are mapping the network.",
+          "esp": "Ellos están mapeando la red."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will map tomorrow.",
+          "esp": "Nosotros mapearemos mañana."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That scanner would map quickly.",
+          "esp": "Ese escáner mapearía rápido."
         }
       }
     },
     {
-      "id": "",
+      "id": 899,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "hacer ping",
+        "ing": "ping"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "hizo ping",
+        "ing": "pinged"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "hecho ping",
+        "ing": "pinged"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "haciendo ping",
+        "ing": "pinging"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "hacer pingá",
+        "ing": "will ping"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "hacer pingía",
+        "ing": "would ping"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I ping the server to test.",
+          "esp": "Yo hago ping al servidor para probar."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You pinged the host.",
+          "esp": "Tú hiciste ping al host."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has pinged the server.",
+          "esp": "Ella ha hecho ping al servidor."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are pinging the network.",
+          "esp": "Ellos están haciendo ping a la red."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will ping later.",
+          "esp": "Nosotros haremos ping después."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That tool would ping easily.",
+          "esp": "Esa herramienta haría ping fácilmente."
         }
       }
     },
     {
-      "id": "",
+      "id": 900,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "rastrear",
+        "ing": "trace"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "rastreó",
+        "ing": "traced"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "rastreado",
+        "ing": "traced"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "rastreando",
+        "ing": "tracing"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "rastreará",
+        "ing": "will trace"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "rastrearía",
+        "ing": "would trace"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I trace the bug daily.",
+          "esp": "Yo rastreo el error a diario."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You traced the call.",
+          "esp": "Tú rastreaste la llamada."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has traced the problem.",
+          "esp": "Ella ha rastreado el problema."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are tracing the request.",
+          "esp": "Ellos están rastreando la solicitud."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will trace later.",
+          "esp": "Nosotros rastrearemos después."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That tool would trace quickly.",
+          "esp": "Esa herramienta rastrearía rápido."
         }
       }
     },
     {
-      "id": "",
+      "id": 901,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "implementar",
+        "ing": "deploy"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "implementó",
+        "ing": "deployed"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "implementado",
+        "ing": "deployed"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "implementando",
+        "ing": "deploying"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "implementará",
+        "ing": "will deploy"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "implementaría",
+        "ing": "would deploy"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I deploy code to production.",
+          "esp": "Yo implemento código en producción."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You deployed the app.",
+          "esp": "Tú implementaste la app."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has deployed the fix.",
+          "esp": "Ella ha implementado la corrección."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are deploying now.",
+          "esp": "Ellos están implementando ahora."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will deploy tomorrow.",
+          "esp": "Nosotros implementaremos mañana."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That system would deploy smoothly.",
+          "esp": "Ese sistema se implementaría sin problemas."
         }
       }
     },
     {
-      "id": "",
+      "id": 902,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "integrar",
+        "ing": "integrate"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "integró",
+        "ing": "integrated"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "integrado",
+        "ing": "integrated"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "integrando",
+        "ing": "integrating"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "integrará",
+        "ing": "will integrate"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "integraría",
+        "ing": "would integrate"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I integrate systems weekly.",
+          "esp": "Yo integro sistemas semanalmente."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You integrated the API.",
+          "esp": "Tú integraste la API."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has integrated the module.",
+          "esp": "Ella ha integrado el módulo."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are integrating the services.",
+          "esp": "Ellos están integrando los servicios."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will integrate later.",
+          "esp": "Nosotros integraremos después."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That tool would integrate easily.",
+          "esp": "Esa herramienta integraría fácilmente."
         }
       }
     },
     {
-      "id": "",
+      "id": 903,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "almacenar en caché",
+        "ing": "cache"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "almacenó en caché",
+        "ing": "cached"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "almacenado en caché",
+        "ing": "cached"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "almacenando en caché",
+        "ing": "caching"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "almacenar en cachéá",
+        "ing": "will cache"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "almacenar en cachéía",
+        "ing": "would cache"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I cache the data daily.",
+          "esp": "Yo almaceno los datos en caché a diario."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You cached the page.",
+          "esp": "Tú almacenaste la página en caché."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has cached the results.",
+          "esp": "Ella ha almacenado los resultados en caché."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are caching responses.",
+          "esp": "Ellos están almacenando respuestas en caché."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will cache tomorrow.",
+          "esp": "Nosotros almacenaremos en caché mañana."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That system would cache efficiently.",
+          "esp": "Ese sistema almacenaría eficientemente."
         }
       }
     },
     {
-      "id": "",
+      "id": 904,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "acceder",
+        "ing": "access"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "accedió",
+        "ing": "accessed"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "accedido",
+        "ing": "accessed"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "accediendo",
+        "ing": "accessing"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "accederá",
+        "ing": "will access"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "accedería",
+        "ing": "would access"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I access the database daily.",
+          "esp": "Yo accedo a la base de datos a diario."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You accessed the file.",
+          "esp": "Tú accediste al archivo."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has accessed the network.",
+          "esp": "Ella ha accedido a la red."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are accessing the server.",
+          "esp": "Ellos están accediendo al servidor."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will access later.",
+          "esp": "Nosotros accederemos después."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That user would access easily.",
+          "esp": "Ese usuario accedería fácilmente."
         }
       }
     },
     {
-      "id": "",
+      "id": 905,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "activar",
+        "ing": "activate"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "activó",
+        "ing": "activated"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "activado",
+        "ing": "activated"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "activando",
+        "ing": "activating"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "activará",
+        "ing": "will activate"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "activaría",
+        "ing": "would activate"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I activate the account online.",
+          "esp": "Yo activo la cuenta en línea."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You activated the feature.",
+          "esp": "Tú activaste la función."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has activated the license.",
+          "esp": "Ella ha activado la licencia."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are activating the plugin.",
+          "esp": "Ellos están activando el plugin."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will activate tomorrow.",
+          "esp": "Nosotros activaremos mañana."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That code would activate quickly.",
+          "esp": "Ese código se activaría rápido."
         }
       }
     },
     {
-      "id": "",
+      "id": 906,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "ajustar",
+        "ing": "adjust"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "ajustó",
+        "ing": "adjusted"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "ajustado",
+        "ing": "adjusted"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "ajustando",
+        "ing": "adjusting"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "ajustará",
+        "ing": "will adjust"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "ajustaría",
+        "ing": "would adjust"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I adjust the settings daily.",
+          "esp": "Yo ajusto la configuración a diario."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You adjusted the volume.",
+          "esp": "Tú ajustaste el volumen."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has adjusted the parameters.",
+          "esp": "Ella ha ajustado los parámetros."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are adjusting the layout.",
+          "esp": "Ellos están ajustando el diseño."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will adjust later.",
+          "esp": "Nosotros ajustaremos después."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That knob would adjust smoothly.",
+          "esp": "Esa perilla se ajustaría suavemente."
         }
       }
     },
     {
-      "id": "",
+      "id": 907,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "asignar",
+        "ing": "allocate"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "asignó",
+        "ing": "allocated"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "asignado",
+        "ing": "allocated"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "asignando",
+        "ing": "allocating"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "asignará",
+        "ing": "will allocate"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "asignaría",
+        "ing": "would allocate"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I allocate resources weekly.",
+          "esp": "Yo asigno recursos semanalmente."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You allocated the memory.",
+          "esp": "Tú asignaste la memoria."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has allocated the budget.",
+          "esp": "Ella ha asignado el presupuesto."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are allocating storage.",
+          "esp": "Ellos están asignando almacenamiento."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will allocate tomorrow.",
+          "esp": "Nosotros asignaremos mañana."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That system would allocate automatically.",
+          "esp": "Ese sistema asignaría automáticamente."
         }
       }
     },
     {
-      "id": "",
+      "id": 908,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "analizar",
+        "ing": "analyze"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "analizó",
+        "ing": "analyzed"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "analizado",
+        "ing": "analyzed"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "analizando",
+        "ing": "analyzing"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "analizará",
+        "ing": "will analyze"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "analizaría",
+        "ing": "would analyze"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I analyze data daily.",
+          "esp": "Yo analizo datos a diario."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You analyzed the logs.",
+          "esp": "Tú analizaste los registros."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has analyzed the trends.",
+          "esp": "Ella ha analizado las tendencias."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are analyzing the data.",
+          "esp": "Ellos están analizando los datos."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will analyze tomorrow.",
+          "esp": "Nosotros analizaremos mañana."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That tool would analyze fast.",
+          "esp": "Esa herramienta analizaría rápido."
         }
       }
     },
     {
-      "id": "",
+      "id": 909,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "archivar",
+        "ing": "archive"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "archivó",
+        "ing": "archived"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "archivado",
+        "ing": "archived"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "archivando",
+        "ing": "archiving"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "archivará",
+        "ing": "will archive"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "archivaría",
+        "ing": "would archive"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I archive old files yearly.",
+          "esp": "Yo archivo archivos viejos anualmente."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You archived the documents.",
+          "esp": "Tú archivaste los documentos."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has archived the project.",
+          "esp": "Ella ha archivado el proyecto."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are archiving now.",
+          "esp": "Ellos están archivando ahora."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will archive tomorrow.",
+          "esp": "Nosotros archivaremos mañana."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That system would archive efficiently.",
+          "esp": "Ese sistema archivaría eficientemente."
         }
       }
     },
     {
-      "id": "",
+      "id": 910,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "ensamblar",
+        "ing": "assemble"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "ensambló",
+        "ing": "assembled"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "ensamblado",
+        "ing": "assembled"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "ensamblando",
+        "ing": "assembling"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "ensamblará",
+        "ing": "will assemble"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "ensamblaría",
+        "ing": "would assemble"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I assemble the components daily.",
+          "esp": "Yo ensamblo los componentes a diario."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You assembled the furniture.",
+          "esp": "Tú ensamblaste los muebles."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has assembled the team.",
+          "esp": "Ella ha ensamblado al equipo."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are assembling the kit.",
+          "esp": "Ellos están ensamblando el kit."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will assemble tomorrow.",
+          "esp": "Nosotros ensamblaremos mañana."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That worker would assemble quickly.",
+          "esp": "Esa obrera ensamblaría rápido."
         }
       }
     },
     {
-      "id": "",
+      "id": 911,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "adjuntar",
+        "ing": "attach"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "adjuntó",
+        "ing": "attached"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "adjuntado",
+        "ing": "attached"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "adjuntando",
+        "ing": "attaching"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "adjuntará",
+        "ing": "will attach"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "adjuntaría",
+        "ing": "would attach"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I attach files to emails daily.",
+          "esp": "Yo adjunto archivos a correos a diario."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You attached the photo.",
+          "esp": "Tú adjuntaste la foto."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has attached the document.",
+          "esp": "Ella ha adjuntado el documento."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are attaching the file.",
+          "esp": "Ellos están adjuntando el archivo."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will attach tomorrow.",
+          "esp": "Nosotros adjuntaremos mañana."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That form would attach easily.",
+          "esp": "Ese formulario se adjuntaría fácilmente."
         }
       }
     },
     {
-      "id": "",
+      "id": 912,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "automatizar",
+        "ing": "automate"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "automatizó",
+        "ing": "automated"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "automatizado",
+        "ing": "automated"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "automatizando",
+        "ing": "automating"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "automatizará",
+        "ing": "will automate"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "automatizaría",
+        "ing": "would automate"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I automate tasks daily.",
+          "esp": "Yo automatizo tareas a diario."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You automated the workflow.",
+          "esp": "Tú automatizaste el flujo de trabajo."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has automated the process.",
+          "esp": "Ella ha automatizado el proceso."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are automating the build.",
+          "esp": "Ellos están automatizando la compilación."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will automate tomorrow.",
+          "esp": "Nosotros automatizaremos mañana."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That tool would automate easily.",
+          "esp": "Esa herramienta automatizaría fácilmente."
         }
       }
     },
     {
-      "id": "",
+      "id": 913,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "navegar",
+        "ing": "browse"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "navegó",
+        "ing": "browsed"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "navegado",
+        "ing": "browsed"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "navegando",
+        "ing": "browsing"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "navegará",
+        "ing": "will browse"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "navegaría",
+        "ing": "would browse"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I browse the web daily.",
+          "esp": "Yo navego por la web a diario."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You browsed the catalog.",
+          "esp": "Tú navegaste por el catálogo."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has browsed the selection.",
+          "esp": "Ella ha navegado por la selección."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are browsing online.",
+          "esp": "Ellos están navegando en línea."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will browse later.",
+          "esp": "Nosotros navegaremos después."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That user would browse quickly.",
+          "esp": "Ese usuario navegaría rápido."
         }
       }
     },
     {
-      "id": "",
+      "id": 914,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "construir",
+        "ing": "build"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "construyó",
+        "ing": "built"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "construido",
+        "ing": "built"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "construyendo",
+        "ing": "building"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "construirá",
+        "ing": "will build"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "construiría",
+        "ing": "would build"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I build apps in my free time.",
+          "esp": "Yo construyo apps en mi tiempo libre."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You built the project.",
+          "esp": "Tú construiste el proyecto."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has built the database.",
+          "esp": "Ella ha construido la base de datos."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are building the API.",
+          "esp": "Ellos están construyendo la API."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will build tomorrow.",
+          "esp": "Nosotros construiremos mañana."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That developer would build fast.",
+          "esp": "Esa desarrolladora construiría rápido."
         }
       }
     },
     {
-      "id": "",
+      "id": 915,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "evitar",
+        "ing": "bypass"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "evitó",
+        "ing": "bypassed"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "evitado",
+        "ing": "bypassed"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "evitando",
+        "ing": "bypassing"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "evitará",
+        "ing": "will bypass"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "evitaría",
+        "ing": "would bypass"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I bypass the firewall daily.",
+          "esp": "Yo evito el firewall a diario."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You bypassed the security.",
+          "esp": "Tú evitaste la seguridad."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has bypassed the limit.",
+          "esp": "Ella ha evitado el límite."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are bypassing the issue.",
+          "esp": "Ellos están evitando el problema."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will bypass later.",
+          "esp": "Nosotros evitaremos después."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That code would bypass easily.",
+          "esp": "Ese código evitaría fácilmente."
         }
       }
     },
     {
-      "id": "",
+      "id": 916,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "calcular",
+        "ing": "calculate"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "calculó",
+        "ing": "calculated"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "calculado",
+        "ing": "calculated"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "calculando",
+        "ing": "calculating"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "calculará",
+        "ing": "will calculate"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "calcularía",
+        "ing": "would calculate"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I calculate totals daily.",
+          "esp": "Yo calculo totales a diario."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You calculated the cost.",
+          "esp": "Tú calculaste el costo."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has calculated the totals.",
+          "esp": "Ella ha calculado los totales."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are calculating the fees.",
+          "esp": "Ellos están calculando las tarifas."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will calculate tomorrow.",
+          "esp": "Nosotros calcularemos mañana."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That function would calculate fast.",
+          "esp": "Esa función calcularía rápido."
         }
       }
     },
     {
-      "id": "",
+      "id": 917,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "calibrar",
+        "ing": "calibrate"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "calibró",
+        "ing": "calibrated"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "calibrado",
+        "ing": "calibrated"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "calibrando",
+        "ing": "calibrating"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "calibrará",
+        "ing": "will calibrate"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "calibraría",
+        "ing": "would calibrate"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I calibrate the sensors daily.",
+          "esp": "Yo calibro los sensores a diario."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You calibrated the equipment.",
+          "esp": "Tú calibraste el equipo."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has calibrated the device.",
+          "esp": "Ella ha calibrado el dispositivo."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are calibrating now.",
+          "esp": "Ellos están calibrando ahora."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will calibrate later.",
+          "esp": "Nosotros calibraremos después."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That tool would calibrate easily.",
+          "esp": "Esa herramienta calibraría fácilmente."
         }
       }
     },
     {
-      "id": "",
+      "id": 918,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "cancelar",
+        "ing": "cancel"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "canceló",
+        "ing": "cancelled"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "cancelado",
+        "ing": "cancelled"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "cancelando",
+        "ing": "cancelling"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "cancelará",
+        "ing": "will cancel"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "cancelaría",
+        "ing": "would cancel"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I cancel meetings when busy.",
+          "esp": "Yo cancelo reuniones cuando estoy ocupado."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You cancelled the order.",
+          "esp": "Tú cancelaste el pedido."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has cancelled the trip.",
+          "esp": "Ella ha cancelado el viaje."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are cancelling subscriptions.",
+          "esp": "Ellos están cancelando suscripciones."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will cancel later.",
+          "esp": "Nosotros cancelaremos después."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That service would cancel easily.",
+          "esp": "Ese servicio cancelaría fácilmente."
         }
       }
     },
     {
-      "id": "",
+      "id": 919,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "capturar",
+        "ing": "capture"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "capturó",
+        "ing": "captured"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "capturado",
+        "ing": "captured"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "capturando",
+        "ing": "capturing"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "capturará",
+        "ing": "will capture"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "capturaría",
+        "ing": "would capture"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I capture screenshots daily.",
+          "esp": "Yo capturo pantallas a diario."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You captured the image.",
+          "esp": "Tú capturaste la imagen."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has captured the data.",
+          "esp": "Ella ha capturado los datos."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are capturing screenshots.",
+          "esp": "Ellos están capturando pantallas."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will capture later.",
+          "esp": "Nosotros capturaremos después."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That tool would capture instantly.",
+          "esp": "Esa herramienta capturaría al instante."
         }
       }
     },
     {
-      "id": "",
+      "id": 920,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "centralizar",
+        "ing": "centralize"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "centralizó",
+        "ing": "centralized"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "centralizado",
+        "ing": "centralized"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "centralizando",
+        "ing": "centralizing"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "centralizará",
+        "ing": "will centralize"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "centralizaría",
+        "ing": "would centralize"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I centralize the data daily.",
+          "esp": "Yo centralizo los datos a diario."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You centralized the operations.",
+          "esp": "Tú centralizaste las operaciones."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has centralized the data.",
+          "esp": "Ella ha centralizado los datos."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are centralizing the services.",
+          "esp": "Ellos están centralizando los servicios."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will centralize tomorrow.",
+          "esp": "Nosotros centralizaremos mañana."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That team would centralize easily.",
+          "esp": "Ese equipo centralizaría fácilmente."
         }
       }
     },
     {
-      "id": "",
+      "id": 921,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "cambiar",
+        "ing": "change"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "cambió",
+        "ing": "changed"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "cambiado",
+        "ing": "changed"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "cambiando",
+        "ing": "changing"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "cambiará",
+        "ing": "will change"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "cambiaría",
+        "ing": "would change"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I change the settings daily.",
+          "esp": "Yo cambio la configuración a diario."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You changed the password.",
+          "esp": "Tú cambiaste la contraseña."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has changed the layout.",
+          "esp": "Ella ha cambiado el diseño."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are changing the config.",
+          "esp": "Ellos están cambiando la configuración."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will change later.",
+          "esp": "Nosotros cambiaremos después."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That option would change dynamically.",
+          "esp": "Esa opción cambiaría dinámicamente."
         }
       }
     },
     {
-      "id": "",
+      "id": 922,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "verificar",
+        "ing": "check"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "verificó",
+        "ing": "checked"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "verificado",
+        "ing": "checked"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "verificando",
+        "ing": "checking"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "verificará",
+        "ing": "will check"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "verificaría",
+        "ing": "would check"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I check the logs daily.",
+          "esp": "Yo verifico los registros a diario."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You checked the system.",
+          "esp": "Tú verificaste el sistema."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has checked the status.",
+          "esp": "Ella ha verificado el estado."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are checking the logs.",
+          "esp": "Ellos están verificando los registros."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will check tomorrow.",
+          "esp": "Nosotros verificaremos mañana."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That script would check instantly.",
+          "esp": "Ese script verificaría al instante."
         }
       }
     },
     {
-      "id": "",
+      "id": 923,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "borrar",
+        "ing": "clear"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "borró",
+        "ing": "cleared"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "borrado",
+        "ing": "cleared"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "borrando",
+        "ing": "clearing"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "borrará",
+        "ing": "will clear"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "borraría",
+        "ing": "would clear"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I clear the cache daily.",
+          "esp": "Yo borro el caché a diario."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You cleared the data.",
+          "esp": "Tú borraste los datos."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has cleared the queue.",
+          "esp": "Ella ha borrado la cola."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are clearing the cache.",
+          "esp": "Ellos están borrando el caché."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will clear later.",
+          "esp": "Nosotros borraremos después."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That command would clear fast.",
+          "esp": "Ese comando borraría rápido."
         }
       }
     },
     {
-      "id": "",
+      "id": 924,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "clonar",
+        "ing": "clone"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "clonó",
+        "ing": "cloned"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "clonado",
+        "ing": "cloned"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "clonando",
+        "ing": "cloning"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "clonará",
+        "ing": "will clone"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "clonaría",
+        "ing": "would clone"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I clone the repository daily.",
+          "esp": "Yo clono el repositorio a diario."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You cloned the project.",
+          "esp": "Tú clonaste el proyecto."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has cloned the database.",
+          "esp": "Ella ha clonado la base de datos."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are cloning the server.",
+          "esp": "Ellos están clonando el servidor."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will clone tomorrow.",
+          "esp": "Nosotros clonaremos mañana."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That tool would clone easily.",
+          "esp": "Esa herramienta clonaría fácilmente."
         }
       }
     },
     {
-      "id": "",
+      "id": 925,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "agrupar",
+        "ing": "cluster"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "agrupó",
+        "ing": "clustered"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "agrupado",
+        "ing": "clustered"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "agrupando",
+        "ing": "clustering"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "agrupará",
+        "ing": "will cluster"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "agruparía",
+        "ing": "would cluster"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I cluster the servers daily.",
+          "esp": "Yo agrupo los servidores a diario."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You clustered the nodes.",
+          "esp": "Tú agrupaste los nodos."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has clustered the data.",
+          "esp": "Ella ha agrupado los datos."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are clustering the machines.",
+          "esp": "Ellos están agrupando las máquinas."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will cluster later.",
+          "esp": "Nosotros agruparemos después."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That algorithm would cluster efficiently.",
+          "esp": "Ese algoritmo agruparía eficientemente."
         }
       }
     },
     {
-      "id": "",
+      "id": 926,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "intercalar",
+        "ing": "collate"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "intercaló",
+        "ing": "collated"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "intercalado",
+        "ing": "collated"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "intercalando",
+        "ing": "collating"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "intercalará",
+        "ing": "will collate"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "intercalaría",
+        "ing": "would collate"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I collate the reports daily.",
+          "esp": "Yo intercalo los informes a diario."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You collated the data.",
+          "esp": "Tú intercalaste los datos."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has collated the pages.",
+          "esp": "Ella ha intercalado las páginas."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are collating the documents.",
+          "esp": "Ellos están intercalando los documentos."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will collate tomorrow.",
+          "esp": "Nosotros intercalaremos mañana."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That tool would collate easily.",
+          "esp": "Esa herramienta intercalaría fácilmente."
         }
       }
     },
     {
-      "id": "",
+      "id": 927,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "ordenar",
+        "ing": "command"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "ordenó",
+        "ing": "commanded"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "ordenado",
+        "ing": "commanded"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "ordenando",
+        "ing": "commanding"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "ordenará",
+        "ing": "will command"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "ordenaría",
+        "ing": "would command"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I command the server daily.",
+          "esp": "Yo ordeno al servidor a diario."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You commanded the robot.",
+          "esp": "Tú ordenaste al robot."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has commanded the fleet.",
+          "esp": "Ella ha ordenado a la flota."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are commanding the troops.",
+          "esp": "Ellos están ordenando a las tropas."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will command tomorrow.",
+          "esp": "Nosotros ordenaremos mañana."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That officer would command respect.",
+          "esp": "Esa oficial ordenaría respeto."
         }
       }
     },
     {
-      "id": "",
+      "id": 928,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "computar",
+        "ing": "compute"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "computó",
+        "ing": "computed"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "computado",
+        "ing": "computed"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "computando",
+        "ing": "computing"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "computará",
+        "ing": "will compute"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "computaría",
+        "ing": "would compute"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I compute values daily.",
+          "esp": "Yo computo valores a diario."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You computed the result.",
+          "esp": "Tú computaste el resultado."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has computed the average.",
+          "esp": "Ella ha computado el promedio."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are computing the values.",
+          "esp": "Ellos están computando los valores."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will compute later.",
+          "esp": "Nosotros computaremos después."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That algorithm would compute fast.",
+          "esp": "Ese algoritmo computaría rápido."
         }
       }
     },
     {
-      "id": "",
+      "id": 929,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "consolidar",
+        "ing": "consolidate"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "consolidó",
+        "ing": "consolidated"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "consolidado",
+        "ing": "consolidated"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "consolidando",
+        "ing": "consolidating"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "consolidará",
+        "ing": "will consolidate"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "consolidaría",
+        "ing": "would consolidate"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I consolidate the servers daily.",
+          "esp": "Yo consolido los servidores a diario."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You consolidated the databases.",
+          "esp": "Tú consolidaste las bases de datos."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has consolidated the reports.",
+          "esp": "Ella ha consolidado los informes."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are consolidating the data.",
+          "esp": "Ellos están consolidando los datos."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will consolidate tomorrow.",
+          "esp": "Nosotros consolidaremos mañana."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That team would consolidate easily.",
+          "esp": "Ese equipo consolidaría fácilmente."
         }
       }
     },
     {
-      "id": "",
+      "id": 930,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "convertir",
+        "ing": "convert"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "convirtió",
+        "ing": "converted"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "convertido",
+        "ing": "converted"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "convirtiendo",
+        "ing": "converting"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "convertirá",
+        "ing": "will convert"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "convertiría",
+        "ing": "would convert"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I convert files to PDF daily.",
+          "esp": "Yo convierto archivos a PDF a diario."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You converted the file.",
+          "esp": "Tú convertiste el archivo."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has converted the video.",
+          "esp": "Ella ha convertido el video."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are converting the format.",
+          "esp": "Ellos están convirtiendo el formato."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will convert tomorrow.",
+          "esp": "Nosotros convertiremos mañana."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That tool would convert quickly.",
+          "esp": "Esa herramienta convertiría rápido."
         }
       }
     },
     {
-      "id": "",
+      "id": 931,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "corromper",
+        "ing": "corrupt"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "corrompió",
+        "ing": "corrupted"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "corrompido",
+        "ing": "corrupted"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "corrompiendo",
+        "ing": "corrupting"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "corromperá",
+        "ing": "will corrupt"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "corrompería",
+        "ing": "would corrupt"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I corrupt the file rarely.",
+          "esp": "Yo corrompo el archivo raramente."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You corrupted the data.",
+          "esp": "Tú corrompiste los datos."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has corrupted the file.",
+          "esp": "Ella ha corrompido el archivo."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are corrupting the system.",
+          "esp": "Ellos están corrompiendo el sistema."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will never corrupt data.",
+          "esp": "Nosotros nunca corromperemos datos."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That virus would corrupt instantly.",
+          "esp": "Ese virus corrompería al instante."
         }
       }
     },
     {
-      "id": "",
+      "id": 932,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "crear",
+        "ing": "create"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "creó",
+        "ing": "created"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "creado",
+        "ing": "created"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "creando",
+        "ing": "creating"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "creará",
+        "ing": "will create"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "crearía",
+        "ing": "would create"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I create new accounts daily.",
+          "esp": "Yo creo cuentas nuevas a diario."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You created the design.",
+          "esp": "Tú creaste el diseño."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has created the database.",
+          "esp": "Ella ha creado la base de datos."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are creating the app.",
+          "esp": "Ellos están creando la app."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will create tomorrow.",
+          "esp": "Nosotros crearemos mañana."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That developer would create fast.",
+          "esp": "Esa desarrolladora crearía rápido."
         }
       }
     },
     {
-      "id": "",
+      "id": 933,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "personalizar",
+        "ing": "customize"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "personalizó",
+        "ing": "customized"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "personalizado",
+        "ing": "customized"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "personalizando",
+        "ing": "customizing"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "personalizará",
+        "ing": "will customize"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "personalizaría",
+        "ing": "would customize"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I customize the settings daily.",
+          "esp": "Yo personalizo la configuración a diario."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You customized the theme.",
+          "esp": "Tú personalizaste el tema."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has customized the dashboard.",
+          "esp": "Ella ha personalizado el panel."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are customizing the app.",
+          "esp": "Ellos están personalizando la app."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will customize tomorrow.",
+          "esp": "Nosotros personalizaremos mañana."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That tool would customize easily.",
+          "esp": "Esa herramienta personalizaría fácilmente."
         }
       }
     },
     {
-      "id": "",
+      "id": 934,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "ciclar",
+        "ing": "cycle"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "cicló",
+        "ing": "cycled"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "ciclado",
+        "ing": "cycled"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "ciclando",
+        "ing": "cycling"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "ciclará",
+        "ing": "will cycle"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "ciclaría",
+        "ing": "would cycle"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I cycle the power daily.",
+          "esp": "Yo ciclo la energía a diario."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You cycled the engine.",
+          "esp": "Tú ciclaste el motor."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has cycled through the options.",
+          "esp": "Ella ha ciclado por las opciones."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are cycling the power.",
+          "esp": "Ellos están ciclando la energía."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will cycle tomorrow.",
+          "esp": "Nosotros ciclaremos mañana."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That machine would cycle automatically.",
+          "esp": "Esa máquina ciclaría automáticamente."
         }
       }
     },
     {
-      "id": "",
+      "id": 935,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "dañar",
+        "ing": "damage"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "dañó",
+        "ing": "damaged"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "dañado",
+        "ing": "damaged"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "dañando",
+        "ing": "damaging"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "dañará",
+        "ing": "will damage"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "dañaría",
+        "ing": "would damage"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I damage the disk rarely.",
+          "esp": "Yo daño el disco raramente."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You damaged the file.",
+          "esp": "Tú dañaste el archivo."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has damaged the disk.",
+          "esp": "Ella ha dañado el disco."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are damaging the system.",
+          "esp": "Ellos están dañando el sistema."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will never damage data.",
+          "esp": "Nosotros nunca dañaremos datos."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That virus would damage quickly.",
+          "esp": "Ese virus dañaría rápido."
         }
       }
     },
     {
-      "id": "",
+      "id": 936,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "descomprimir",
+        "ing": "decompress"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "descomprimió",
+        "ing": "decompressed"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "descomprimido",
+        "ing": "decompressed"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "descomprimiendo",
+        "ing": "decompressing"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "descomprimirá",
+        "ing": "will decompress"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "descomprimiría",
+        "ing": "would decompress"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I decompress files daily.",
+          "esp": "Yo descomprimo archivos a diario."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You decompressed the archive.",
+          "esp": "Tú descomprimiste el archivo."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has decompressed the file.",
+          "esp": "Ella ha descomprimido el archivo."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are decompressing the data.",
+          "esp": "Ellos están descomprimiendo los datos."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will decompress tomorrow.",
+          "esp": "Nosotros descomprimiremos mañana."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That tool would decompress fast.",
+          "esp": "Esa herramienta descomprimiría rápido."
         }
       }
     },
     {
-      "id": "",
+      "id": 937,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "desfragmentar",
+        "ing": "defragment"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "desfragmentó",
+        "ing": "defragmented"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "desfragmentado",
+        "ing": "defragmented"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "desfragmentando",
+        "ing": "defragmenting"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "desfragmentará",
+        "ing": "will defragment"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "desfragmentaría",
+        "ing": "would defragment"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I defragment the disk monthly.",
+          "esp": "Yo desfragmento el disco mensualmente."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You defragmented the drive.",
+          "esp": "Tú desfragmentaste la unidad."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has defragmented the disk.",
+          "esp": "Ella ha desfragmentado el disco."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are defragmenting now.",
+          "esp": "Ellos están desfragmentando ahora."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will defragment later.",
+          "esp": "Nosotros desfragmentaremos después."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That tool would defragment slowly.",
+          "esp": "Esa herramienta desfragmentaría lentamente."
         }
       }
     },
     {
-      "id": "",
+      "id": 938,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "degradar",
+        "ing": "demote"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "degradó",
+        "ing": "demoted"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "degradado",
+        "ing": "demoted"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "degradando",
+        "ing": "demoting"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "degradará",
+        "ing": "will demote"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "degradaría",
+        "ing": "would demote"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I demote users rarely.",
+          "esp": "Yo degrado usuarios raramente."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You demoted the employee.",
+          "esp": "Tú degradaste al empleado."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has demoted the manager.",
+          "esp": "Ella ha degradado al gerente."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are demoting the worker.",
+          "esp": "Ellos están degradando al trabajador."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will demote only if needed.",
+          "esp": "Nosotros degradaremos solo si es necesario."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That manager would demote easily.",
+          "esp": "Esa gerente degradaría fácilmente."
         }
       }
     },
     {
-      "id": "",
+      "id": 939,
       "imagen": "",
       "infinitivo": {
-        "esp": "",
-        "ing": ""
+        "esp": "denegar",
+        "ing": "deny"
       },
       "pasadoSimple": {
-        "esp": "",
-        "ing": ""
+        "esp": "denegó",
+        "ing": "denied"
       },
       "participio": {
-        "esp": "",
-        "ing": ""
+        "esp": "denegado",
+        "ing": "denied"
       },
       "gerundio": {
-        "esp": "",
-        "ing": ""
+        "esp": "denegando",
+        "ing": "denying"
       },
       "futuro": {
-        "esp": "",
-        "ing": ""
+        "esp": "denegará",
+        "ing": "will deny"
       },
       "condicional": {
-        "esp": "",
-        "ing": ""
+        "esp": "denegaría",
+        "ing": "would deny"
       },
       "oraciones": {
         "infinitivo": {
           "pronombre": "yo",
-          "ing": "",
-          "esp": ""
+          "ing": "I deny access to unauthorized users.",
+          "esp": "Yo deniego acceso a usuarios no autorizados."
         },
         "pasadoSimple": {
           "pronombre": "tu",
-          "ing": "",
-          "esp": ""
+          "ing": "You denied the request.",
+          "esp": "Tú denegaste la solicitud."
         },
         "participio": {
           "pronombre": "el_ella",
-          "ing": "",
-          "esp": ""
+          "ing": "She has denied the permission.",
+          "esp": "Ella ha denegado el permiso."
         },
         "gerundio": {
           "pronombre": "ellos",
-          "ing": "",
-          "esp": ""
+          "ing": "They are denying entry.",
+          "esp": "Ellos están denegando la entrada."
         },
         "futuro": {
           "pronombre": "nosotros",
-          "ing": "",
-          "esp": ""
+          "ing": "We will deny later.",
+          "esp": "Nosotros denegaremos después."
         },
         "condicional": {
           "pronombre": "eso",
-          "ing": "",
-          "esp": ""
+          "ing": "That firewall would deny easily.",
+          "esp": "Ese firewall denegaría fácilmente."
         }
       }
     },
