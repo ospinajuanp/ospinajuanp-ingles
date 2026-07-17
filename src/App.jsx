@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react'
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import SearchBar from './components/SearchBar'
 import CategoryFilter from './components/CategoryFilter'
 import VerbCard from './components/VerbCard'
 import { useVerbos } from './hooks/useVerbos'
+import { VerbProvider, useVerbosContext } from './contexts/VerbContext'
 import { checkPexelsStatus } from './utils/pexels'
 
 function BrandIcon() {
@@ -86,72 +88,105 @@ function ErrorState({ error, onRetry }) {
   )
 }
 
+function ShellHeader() {
+  const verbos = useVerbosContext()
+  return (
+    <Header>
+      <div className="flex items-center gap-3">
+        <div className="shrink-0 overflow-hidden rounded-xl shadow-sm ring-1 ring-slate-200/80" aria-hidden="true">
+          <BrandIcon />
+        </div>
+        <div className="min-w-0">
+          <h1 className="truncate text-base font-bold text-slate-900 sm:text-lg">
+            Verbos en Inglés
+          </h1>
+          <p className="hidden truncate text-xs text-slate-500 sm:block">
+            Aprende conjugando, una frase a la vez
+          </p>
+        </div>
+      </div>
+
+      <div className="lg:mx-auto lg:w-full lg:max-w-xl">
+        <SearchBar value={verbos.search} onChange={verbos.setSearch} />
+      </div>
+
+      <div className="lg:justify-self-end">
+        <CategoryFilter
+          categories={verbos.categories}
+          category={verbos.category}
+          setCategory={verbos.setCategory}
+          subcategory={verbos.subcategory}
+          setSubcategory={verbos.setSubcategory}
+          counts={verbos.counts}
+        />
+      </div>
+    </Header>
+  )
+}
+
+function VerbView({ retryKey }) {
+  const verbos = useVerbosContext()
+  const location = useLocation()
+  const locationKey = location.pathname
+
+  useEffect(() => {
+    if (verbos.error) console.error('[verbos] failed to load', verbos.error)
+  }, [verbos.error])
+
+  return (
+    <div key={`${retryKey}-${locationKey}`} className="contents">
+      {verbos.loading ? (
+        <LoadingSkeleton />
+      ) : verbos.currentVerb ? (
+        <VerbCard
+          current={verbos.current}
+          currentVerb={verbos.currentVerb}
+          oraciones={verbos.oraciones}
+          conjugationEntries={verbos.conjugationEntries}
+          currentIndex={verbos.currentIndex}
+          total={verbos.total}
+          onPrev={verbos.prev}
+          onNext={verbos.next}
+          onShuffle={verbos.shuffle}
+        />
+      ) : (
+        <Navigate to="/" replace />
+      )}
+    </div>
+  )
+}
+
 export default function App() {
-  const v = useVerbos()
   const [retryKey, setRetryKey] = useState(0)
+  const verbos = useVerbos()
 
   useEffect(() => {
     checkPexelsStatus()
   }, [])
 
-  useEffect(() => {
-    if (v.error) console.error('[verbos] failed to load', v.error)
-  }, [v.error])
-
   return (
     <div className="min-h-screen bg-slate-50 text-slate-800">
-      <Header>
-        <div className="flex items-center gap-3">
-          <div className="shrink-0 overflow-hidden rounded-xl shadow-sm ring-1 ring-slate-200/80" aria-hidden="true">
-            <BrandIcon />
-          </div>
-          <div className="min-w-0">
-            <h1 className="truncate text-base font-bold text-slate-900 sm:text-lg">
-              Verbos en Inglés
-            </h1>
-            <p className="hidden truncate text-xs text-slate-500 sm:block">
-              Aprende conjugando, una frase a la vez
-            </p>
-          </div>
-        </div>
+      <VerbProvider value={verbos}>
+        <ShellHeader />
 
-        <div className="lg:mx-auto lg:w-full lg:max-w-xl">
-          <SearchBar value={v.search} onChange={v.setSearch} />
-        </div>
-
-        <div className="lg:justify-self-end">
-<CategoryFilter
-              categories={v.categories}
-              category={v.category}
-              setCategory={v.setCategory}
-              subcategory={v.subcategory}
-              setSubcategory={v.setSubcategory}
-              counts={v.counts}
+        <main className="mx-auto max-w-4xl px-4 py-6 sm:px-6 sm:py-8">
+          {verbos.error && !verbos.loading ? (
+            <ErrorState
+              error={verbos.error}
+              onRetry={() => setRetryKey((k) => k + 1)}
             />
-        </div>
-      </Header>
-
-      <main className="mx-auto max-w-4xl px-4 py-6 sm:px-6 sm:py-8">
-        {v.loading ? (
-          <LoadingSkeleton />
-        ) : v.error ? (
-          <ErrorState error={v.error} onRetry={() => setRetryKey((k) => k + 1)} />
-        ) : (
-          <div key={retryKey}>
-            <VerbCard
-              current={v.current}
-              currentVerb={v.currentVerb}
-              oraciones={v.oraciones}
-              conjugationEntries={v.conjugationEntries}
-              currentIndex={v.currentIndex}
-              total={v.total}
-              onPrev={v.prev}
-              onNext={v.next}
-              onShuffle={v.shuffle}
-            />
-          </div>
-        )}
-      </main>
+          ) : (
+            <Routes>
+              <Route path="/" element={<VerbView retryKey={retryKey} />} />
+              <Route
+                path="/:verbSelector"
+                element={<VerbView retryKey={retryKey} />}
+              />
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+          )}
+        </main>
+      </VerbProvider>
     </div>
   )
 }

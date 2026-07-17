@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 import { collectCategories, flattenVerbos } from '../utils/flatten'
 import { pickWeightedIndex } from '../utils/weightedRandom'
 import { WEIGHT_MAP } from '../data/weightedVerbs'
@@ -22,6 +23,23 @@ function getAllFilledOraciones(verb) {
   })).filter((entry) => entry.data?.ing?.trim?.())
 }
 
+function slugify(verb) {
+  return verb?.infinitivo?.ing?.trim?.() ?? ''
+}
+
+export function resolveVerb(selector, list) {
+  if (!selector || !list?.length) return null
+  if (/^\d+$/.test(selector)) {
+    const id = Number(selector)
+    return list.find((i) => i.verb?.id === id) ?? null
+  }
+  const norm = selector.trim().toLowerCase()
+  return (
+    list.find((i) => i.verb?.infinitivo?.ing?.trim?.().toLowerCase() === norm) ??
+    null
+  )
+}
+
 export function useVerbos() {
   const [allVerbs, setAllVerbs] = useState([])
   const [loading, setLoading] = useState(true)
@@ -30,8 +48,9 @@ export function useVerbos() {
   const [search, setSearch] = useState('')
   const [category, setCategory] = useState('all')
   const [subcategory, setSubcategory] = useState('all')
-  const [currentIndex, setCurrentIndex] = useState(0)
 
+  const { verbSelector = null } = useParams()
+  const navigate = useNavigate()
   const initialPickDone = useRef(false)
 
   useEffect(() => {
@@ -45,10 +64,6 @@ export function useVerbos() {
         const flat = flattenVerbos(json)
         setAllVerbs(flat)
         setLoading(false)
-        if (!initialPickDone.current) {
-          initialPickDone.current = true
-          setCurrentIndex(pickWeightedIndex(flat, WEIGHT_MAP))
-        }
       } catch (err) {
         if (cancelled) return
         setError(err)
@@ -59,6 +74,20 @@ export function useVerbos() {
       cancelled = true
     }
   }, [])
+
+  // Root route ("/"): pick a weighted random verb once data is ready and
+  // silently replace the URL. Guarded against StrictMode double-invoke via
+  // initialPickDone ref (preserves the cameFromEmpty contract from the
+  // pre-routing version).
+  useEffect(() => {
+    if (verbSelector !== null) return
+    if (allVerbs.length === 0) return
+    if (initialPickDone.current) return
+    initialPickDone.current = true
+    const idx = pickWeightedIndex(allVerbs, WEIGHT_MAP)
+    const slug = slugify(allVerbs[idx]?.verb)
+    if (slug) navigate(`/${encodeURIComponent(slug)}`, { replace: true })
+  }, [verbSelector, allVerbs, navigate])
 
   const categories = useMemo(() => collectCategories(allVerbs), [allVerbs])
 
@@ -107,39 +136,75 @@ export function useVerbos() {
     })
   }, [allVerbs, search, category, subcategory])
 
-  const lastFilteredLen = useRef(filtered.length)
-  useEffect(() => {
-    // The only transition that comes from an empty filtered list is the
-    // initial data load. Skip resetting the index in that case so the
-    // weighted-random pick survives. Filter/search changes always move
-    // between two non-empty lengths.
-    const cameFromEmpty = lastFilteredLen.current === 0
-    if (!cameFromEmpty && filtered.length !== lastFilteredLen.current) {
-      setCurrentIndex(0)
-    }
-    lastFilteredLen.current = filtered.length
-  }, [filtered.length])
-
-  const current = filtered[currentIndex] ?? null
+  const current = useMemo(
+    () => resolveVerb(verbSelector, allVerbs),
+    [verbSelector, allVerbs],
+  )
   const currentVerb = current?.verb ?? null
+
+  const currentIndex = useMemo(() => {
+    if (!current || !currentVerb) return -1
+    return filtered.findIndex(
+      (i) => i.verb.infinitivo?.ing === currentVerb.infinitivo?.ing,
+    )
+  }, [current, currentVerb, filtered])
+
+  // Auto-redirect when the URL selector points to a verb that exists in
+  // allVerbs but is no longer reachable due to current filter. We still
+  // want prev/next to navigate within `filtered`, so this only triggers
+  // when the displayed verb is genuinely absent from the visible set.
+  useEffect(() => {
+    if (verbSelector == null) return
+    if (loading || error) return
+    if (allVerbs.length === 0) return
+    if (current === null) return
+    if (currentIndex !== -1) return
+    // Selector matched a verb in allVerbs but not in filtered (filter
+    // excluded it). Reset to / so the root-route effect picks a new one
+    // inside the filter — or simply force-pick a random verb from the
+    // filter to be predictable.
+    if (filtered.length === 0) return
+    const idx = Math.floor(Math.random() * filtered.length)
+    const slug = slugify(filtered[idx]?.verb)
+    if (slug) navigate(`/${encodeURIComponent(slug)}`, { replace: true })
+  }, [
+    verbSelector,
+    loading,
+    error,
+    allVerbs.length,
+    current,
+    currentIndex,
+    filtered,
+    navigate,
+  ])
 
   const goTo = useCallback(
     (idx) => {
       if (filtered.length === 0) return
-      const next = ((idx % filtered.length) + filtered.length) % filtered.length
-      setCurrentIndex(next)
+      const nextIdx =
+        ((idx % filtered.length) + filtered.length) % filtered.length
+      const slug = slugify(filtered[nextIdx]?.verb)
+      if (slug) navigate(`/${encodeURIComponent(slug)}`)
     },
-    [filtered.length],
+    [filtered, navigate],
   )
 
-  const next = useCallback(() => goTo(currentIndex + 1), [goTo, currentIndex])
-  const prev = useCallback(() => goTo(currentIndex - 1), [goTo, currentIndex])
+  const next = useCallback(() => {
+    if (currentIndex < 0) goTo(0)
+    else goTo(currentIndex + 1)
+  }, [goTo, currentIndex])
+
+  const prev = useCallback(() => {
+    if (currentIndex < 0) goTo(filtered.length - 1)
+    else goTo(currentIndex - 1)
+  }, [goTo, currentIndex, filtered.length])
 
   const shuffle = useCallback(() => {
     if (filtered.length === 0) return
     const idx = pickWeightedIndex(filtered, WEIGHT_MAP)
-    setCurrentIndex(idx)
-  }, [filtered])
+    const slug = slugify(filtered[idx]?.verb)
+    if (slug) navigate(`/${encodeURIComponent(slug)}`)
+  }, [filtered, navigate])
 
   useEffect(() => {
     function onKey(e) {
@@ -156,7 +221,10 @@ export function useVerbos() {
     return () => window.removeEventListener('keydown', onKey)
   }, [next, prev])
 
-  const oraciones = useMemo(() => (currentVerb ? getAllFilledOraciones(currentVerb) : []), [currentVerb])
+  const oraciones = useMemo(
+    () => (currentVerb ? getAllFilledOraciones(currentVerb) : []),
+    [currentVerb],
+  )
 
   const conjugationEntries = useMemo(() => {
     if (!currentVerb) return []
@@ -191,5 +259,6 @@ export function useVerbos() {
     shuffle,
     goTo,
     total: filtered.length,
+    verbSelector,
   }
 }
