@@ -133,6 +133,13 @@ function VerbView({ retryKey }) {
 
   return (
     <div key={retryKey} className="contents">
+      <div style={{ position: 'fixed', top: 80, right: 8, zIndex: 9999, background: 'red', color: 'white', padding: 8, fontSize: 11, fontFamily: 'monospace', maxWidth: 320 }}>
+        loading={String(verbos.loading)}<br/>
+        filtered={verbos.filtered?.length ?? 'undef'}<br/>
+        current={verbos.currentVerb?.infinitivo?.ing ?? 'NULL'}<br/>
+        idx={verbos.currentIndex}<br/>
+        error={String(verbos.error)}
+      </div>
       {verbos.loading || !verbos.currentVerb ? (
         <LoadingSkeleton />
       ) : (
