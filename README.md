@@ -59,16 +59,20 @@ per verb, and on-demand pronunciation audio pulled from the free
 - ESLint 9 with flat config + `eslint-plugin-react` /
   `eslint-plugin-react-hooks` / `eslint-plugin-react-refresh`
 
-No state-management library, no router, no backend, no API keys.
+No state-management library, no router, no backend.
 Everything runs from a static `dist/` directory.
 
 ## Requirements
 
 - **Node.js ≥ 20** (the project is built and tested on v24).
 - **pnpm** (recommended). npm or yarn also work.
-- **Pexels API key** (optional, for curated photos per verb). Free tier:
-  200 requests/hour, 20,000/month. Without a key the app falls
-  back to Picsum + inline SVG.
+- **Pexels API key(s)** (optional, for curated photos per verb).
+  Free tier: 200 requests/hour, 20,000/month. The app supports up to
+  two keys — `VITE_PEXELS_API_KEY` and `VITE_PEXELS_API_KEY_2` —
+  and automatically rotates to the second when the first returns
+  401 / 403 / 429 / 5xx or a network error. Set up two free Pexels
+  accounts for higher volume. Without any key the app falls back to
+  Picsum + inline SVG.
 
 ## Installation
 
@@ -76,19 +80,22 @@ Everything runs from a static `dist/` directory.
 git clone https://github.com/ospinajuanp/ospinajuanp-ingles.git
 cd ospinajuanp-ingles
 pnpm install
-cp .env.example .env       # then paste your Pexels key (optional)
+cp .env.example .env       # then paste your Pexels key(s) (optional)
 ```
 
 ### Optional: configure Pexels for verb hero images
 
 1. Sign up for a free key at <https://www.pexels.com/api/>.
-2. Open `.env` and paste it after `VITE_PEXELS_API_KEY=`.
-3. Restart `pnpm dev`. The first time you visit a verb, the app
+2. Open `.env` and paste your key after `VITE_PEXELS_API_KEY=`.
+3. (Optional) For higher volume, create a second Pexels account and
+   paste its key after `VITE_PEXELS_API_KEY_2=`. The app will use the
+   primary and fall back to the secondary automatically.
+4. Restart `pnpm dev`. The first time you visit a verb, the app
    fetches a curated photo from Pexels and caches it in memory
    (see `src/utils/imageCache.js`). Subsequent visits are
    instant.
 
-Without a key, verbs show Picsum images (deterministic per word)
+Without any key, verbs show Picsum images (deterministic per word)
 or the inline forest-path SVG.
 
 ## Usage
