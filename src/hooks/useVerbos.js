@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { collectCategories, flattenVerbos } from '../utils/flatten'
 import { pickWeightedIndex } from '../utils/weightedRandom'
 import { WEIGHT_MAP } from '../data/weightedVerbs'
