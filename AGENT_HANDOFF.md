@@ -56,7 +56,62 @@ React 19 + Vite 8 + Tailwind v4 SPA for learning English verbs in Spanish. On-de
 ```bash
 pnpm install
 cp .env.example .env       # optional: paste 1 or 2 Pexels keys
+                            # and MONGODB_URI if you want to sync
 pnpm dev
 # or
 pnpm build && pnpm preview
+
+# One-shot: migrate all 1000 verbs from verbos_estructura.json
+# into MongoDB Atlas (deterministic picsum URLs, audio pending).
+# Requires pnpm dev running in another terminal.
+pnpm bulk:migrate
+```
+
+## MongoDB lazy + bulk migration
+
+The collection `ingles-db.verbos` is populated by two paths:
+
+1. **Bulk** (one-shot, manual): two scripts available
+   - `pnpm bulk:direct` — **recommended**. Bypasses HTTP, uses
+     `MongoClient.bulkWrite()` directly. ~1s for 1000 verbs.
+     Requires `MONGODB_URI` in `.env` (loadEnv picks it up).
+   - `pnpm bulk:migrate` — POSTs to `/api/verbs/sync`. Slower
+     (~3-5 min for 1000 verbs at 10 req/sec) but exercises the
+     production endpoint. Useful as a smoke test.
+   Both read `verbos_estructura.json` and upsert every verb with
+   a deterministic picsum URL, `audio_source: 'pending'`, and
+   `migrado_desde: 'SPA_Bulk_Migration'`.
+
+2. **Lazy** (organic, on every verb visit): the SPA fires the
+   same endpoint whenever VerbCard resolves both the Pexels image
+   and the audio source. New docs get `migrado_desde:
+   'SPA_Lazy_Migration'` (default) and `audio_source` set to
+   whatever the audio resolver found (`dictionaryapi.dev` / `tts`
+   / `none`). Existing docs have their multimedia URLs refreshed
+   if Pexels returned a new image or the audio cache updated.
+
+Both paths share:
+- Atomic `findOneAndUpdate` with `$set` + `$setOnInsert`
+  + `$inc` + `$currentDate`.
+- Idempotent unique index on `id` only (`infinitivo.ing` is NOT
+  indexed — the dataset has ~95 verbs with duplicate ing, e.g.
+  'rewrite', 'analyze', 'check').
+- `contador_consultas` incremented on every hit.
+- `ultima_vez_visto` set to server clock on every hit.
+
+`migrado_desde` is server-managed via `$setOnInsert` only — clients
+hint the value (bulk passes `'SPA_Bulk_Migration'`, lazy omits it
+and defaults to `'SPA_Lazy_Migration'`). Updates never overwrite
+the marker.
+
+Re-running bulk is idempotent: existing docs get updated
+multimedia URLs (same picsum seed → same URL → no actual change)
+and their original `migrado_desde` is preserved.
+
+To query by source:
+```js
+db.verbos.countDocuments({ migrado_desde: 'SPA_Bulk_Migration' })
+db.verbos.countDocuments({ migrado_desde: 'SPA_Lazy_Migration' })
+db.verbos.countDocuments({ audio_source: 'pending' })      // audio not yet resolved
+db.verbos.countDocuments({ image_source: 'pexels' })       // enriched by lazy sync
 ```

@@ -44,4 +44,16 @@ export default [
       'no-undef': 'off',
     },
   },
+  {
+    // Node-only scripts (no JSX, no React, has Node globals).
+    files: ['scripts/**/*.mjs', 'api/**/*.js'],
+    languageOptions: {
+      ecmaVersion: 2024,
+      sourceType: 'module',
+      globals: { ...globals.node },
+    },
+    rules: {
+      'no-undef': 'error',
+    },
+  },
 ]

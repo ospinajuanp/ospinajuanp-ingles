@@ -8,7 +8,9 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "bulk:migrate": "node scripts/bulk-migrate.mjs",
+    "bulk:direct": "node scripts/bulk-direct.mjs"
   },
   "dependencies": {
     "mongodb": "^7.5.0",

@@ -22,12 +22,6 @@ async function connect() {
 async function ensureIndexes(db) {
   await db.collection(COLLECTION).createIndexes([
     { key: { id: 1 }, unique: true, name: 'id_unique' },
-    {
-      key: { 'infinitivo.ing': 1 },
-      unique: true,
-      sparse: true,
-      name: 'ing_unique',
-    },
     { key: { ultima_vez_visto: -1 }, name: 'last_seen_desc' },
   ])
 }
@@ -66,6 +60,16 @@ export async function syncVerb(verb) {
   await ensureIndexes(db)
 
   const { id, ...rest } = verb
+
+  // migrado_desde: lo aporta el cliente (o default). NO va en $set
+  // para que un update no sobrescriba el marker original — solo se
+  // estampa via $setOnInsert en inserts.
+  const migrado_desde =
+    typeof rest.migrado_desde === 'string'
+      ? rest.migrado_desde
+      : 'SPA_Lazy_Migration'
+  delete rest.migrado_desde
+
   const safeId = Number(id)
   const now = new Date()
 
@@ -76,7 +80,7 @@ export async function syncVerb(verb) {
       $setOnInsert: {
         id: safeId,
         createdAt: now,
-        migrado_desde: 'SPA_Lazy_Migration',
+        migrado_desde,
       },
       $inc: { contador_consultas: 1 },
       $currentDate: { ultima_vez_visto: true },
