@@ -79,14 +79,26 @@ export function useVerbos() {
   // silently replace the URL. Guarded against StrictMode double-invoke via
   // initialPickDone ref (preserves the cameFromEmpty contract from the
   // pre-routing version).
+  //
+  // Also: if the URL has a selector that resolves to no verb in allVerbs
+  // (e.g. /nope-123), redirect to "/" so the root handler picks a new one.
+  // Both branches are guarded so they fire at most once per actual selector
+  // change — no thrashing.
   useEffect(() => {
-    if (verbSelector !== null) return
     if (allVerbs.length === 0) return
-    if (initialPickDone.current) return
-    initialPickDone.current = true
-    const idx = pickWeightedIndex(allVerbs, WEIGHT_MAP)
-    const slug = slugify(allVerbs[idx]?.verb)
-    if (slug) navigate(`/${encodeURIComponent(slug)}`, { replace: true })
+
+    if (verbSelector == null) {
+      if (initialPickDone.current) return
+      initialPickDone.current = true
+      const idx = pickWeightedIndex(allVerbs, WEIGHT_MAP)
+      const slug = slugify(allVerbs[idx]?.verb)
+      if (slug) navigate(`/${encodeURIComponent(slug)}`, { replace: true })
+      return
+    }
+
+    if (resolveVerb(verbSelector, allVerbs) == null) {
+      navigate('/', { replace: true })
+    }
   }, [verbSelector, allVerbs, navigate])
 
   const categories = useMemo(() => collectCategories(allVerbs), [allVerbs])

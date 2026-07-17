@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import SearchBar from './components/SearchBar'
 import CategoryFilter from './components/CategoryFilter'
 import VerbCard from './components/VerbCard'
@@ -126,18 +126,16 @@ function ShellHeader() {
 
 function VerbView({ retryKey }) {
   const verbos = useVerbosContext()
-  const location = useLocation()
-  const locationKey = location.pathname
 
   useEffect(() => {
     if (verbos.error) console.error('[verbos] failed to load', verbos.error)
   }, [verbos.error])
 
   return (
-    <div key={`${retryKey}-${locationKey}`} className="contents">
-      {verbos.loading ? (
+    <div key={retryKey} className="contents">
+      {verbos.loading || !verbos.currentVerb ? (
         <LoadingSkeleton />
-      ) : verbos.currentVerb ? (
+      ) : (
         <VerbCard
           current={verbos.current}
           currentVerb={verbos.currentVerb}
@@ -149,8 +147,6 @@ function VerbView({ retryKey }) {
           onNext={verbos.next}
           onShuffle={verbos.shuffle}
         />
-      ) : (
-        <Navigate to="/" replace />
       )}
     </div>
   )
