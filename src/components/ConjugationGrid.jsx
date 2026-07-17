@@ -111,7 +111,7 @@ function TipCell({ tipTitle, value }) {
         </svg>
         <span>{tipTitle}</span>
       </div>
-      <p className="mt-1 text-sm font-medium leading-snug text-slate-700">{value}</p>
+      <p className="mt-1 whitespace-pre-line text-sm font-medium leading-snug text-slate-700">{value}</p>
     </div>
   )
 }
