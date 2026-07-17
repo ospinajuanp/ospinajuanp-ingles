@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import { copyFileSync, existsSync } from 'node:fs'
@@ -53,6 +53,17 @@ function syncDataPlugin() {
   }
 }
 
-export default defineConfig({
-  plugins: [react(), tailwindcss(), syncDataPlugin()],
+export default defineConfig(({ mode }) => {
+  // Load .env, .env.local, .env.[mode], .env.[mode].local. The empty
+  // string as third arg tells Vite to expose ALL variables (not just
+  // VITE_*-prefixed ones) so the dev middleware can read MONGODB_URI,
+  // JWT_SECRET, etc. via process.env.X. We merge into process.env so
+  // existing shell vars survive unless the .env file explicitly
+  // overrides them.
+  const env = loadEnv(mode, process.cwd(), '')
+  Object.assign(process.env, env)
+
+  return {
+    plugins: [react(), tailwindcss(), syncDataPlugin()],
+  }
 })
