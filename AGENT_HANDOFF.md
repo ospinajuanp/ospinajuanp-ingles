@@ -13,7 +13,7 @@ React 19 + Vite 8 + Tailwind v4 SPA for learning English verbs in Spanish. On-de
 - Env: `.env` / `.env.*` are gitignored, `.env.example` is force-added via `!.env.example` negation. Two keys: `VITE_PEXELS_API_KEY` + optional `VITE_PEXELS_API_KEY_2` (automatic fallback on 401/403/429/5xx/network).
 - ESLint 9 flat config: forbids `setState` in `useEffect` (`react-hooks/set-state-in-effect`). Use derived state or `useState` initializer instead.
 - Audio uses imperative `new Audio()` (NOT JSX `<audio>`) because React render-during-await left state stuck on "loading". `SpeechSynthesis` is fallback when API has no phonetics (`draw`, `set`, `run` return empty).
-- Image cache is `Map<word, photo[]>` in `src/utils/imageCache.js`; refresh button cycles Pexels pages by popping the head.
+- Image cache is a `Map<word, photo[]>` in `src/utils/imageCache.js`, hydrated from and persisted back to `localStorage` under key `verbos:pexelsCache` (~100 KB for ~700 verbs). Refresh button cycles Pexels pages by appending.
 - Image overlay z-index: blur `z-0`, audio wrapper `z-10`, refresh + ImageCredit + maximize `z-30`.
 - Maximize button (top-left, persists to `localStorage['verbos:heroExpanded']`): collapsed = `object-cover`; expanded = `object-contain`, `h-[min(70vh,560px)] min-h-[280px]`, `bg-slate-900/95` so full image fits centered.
 - Header: sticky. Mobile `flex-col gap-3`; desktop `lg:grid lg:grid-cols-[1fr_2fr_1fr]`.
