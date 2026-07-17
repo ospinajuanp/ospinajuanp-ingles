@@ -40,7 +40,27 @@ function VerbImage({ verb }) {
   })
   const [picsumFailed, setPicsumFailed] = useState(false)
   const [refreshing, setRefreshing] = useState(false)
+  const [heroExpanded, setHeroExpanded] = useState(() => {
+    if (typeof window === 'undefined') return false
+    try {
+      return window.localStorage.getItem('verbos:heroExpanded') === 'true'
+    } catch {
+      return false
+    }
+  })
   const audioWord = word
+
+  const toggleHeroExpanded = useCallback(() => {
+    setHeroExpanded((prev) => {
+      const next = !prev
+      try {
+        window.localStorage.setItem('verbos:heroExpanded', String(next))
+      } catch {
+        // ignore storage failures (private mode, quota, etc.)
+      }
+      return next
+    })
+  }, [])
 
   useEffect(() => {
     if (hasCustom || !word) return
@@ -97,9 +117,13 @@ function VerbImage({ verb }) {
 
   const canRefresh = !hasCustom && pexelsAvailable && Boolean(word)
 
+  const heightClass = heroExpanded
+    ? 'h-[calc(100dvh-1rem)]'
+    : 'h-44 sm:h-52 md:h-56'
+
   if (hasCustom) {
     return (
-      <div className="group relative h-44 w-full overflow-hidden bg-slate-100 sm:h-52 md:h-56">
+      <div className={`group relative w-full overflow-hidden bg-slate-100 ${heightClass}`}>
         <HeroIllustration className="absolute inset-0 h-full w-full" />
         <img
           src={src}
@@ -111,7 +135,11 @@ function VerbImage({ verb }) {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-slate-900/10" />
         <ImageCredit credit={credit} />
-        <VerbImageOverlay audioWord={audioWord} />
+        <VerbImageOverlay
+          audioWord={audioWord}
+          heroExpanded={heroExpanded}
+          onToggleExpand={toggleHeroExpanded}
+        />
       </div>
     )
   }
@@ -119,7 +147,7 @@ function VerbImage({ verb }) {
   const showImg = Boolean(src) && !picsumFailed
 
   return (
-    <div className="group relative h-44 w-full overflow-hidden bg-slate-100 sm:h-52 md:h-56">
+    <div className={`group relative w-full overflow-hidden bg-slate-100 ${heightClass}`}>
       <HeroIllustration className="absolute inset-0 h-full w-full" />
       {showImg ? (
         <img
@@ -138,12 +166,21 @@ function VerbImage({ verb }) {
         onRefresh={refreshImage}
         canRefresh={canRefresh}
         refreshing={refreshing}
+        heroExpanded={heroExpanded}
+        onToggleExpand={toggleHeroExpanded}
       />
     </div>
   )
 }
 
-function VerbImageOverlay({ audioWord, onRefresh, canRefresh, refreshing }) {
+function VerbImageOverlay({
+  audioWord,
+  onRefresh,
+  canRefresh,
+  refreshing,
+  heroExpanded,
+  onToggleExpand,
+}) {
   const buttonRef = useRef(null)
 
   const handleOverlayClick = (e) => {
@@ -159,6 +196,51 @@ function VerbImageOverlay({ audioWord, onRefresh, canRefresh, refreshing }) {
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 bg-slate-900/30 opacity-100 transition-opacity duration-300 md:opacity-0 md:group-hover:opacity-100 md:bg-slate-900/50 md:backdrop-blur-[2px]"
       />
+      <button
+        type="button"
+        data-overlay-control="expand"
+        onClick={(e) => {
+          e.stopPropagation()
+          onToggleExpand?.()
+        }}
+        aria-label={heroExpanded ? 'Restaurar tamaño de imagen' : 'Maximizar imagen'}
+        title={heroExpanded ? 'Restaurar tamaño' : 'Maximizar'}
+        className="absolute top-2 left-2 z-30 inline-flex size-9 items-center justify-center rounded-full bg-slate-900/50 text-white shadow-md backdrop-blur-sm transition hover:scale-105 hover:bg-slate-900/70 active:scale-95 motion-reduce:animate-none"
+      >
+        {heroExpanded ? (
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="size-4"
+            aria-hidden="true"
+          >
+            <path d="M8 3v3a2 2 0 0 1-2 2H3" />
+            <path d="M21 8h-3a2 2 0 0 1-2-2V3" />
+            <path d="M3 16h3a2 2 0 0 1 2 2v3" />
+            <path d="M16 21v-3a2 2 0 0 1 2-2h3" />
+          </svg>
+        ) : (
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="size-4"
+            aria-hidden="true"
+          >
+            <path d="M8 3H5a2 2 0 0 0-2 2v3" />
+            <path d="M21 8V5a2 2 0 0 0-2-2h-3" />
+            <path d="M3 16v3a2 2 0 0 0 2 2h3" />
+            <path d="M16 21h3a2 2 0 0 0 2-2v-3" />
+          </svg>
+        )}
+      </button>
       <div
         className="absolute inset-0 z-10 flex cursor-pointer items-center justify-center"
         onClick={handleOverlayClick}
