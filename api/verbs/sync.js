@@ -73,7 +73,11 @@ export async function syncVerb(verb) {
     { id: safeId },
     {
       $set: { ...rest, updatedAt: now },
-      $setOnInsert: { id: safeId, createdAt: now },
+      $setOnInsert: {
+        id: safeId,
+        createdAt: now,
+        migrado_desde: 'SPA_Lazy_Migration',
+      },
       $inc: { contador_consultas: 1 },
       $currentDate: { ultima_vez_visto: true },
     },
