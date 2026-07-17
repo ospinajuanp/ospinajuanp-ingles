@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Navigate, Route, Routes, useLocation, useParams } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import SearchBar from './components/SearchBar'
 import CategoryFilter from './components/CategoryFilter'
 import VerbCard from './components/VerbCard'
@@ -126,8 +126,6 @@ function ShellHeader() {
 
 function VerbView({ retryKey }) {
   const verbos = useVerbosContext()
-  const params = useParams()
-  const location = useLocation()
 
   useEffect(() => {
     if (verbos?.error) console.error('[verbos] failed to load', verbos.error)
@@ -135,17 +133,6 @@ function VerbView({ retryKey }) {
 
   return (
     <div key={retryKey} className="contents">
-      <div data-testid="debug-overlay" style={{ position: 'fixed', top: 70, right: 4, zIndex: 99999, background: '#dc2626', color: 'white', padding: '8px 10px', fontSize: 11, fontFamily: 'monospace', maxWidth: 340, lineHeight: 1.35, borderRadius: 4, boxShadow: '0 4px 12px rgba(0,0,0,0.3)' }}>
-        <b>DEBUG</b><br/>
-        verbos: {verbos ? 'OK' : 'NULL'}<br/>
-        pathname: {location.pathname}<br/>
-        params: {JSON.stringify(params)}<br/>
-        loading: {String(verbos?.loading)}<br/>
-        filtered: {verbos?.filtered?.length ?? 'undef'}<br/>
-        current: {verbos?.currentVerb?.infinitivo?.ing ?? 'NULL'}<br/>
-        idx: {verbos?.currentIndex ?? '?'}<br/>
-        error: {String(verbos?.error)}
-      </div>
       {verbos?.loading || !verbos?.currentVerb ? (
         <LoadingSkeleton />
       ) : (

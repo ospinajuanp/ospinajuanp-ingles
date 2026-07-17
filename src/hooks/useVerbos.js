@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { collectCategories, flattenVerbos } from '../utils/flatten'
 import { pickWeightedIndex } from '../utils/weightedRandom'
 import { WEIGHT_MAP } from '../data/weightedVerbs'
@@ -53,6 +53,24 @@ export function useVerbos() {
   const navigate = useNavigate()
   const initialPickDone = useRef(false)
 
+  // Safety net: useParams() only returns a value when the calling component
+  // is INSIDE a matched <Route>. If useVerbos is ever invoked from a parent
+  // that lives above <Routes> (e.g. App), useParams() returns {} and the
+  // hook would think verbSelector is null on /tell, /accept, /0, etc.
+  // Fall back to parsing the pathname directly via useLocation, which works
+  // everywhere in the tree.
+  const location = useLocation()
+  const verbSelectorFromUrl = useMemo(() => {
+    const m = location.pathname.match(/^\/(.+)$/)
+    if (!m || !m[1]) return null
+    try {
+      return decodeURIComponent(m[1])
+    } catch {
+      return m[1]
+    }
+  }, [location.pathname])
+  const effectiveSelector = verbSelector ?? verbSelectorFromUrl
+
   useEffect(() => {
     let cancelled = false
     ;(async () => {
@@ -87,7 +105,7 @@ export function useVerbos() {
   useEffect(() => {
     if (allVerbs.length === 0) return
 
-    if (verbSelector == null) {
+    if (effectiveSelector == null) {
       if (initialPickDone.current) return
       initialPickDone.current = true
       const idx = pickWeightedIndex(allVerbs, WEIGHT_MAP)
@@ -96,10 +114,10 @@ export function useVerbos() {
       return
     }
 
-    if (resolveVerb(verbSelector, allVerbs) == null) {
+    if (resolveVerb(effectiveSelector, allVerbs) == null) {
       navigate('/', { replace: true })
     }
-  }, [verbSelector, allVerbs, navigate])
+  }, [effectiveSelector, allVerbs, navigate])
 
   const categories = useMemo(() => collectCategories(allVerbs), [allVerbs])
 
@@ -149,23 +167,10 @@ export function useVerbos() {
   }, [allVerbs, search, category, subcategory])
 
   const current = useMemo(
-    () => resolveVerb(verbSelector, allVerbs),
-    [verbSelector, allVerbs],
+    () => resolveVerb(effectiveSelector, allVerbs),
+    [effectiveSelector, allVerbs],
   )
   const currentVerb = current?.verb ?? null
-
-  if (typeof window !== 'undefined') {
-    console.log('[useVerbos]', {
-      verbSelector,
-      allVerbsLen: allVerbs.length,
-      loading,
-      sampleFirst: allVerbs[0]?.verb?.infinitivo,
-      sampleKnow: allVerbs.find(i => i.verb.infinitivo?.ing === 'know')?.verb?.infinitivo,
-      normOfSelector: typeof verbSelector === 'string' ? verbSelector.trim().toLowerCase() : verbSelector,
-      currentFound: !!current,
-      currentName: currentVerb?.infinitivo?.ing,
-    })
-  }
 
   const currentIndex = useMemo(() => {
     if (!current || !currentVerb) return -1
@@ -179,7 +184,7 @@ export function useVerbos() {
   // want prev/next to navigate within `filtered`, so this only triggers
   // when the displayed verb is genuinely absent from the visible set.
   useEffect(() => {
-    if (verbSelector == null) return
+    if (effectiveSelector == null) return
     if (loading || error) return
     if (allVerbs.length === 0) return
     if (current === null) return
@@ -193,7 +198,7 @@ export function useVerbos() {
     const slug = slugify(filtered[idx]?.verb)
     if (slug) navigate(`/${encodeURIComponent(slug)}`, { replace: true })
   }, [
-    verbSelector,
+    effectiveSelector,
     loading,
     error,
     allVerbs.length,
@@ -284,6 +289,6 @@ export function useVerbos() {
     shuffle,
     goTo,
     total: filtered.length,
-    verbSelector,
+    verbSelector: effectiveSelector,
   }
 }
