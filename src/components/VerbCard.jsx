@@ -118,12 +118,17 @@ function VerbImage({ verb }) {
   const canRefresh = !hasCustom && pexelsAvailable && Boolean(word)
 
   const heightClass = heroExpanded
-    ? 'h-[calc(100dvh-1rem)]'
+    ? 'h-[min(70vh,560px)] min-h-[280px]'
     : 'h-44 sm:h-52 md:h-56'
+  const bgClass = heroExpanded ? 'bg-slate-900/95' : 'bg-slate-100'
+
+  const imgClass = heroExpanded
+    ? 'absolute inset-0 m-auto max-h-full max-w-full object-contain p-3'
+    : 'absolute inset-0 h-full w-full object-cover'
 
   if (hasCustom) {
     return (
-      <div className={`group relative w-full overflow-hidden bg-slate-100 ${heightClass}`}>
+      <div className={`group relative w-full overflow-hidden ${bgClass} ${heightClass}`}>
         <HeroIllustration className="absolute inset-0 h-full w-full" />
         <img
           src={src}
@@ -131,7 +136,7 @@ function VerbImage({ verb }) {
           loading="lazy"
           decoding="async"
           onError={onImgError}
-          className="absolute inset-0 h-full w-full object-cover"
+          className={imgClass}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-slate-900/10" />
         <ImageCredit credit={credit} />
@@ -147,7 +152,7 @@ function VerbImage({ verb }) {
   const showImg = Boolean(src) && !picsumFailed
 
   return (
-    <div className={`group relative w-full overflow-hidden bg-slate-100 ${heightClass}`}>
+    <div className={`group relative w-full overflow-hidden ${bgClass} ${heightClass}`}>
       <HeroIllustration className="absolute inset-0 h-full w-full" />
       {showImg ? (
         <img
@@ -156,7 +161,7 @@ function VerbImage({ verb }) {
           loading="lazy"
           decoding="async"
           onError={onImgError}
-          className="absolute inset-0 h-full w-full object-cover"
+          className={imgClass}
         />
       ) : null}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-slate-900/10" />
