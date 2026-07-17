@@ -3,6 +3,7 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { collectCategories, flattenVerbos } from '../utils/flatten'
 import { pickWeightedIndex } from '../utils/weightedRandom'
 import { WEIGHT_MAP } from '../data/weightedVerbs'
+import { syncVerbToMongo } from '../utils/mongoSync'
 
 const JSON_URL = `${import.meta.env.BASE_URL}verbos_estructura.json`
 
@@ -219,6 +220,26 @@ export function useVerbos() {
     [filtered, navigate],
   )
 
+  // ── MongoDB sync ──
+  // VerbCard reports enrichment (image + audio) via reportEnrichment().
+  // When both arrive for the current verb, fire a fire-and-forget POST
+  // to /api/verbs/sync. A Set<id> guards against StrictMode duplicates.
+  const syncedThisSession = useRef(new Set())
+
+  useEffect(() => {
+    syncedThisSession.current = new Set()
+  }, [currentVerb?.id])
+
+  const reportEnrichment = useCallback(
+    (verb, enrichment) => {
+      if (!verb?.id) return
+      if (syncedThisSession.current.has(verb.id)) return
+      syncedThisSession.current.add(verb.id)
+      syncVerbToMongo({ ...verb, ...enrichment })
+    },
+    [],
+  )
+
   const next = useCallback(() => {
     if (currentIndex < 0) goTo(0)
     else goTo(currentIndex + 1)
@@ -290,5 +311,6 @@ export function useVerbos() {
     goTo,
     total: filtered.length,
     verbSelector: effectiveSelector,
+    reportEnrichment,
   }
 }

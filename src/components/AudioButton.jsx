@@ -67,7 +67,7 @@ function speakWithSpeechSynthesis(word) {
   })
 }
 
-export default forwardRef(function AudioButton({ word }, ref) {
+export default forwardRef(function AudioButton({ word, onResolved }, ref) {
   const audioRef = useRef(null)
   const isMountedRef = useRef(true)
   const ttsActiveRef = useRef(false)
@@ -76,6 +76,19 @@ export default forwardRef(function AudioButton({ word }, ref) {
     if (isUnavailable(word)) return 'unavailable'
     return 'idle'
   })
+
+  const reportResolution = useCallback(() => {
+    if (!word || !onResolved) return
+    const cached = getCachedAudio(word)
+    if (cached) onResolved({ audio_url: cached, audio_source: 'dictionaryapi.dev' })
+    else if (isUnavailable(word)) onResolved({ audio_url: null, audio_source: 'none' })
+    else if (isTTSSupported(word)) onResolved({ audio_url: null, audio_source: 'tts' })
+    else onResolved(null)
+  }, [word, onResolved])
+
+  useEffect(() => {
+    reportResolution()
+  }, [reportResolution])
 
   useEffect(() => {
     isMountedRef.current = true
@@ -171,11 +184,13 @@ export default forwardRef(function AudioButton({ word }, ref) {
     const cached = getCachedAudio(word)
     if (cached) {
       playUrl(cached)
+      reportResolution()
       return
     }
 
     if (isTTSSupported(word)) {
       playTTS()
+      reportResolution()
       return
     }
 
@@ -192,6 +207,7 @@ export default forwardRef(function AudioButton({ word }, ref) {
       if (url) {
         setCachedAudio(word, url)
         playUrl(url)
+        reportResolution()
         return
       }
 
@@ -200,9 +216,11 @@ export default forwardRef(function AudioButton({ word }, ref) {
           await speakWithSpeechSynthesis(word)
           markTTSSupported(word)
           if (isMountedRef.current) setState('idle')
+          reportResolution()
         } catch {
           setUnavailable(word)
           if (isMountedRef.current) setState('unavailable')
+          reportResolution()
         }
         return
       }
@@ -210,11 +228,12 @@ export default forwardRef(function AudioButton({ word }, ref) {
       if (reason === 'missing') {
         setUnavailable(word)
         setState('unavailable')
+        reportResolution()
       }
     } catch {
       if (isMountedRef.current) setState('error')
     }
-  }, [word, state, playUrl, playTTS, stopPlayback])
+  }, [word, state, playUrl, playTTS, stopPlayback, reportResolution])
 
   const baseClass =
     'group/audio inline-flex size-12 items-center justify-center rounded-full bg-white/95 text-indigo-600 shadow-lg ring-1 ring-black/5 backdrop-blur-sm transition hover:scale-105 hover:bg-white hover:shadow-xl active:scale-95 disabled:opacity-50 disabled:hover:scale-100 disabled:hover:bg-white/95 motion-reduce:animate-none'

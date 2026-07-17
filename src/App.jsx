@@ -146,6 +146,7 @@ function VerbView({ retryKey }) {
           onPrev={verbos.prev}
           onNext={verbos.next}
           onShuffle={verbos.shuffle}
+          onEnriched={verbos.reportEnrichment}
         />
       )}
     </div>

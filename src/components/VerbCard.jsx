@@ -19,7 +19,7 @@ function picsumUrl(verb) {
   return `https://picsum.photos/seed/${encodeURIComponent(word)}/800/400`
 }
 
-function VerbImage({ verb }) {
+function VerbImage({ verb, onReady, onAudioResolved }) {
   const word = verb.infinitivo?.ing ?? null
   const hasCustom = Boolean(verb.imagen?.trim())
   const pexelsAvailable = hasPexelsKey()
@@ -117,6 +117,12 @@ function VerbImage({ verb }) {
 
   const canRefresh = !hasCustom && pexelsAvailable && Boolean(word)
 
+  useEffect(() => {
+    if (!src || !onReady) return
+    const source = hasCustom ? 'custom' : stage
+    onReady({ imagen_url: src, image_source: source })
+  }, [src, stage, hasCustom, onReady])
+
   const heightClass = heroExpanded
     ? 'h-[min(70vh,560px)] min-h-[280px]'
     : 'h-44 sm:h-52 md:h-56'
@@ -144,6 +150,7 @@ function VerbImage({ verb }) {
           audioWord={audioWord}
           heroExpanded={heroExpanded}
           onToggleExpand={toggleHeroExpanded}
+          onAudioResolved={onAudioResolved}
         />
       </div>
     )
@@ -173,6 +180,7 @@ function VerbImage({ verb }) {
         refreshing={refreshing}
         heroExpanded={heroExpanded}
         onToggleExpand={toggleHeroExpanded}
+        onAudioResolved={onAudioResolved}
       />
     </div>
   )
@@ -185,6 +193,7 @@ function VerbImageOverlay({
   refreshing,
   heroExpanded,
   onToggleExpand,
+  onAudioResolved,
 }) {
   const buttonRef = useRef(null)
 
@@ -251,7 +260,7 @@ function VerbImageOverlay({
         onClick={handleOverlayClick}
       >
         <div className="transition-transform duration-300 group-hover:scale-110">
-          <AudioButton ref={buttonRef} key={audioWord} word={audioWord} />
+          <AudioButton ref={buttonRef} key={audioWord} word={audioWord} onResolved={onAudioResolved} />
         </div>
       </div>
       {canRefresh ? (
@@ -362,16 +371,51 @@ export default function VerbCard({
   onPrev,
   onNext,
   onShuffle,
+  onEnriched,
 }) {
   const articleRef = useRef(null)
   const startRef = useRef(null)
   const lastRef = useRef({ x: 0, y: 0 })
 
+  const [imageInfo, setImageInfo] = useState(null)
+  const [audioInfo, setAudioInfo] = useState(null)
+  const [trackedVerbKey, setTrackedVerbKey] = useState(
+    currentVerb?.id ?? currentVerb?.infinitivo?.ing ?? null,
+  )
+  const enrichedForVerb = useRef(null)
+
   const verbKey = currentVerb?.id ?? currentVerb?.infinitivo?.ing ?? null
-  const [trackedVerbKey, setTrackedVerbKey] = useState(verbKey)
   if (trackedVerbKey !== verbKey) {
     setTrackedVerbKey(verbKey)
+    setImageInfo(null)
+    setAudioInfo(null)
   }
+
+  useEffect(() => {
+    enrichedForVerb.current = null
+  }, [verbKey])
+
+  const handleImageReady = useCallback((info) => {
+    setImageInfo(info)
+  }, [])
+
+  const handleAudioResolved = useCallback((info) => {
+    setAudioInfo(info)
+  }, [])
+
+  useEffect(() => {
+    if (!imageInfo || !audioInfo) return
+    if (!currentVerb?.id) return
+    if (enrichedForVerb.current === currentVerb.id) return
+    enrichedForVerb.current = currentVerb.id
+    onEnriched?.(currentVerb, {
+      imagen_url: imageInfo.imagen_url,
+      image_source: imageInfo.image_source,
+      audio_url: audioInfo.audio_url,
+      audio_source: audioInfo.audio_source,
+    })
+  }, [imageInfo, audioInfo, currentVerb, onEnriched])
+
   const shouldAnimateVerbEnter =
     trackedVerbKey !== null && trackedVerbKey !== verbKey
 
@@ -429,7 +473,7 @@ export default function VerbCard({
       style={{ touchAction: 'pan-y', willChange: 'transform, opacity' }}
       className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-shadow hover:shadow-md"
     >
-      <VerbImage verb={currentVerb} />
+      <VerbImage verb={currentVerb} onReady={handleImageReady} onAudioResolved={handleAudioResolved} />
 
       <div className="flex items-center justify-center border-b border-slate-100 bg-slate-50/60 px-4 py-3 sm:px-6">
         <NavButtons

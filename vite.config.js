@@ -33,6 +33,22 @@ function syncDataPlugin() {
           server.ws.send({ type: 'full-reload' })
         }
       })
+
+      // /api/verbs/sync → same handler used in production serverless deploys.
+      // Lazy-imported so `mongodb` never reaches the client bundle.
+      server.middlewares.use('/api/verbs/sync', async (req, res) => {
+        try {
+          const mod = await import('./api/verbs/sync.js')
+          await mod.default(req, res)
+        } catch (err) {
+          console.error('[vite:middleware] /api/verbs/sync', err)
+          if (!res.headersSent) {
+            res.statusCode = 500
+            res.setHeader('content-type', 'application/json')
+            res.end(JSON.stringify({ ok: false, error: err.message }))
+          }
+        }
+      })
     },
   }
 }
