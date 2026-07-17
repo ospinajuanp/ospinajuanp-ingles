@@ -154,6 +154,19 @@ export function useVerbos() {
   )
   const currentVerb = current?.verb ?? null
 
+  if (typeof window !== 'undefined') {
+    console.log('[useVerbos]', {
+      verbSelector,
+      allVerbsLen: allVerbs.length,
+      loading,
+      sampleFirst: allVerbs[0]?.verb?.infinitivo,
+      sampleKnow: allVerbs.find(i => i.verb.infinitivo?.ing === 'know')?.verb?.infinitivo,
+      normOfSelector: typeof verbSelector === 'string' ? verbSelector.trim().toLowerCase() : verbSelector,
+      currentFound: !!current,
+      currentName: currentVerb?.infinitivo?.ing,
+    })
+  }
+
   const currentIndex = useMemo(() => {
     if (!current || !currentVerb) return -1
     return filtered.findIndex(
