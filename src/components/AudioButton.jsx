@@ -94,6 +94,7 @@ export default forwardRef(function AudioButton({ word, onResolved }, ref) {
   useEffect(() => {
     if (!word || !onResolved) return
 
+    console.info('[audio-eager] mount word=', word)
     let cancelled = false
     const fire = (info) => {
       if (cancelled) return
@@ -102,21 +103,26 @@ export default forwardRef(function AudioButton({ word, onResolved }, ref) {
 
     const cached = getCachedAudio(word)
     if (cached) {
+      console.info('[audio-eager] cache hit for', word)
       fire({ audio_url: cached, audio_source: 'dictionaryapi.dev' })
       return
     }
     if (isUnavailable(word)) {
+      console.info('[audio-eager] known unavailable for', word)
       fire({ audio_url: null, audio_source: 'none' })
       return
     }
     if (isTTSSupported(word)) {
+      console.info('[audio-eager] known tts for', word)
       fire({ audio_url: null, audio_source: 'tts' })
       return
     }
 
+    console.info('[audio-eager] fetching dictionaryapi for', word)
     fetchAudioUrl(word)
       .then(({ url, reason }) => {
         if (cancelled) return
+        console.info('[audio-eager] dict result', word, { url, reason })
         if (url) {
           setCachedAudio(word, url)
           fire({ audio_url: url, audio_source: 'dictionaryapi.dev' })
@@ -128,8 +134,8 @@ export default forwardRef(function AudioButton({ word, onResolved }, ref) {
           fire({ audio_url: null, audio_source: 'none' })
         }
       })
-      .catch(() => {
-        // Network error: silent. Will retry on next visit/click.
+      .catch((err) => {
+        console.warn('[audio-eager] fetch failed for', word, err?.message ?? err)
       })
 
     return () => {

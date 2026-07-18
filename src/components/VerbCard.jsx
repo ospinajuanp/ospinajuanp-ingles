@@ -408,6 +408,10 @@ export default function VerbCard({
     if (!currentVerb?.id) return
     if (enrichedForVerb.current === currentVerb.id) return
     enrichedForVerb.current = currentVerb.id
+    console.info('[verb-card] onEnriched firing for', currentVerb.infinitivo?.ing, {
+      image_source: imageInfo.image_source,
+      audio_source: audioInfo.audio_source,
+    })
     onEnriched?.(currentVerb, {
       imagen_url: imageInfo.imagen_url,
       image_source: imageInfo.image_source,
