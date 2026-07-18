@@ -27,14 +27,6 @@ function VerbImage({ verb, onReady, onAudioResolved }) {
   const cachedAtMount = !hasCustom && word ? getCachedImages(word) : null
   const initialPhoto = cachedAtMount?.[0] ?? null
 
-  console.info('[verb-image] MOUNT word=', word, 'cached?', !!cachedAtMount, 'initialSrc=', initialPhoto?.url?.slice(0, 60) ?? picsumUrl(verb).slice(0, 60))
-
-  useEffect(() => {
-    return () => {
-      console.info('[verb-image] UNMOUNT word=', word)
-    }
-  }, [word])
-
   const [src, setSrc] = useState(() => {
     if (hasCustom) return verb.imagen
     if (!pexelsAvailable) return picsumUrl(verb)
@@ -112,7 +104,6 @@ function VerbImage({ verb, onReady, onAudioResolved }) {
     } else {
       const cached = getCachedImages(word)
       if (cached && cached.length > 0) {
-        console.info('[verb-image] derived-state sync from cache for', word)
         setSrc(cached[0].url)
         setCredit(cached[0])
         setStage('pexels')
@@ -423,9 +414,7 @@ export default function VerbCard({
   const enrichedForVerb = useRef(null)
 
   const verbKey = currentVerb?.id ?? currentVerb?.infinitivo?.ing ?? null
-  console.info('[verb-card] render verbKey=', verbKey, 'trackedVerbKey=', trackedVerbKey, 'renderId=', renderId)
   if (trackedVerbKey !== verbKey) {
-    console.info('[verb-card] verbKey CHANGED', trackedVerbKey, '→', verbKey, '— resetting state, bumping renderId')
     setTrackedVerbKey(verbKey)
     setImageInfo(null)
     setAudioInfo(null)
@@ -434,7 +423,6 @@ export default function VerbCard({
 
   useEffect(() => {
     enrichedForVerb.current = null
-    console.info('[verb-card] enrichedForVerb reset for verbKey=', verbKey)
   }, [verbKey])
 
   const handleImageReady = useCallback((info) => {
@@ -450,10 +438,6 @@ export default function VerbCard({
     if (currentVerb?.id == null) return
     if (enrichedForVerb.current === currentVerb.id) return
     enrichedForVerb.current = currentVerb.id
-    console.info('[verb-card] onEnriched firing for', currentVerb.infinitivo?.ing, {
-      image_source: imageInfo.image_source,
-      audio_source: audioInfo.audio_source,
-    })
     onEnriched?.(currentVerb, {
       imagen_url: imageInfo.imagen_url,
       image_source: imageInfo.image_source,

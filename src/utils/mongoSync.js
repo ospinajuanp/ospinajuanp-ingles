@@ -6,10 +6,6 @@
  */
 export async function syncVerbToMongo(payload) {
   if (!payload || payload.id == null) return
-  console.info('[mongo-sync] POSTing verb id=', payload.id, {
-    image_source: payload.image_source,
-    audio_source: payload.audio_source,
-  })
   try {
     const res = await fetch('/api/verbs/sync', {
       method: 'POST',
@@ -19,8 +15,6 @@ export async function syncVerbToMongo(payload) {
     })
     if (!res.ok) {
       console.warn('[mongo-sync] non-ok response:', res.status)
-    } else {
-      console.info('[mongo-sync] OK id=', payload.id, 'status=', res.status)
     }
   } catch (err) {
     console.warn('[mongo-sync] request failed silently:', err?.message ?? err)
