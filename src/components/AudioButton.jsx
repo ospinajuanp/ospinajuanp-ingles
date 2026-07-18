@@ -86,9 +86,56 @@ export default forwardRef(function AudioButton({ word, onResolved }, ref) {
     else onResolved(null)
   }, [word, onResolved])
 
+  // Eager resolution on mount: fires onResolved as soon as audio state
+  // is known (cache hit, known unsupported, known TTS-only) OR after
+  // a one-shot fetch from dictionaryapi.dev. Without this, onResolved
+  // never fires until the user clicks the button, and VerbCard's
+  // `onEnriched` (which triggers the MongoDB lazy sync) stays idle.
   useEffect(() => {
-    reportResolution()
-  }, [reportResolution])
+    if (!word || !onResolved) return
+
+    let cancelled = false
+    const fire = (info) => {
+      if (cancelled) return
+      if (info) onResolved(info)
+    }
+
+    const cached = getCachedAudio(word)
+    if (cached) {
+      fire({ audio_url: cached, audio_source: 'dictionaryapi.dev' })
+      return
+    }
+    if (isUnavailable(word)) {
+      fire({ audio_url: null, audio_source: 'none' })
+      return
+    }
+    if (isTTSSupported(word)) {
+      fire({ audio_url: null, audio_source: 'tts' })
+      return
+    }
+
+    fetchAudioUrl(word)
+      .then(({ url, reason }) => {
+        if (cancelled) return
+        if (url) {
+          setCachedAudio(word, url)
+          fire({ audio_url: url, audio_source: 'dictionaryapi.dev' })
+        } else if (reason === 'no-audio') {
+          markTTSSupported(word)
+          fire({ audio_url: null, audio_source: 'tts' })
+        } else if (reason === 'missing') {
+          setUnavailable(word)
+          fire({ audio_url: null, audio_source: 'none' })
+        }
+      })
+      .catch(() => {
+        // Network error: silent. Will retry on next visit/click.
+      })
+
+    return () => {
+      cancelled = true
+    }
+  }, [word, onResolved])
 
   useEffect(() => {
     isMountedRef.current = true
