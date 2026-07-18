@@ -419,15 +419,17 @@ export default function VerbCard({
   const [trackedVerbKey, setTrackedVerbKey] = useState(
     currentVerb?.id ?? currentVerb?.infinitivo?.ing ?? null,
   )
+  const [renderId, setRenderId] = useState(0)
   const enrichedForVerb = useRef(null)
 
   const verbKey = currentVerb?.id ?? currentVerb?.infinitivo?.ing ?? null
-  console.info('[verb-card] render verbKey=', verbKey, 'trackedVerbKey=', trackedVerbKey)
+  console.info('[verb-card] render verbKey=', verbKey, 'trackedVerbKey=', trackedVerbKey, 'renderId=', renderId)
   if (trackedVerbKey !== verbKey) {
-    console.info('[verb-card] verbKey CHANGED', trackedVerbKey, '→', verbKey, '— resetting state')
+    console.info('[verb-card] verbKey CHANGED', trackedVerbKey, '→', verbKey, '— resetting state, bumping renderId')
     setTrackedVerbKey(verbKey)
     setImageInfo(null)
     setAudioInfo(null)
+    setRenderId((r) => r + 1)
   }
 
   useEffect(() => {
@@ -517,7 +519,7 @@ export default function VerbCard({
       style={{ touchAction: 'pan-y', willChange: 'transform, opacity' }}
       className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-shadow hover:shadow-md"
     >
-      <div key={verbKey}>
+      <div key={`${verbKey}-${renderId}`}>
         <VerbImage
           verb={currentVerb}
           onReady={handleImageReady}
