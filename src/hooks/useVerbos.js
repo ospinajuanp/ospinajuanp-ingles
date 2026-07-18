@@ -232,7 +232,7 @@ export function useVerbos() {
 
   const reportEnrichment = useCallback(
     (verb, enrichment) => {
-      if (!verb?.id) return
+      if (verb?.id == null) return
       if (syncedThisSession.current.has(verb.id)) return
       syncedThisSession.current.add(verb.id)
       syncVerbToMongo({ ...verb, ...enrichment })

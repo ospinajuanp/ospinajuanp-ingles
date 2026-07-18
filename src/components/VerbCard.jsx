@@ -447,7 +447,7 @@ export default function VerbCard({
 
   useEffect(() => {
     if (!imageInfo || !audioInfo) return
-    if (!currentVerb?.id) return
+    if (currentVerb?.id == null) return
     if (enrichedForVerb.current === currentVerb.id) return
     enrichedForVerb.current = currentVerb.id
     console.info('[verb-card] onEnriched firing for', currentVerb.infinitivo?.ing, {
