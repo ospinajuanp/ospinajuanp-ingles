@@ -517,12 +517,13 @@ export default function VerbCard({
       style={{ touchAction: 'pan-y', willChange: 'transform, opacity' }}
       className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-shadow hover:shadow-md"
     >
-      <VerbImage
-        key={verbKey}
-        verb={currentVerb}
-        onReady={handleImageReady}
-        onAudioResolved={handleAudioResolved}
-      />
+      <div key={verbKey}>
+        <VerbImage
+          verb={currentVerb}
+          onReady={handleImageReady}
+          onAudioResolved={handleAudioResolved}
+        />
+      </div>
 
       <div className="flex items-center justify-center border-b border-slate-100 bg-slate-50/60 px-4 py-3 sm:px-6">
         <NavButtons
