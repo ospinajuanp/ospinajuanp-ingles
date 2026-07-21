@@ -6,7 +6,7 @@ React 19 + Vite 8 + Tailwind v4 + DaisyUI 5 SPA for learning English verbs in Sp
 ## Repo
 - GitHub: `ospinajuanp/ospinajuanp-ingles`, branch `main`
 - Live: `https://ospinajuanp-ingles.vercel.app/`
-- Working tree: clean, last commit `33d4039 feat(routing+theme): namespace /v1 + landing page + DaisyUI multi-theme`
+- Working tree: clean, last commit `a08442b fix(theme): apply daisyUI tokens across all components (whole-app theming)`
 
 ## Key conventions
 - Dataset: `verbos_estructura.json` at repo root (gitignored), copied to `public/` by a Vite plugin (`syncDataPlugin` in `vite.config.js`) on dev start, build start, and on every change. The plugin triggers `full-reload` via WebSocket. **HMR auto-restarts dev server on `api/verbs/sync.js` changes — keep in mind during bulk runs.**
@@ -88,7 +88,9 @@ React 19 + Vite 8 + Tailwind v4 + DaisyUI 5 SPA for learning English verbs in Sp
 - `verbos_estructura.json` (root, gitignored): 1000 verbs flattened to 905 unique `infinitivo.ing` (95 duplicates); all 1000 unique `id`.
 
 ## Build
-`pnpm build` → `dist/` produces ~341 KB JS raw / ~106 KB gzipped (53 modules total). MongoDB driver NOT in client bundle. Net change after the routing+theme refactor: +7 KB raw / +1.4 KB gzipped. CSS bundle jumps from ~46 KB to ~111 KB raw (18 KB gzipped) because DaisyUI ships all four theme palettes in the bundle — the cost of multi-theme is one-shot; per-theme activation is just a `data-theme` swap.
+`pnpm build` → `dist/` produces ~341 KB JS raw / ~106 KB gzipped (53 modules total) and ~118 KB CSS raw / ~19 KB gzipped. MongoDB driver NOT in client bundle. CSS jump breakdown:
+- 46 KB → 111 KB after first DaisyUI integration (4 themes shipped as one CSS bundle).
+- 111 KB → 118 KB after `a08442b` (more DaisyUI utility classes used: `btn`, `textarea-bordered`, etc. — DaisyUI ships them on-demand, so the bump is proportional to how many we actually use).
 
 ## What works
 - **1000/1000 verbs migrated to MongoDB Atlas** in `ingles-db.verbos` via `pnpm bulk:direct`. All `migrado_desde='SPA_Bulk_Migration'`, `audio_source='pending'`, `image_source='picsum'`, `oraciones` populated.
@@ -100,7 +102,8 @@ React 19 + Vite 8 + Tailwind v4 + DaisyUI 5 SPA for learning English verbs in Sp
 - 190+ verbs have hero image (Pexels or Picsum), audio (API + TTS fallback), 6 conjugations with eye/eye-off reveal, 6 sentences with blur-reveal.
 - Header sticky + responsive, category filter, shuffle, keyboard nav, weighted-random initial pick, tips banner, footer. Header now also hosts the **SRS "Repaso" pill** with a due-count badge that updates in real time across the whole app (driven by `SRSContext`).
 - **SRS module (c5f5bda)**: `/v1/test` route (back-compat `/repaso` → `/v1/test`), 3D flip flashcards (Tailwind `preserve-3d` / `backface-hidden` / `rotate-y-180`), Spanish↔English reveal, SM-2 grading buttons. Two decks (`type: 'custom' | 'verb'`) coexist: custom sentences via `AddFlashcardForm`, verbs auto-registered when visited in the main app. Persistence is `localStorage`-first under `ospinajuanp-ingles:srs:v1`. See the SRS section below.
-- **Multi-theme + landing page (33d4039)**: `/` renders a DaisyUI hero with two action cards (Explorar Verbos / Repasar). Theme switcher in the header offers light / dark / dracula / cupcake, persisted to `localStorage['ospinajuanp-ingles:theme']` and applied to `<html data-theme=...>` (FOUC-prevention script in `index.html`). HomePage re-skins via DaisyUI tokens; VerbCard/SRS pages intentionally keep the slate/indigo palette to avoid touching the verb-exploration visuals. See the Multi-theme section below.
+- **Multi-theme + landing page (33d4039)**: `/` renders a DaisyUI hero with two action cards (Explorar Verbos / Repasar). Theme switcher in the header offers light / dark / dracula / cupcake, persisted to `localStorage['ospinajuanp-ingles:theme']` and applied to `<html data-theme=...>` (FOUC-prevention script in `index.html`).
+- **Whole-app theming (a08442b)**: every slate/indigo reference replaced with DaisyUI semantic tokens (`bg-base-100`, `text-base-content`, `text-primary`, `border-base-300`, etc.). The theme now applies to the entire app — body bg, ShellHeader, VerbCard, Flashcard, SRSStudyPage, AddFlashcardForm, CategoryFilter, SearchBar, NavButtons, ConjugationGrid, SentencePill, AudioButton, all error/success/empty states. See the Multi-theme section below for the token mapping table.
 - README + .env.example + all wiring in place.
 
 ## SRS module — Spaced Repetition
@@ -228,13 +231,36 @@ Theming lives at the `<html data-theme="...">` level. Active themes: `light` (de
 - **FOUC prevention**: a tiny inline `<script>` in `index.html` runs BEFORE React boots and applies the persisted theme to `<html>`. Without this, users with a non-default theme see one frame of the default theme on each load.
 
 ### What uses DaisyUI tokens
-- **`src/pages/HomePage.jsx`** — the only fully-themable page. Uses `bg-base-200` (hero surface), `bg-base-100` + `border-base-300` (cards), `text-base-content` (titles/captions), `text-base-content/70` (muted), `btn-primary` (primary CTA), `btn-outline btn-primary` (secondary CTA), `badge-primary badge-outline` (eyebrow chip).
-- **`src/components/ThemeSwitcher.jsx`** — the dropdown menu uses `bg-base-100` for the surface and `hover:bg-base-200` for the row hover. The active-row indicator (`bg-indigo-50 text-indigo-700`) is intentionally **not** themed so the active marker is recognizable across all four themes.
-- **`src/components/ShellHeader`** sticks with `bg-white/85` (kept as a brand surface, NOT themed) — the header is the navigation chrome and should feel consistent regardless of theme.
+- **Everything in the app** is theme-aware as of `a08442b`. The slate/indigo palette was a leftover from the pre-theming days; the entire UI now re-skins when the user changes the theme.
+- **`src/pages/HomePage.jsx`** — fully themable page. `bg-base-200` (hero surface), `bg-base-100` + `border-base-300` (cards), `text-base-content` (titles/captions), `btn-primary` / `btn-outline btn-primary` (CTAs), `badge-primary badge-outline` (eyebrow chip).
+- **`src/components/ThemeSwitcher.jsx`** — dropdown trigger + menu both adapt: `bg-base-100`, `border-base-300`, active row uses `bg-primary/15 text-primary`.
+- **`src/components/ShellHeader`** in `App.jsx` — sticky header now `bg-base-100/85 backdrop-blur-md` with `border-base-300`. The brand title uses `text-base-content`, subtitle `text-base-content/60`.
+- **`src/components/{SearchBar, CategoryFilter, NavButtons, ReviewNavButton, ConjugationGrid, SentencePill, AddFlashcardForm, Flashcard, AudioButton, VerbCard}.jsx`** — every interactive surface, card, divider, and text uses `bg-base-100 / bg-base-200 / bg-base-300` and `text-base-content / text-base-content/70 / text-base-content/50` so they swap with the active theme.
+- **`src/components/SRSStudyPage.jsx`** — page chrome, stats grid, and "all caught up" success card adapt.
 
-### What does NOT use DaisyUI (intentional)
-- **`src/components/VerbCard.jsx`**, **`src/components/Flashcard.jsx`**, **`src/components/SRSStudyPage.jsx`**, **`src/components/AudioButton.jsx`** — keep the hand-rolled slate/indigo palette. They were carefully tuned for the verb-exploration flow; switching them to DaisyUI tokens wholesale would risk visual regressions (overlap with the image/audio overlays, the 3D flip stack, the grade button colors mapped to fail/hard/good/easy, etc.). Each individual component can opt into DaisyUI tokens later without changing the rest.
-- **`@layer base body { @apply bg-slate-50 text-slate-800 font-sans }`** in `src/index.css` is kept verbatim. DaisyUI does NOT override Tailwind's preflight when used as `@plugin`, so our body color stays slate on every theme — providing a consistent canvas for the verb-exploration pages.
+### Token mapping (slate/indigo → daisyUI semantic)
+| Before | After | Where it appears |
+|---|---|---|
+| `bg-white` | `bg-base-100` | card surfaces (VerbCard, Flashcard front, Stat, AddFlashcardForm, etc.) |
+| `bg-slate-50 / 100` | `bg-base-200` | page bg, soft surfaces, pulse placeholders, hover states |
+| `border-slate-200 / 100` | `border-base-300` | dividers + outlines |
+| `text-slate-900 / 800` | `text-base-content` | primary text |
+| `text-slate-700 / 600` | `text-base-content/80` | secondary text |
+| `text-slate-500 / 400` | `text-base-content/70` | muted text |
+| `text-slate-300` | `text-base-content/50` | placeholder text |
+| `text-indigo-600 / 700` | `text-primary` | brand text (verb name, active states) |
+| `bg-indigo-600 / 700` | `bg-primary` | CTAs (Next button, Submit, Reintentar) |
+| `bg-indigo-50 / 100` | `bg-primary/10 .. /15` | chips, hover states |
+| `border-indigo-200 / 300` | `border-primary/30 .. /40` | active borders |
+| `bg-slate-900` (Next btn) | `btn btn-primary` | high-contrast CTA now uses DaisyUI |
+| `bg-slate-900/95` (image max) | `bg-black/95` | image maximize backdrop kept black |
+| `bg-slate-900/30..70` (overlay) | `bg-black/30..70` | image darkening overlay kept dark |
+
+### Semantic colors KEPT (intentional)
+- **`Flashcard` 4 grade buttons**: fail / hard / good / easy mapped to `error` / `warning` / `success` / `info` (semantic DaisyUI tokens). These carry meaning across themes.
+- **Image overlays** (`bg-black/30..70`, `bg-black/95`): always dark for image contrast.
+- **`AudioButton`** background: `bg-base-100/95` (theme-aware) with `text-primary` for contrast on top of the image overlay. In dark themes the button blends slightly with the image's dark overlay — acceptable trade-off, can be hardened later if user feedback requires.
+- **`HeroIllustration`** SVG: hardcoded amber/sky palette is artistic and stays as-is across all themes.
 
 ### DaisyUI v5 gotchas (this codebase)
 - DaisyUI's reset is light (it does not include Tailwind's preflight by itself), so our existing `@layer base` rules keep working.
@@ -242,6 +268,7 @@ Theming lives at the `<html data-theme="...">` level. Active themes: `light` (de
 - DaisyUI's `dropdown` requires the trigger to be the first child with `tabindex=0` and `role=button` (or a `<button>`). `ThemeSwitcher` uses a `<div tabIndex={0} role="button">` trigger and a `<ul tabIndex={0} class="menu dropdown-content">` panel — exact structure DaisyUI expects.
 - `dropdown-content` panels sit at `z-50` so they overlay the sticky header.
 - DaisyUI's `.menu` adds `margin-inline-end: 4px` to buttons inside the menu — fine for our use, the `mx` is on the `card-actions` containers instead of inside the menu.
+- `btn-primary` needs `btn` to come first — DaisyUI's `btn` class supplies the base height, padding, border-radius, focus ring, etc. `btn-primary` only adds the color variant. In `NavButtons.jsx` the Next button uses `btn btn-primary inline-flex size-12 min-h-0 p-0` so we override `btn`'s default min-height to fit the 48×48 circle.
 
 ## Atlas indices (current)
 - `_id_` (default)
@@ -358,14 +385,20 @@ and their original `migrado_desde` is preserved. Verified output:
 
 ```
 (this session)
-  feat(routing+theme): namespace /v1 + landing page + DaisyUI multi-theme
-    - routes: /, /v1/verbs/:verbSelector, /v1/test (legacy redirects)
-    - useVerbos.js: scoped regex, no root auto-pick, new goToRandomVerb()
-    - DaisyUI 5 plugin via @plugin in src/index.css (4 themes)
-    - useTheme hook + ThemeSwitcher in ShellHeader
-    - HomePage.jsx with DaisyUI hero + two cards
-    - FOUC-prevention inline script in index.html
-  docs(handoff): record c5f5bda as last commit
+  fix(theme): apply daisyUI tokens across all components (whole-app theming)
+    - body bg-base-200 / text-base-content
+    - ShellHeader bg-base-100/85 + border-base-300
+    - VerbCard wrapper + sections + EmptyState themed
+    - Flashcard front (bg-base-100) + back (primary gradient)
+    - Flashcard 4 grade buttons: error/warning/success/info semantic
+    - SRSStudyPage stats + empty states (success/* for "al día")
+    - AddFlashcardForm + textarea-bordered
+    - CategoryFilter dropdown + rows + trigger
+    - SearchBar, NavButtons, ConjugationGrid, SentencePill, AudioButton
+    - ErrorState: border-error/30 + bg-error/10
+  feat(routing+theme): namespace /v1 + landing page + DaisyUI multi-theme (predecessor)
+33d4039 docs(handoff): record /v1 namespace + DaisyUI multi-theme + landing page
+6b7957a docs(handoff): record c5f5bda as last commit
 c5f5bda feat(srs): SM-2 spaced repetition module at /repaso (predecessor)
 ba78609 docs(handoff): record c5f5bda as last commit
 634a6a0 cleanup: remove diagnostic console.info logs after confirmed fix
