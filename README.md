@@ -57,8 +57,12 @@ sync of every visit to **MongoDB Atlas**.
   between Estudiar and Gestionar Mazo. The manager is a DaisyUI
   table with real-time search across both languages, 10/page
   pagination with numeric shortcuts + ellipsis gaps, edit (custom
-  cards via a native `<dialog>`) and delete (any card, with
-  confirm). Editing a custom prompt preserves the SRS schedule.
+  cards via a native `<dialog>`) and delete (any card, with an
+  in-app confirmation `<dialog>` — no `window.confirm`). Editing a
+  custom prompt preserves the SRS schedule. The delete dialog shows
+  a card preview (type badge + ES/EN text) plus a destructive
+  `btn bg-error` so the user sees exactly which card they're about
+  to remove.
 - **Multi-theme UI** — Light / dark / dracula / cupcake via DaisyUI 5.
   Theme persists to `localStorage['ospinajuanp-ingles:theme']`; an
   inline `<script>` in `index.html` applies the persisted theme to
@@ -420,9 +424,11 @@ Difícil (hard / `warning`), Bien (good / `success`), Fácil (easy /
 (`ModeToggle` join group). DaisyUI table with real-time search
 across both languages, 10/page pagination (numeric shortcuts + first/
 last + ellipsis gaps), edit (custom only, via a native `<dialog>`)
-and delete (any card, with `window.confirm`). Editing a custom
-prompt **preserves the SRS schedule** — only the prompt text
-changes.
+and delete (any card, via an in-app `<dialog>` confirmation — no
+`window.confirm`). The delete dialog shows a card preview (type
+badge + ES/EN text) and a destructive `btn bg-error` button. Editing
+a custom prompt **preserves the SRS schedule** — only the prompt
+text changes.
 
 ## Conventions
 

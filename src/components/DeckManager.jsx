@@ -6,7 +6,9 @@
 //   - Real-time search filter (matches Español OR Inglés case-insensitive).
 //   - Pagination 10/page with prev/next + numeric shortcuts.
 //   - Per-row actions: edit (only custom cards) + delete (both types).
-//   - DaisyUI native <dialog className="modal"> for the edit form.
+//   - DaisyUI native <dialog className="modal"> for the edit form AND
+//     the delete confirmation (custom in-app confirmation instead of
+//     `window.confirm` so it matches the theme + is styleable).
 //
 // Hook contract: the parent supplies the SRS context value (which already
 // exposes `cards`, `removeCard`, `editCustomCard`). We don't call the
@@ -25,6 +27,7 @@ import {
   X,
   Save,
   Layers,
+  AlertTriangle,
 } from 'lucide-react'
 import { useSRSContext } from '../contexts/SRSContext'
 
@@ -53,6 +56,7 @@ export default function DeckManager() {
   const [page, setPage] = useState(1)
   const [trackedSearch, setTrackedSearch] = useState(searchTerm)
   const [editingId, setEditingId] = useState(null)
+  const [deletingCard, setDeletingCard] = useState(null)
 
   const editingCard = useMemo(
     () => (editingId ? cards.find((c) => c.id === editingId) ?? null : null),
@@ -79,14 +83,6 @@ export default function DeckManager() {
   const safePage = Math.min(page, totalPages)
   const startIdx = (safePage - 1) * PAGE_SIZE
   const pageCards = filtered.slice(startIdx, startIdx + PAGE_SIZE)
-
-  function handleDelete(cardId) {
-    if (typeof window !== 'undefined') {
-      const ok = window.confirm('¿Eliminar esta tarjeta del mazo?')
-      if (!ok) return
-    }
-    srs?.removeCard?.(cardId)
-  }
 
   return (
     <section className="space-y-5">
@@ -205,7 +201,7 @@ export default function DeckManager() {
                           )}
                           <button
                             type="button"
-                            onClick={() => handleDelete(card.id)}
+                            onClick={() => setDeletingCard(card)}
                             aria-label={`Eliminar tarjeta: ${cardEs(card)}`}
                             className="inline-flex size-9 items-center justify-center rounded-full border border-base-300 bg-base-100 text-error/70 transition hover:border-error/40 hover:bg-error/10 hover:text-error active:scale-95"
                           >
@@ -237,6 +233,15 @@ export default function DeckManager() {
           if (!editingCard) return
           const result = srs?.editCustomCard?.(editingCard.id, payload)
           if (result) setEditingId(null)
+        }}
+      />
+
+      <ConfirmDialog
+        card={deletingCard}
+        onCancel={() => setDeletingCard(null)}
+        onConfirm={() => {
+          if (deletingCard) srs?.removeCard?.(deletingCard.id)
+          setDeletingCard(null)
         }}
       />
     </section>
@@ -462,6 +467,102 @@ function EditDialog({ card, onClose, onSave }) {
       </div>
       <form method="dialog" className="modal-backdrop">
         <button type="submit" aria-label="Cerrar modal" onClick={onClose}>
+          close
+        </button>
+      </form>
+    </dialog>
+  )
+}
+
+function ConfirmDialog({ card, onConfirm, onCancel }) {
+  const dialogRef = useRef(null)
+  const [trackedId, setTrackedId] = useState(card?.id ?? null)
+
+  // Derived-state pattern: when the parent swaps in a different card,
+  // mark it tracked so the dialog can re-open cleanly if re-triggered.
+  if (trackedId !== (card?.id ?? null)) {
+    setTrackedId(card?.id ?? null)
+  }
+
+  // Imperative side effect on the <dialog> element (DOM API). Legitimate
+  // useEffect usage — we're synchronizing an external (non-React) DOM
+  // property (the open/closed attribute of the native dialog element).
+  useEffect(() => {
+    const dialog = dialogRef.current
+    if (!dialog) return
+    if (card && !dialog.open) dialog.showModal()
+    else if (!card && dialog.open) dialog.close()
+  }, [card])
+
+  useEffect(() => {
+    const dialog = dialogRef.current
+    if (!dialog) return
+    function handleCancel(e) {
+      e.preventDefault()
+      onCancel?.()
+    }
+    dialog.addEventListener('cancel', handleCancel)
+    return () => dialog.removeEventListener('cancel', handleCancel)
+  }, [onCancel])
+
+  const isCustom = card?.type === 'custom'
+  const es = card ? cardEs(card) : ''
+  const en = card ? cardEn(card) : ''
+
+  return (
+    <dialog ref={dialogRef} className="modal" onClose={onCancel}>
+      <div className="modal-box rounded-2xl border border-base-300 bg-base-100">
+        <div className="flex items-start gap-4">
+          <div className="flex size-11 shrink-0 items-center justify-center rounded-full border border-error/30 bg-error/10 text-error">
+            <AlertTriangle className="size-5" aria-hidden="true" />
+          </div>
+          <div className="flex-1 pt-0.5">
+            <h3 className="text-base font-bold uppercase tracking-[0.18em] text-base-content">
+              Eliminar tarjeta
+            </h3>
+            <p className="mt-1 text-xs text-base-content/70">
+              Esta acción no se puede deshacer. La tarjeta se quitará del mazo
+              y su estado SRS se perderá.
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-5 rounded-xl border border-base-300 bg-base-200 p-4">
+          <div className="mb-2">
+            {isCustom ? (
+              <span className="badge badge-primary badge-outline text-[0.65rem] font-bold uppercase tracking-[0.12em]">
+                Custom
+              </span>
+            ) : (
+              <span className="badge badge-ghost text-[0.65rem] font-bold uppercase tracking-[0.12em]">
+                Verbo
+              </span>
+            )}
+          </div>
+          <p className="text-sm font-semibold text-base-content">{es}</p>
+          <p className="mt-0.5 text-sm text-base-content/70">{en}</p>
+        </div>
+
+        <div className="modal-action">
+          <button
+            type="button"
+            onClick={onCancel}
+            className="btn btn-ghost rounded-full normal-case"
+          >
+            Cancelar
+          </button>
+          <button
+            type="button"
+            onClick={onConfirm}
+            className="btn gap-2 rounded-full border-none bg-error normal-case text-error-content hover:bg-error/90"
+          >
+            <Trash2 className="size-4" aria-hidden="true" />
+            Eliminar
+          </button>
+        </div>
+      </div>
+      <form method="dialog" className="modal-backdrop">
+        <button type="submit" aria-label="Cerrar modal" onClick={onCancel}>
           close
         </button>
       </form>
