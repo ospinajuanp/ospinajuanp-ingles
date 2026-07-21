@@ -122,7 +122,7 @@ function ShellHeader() {
             counts={verbos.counts}
           />
         ) : null}
-        <ReviewNavButton />
+        {isVerbRoute ? <ReviewNavButton /> : null}
         <ThemeSwitcher />
       </div>
     </Header>

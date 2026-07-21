@@ -40,7 +40,18 @@ export default function SRSStudyPage() {
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-6 sm:px-6 sm:py-8">
-      <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+      <div className="mb-3">
+        <Link
+          to="/"
+          aria-label="Volver a la página principal"
+          className="inline-flex w-fit items-center gap-2 rounded-full border border-base-300 bg-base-100 px-3 py-1.5 text-xs font-semibold text-base-content shadow-sm transition hover:bg-base-200 active:scale-95"
+        >
+          <ArrowLeft className="size-3.5" aria-hidden="true" />
+          Volver
+        </Link>
+      </div>
+
+      <div className="mb-6 flex flex-col gap-4 border-b border-base-300 pb-5 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <h1 className="text-2xl font-bold tracking-tight text-base-content sm:text-3xl">
             Repaso espaciado
@@ -51,15 +62,8 @@ export default function SRSStudyPage() {
               : 'Busca, edita o elimina tarjetas del mazo.'}
           </p>
         </div>
-        <div className="flex flex-wrap items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2 sm:justify-end">
           <ModeToggle mode={mode} onChange={setMode} />
-          <Link
-            to="/"
-            className="inline-flex w-fit items-center gap-2 rounded-full border border-base-300 bg-base-100 px-4 py-2 text-sm font-medium text-base-content shadow-sm transition hover:bg-base-200 active:scale-95"
-          >
-            <ArrowLeft className="size-4" aria-hidden="true" />
-            Volver a verbos
-          </Link>
         </div>
       </div>
 
