@@ -16,7 +16,7 @@ function ConjugationCell({ time, value, valueEsp }) {
   }, [])
 
   const spanishClass =
-    'mt-0.5 text-sm text-slate-500 transition-all duration-300 ease-out select-none ' +
+    'mt-0.5 text-sm text-base-content/70 transition-all duration-300 ease-out select-none ' +
     (revealed
       ? 'blur-0 opacity-100'
       : 'blur-sm opacity-60 group-hover:blur-0 group-hover:opacity-100')
@@ -33,10 +33,10 @@ function ConjugationCell({ time, value, valueEsp }) {
       tabIndex={0}
       aria-pressed={revealed}
       aria-label={`${time}: ${value}${valueEsp ? `, traducción: ${valueEsp}` : ''}`}
-      className="group cursor-pointer rounded-xl border border-slate-100 bg-white px-3 py-2.5 transition-all hover:border-indigo-200 hover:bg-indigo-50/40 hover:shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-200 sm:px-4 sm:py-3"
+      className="group cursor-pointer rounded-xl border border-base-300 bg-base-100 px-3 py-2.5 transition-all hover:border-primary/40 hover:bg-primary/5 hover:shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 sm:px-4 sm:py-3"
     >
       <div className="flex items-center justify-between gap-2">
-        <div className="text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-slate-400">
+        <div className="text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-base-content/50">
           {time}
         </div>
         {hasSpanish ? (
@@ -44,8 +44,8 @@ function ConjugationCell({ time, value, valueEsp }) {
             className={
               'inline-flex size-5 items-center justify-center rounded-full border transition ' +
               (revealed
-                ? 'border-indigo-200 bg-indigo-50 text-indigo-600'
-                : 'border-slate-100 bg-slate-50 text-slate-400 group-hover:border-indigo-200 group-hover:text-indigo-500')
+                ? 'border-primary/40 bg-primary/10 text-primary'
+                : 'border-base-300 bg-base-200 text-base-content/50 group-hover:border-primary/40 group-hover:text-primary/80')
             }
             aria-hidden="true"
           >
@@ -81,7 +81,7 @@ function ConjugationCell({ time, value, valueEsp }) {
           </span>
         ) : null}
       </div>
-      <div className="mt-0.5 truncate text-base font-semibold text-slate-800 sm:text-lg">
+      <div className="mt-0.5 truncate text-base font-semibold text-base-content sm:text-lg">
         {value || '—'}
       </div>
       {hasSpanish ? (
@@ -95,8 +95,8 @@ function ConjugationCell({ time, value, valueEsp }) {
 
 function TipCell({ tipTitle, value }) {
   return (
-    <div className="relative overflow-hidden rounded-xl border border-indigo-100 bg-gradient-to-br from-indigo-50 via-white to-amber-50 px-3 py-2.5 sm:px-4 sm:py-3">
-      <div className="flex items-center gap-1.5 text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-indigo-500">
+    <div className="relative overflow-hidden rounded-xl border border-primary/20 bg-gradient-to-br from-primary/10 via-base-100 to-warning/10 px-3 py-2.5 sm:px-4 sm:py-3">
+      <div className="flex items-center gap-1.5 text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-primary">
         <svg
           viewBox="0 0 24 24"
           fill="none"
@@ -111,7 +111,7 @@ function TipCell({ tipTitle, value }) {
         </svg>
         <span>{tipTitle}</span>
       </div>
-      <p className="mt-1 whitespace-pre-line text-sm font-medium leading-snug text-slate-700">{value}</p>
+      <p className="mt-1 whitespace-pre-line text-sm font-medium leading-snug text-base-content/80">{value}</p>
     </div>
   )
 }

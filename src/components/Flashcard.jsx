@@ -14,6 +14,11 @@
 //   good  →  0.00, interval grows by EF
 //   easy  → +0.15, interval grows by EF
 //   floor → 1.30 (SRS_MIN_EF, applied inside the algorithm)
+//
+// Theme notes: card surfaces use `bg-base-100` so the front re-skins per
+// theme; the back keeps a primary-tinted gradient so the "answer" face
+// stays visually distinct. The four grade buttons use semantic colors
+// (rose / amber / emerald / sky) so the meaning travels across themes.
 
 import { useCallback, useState } from 'react'
 
@@ -25,7 +30,7 @@ const GRADE_BUTTONS = [
     label: 'Otra vez',
     hint: 'Repetir mañana',
     classes:
-      'border border-rose-200 bg-white text-rose-600 shadow-sm hover:bg-rose-50',
+      'border border-error/40 bg-base-100 text-error hover:bg-error/10',
     icon: (
       <path d="M18 6 6 18M6 6l12 12" />
     ),
@@ -35,7 +40,7 @@ const GRADE_BUTTONS = [
     label: 'Difícil',
     hint: 'Me costó recordar',
     classes:
-      'border border-amber-200 bg-white text-amber-700 shadow-sm hover:bg-amber-50',
+      'border border-warning/40 bg-base-100 text-warning hover:bg-warning/10',
     icon: (
       <>
         <circle cx="12" cy="12" r="9" />
@@ -49,7 +54,7 @@ const GRADE_BUTTONS = [
     label: 'Bien',
     hint: 'Lo recordé',
     classes:
-      'border border-emerald-200 bg-white text-emerald-700 shadow-sm hover:bg-emerald-50',
+      'border border-success/40 bg-base-100 text-success hover:bg-success/10',
     icon: <path d="M20 6 9 17l-5-5" />,
   },
   {
@@ -57,7 +62,7 @@ const GRADE_BUTTONS = [
     label: 'Fácil',
     hint: 'Al instante',
     classes:
-      'border border-sky-200 bg-gradient-to-br from-sky-500 to-sky-600 text-white shadow-md hover:from-sky-400 hover:to-sky-500',
+      'border border-info/40 bg-gradient-to-br from-info to-info/80 text-white shadow-md hover:from-info/90 hover:to-info/70',
     icon: (
       <>
         <path d="m12 2 2.4 5 5.6.6-4.2 3.7 1.2 5.7L12 14.3 7 17l1.2-5.7L4 7.6 9.6 7z" />
@@ -124,33 +129,33 @@ export default function Flashcard({ card, onGrade }) {
         >
           {/* Front */}
           <div
-            className="absolute inset-0 flex flex-col items-center justify-center rounded-3xl border border-slate-200 bg-white p-6 text-center shadow-md [backface-visibility:hidden]"
+            className="absolute inset-0 flex flex-col items-center justify-center rounded-3xl border border-base-300 bg-base-100 p-6 text-center shadow-md [backface-visibility:hidden]"
             aria-hidden={flipped}
           >
-            <span className="mb-3 inline-flex items-center rounded-full bg-indigo-50 px-3 py-1 text-[0.65rem] font-bold uppercase tracking-[0.18em] text-indigo-600">
+            <span className="mb-3 inline-flex items-center rounded-full bg-primary/15 px-3 py-1 text-[0.65rem] font-bold uppercase tracking-[0.18em] text-primary">
               {frontLabel}
             </span>
-            <p className="text-balance text-2xl font-semibold leading-snug text-slate-800 sm:text-3xl">
+            <p className="text-balance text-2xl font-semibold leading-snug text-base-content sm:text-3xl">
               {front}
             </p>
-            <p className="mt-6 text-xs text-slate-400">{subtitle}</p>
-            <p className="mt-2 text-[0.65rem] uppercase tracking-[0.2em] text-slate-300">
+            <p className="mt-6 text-xs text-base-content/50">{subtitle}</p>
+            <p className="mt-2 text-[0.65rem] uppercase tracking-[0.2em] text-base-content/40">
               Toca para voltear
             </p>
           </div>
 
           {/* Back */}
           <div
-            className="absolute inset-0 flex flex-col items-center justify-center rounded-3xl border border-indigo-200 bg-gradient-to-br from-indigo-600 to-indigo-700 p-6 text-center text-white shadow-md [backface-visibility:hidden] [transform:rotateY(180deg)]"
+            className="absolute inset-0 flex flex-col items-center justify-center rounded-3xl border border-primary/40 bg-gradient-to-br from-primary to-primary/80 p-6 text-center text-primary-content shadow-md [backface-visibility:hidden] [transform:rotateY(180deg)]"
             aria-hidden={!flipped}
           >
-            <span className="mb-3 inline-flex items-center rounded-full bg-white/15 px-3 py-1 text-[0.65rem] font-bold uppercase tracking-[0.18em] text-white">
+            <span className="mb-3 inline-flex items-center rounded-full bg-primary-content/15 px-3 py-1 text-[0.65rem] font-bold uppercase tracking-[0.18em] text-primary-content">
               {backLabel}
             </span>
             <p className="text-balance text-2xl font-semibold leading-snug sm:text-3xl">
               {back}
             </p>
-            <p className="mt-6 text-xs text-indigo-200">{subtitle}</p>
+            <p className="mt-6 text-xs text-primary-content/80">{subtitle}</p>
           </div>
         </button>
       </div>
@@ -193,7 +198,7 @@ export default function Flashcard({ card, onGrade }) {
       </div>
 
       {card.srs ? (
-        <p className="mx-auto mt-4 max-w-xl text-center text-xs text-slate-400">
+        <p className="mx-auto mt-4 max-w-xl text-center text-xs text-base-content/50">
           {card.srs.interval === 0
             ? 'Tarjeta nueva'
             : `Repaso cada ${card.srs.interval} ${card.srs.interval === 1 ? 'día' : 'días'} · EF ${card.srs.ef.toFixed(2)}`}

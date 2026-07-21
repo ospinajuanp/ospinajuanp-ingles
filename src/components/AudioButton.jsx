@@ -283,7 +283,7 @@ export default forwardRef(function AudioButton({ word, onResolved }, ref) {
   }, [word, state, playUrl, playTTS, stopPlayback, reportResolution])
 
   const baseClass =
-    'group/audio inline-flex size-12 items-center justify-center rounded-full bg-white/95 text-indigo-600 shadow-lg ring-1 ring-black/5 backdrop-blur-sm transition hover:scale-105 hover:bg-white hover:shadow-xl active:scale-95 disabled:opacity-50 disabled:hover:scale-100 disabled:hover:bg-white/95 motion-reduce:animate-none'
+    'group/audio inline-flex size-12 items-center justify-center rounded-full bg-base-100/95 text-primary shadow-lg ring-1 ring-base-content/10 backdrop-blur-sm transition hover:scale-105 hover:bg-base-100 hover:shadow-xl active:scale-95 disabled:opacity-50 disabled:hover:scale-100 disabled:hover:bg-base-100/95 motion-reduce:animate-none'
 
   const ariaLabel =
     state === 'unavailable'
@@ -384,7 +384,7 @@ export default forwardRef(function AudioButton({ word, onResolved }, ref) {
       className={
         baseClass +
         (state === 'playing'
-          ? ' animate-pulse motion-reduce:animate-none ring-2 ring-indigo-300'
+          ? ' animate-pulse motion-reduce:animate-none ring-2 ring-primary/60'
           : '')
       }
     >

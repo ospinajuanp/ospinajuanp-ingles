@@ -27,7 +27,7 @@
     text-rendering: optimizeLegibility;
   }
   body {
-    @apply bg-slate-50 text-slate-800 font-sans;
+    @apply bg-base-200 text-base-content font-sans;
     overscroll-behavior-y: none;
   }
   button {

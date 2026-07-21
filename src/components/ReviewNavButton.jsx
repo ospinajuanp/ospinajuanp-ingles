@@ -13,7 +13,7 @@ export default function ReviewNavButton() {
           ? `Repaso espaciado, ${due} ${due === 1 ? 'tarjeta pendiente' : 'tarjetas pendientes'}`
           : 'Repaso espaciado'
       }
-      className="group relative inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 shadow-sm transition hover:border-indigo-300 hover:text-indigo-600 hover:shadow-md active:scale-95"
+      className="group relative inline-flex items-center gap-2 rounded-full border border-base-300 bg-base-100 px-4 py-2.5 text-sm font-semibold text-base-content shadow-sm transition hover:border-primary/40 hover:text-primary hover:shadow-md active:scale-95"
     >
       <svg
         viewBox="0 0 24 24"
@@ -34,7 +34,7 @@ export default function ReviewNavButton() {
       {due > 0 ? (
         <span
           aria-hidden="true"
-          className="inline-flex min-w-5 items-center justify-center rounded-full bg-indigo-600 px-1.5 py-0.5 text-[0.65rem] font-bold leading-none text-white"
+          className="inline-flex min-w-5 items-center justify-center rounded-full bg-primary px-1.5 py-0.5 text-[0.65rem] font-bold leading-none text-primary-content"
         >
           {due > 99 ? '99+' : due}
         </span>

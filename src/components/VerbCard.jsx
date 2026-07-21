@@ -154,7 +154,7 @@ function VerbImage({ verb, onReady, onAudioResolved }) {
   const heightClass = heroExpanded
     ? 'h-[min(70vh,560px)] min-h-[280px]'
     : 'h-44 sm:h-52 md:h-56'
-  const bgClass = heroExpanded ? 'bg-slate-900/95' : 'bg-slate-100'
+  const bgClass = heroExpanded ? 'bg-black/95' : 'bg-base-300'
 
   const imgClass = heroExpanded
     ? 'absolute inset-0 m-auto max-h-full max-w-full object-contain p-3'
@@ -172,7 +172,7 @@ function VerbImage({ verb, onReady, onAudioResolved }) {
           onError={onImgError}
           className={imgClass}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-slate-900/10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/10" />
         <ImageCredit credit={credit} />
         <VerbImageOverlay
           audioWord={audioWord}
@@ -199,7 +199,7 @@ function VerbImage({ verb, onReady, onAudioResolved }) {
           className={imgClass}
         />
       ) : null}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-slate-900/10" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/10" />
       <ImageCredit credit={credit} />
       <VerbImageOverlay
         audioWord={audioWord}
@@ -236,7 +236,7 @@ function VerbImageOverlay({
     <>
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-slate-900/30 opacity-100 transition-opacity duration-300 md:opacity-0 md:group-hover:opacity-100 md:bg-slate-900/50 md:backdrop-blur-[2px]"
+        className="pointer-events-none absolute inset-0 bg-black/30 opacity-100 transition-opacity duration-300 md:opacity-0 md:group-hover:opacity-100 md:bg-black/50 md:backdrop-blur-[2px]"
       />
       <button
         type="button"
@@ -247,7 +247,7 @@ function VerbImageOverlay({
         }}
         aria-label={heroExpanded ? 'Restaurar tamaño de imagen' : 'Maximizar imagen'}
         title={heroExpanded ? 'Restaurar tamaño' : 'Maximizar'}
-        className="absolute top-2 left-2 z-30 inline-flex size-9 items-center justify-center rounded-full bg-slate-900/50 text-white shadow-md backdrop-blur-sm transition hover:scale-105 hover:bg-slate-900/70 active:scale-95 motion-reduce:animate-none"
+        className="absolute top-2 left-2 z-30 inline-flex size-9 items-center justify-center rounded-full bg-black/50 text-white shadow-md backdrop-blur-sm transition hover:scale-105 hover:bg-black/70 active:scale-95 motion-reduce:animate-none"
       >
         {heroExpanded ? (
           <svg
@@ -302,7 +302,7 @@ function VerbImageOverlay({
           disabled={refreshing}
           aria-label="Buscar otra foto"
           title="Buscar otra foto"
-          className="absolute top-2 right-2 z-30 inline-flex size-9 items-center justify-center rounded-full bg-slate-900/50 text-white shadow-md backdrop-blur-sm transition hover:scale-105 hover:bg-slate-900/70 active:scale-95 disabled:opacity-50 disabled:hover:scale-100 motion-reduce:animate-none"
+          className="absolute top-2 right-2 z-30 inline-flex size-9 items-center justify-center rounded-full bg-black/50 text-white shadow-md backdrop-blur-sm transition hover:scale-105 hover:bg-black/70 active:scale-95 disabled:opacity-50 disabled:hover:scale-100 motion-reduce:animate-none"
         >
           {refreshing ? (
             <svg
@@ -342,7 +342,7 @@ function VerbImageOverlay({
 
 function SectionHeader({ title }) {
   return (
-    <h2 className="mb-4 text-sm font-bold uppercase tracking-[0.18em] text-slate-900 sm:text-base">
+    <h2 className="mb-4 text-sm font-bold uppercase tracking-[0.18em] text-base-content sm:text-base">
       {title}
     </h2>
   )
@@ -350,8 +350,8 @@ function SectionHeader({ title }) {
 
 function EmptyState() {
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-10 text-center shadow-sm">
-      <div className="mx-auto mb-3 inline-flex size-12 items-center justify-center rounded-full bg-slate-100 text-slate-400">
+    <div className="rounded-2xl border border-base-300 bg-base-100 p-10 text-center shadow-sm">
+      <div className="mx-auto mb-3 inline-flex size-12 items-center justify-center rounded-full bg-base-200 text-base-content/50">
         <svg
           viewBox="0 0 24 24"
           fill="none"
@@ -366,8 +366,8 @@ function EmptyState() {
           <path d="m20 20-3.5-3.5" />
         </svg>
       </div>
-      <p className="text-lg font-semibold text-slate-800">No se encontraron verbos</p>
-      <p className="mt-1 text-sm text-slate-500">
+      <p className="text-lg font-semibold text-base-content">No se encontraron verbos</p>
+      <p className="mt-1 text-sm text-base-content/70">
         Ajusta la búsqueda o cambia los filtros para ver más resultados.
       </p>
     </div>
@@ -385,7 +385,7 @@ function applyDragStyle(el, x) {
 function clearDragStyle(el) {
   if (!el) return
   el.style.transition = 'transform 220ms cubic-bezier(0.22, 1, 0.36, 1), opacity 220ms ease-out'
-  el.style.transform = 'translate3d(0, 0, 0)'
+  el.style.transform = `translate3d(0, 0, 0)`
   el.style.opacity = '1'
 }
 
@@ -501,7 +501,7 @@ export default function VerbCard({
       onTouchEnd={handleTouchEnd}
       onTouchCancel={handleTouchEnd}
       style={{ touchAction: 'pan-y', willChange: 'transform, opacity' }}
-      className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-shadow hover:shadow-md"
+      className="overflow-hidden rounded-2xl border border-base-300 bg-base-100 shadow-sm transition-shadow hover:shadow-md"
     >
       <div key={`${verbKey}-${renderId}`}>
         <VerbImage
@@ -511,7 +511,7 @@ export default function VerbCard({
         />
       </div>
 
-      <div className="flex items-center justify-center border-b border-slate-100 bg-slate-50/60 px-4 py-3 sm:px-6">
+      <div className="flex items-center justify-center border-b border-base-300 bg-base-200 px-4 py-3 sm:px-6">
         <NavButtons
           onPrev={onPrev}
           onNext={onNext}
@@ -530,10 +530,10 @@ export default function VerbCard({
         }
       >
         <header className="text-center">
-          <h1 className="text-5xl font-bold tracking-tight text-indigo-600 sm:text-6xl">
+          <h1 className="text-5xl font-bold tracking-tight text-primary sm:text-6xl">
             {inf?.ing}
           </h1>
-          <p className="mt-2 text-xl font-medium text-slate-500 sm:text-2xl">
+          <p className="mt-2 text-xl font-medium text-base-content/70 sm:text-2xl">
             {inf?.esp}
           </p>
         </header>
@@ -549,7 +549,7 @@ export default function VerbCard({
         </section>
 
         {current?.category && (
-          <p className="pt-1 text-center text-[0.7rem] uppercase tracking-[0.18em] text-slate-300">
+          <p className="pt-1 text-center text-[0.7rem] uppercase tracking-[0.18em] text-base-content/50">
             {current.category}
             {current.subcategory ? ` · ${current.subcategory}` : ''}
           </p>

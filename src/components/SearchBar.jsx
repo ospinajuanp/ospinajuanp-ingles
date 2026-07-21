@@ -6,7 +6,7 @@ export default function SearchBar({ value, onChange }) {
       </label>
 
       <svg
-        className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 size-5 text-slate-400"
+        className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 size-5 text-base-content/50"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
@@ -28,7 +28,7 @@ export default function SearchBar({ value, onChange }) {
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder="Buscar verbo en inglés o español…"
-        className="w-full rounded-full border border-slate-200 bg-white py-3.5 pl-12 pr-12 text-base text-slate-800 placeholder:text-slate-400 shadow-sm outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100"
+        className="w-full rounded-full border border-base-300 bg-base-100 py-3.5 pl-12 pr-12 text-base text-base-content placeholder:text-base-content/50 shadow-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/30"
       />
 
       {value && (
@@ -36,7 +36,7 @@ export default function SearchBar({ value, onChange }) {
           type="button"
           onClick={() => onChange('')}
           aria-label="Limpiar búsqueda"
-          className="absolute right-3 top-1/2 -translate-y-1/2 inline-flex size-8 items-center justify-center rounded-full text-slate-400 transition hover:bg-slate-100 hover:text-slate-600 active:scale-95"
+          className="absolute right-3 top-1/2 -translate-y-1/2 inline-flex size-8 items-center justify-center rounded-full text-base-content/50 transition hover:bg-base-200 hover:text-base-content active:scale-95"
         >
           <svg
             viewBox="0 0 24 24"

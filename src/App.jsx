@@ -25,7 +25,7 @@ function BrandIcon() {
 
 function Header({ children }) {
   return (
-    <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/85 backdrop-blur-md">
+    <header className="sticky top-0 z-40 border-b border-base-300 bg-base-100/85 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-3 sm:px-6 sm:py-4 lg:grid lg:grid-cols-[1fr_2fr_1fr] lg:items-center lg:gap-8">
         {children}
       </div>
@@ -35,25 +35,25 @@ function Header({ children }) {
 
 function LoadingSkeleton() {
   return (
-    <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-      <div className="h-44 w-full animate-pulse bg-slate-100 sm:h-52 md:h-56" />
+    <div className="overflow-hidden rounded-2xl border border-base-300 bg-base-100 shadow-sm">
+      <div className="h-44 w-full animate-pulse bg-base-300 sm:h-52 md:h-56" />
       <div className="space-y-8 p-5 sm:p-7 md:p-8">
         <div className="space-y-3 text-center">
-          <div className="mx-auto h-12 w-40 animate-pulse rounded-lg bg-slate-100" />
-          <div className="mx-auto h-6 w-32 animate-pulse rounded-lg bg-slate-100" />
+          <div className="mx-auto h-12 w-40 animate-pulse rounded-lg bg-base-300" />
+          <div className="mx-auto h-6 w-32 animate-pulse rounded-lg bg-base-300" />
         </div>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
           {Array.from({ length: 6 }).map((_, i) => (
-            <div key={i} className="h-16 animate-pulse rounded-xl bg-slate-100" />
+            <div key={i} className="h-16 animate-pulse rounded-xl bg-base-300" />
           ))}
         </div>
         <div className="space-y-2.5">
           {Array.from({ length: 3 }).map((_, i) => (
-            <div key={i} className="h-24 animate-pulse rounded-xl bg-slate-100" />
+            <div key={i} className="h-24 animate-pulse rounded-xl bg-base-300" />
           ))}
         </div>
         <div className="flex justify-center">
-          <div className="h-12 w-64 animate-pulse rounded-full bg-slate-100" />
+          <div className="h-12 w-64 animate-pulse rounded-full bg-base-300" />
         </div>
       </div>
     </div>
@@ -62,8 +62,8 @@ function LoadingSkeleton() {
 
 function ErrorState({ error, onRetry }) {
   return (
-    <div className="rounded-2xl border border-red-100 bg-white p-8 text-center shadow-sm">
-      <div className="mx-auto mb-3 inline-flex size-12 items-center justify-center rounded-full bg-red-50 text-red-500">
+    <div className="rounded-2xl border border-error/30 bg-base-100 p-8 text-center shadow-sm">
+      <div className="mx-auto mb-3 inline-flex size-12 items-center justify-center rounded-full bg-error/10 text-error">
         <svg
           viewBox="0 0 24 24"
           fill="none"
@@ -79,12 +79,12 @@ function ErrorState({ error, onRetry }) {
           <path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
         </svg>
       </div>
-      <p className="text-lg font-semibold text-slate-800">No pudimos cargar los verbos</p>
-      <p className="mt-1 text-sm text-slate-500">{error?.message ?? 'Error desconocido'}</p>
+      <p className="text-lg font-semibold text-base-content">No pudimos cargar los verbos</p>
+      <p className="mt-1 text-sm text-base-content/70">{error?.message ?? 'Error desconocido'}</p>
       <button
         type="button"
         onClick={onRetry}
-        className="mt-4 inline-flex items-center gap-2 rounded-full bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-500 active:scale-95"
+        className="btn btn-primary mt-4 rounded-full px-5 normal-case"
       >
         Reintentar
       </button>
@@ -100,14 +100,14 @@ function ShellHeader() {
   return (
     <Header>
       <div className="flex items-center gap-3">
-        <div className="shrink-0 overflow-hidden rounded-xl shadow-sm ring-1 ring-slate-200/80" aria-hidden="true">
+        <div className="shrink-0 overflow-hidden rounded-xl shadow-sm ring-1 ring-base-300/80" aria-hidden="true">
           <BrandIcon />
         </div>
         <div className="min-w-0">
-          <h1 className="truncate text-base font-bold text-slate-900 sm:text-lg">
+          <h1 className="truncate text-base font-bold text-base-content sm:text-lg">
             Verbos en Inglés
           </h1>
-          <p className="hidden truncate text-xs text-slate-500 sm:block">
+          <p className="hidden truncate text-xs text-base-content/60 sm:block">
             Aprende conjugando, una frase a la vez
           </p>
         </div>
@@ -186,7 +186,7 @@ export default function App() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-800">
+    <div className="min-h-screen bg-base-200 text-base-content">
       <VerbProvider value={verbos}>
         <ShellHeader />
 

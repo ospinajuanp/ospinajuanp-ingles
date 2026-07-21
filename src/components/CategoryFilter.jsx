@@ -82,8 +82,8 @@ export default function CategoryFilter({
         className={
           'inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-sm font-semibold shadow-sm transition active:scale-[0.98] ' +
           (hasActiveFilter
-            ? 'border-indigo-200 bg-indigo-50 text-indigo-700 hover:bg-indigo-100'
-            : 'border-slate-200 bg-white text-slate-700 hover:bg-slate-50')
+            ? 'border-primary/40 bg-primary/10 text-primary hover:bg-primary/15'
+            : 'border-base-300 bg-base-100 text-base-content hover:bg-base-200')
         }
       >
         <svg
@@ -105,7 +105,9 @@ export default function CategoryFilter({
           <span
             className={
               'rounded-full px-1.5 text-[0.65rem] font-bold tabular-nums ' +
-              (hasActiveFilter ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-500')
+              (hasActiveFilter
+                ? 'bg-primary text-primary-content'
+                : 'bg-base-200 text-base-content/60')
             }
           >
             {triggerCount}
@@ -129,14 +131,14 @@ export default function CategoryFilter({
         <div
           role="dialog"
           aria-label="Filtros"
-          className="absolute right-0 z-40 mt-2 w-72 max-w-[calc(100vw-1rem)] origin-top-right overflow-hidden rounded-xl border border-slate-200 bg-white shadow-xl ring-1 ring-black/5"
+          className="absolute right-0 z-40 mt-2 w-72 max-w-[calc(100vw-1rem)] origin-top-right overflow-hidden rounded-xl border border-base-300 bg-base-100 shadow-xl ring-1 ring-black/5"
         >
-          <div className="border-b border-slate-100 p-3">
+          <div className="border-b border-base-300 p-3">
             <div className="mb-2 flex items-center justify-between">
-              <span className="text-[0.65rem] font-bold uppercase tracking-[0.14em] text-slate-400">
+              <span className="text-[0.65rem] font-bold uppercase tracking-[0.14em] text-base-content/50">
                 Categoría
               </span>
-              <span className="text-[0.65rem] font-semibold text-slate-400 tabular-nums">
+              <span className="text-[0.65rem] font-semibold text-base-content/50 tabular-nums">
                 {counts?.total ?? 0}
               </span>
             </div>
@@ -161,11 +163,11 @@ export default function CategoryFilter({
 
           <div className="p-3">
             <div className="mb-2 flex items-center justify-between">
-              <span className="text-[0.65rem] font-bold uppercase tracking-[0.14em] text-slate-400">
+              <span className="text-[0.65rem] font-bold uppercase tracking-[0.14em] text-base-content/50">
                 Subcategoría
               </span>
               {showSubs ? (
-                <span className="text-[0.65rem] font-semibold text-slate-400 tabular-nums">
+                <span className="text-[0.65rem] font-semibold text-base-content/50 tabular-nums">
                   {counts?.subForCategory?.(category) ?? 0}
                 </span>
               ) : null}
@@ -190,18 +192,18 @@ export default function CategoryFilter({
                 ))}
               </div>
             ) : (
-              <p className="rounded-lg bg-slate-50 px-3 py-2 text-center text-xs text-slate-400">
+              <p className="rounded-lg bg-base-200 px-3 py-2 text-center text-xs text-base-content/50">
                 Selecciona una categoría
               </p>
             )}
           </div>
 
           {hasActiveFilter ? (
-            <div className="border-t border-slate-100 p-2">
+            <div className="border-t border-base-300 p-2">
               <button
                 type="button"
                 onClick={reset}
-                className="inline-flex w-full items-center justify-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-slate-100 hover:text-slate-900"
+                className="inline-flex w-full items-center justify-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-semibold text-base-content/70 transition hover:bg-base-200 hover:text-base-content"
               >
                 <svg
                   viewBox="0 0 24 24"
@@ -235,15 +237,17 @@ function Row({ active, label, count, onClick, disabled = false }) {
       className={
         'flex w-full items-center justify-between gap-2 rounded-lg px-2.5 py-1.5 text-sm transition disabled:opacity-50 ' +
         (active
-          ? 'bg-indigo-600 font-semibold text-white shadow-sm'
-          : 'text-slate-700 hover:bg-slate-100')
+          ? 'bg-primary font-semibold text-primary-content shadow-sm'
+          : 'text-base-content hover:bg-base-200')
       }
     >
       <span className="flex items-center gap-2">
         <span
           className={
             'inline-flex size-4 items-center justify-center rounded-full border ' +
-            (active ? 'border-white/40 bg-white/20' : 'border-slate-300 bg-white')
+            (active
+              ? 'border-primary-content/40 bg-primary-content/20'
+              : 'border-base-300 bg-base-100')
           }
           aria-hidden="true"
         >
@@ -266,7 +270,7 @@ function Row({ active, label, count, onClick, disabled = false }) {
       {count !== undefined && count !== null ? (
         <span
           className={
-            'tabular-nums text-xs ' + (active ? 'opacity-90' : 'text-slate-400')
+            'tabular-nums text-xs ' + (active ? 'opacity-90' : 'text-base-content/50')
           }
         >
           {count}

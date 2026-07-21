@@ -43,14 +43,14 @@ export function SentencePill({ timeKey, data }) {
         }
       }}
       aria-pressed={revealed}
-      className="group cursor-pointer rounded-xl border border-slate-100 bg-white p-4 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-indigo-200 hover:bg-gradient-to-br hover:from-white hover:to-indigo-50/60 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-200"
+      className="group cursor-pointer rounded-xl border border-base-300 bg-base-100 p-4 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:bg-gradient-to-br hover:from-base-100 hover:to-primary/10 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
     >
       <div className="flex items-center justify-between gap-2">
         <div className="flex items-center gap-2">
-          <span className="rounded-full bg-indigo-100 px-2.5 py-1 text-[0.65rem] font-bold uppercase tracking-[0.12em] text-indigo-700">
+          <span className="rounded-full bg-primary/15 px-2.5 py-1 text-[0.65rem] font-bold uppercase tracking-[0.12em] text-primary">
             {pronombreLabel(data.pronombre)}
           </span>
-          <span className="text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-slate-400">
+          <span className="text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-base-content/50">
             {TIME_LABEL[timeKey] ?? timeKey}
           </span>
         </div>
@@ -59,8 +59,8 @@ export function SentencePill({ timeKey, data }) {
           className={
             'inline-flex size-7 items-center justify-center rounded-full border transition ' +
             (revealed
-              ? 'border-indigo-200 bg-indigo-50 text-indigo-600'
-              : 'border-slate-100 bg-slate-50 text-slate-400 group-hover:border-indigo-200 group-hover:text-indigo-500')
+              ? 'border-primary/40 bg-primary/10 text-primary'
+              : 'border-base-300 bg-base-200 text-base-content/50 group-hover:border-primary/40 group-hover:text-primary/80')
           }
           aria-hidden="true"
         >
@@ -96,13 +96,13 @@ export function SentencePill({ timeKey, data }) {
         </span>
       </div>
 
-      <p className="mt-3 text-lg font-medium leading-snug text-slate-800">
+      <p className="mt-3 text-lg font-medium leading-snug text-base-content">
         {data.ing}
       </p>
 
       <p
         className={
-          'mt-2 text-base leading-snug text-slate-500 transition-all duration-300 ease-out select-none ' +
+          'mt-2 text-base leading-snug text-base-content/70 transition-all duration-300 ease-out select-none ' +
           (revealed
             ? 'blur-0 opacity-100'
             : 'blur-sm opacity-60 group-hover:blur-0 group-hover:opacity-100')
@@ -118,7 +118,7 @@ export function SentencePill({ timeKey, data }) {
 export default function SentencesList({ oraciones }) {
   if (!oraciones || oraciones.length === 0) {
     return (
-      <p className="rounded-xl border border-dashed border-slate-200 bg-slate-50/40 px-4 py-6 text-center text-sm text-slate-400">
+      <p className="rounded-xl border border-dashed border-base-300 bg-base-200/40 px-4 py-6 text-center text-sm text-base-content/50">
         No hay oraciones para este verbo todavía.
       </p>
     )
@@ -129,7 +129,7 @@ export default function SentencesList({ oraciones }) {
       {oraciones.map(({ timeKey, data }) => (
         <SentencePill key={timeKey} timeKey={timeKey} data={data} />
       ))}
-      <p className="pt-1 text-center text-[0.7rem] text-slate-400">
+      <p className="pt-1 text-center text-[0.7rem] text-base-content/50">
         Toca una oración para revelar la traducción
       </p>
     </div>

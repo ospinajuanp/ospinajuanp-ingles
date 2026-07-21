@@ -39,16 +39,16 @@ export default function SRSStudyPage() {
     <div className="mx-auto max-w-4xl px-4 py-6 sm:px-6 sm:py-8">
       <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+          <h1 className="text-2xl font-bold tracking-tight text-base-content sm:text-3xl">
             Repaso espaciado
           </h1>
-          <p className="mt-1 text-sm text-slate-500">
+          <p className="mt-1 text-sm text-base-content/70">
             Mezcla tus oraciones personalizadas con los verbos que has visitado.
           </p>
         </div>
         <Link
           to="/"
-          className="inline-flex w-fit items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm transition hover:bg-slate-50 active:scale-95"
+          className="inline-flex w-fit items-center gap-2 rounded-full border border-base-300 bg-base-100 px-4 py-2 text-sm font-medium text-base-content shadow-sm transition hover:bg-base-200 active:scale-95"
         >
           <svg
             viewBox="0 0 24 24"
@@ -67,7 +67,7 @@ export default function SRSStudyPage() {
       </div>
 
       <dl className="mb-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
-        <Stat label="Pendientes hoy" value={srs.dueCount} accent="indigo" />
+        <Stat label="Pendientes hoy" value={srs.dueCount} accent="primary" />
         <Stat label="Total" value={srs.totalCount} />
         <Stat label="Oraciones" value={srs.customCount} />
         <Stat label="Verbos" value={srs.verbCount} />
@@ -78,7 +78,7 @@ export default function SRSStudyPage() {
           <button
             type="button"
             onClick={() => setShowForm(true)}
-            className="inline-flex items-center gap-2 rounded-full border border-dashed border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-600 shadow-sm transition hover:border-indigo-400 hover:text-indigo-600 active:scale-95"
+            className="inline-flex items-center gap-2 rounded-full border border-dashed border-base-300 bg-base-100 px-4 py-2 text-sm font-medium text-base-content/70 shadow-sm transition hover:border-primary hover:text-primary active:scale-95"
           >
             <svg
               viewBox="0 0 24 24"
@@ -102,8 +102,8 @@ export default function SRSStudyPage() {
         )}
 
         {activeCard ? (
-          <section className="rounded-3xl border border-slate-200 bg-gradient-to-b from-white to-slate-50 p-5 shadow-sm sm:p-8">
-            <div className="mb-4 flex items-center justify-between text-xs uppercase tracking-[0.18em] text-slate-400">
+          <section className="rounded-3xl border border-base-300 bg-gradient-to-b from-base-100 to-base-200 p-5 shadow-sm sm:p-8">
+            <div className="mb-4 flex items-center justify-between text-xs uppercase tracking-[0.18em] text-base-content/50">
               <span>
                 Tarjeta {Math.min(cursor + 1, queue.length)} de {queue.length}
               </span>
@@ -130,10 +130,10 @@ export default function SRSStudyPage() {
 }
 
 function Stat({ label, value, accent = 'slate' }) {
-  const accentClass = accent === 'indigo' ? 'text-indigo-600' : 'text-slate-900'
+  const accentClass = accent === 'primary' ? 'text-primary' : 'text-base-content'
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-      <dt className="text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-slate-400">
+    <div className="rounded-2xl border border-base-300 bg-base-100 p-4 shadow-sm">
+      <dt className="text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-base-content/50">
         {label}
       </dt>
       <dd className={`mt-1 text-2xl font-bold ${accentClass}`}>{value}</dd>
@@ -144,15 +144,15 @@ function Stat({ label, value, accent = 'slate' }) {
 function EmptyState({ dueCount, totalCount, onShowForm }) {
   if (totalCount === 0) {
     return (
-      <div className="rounded-2xl border border-dashed border-slate-300 bg-white p-10 text-center">
-        <p className="text-lg font-semibold text-slate-800">Tu mazo está vacío</p>
-        <p className="mt-1 text-sm text-slate-500">
+      <div className="rounded-2xl border border-dashed border-base-300 bg-base-100 p-10 text-center">
+        <p className="text-lg font-semibold text-base-content">Tu mazo está vacío</p>
+        <p className="mt-1 text-sm text-base-content/70">
           Agrega tu primera oración o visita verbos en la pantalla principal para empezar.
         </p>
         <button
           type="button"
           onClick={onShowForm}
-          className="mt-4 inline-flex items-center gap-2 rounded-full bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-500 active:scale-95"
+          className="btn btn-primary mt-4 rounded-full px-5 normal-case"
         >
           Agregar primera oración
         </button>
@@ -160,8 +160,8 @@ function EmptyState({ dueCount, totalCount, onShowForm }) {
     )
   }
   return (
-    <div className="rounded-2xl border border-emerald-100 bg-emerald-50/60 p-8 text-center">
-      <div className="mx-auto mb-3 inline-flex size-12 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
+    <div className="rounded-2xl border border-success/30 bg-success/10 p-8 text-center">
+      <div className="mx-auto mb-3 inline-flex size-12 items-center justify-center rounded-full bg-success/20 text-success">
         <svg
           viewBox="0 0 24 24"
           fill="none"
@@ -175,8 +175,8 @@ function EmptyState({ dueCount, totalCount, onShowForm }) {
           <path d="M20 6 9 17l-5-5" />
         </svg>
       </div>
-      <p className="text-lg font-semibold text-slate-800">¡Todo al día!</p>
-      <p className="mt-1 text-sm text-slate-500">
+      <p className="text-lg font-semibold text-base-content">¡Todo al día!</p>
+      <p className="mt-1 text-sm text-base-content/70">
         {dueCount === 0
           ? 'No hay tarjetas pendientes por ahora. Vuelve más tarde o agrega más frases.'
           : 'Sesión completada.'}
