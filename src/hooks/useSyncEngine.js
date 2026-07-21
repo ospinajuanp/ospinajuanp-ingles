@@ -5,24 +5,46 @@
 //   • The UI reads/writes only localStorage. Nothing in this hook blocks
 //     the first paint or the first interaction.
 //   • On mount (and whenever the syncToken changes) we lazily GET the
-//     remote snapshot from Atlas. If remote has data, we merge it with
-//     the local SRS store via Last-Write-Wins (see syncMerge.js) and
-//     call `replaceStore` on the SRS context. The theme is mirrored
-//     the same way.
+//     remote snapshot from Atlas. We hash the local state and the remote
+//     state with FNV-1a (see syncHash.js) and short-circuit if they
+//     match — no merge work, no React updates, no re-render flicker.
+//     Otherwise we LWW-merge (see syncMerge.js) and call `replaceStore`
+//     on the SRS context. The theme is mirrored the same way.
 //   • Whenever the local SRS store mutates (we watch a `revision`
-//     counter exposed by useSRS) or the theme changes, we debounce-push
-//     the latest snapshot to Atlas 2s after the last edit. The push is
-//     idempotent (server upserts by syncToken) so retries are safe.
+//     counter exposed by useSRS) or the theme changes, we re-hash the
+//     current state and compare against `lastSyncedHashRef`. If the hash
+//     is unchanged we abort the debounce timer entirely (no network
+//     call). Otherwise we debounce-push 2s after the last edit.
+//   • `pushCurrent` itself re-checks the hash and short-circuits to a
+//     no-op if the local state hasn't changed since the last successful
+//     sync — this catches the pagehide flush + 5-min safety-net firing
+//     with no real mutations.
 //   • On `visibilitychange → hidden` or `pagehide` we flush any pending
 //     push synchronously (`keepalive: true` on the server).
 //   • A periodic 5-minute safety-net re-push catches edge cases (rapid
-//     tab close, races between merge + user commit).
+//     tab close, races between merge + user commit). The hash check
+//     inside `pushCurrent` makes this safe — if nothing changed, the
+//     safety-net just records a "synced" status without a network call.
 //
 // Why a custom hook rather than embedding the logic inside useSRS:
 //   - Keeps useSRS focused on its single responsibility (SRS state).
 //   - The engine is fully optional — disabling it (e.g. for tests or
 //     for users who explicitly opt out) is as simple as not mounting
 //     the engine.
+//
+// Anti-flicker design notes:
+//   - `lastSyncedHashRef` is a useRef, NOT useState — it's never read
+//     during render, so writing to it doesn't trigger re-renders. It's
+//     only used inside callbacks and effects.
+//   - `replaceStore` (in useSRS.js) ALSO hash-checks before calling
+//     `setStore` + `writeStore` + bumping `revision`. So even if the
+//     engine's hash check missed something, the SRS layer itself is
+//     idempotent against no-op merges.
+//   - The previous `skipNextPushRef` escape hatch was REMOVED. With the
+//     hash check in place, the next mutation watcher fire naturally
+//     sees `currentHash === lastSyncedHashRef` after a no-op merge
+//     and skips the debounce. After a real merge, the watcher correctly
+//     schedules a push because the merged state has a new hash.
 
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { fetchUserState, pushUserState } from '../utils/syncClient'
@@ -32,7 +54,8 @@ import {
   resetSyncToken,
   isValidSyncToken,
 } from '../utils/syncIdentity'
-import { mergeSRSStores, shouldPushLocal } from '../utils/syncMerge'
+import { compareStatesByHash, shouldPushLocal } from '../utils/syncMerge'
+import { calculateStoreHash, readThemeFromLocalStorage } from '../utils/syncHash'
 
 const PUSH_DEBOUNCE_MS = 2000
 const SAFETY_NET_PUSH_MS = 5 * 60 * 1000
@@ -55,30 +78,6 @@ function readSRSFromLocalStorage() {
   } catch {
     return { version: 1, cards: {}, order: [] }
   }
-}
-
-function readThemeFromLocalStorage() {
-  if (typeof window === 'undefined') return null
-  try {
-    return window.localStorage.getItem('ospinajuanp-ingles:theme')
-  } catch {
-    return null
-  }
-}
-
-function shallowEqualStore(a, b) {
-  if (!a || !b) return false
-  if (a.version !== b.version) return false
-  if (a.order?.length !== b.order?.length) return false
-  const aCards = a.cards ?? {}
-  const bCards = b.cards ?? {}
-  const aKeys = Object.keys(aCards)
-  const bKeys = Object.keys(bCards)
-  if (aKeys.length !== bKeys.length) return false
-  for (const k of aKeys) {
-    if (!bCards[k]) return false
-  }
-  return true
 }
 
 /**
@@ -113,6 +112,19 @@ export function buildLinkUrl(token) {
   return `${base}?${LINK_QUERY_PARAM}=${encodeURIComponent(token)}`
 }
 
+/**
+ * Hash of the current local sync state. Read from localStorage so the
+ * engine doesn't depend on React state being up-to-date (e.g. inside
+ * pagehide handlers or inside async callbacks fired from the bootstrap
+ * pull). Cheap: ~10 microseconds for a typical deck.
+ */
+function hashCurrentLocalState() {
+  return calculateStoreHash(
+    readSRSFromLocalStorage(),
+    readThemeFromLocalStorage(),
+  )
+}
+
 export function useSyncEngine({ srs, themeApi }) {
   const [syncToken, setSyncToken] = useState(() => {
     // URL wins (user just scanned a QR or clicked a link) over the
@@ -130,6 +142,22 @@ export function useSyncEngine({ srs, themeApi }) {
   const [lastSyncedAt, setLastSyncedAt] = useState(null)
   const [pendingPush, setPendingPush] = useState(false)
 
+  // ── lastSyncedHashRef ───────────────────────────────────────────────
+  // Hash of the last state we KNOW is synced with Atlas. Updated after
+  // a successful push OR after a pull that confirmed Atlas's state
+  // matches ours (no-op merge).
+  //
+  // Used by:
+  //   • the mutation watcher (skip the debounce if the user-visible
+  //     state hasn't actually changed since the last sync), and
+  //   • `pushCurrent` itself (skip the network call entirely if
+  //     called from pagehide / safety-net with nothing new to send).
+  //
+  // This is a useRef, not useState — it's never read during render,
+  // so writes don't trigger re-renders. It's also the replacement for
+  // the old `skipNextPushRef` escape hatch.
+  const lastSyncedHashRef = useRef(null)
+
   // Latest refs of the SRS + theme APIs. We need them inside async
   // callbacks that we want to keep stable across re-renders. Keeping
   // the ref in sync is done inside an effect (NOT during render) to
@@ -144,31 +172,42 @@ export function useSyncEngine({ srs, themeApi }) {
   }, [themeApi])
 
   // ── Apply remote snapshot to local SRS + theme ───────────────────────
-  // Set by the merge path so the revision watcher ignores the bump
-  // it just caused (otherwise we'd immediately push the merged state
-  // back to Atlas — wasteful round-trip).
-  const skipNextPushRef = useRef(false)
-
+  // Hash-compares first; if local matches remote we skip everything.
+  // Otherwise runs the LWW merge and applies it.
   const applyRemote = useCallback((remote) => {
     if (!remote || typeof remote !== 'object') return false
 
-    const remoteSRS = remote.srsStore
-    const remoteTheme = remote.theme
+    const localStore = readSRSFromLocalStorage()
+    const localTheme = readThemeFromLocalStorage()
+    const remoteStore = remote.srsStore
+    const remoteTheme = typeof remote.theme === 'string' ? remote.theme : null
+
+    const result = compareStatesByHash({
+      localStore,
+      localTheme,
+      remoteStore,
+      remoteTheme,
+    })
+
+    // No-op: local already matches remote exactly. Record the hash so
+    // the mutation watcher doesn't schedule a follow-up push.
+    if (!result.hasChanges) {
+      lastSyncedHashRef.current = result.hash
+      return false
+    }
 
     let touchedSRS = false
     let touchedTheme = false
 
     if (
-      remoteSRS &&
-      typeof remoteSRS === 'object' &&
-      remoteSRS.version === 1 &&
+      result.mergedStore &&
       srsRef.current?.replaceStore
     ) {
-      const local = readSRSFromLocalStorage()
-      const merged = mergeSRSStores(local, remoteSRS)
-      if (!shallowEqualStore(merged, local)) {
-        skipNextPushRef.current = true
-        touchedSRS = srsRef.current.replaceStore(merged)
+      // replaceStore itself runs a hash check; it may still no-op if
+      // only the theme differed (SRS unchanged). Either way, we rely
+      // on its boolean return to know if anything actually changed.
+      if (srsRef.current.replaceStore(result.mergedStore)) {
+        touchedSRS = true
       }
     }
 
@@ -178,11 +217,20 @@ export function useSyncEngine({ srs, themeApi }) {
       remoteTheme !== themeApiRef.current.theme &&
       themeApiRef.current.setTheme
     ) {
-      skipNextPushRef.current = true
       themeApiRef.current.setTheme(remoteTheme)
       touchedTheme = true
     }
 
+    // Only mark `lastSyncedHashRef` if at least one side actually
+    // changed. Otherwise we'd be lying about Atlas having the latest
+    // state — and we'd accidentally swallow a subsequent user edit
+    // that differs only because of a still-pending local mutation.
+    //
+    // When `touched` is false (remote had data but local already
+    // matched it), the hash short-circuit above already updated the
+    // ref. When `touched` is true, we leave the ref as-is — the merge
+    // result may include local-only cards not yet on Atlas, so the
+    // mutation watcher should push the merged state back to Atlas.
     return touchedSRS || touchedTheme
   }, [])
 
@@ -193,18 +241,33 @@ export function useSyncEngine({ srs, themeApi }) {
   // re-bind to the new closure via their own syncToken deps.
   const pushCurrent = useCallback(async () => {
     if (!syncToken) return
-    setStatus('pushing')
-    setPendingPush(false)
     const srsStore = readSRSFromLocalStorage()
     const theme = readThemeFromLocalStorage()
+    const currentHash = calculateStoreHash(srsStore, theme)
+
+    // No-op sync: nothing has changed since the last successful push.
+    // This is the common case for the 5-min safety-net + pagehide flush
+    // when the user has been idle. Record a "synced" status without
+    // hitting the network.
+    if (currentHash === lastSyncedHashRef.current) {
+      setPendingPush(false)
+      setStatus('synced')
+      return
+    }
+
+    setStatus('pushing')
+    setPendingPush(false)
     const res = await pushUserState({ syncToken, srsStore, theme })
     if (res.ok) {
       setStatus('synced')
       setLastError(null)
       setLastSyncedAt(Date.now())
+      lastSyncedHashRef.current = currentHash
     } else {
       setStatus('error')
       setLastError(res.reason ?? `HTTP ${res.status ?? '???'}`)
+      // Intentionally do NOT update lastSyncedHashRef on failure — we
+      // want the next mutation watcher / safety-net to retry.
     }
   }, [syncToken])
 
@@ -230,7 +293,10 @@ export function useSyncEngine({ srs, themeApi }) {
         if (shouldPushLocal(local, null)) {
           await pushCurrent()
         } else {
+          // Both sides are empty: mark synced and lock in the hash so
+          // the mutation watcher doesn't try to push an empty deck.
           setStatus('synced')
+          lastSyncedHashRef.current = hashCurrentLocalState()
         }
         return
       }
@@ -240,6 +306,7 @@ export function useSyncEngine({ srs, themeApi }) {
         remote.srsStore && Object.keys(remote.srsStore.cards ?? {}).length > 0
       if (!remoteHasCards && Object.keys(localNow.cards).length === 0) {
         setStatus('synced')
+        lastSyncedHashRef.current = hashCurrentLocalState()
         return
       }
       applyRemote(remote)
@@ -260,12 +327,19 @@ export function useSyncEngine({ srs, themeApi }) {
   }, [syncToken, applyRemote, pushCurrent])
 
   // ── Debounced push on local mutations (SRS revision + theme) ─────────
+  // Hash short-circuit: if the current local state hashes to the same
+  // value as the last known-synced state, skip the debounce entirely.
+  // This catches "the context re-rendered but nothing actually changed"
+  // (StrictMode double-invoke, hot-reload, parent re-renders).
   const srsRevision = srs?.revision
   const currentTheme = themeApi?.theme
   useEffect(() => {
     if (!syncToken) return
-    if (skipNextPushRef.current) {
-      skipNextPushRef.current = false
+    const currentHash = hashCurrentLocalState()
+    if (currentHash === lastSyncedHashRef.current) {
+      // No-op: nothing to push. Reset pendingPush in case it was true
+      // from a previous race, but otherwise stay quiet.
+      setPendingPush(false)
       return
     }
     setPendingPush(true)
@@ -284,9 +358,12 @@ export function useSyncEngine({ srs, themeApi }) {
   useEffect(() => {
     if (!syncToken) return
     function flush() {
-      // Only flush if there's actually something to push. Read from
-      // localStorage directly so we don't depend on React state being
-      // up-to-date in a pagehide handler.
+      // Read localStorage directly (don't depend on React state being
+      // current in a pagehide handler) AND hash before calling
+      // pushCurrent — pushCurrent itself does the same check, but
+      // doing it here avoids even setting the pendingPush flag.
+      const currentHash = hashCurrentLocalState()
+      if (currentHash === lastSyncedHashRef.current) return
       const local = readSRSFromLocalStorage()
       const hasCards = Object.keys(local.cards ?? {}).length > 0
       if (!hasCards) return
@@ -304,6 +381,8 @@ export function useSyncEngine({ srs, themeApi }) {
   }, [syncToken, pushCurrent])
 
   // ── Periodic safety-net push ─────────────────────────────────────────
+  // The hash check inside pushCurrent makes this safe: if the user has
+  // been idle, the safety-net is a no-op (no network call).
   useEffect(() => {
     if (!syncToken) return
     const timer = setInterval(() => {
@@ -319,6 +398,9 @@ export function useSyncEngine({ srs, themeApi }) {
     setSyncToken(token)
     setStatus('pulling')
     setLastError(null)
+    // Reset the hash ref so the bootstrap pull on the new token starts
+    // with a clean slate.
+    lastSyncedHashRef.current = null
     return true
   }, [])
 
@@ -328,6 +410,7 @@ export function useSyncEngine({ srs, themeApi }) {
     setSyncToken(fresh)
     setStatus('pulling')
     setLastError(null)
+    lastSyncedHashRef.current = null
   }, [])
 
   const forcePushNow = useCallback(() => {
@@ -343,6 +426,7 @@ export function useSyncEngine({ srs, themeApi }) {
       setLastSyncedAt(Date.now())
     } else if (res.ok) {
       setStatus('synced')
+      lastSyncedHashRef.current = hashCurrentLocalState()
     } else {
       setStatus('error')
       setLastError(res.reason ?? `HTTP ${res.status ?? '???'}`)

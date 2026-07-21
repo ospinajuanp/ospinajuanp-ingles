@@ -1,3 +1,5 @@
+import { calculateStoreHash } from './syncHash'
+
 // Pure Last-Write-Wins merge of two SRS stores.
 //
 // The SRS store shape (see src/hooks/useSRS.js) is:
@@ -17,6 +19,11 @@
 // This module is pure: no localStorage, no fetch, no React. The engine
 // in useSyncEngine decides WHEN to call it and WHAT to do with the
 // result (write back to localStorage, push to Atlas).
+//
+// To avoid a full re-render cycle when remote == local (the most common
+// case after the user just opened a tab), `compareStatesByHash` runs a
+// cheap FNV-1a hash on both sides first and short-circuits to a no-op
+// when the hashes match. See src/utils/syncHash.js.
 
 const FALLBACK_TS = 0
 
@@ -116,4 +123,42 @@ export function shouldPushLocal(local, remote) {
   const remoteCount = Object.keys(remote?.cards ?? {}).length
   if (remoteCount === 0) return localCount > 0
   return false
+}
+
+/**
+ * Compare local + remote state by hash BEFORE running the merge.
+ *
+ * Returns one of:
+ *   { hasChanges: false, mergedStore: localStore, hash: <localHash> }
+ *     — local and remote are logically identical; the engine should
+ *       skip `replaceStore` / `setTheme` entirely (no React updates).
+ *
+ *   { hasChanges: true, mergedStore: <merged>, hash: <mergedHash> }
+ *     — local and remote differ in SRS or theme; the engine should
+ *       run the LWW merge and apply the result.
+ *
+ * The `hash` returned is the post-merge hash of `(mergedStore, remoteTheme)`,
+ * which is what the engine should record as `lastSyncedHashRef` after a
+ * successful merge — it represents "Atlas + local have converged to this
+ * state from the engine's perspective".
+ *
+ * This is the primary defense against the "F5 flicker" caused by sync:
+ * a pull that produces an empty diff doesn't even touch the SRS store,
+ * doesn't bump `revision`, doesn't trigger the mutation watcher, and
+ * doesn't schedule a follow-up push.
+ */
+export function compareStatesByHash({
+  localStore,
+  localTheme,
+  remoteStore,
+  remoteTheme,
+}) {
+  const localHash = calculateStoreHash(localStore, localTheme)
+  const remoteHash = calculateStoreHash(remoteStore, remoteTheme)
+  if (localHash === remoteHash) {
+    return { hasChanges: false, mergedStore: localStore, hash: localHash }
+  }
+  const mergedStore = mergeSRSStores(localStore, remoteStore)
+  const mergedHash = calculateStoreHash(mergedStore, remoteTheme)
+  return { hasChanges: true, mergedStore, hash: mergedHash }
 }

@@ -31,12 +31,13 @@
 // duplicate in-memory cache to keep in sync. Cross-tab updates are
 // observed via the `storage` event.
 
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import {
   createInitialSRSState,
   calculateNextReview,
   isDue,
 } from '../utils/srs'
+import { calculateStoreHash, readThemeFromLocalStorage } from '../utils/syncHash'
 
 const LOCAL_STORAGE_KEY = 'ospinajuanp-ingles:srs:v1'
 
@@ -81,6 +82,15 @@ export function useSRS() {
   // Consumers (notably the sync engine) watch this number to react to
   // mutations without having to diff the full SRS payload.
   const [revision, setRevision] = useState(0)
+
+  // Live ref to the current store. Used by `replaceStore` to hash the
+  // current state without making `replaceStore` itself a closure that
+  // re-creates every commit (which would invalidate consumers that
+  // destructure `srs.replaceStore` from the SRSContext value).
+  const storeRef = useRef(store)
+  useEffect(() => {
+    storeRef.current = store
+  }, [store])
 
   // Cross-tab sync: another tab wrote to the same key, pull it in.
   useEffect(() => {
@@ -257,6 +267,13 @@ export function useSRS() {
    * a Last-Write-Wins merge result coming from another device. Bumps
    * `revision` so downstream watchers (including the sync engine's own
    * debounced push) see the change.
+   *
+   * Hash short-circuit: if the incoming store hashes to the same value
+   * as the current store (computed with the SAME theme from
+   * localStorage), we return `false` and skip the entire React update
+   * cycle — no `setStore`, no `writeStore`, no `revision` bump. This
+   * is the primary defense against the "F5 flicker" caused by a pull
+   * that produces an empty diff: nothing in the React tree re-renders.
    */
   const replaceStore = useCallback((incoming) => {
     if (!incoming || typeof incoming !== 'object') return false
@@ -268,6 +285,10 @@ export function useSRS() {
           : {},
       order: Array.isArray(incoming.order) ? incoming.order : [],
     }
+    const theme = readThemeFromLocalStorage()
+    const currentHash = calculateStoreHash(storeRef.current, theme)
+    const incomingHash = calculateStoreHash(safe, theme)
+    if (currentHash === incomingHash) return false
     setStore(safe)
     writeStore(safe)
     setRevision((r) => r + 1)
