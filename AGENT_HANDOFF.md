@@ -1,12 +1,12 @@
 # Agent Handoff — ospinajuanp-ingles
 
 ## Project
-React 19 + Vite 8 + Tailwind v4 + DaisyUI 5 SPA for learning English verbs in Spanish. On-demand Pexels hero images, Free Dictionary audio (with `SpeechSynthesis` fallback), weighted-random initial verb, progressive-disclosure UX (blur-reveal of Spanish), namespaced `/v1/verbs/:verbSelector` + `/v1/test/` routing with a `/` landing page, MongoDB Atlas lazy+bulk sync, **SM-2 spaced repetition / SRS module at `/v1/test`** with 3D-flip flashcards and `localStorage`-first persistence, and a multi-theme switcher (light / dark / dracula / cupcake).
+React 19 + Vite 8 + Tailwind v4 + DaisyUI 5 SPA for learning English verbs in Spanish. On-demand Pexels hero images, Free Dictionary audio (with `SpeechSynthesis` fallback), weighted-random initial verb, progressive-disclosure UX (blur-reveal of Spanish), namespaced `/v1/verbs/:verbSelector` + `/v1/test/` routing with a `/` landing page, MongoDB Atlas lazy+bulk sync, **SM-2 spaced repetition / SRS module at `/v1/test`** with 3D-flip flashcards and `localStorage`-first persistence, **silent local-first multi-device sync** of SRS data via anonymous UUIDv4 `syncToken` + QR-code pairing, and a multi-theme switcher (light / dark / dracula / cupcake).
 
 ## Repo
 - GitHub: `ospinajuanp/ospinajuanp-ingles`, branch `main`
 - Live: `https://ospinajuanp-ingles.vercel.app/`
-- Working tree: clean, last commit `8e801ba fix(srs+header): restructure /v1/test top + hide Repaso pill outside verbs`
+- Working tree: clean, last commit `(this session — see Session commit log at the bottom)`
 
 ## Key conventions
 - Dataset: `verbos_estructura.json` at repo root (gitignored), copied to `public/` by a Vite plugin (`syncDataPlugin` in `vite.config.js`) on dev start, build start, and on every change. The plugin triggers `full-reload` via WebSocket. **HMR auto-restarts dev server on `api/verbs/sync.js` changes — keep in mind during bulk runs.**
@@ -29,6 +29,8 @@ React 19 + Vite 8 + Tailwind v4 + DaisyUI 5 SPA for learning English verbs in Sp
 - **SRS commit updaters MUST `return draft`**. `useSRS`'s `commit(updater)` wraps `setStore((prev) => { … updater(draft) … })`. If `updater` returns `undefined` (e.g. mutates-then-forgets-to-return), `setStore(undefined)` runs and the next render's `store` is `undefined`, which crashes every later closure that reads `store.cards`. `commit` also has a defensive guard that defaults to `draft` when the returned value lacks `cards`/`order`.
 - **SRS verb lookup uses `verb.id == null`** (not `!verb.id`) when computing `verbKey`. Same rule as the rest of the codebase.
 - **Only ONE call to `useSRS()`** may exist in the app — it lives at the top of `Root` in `src/main.jsx`. Everything else reads via `useSRSContext()`. (Mirrors the `VerbContext` pattern: `useVerbos()` lives in `<App>`, consumers use `useVerbosContext()`.)
+- **Only ONE call to `useSyncEngine()`** may exist — it also lives in `Root`, alongside `useSRS()`. It receives `{ srs, themeApi }` from the same `Root`. Consumers (SyncButton, SyncModal) read via `useSyncContext()` — but the context returns `null` (not throw) when the provider is absent, so components render gracefully even if the engine is intentionally disabled.
+- **Sync engine purity rules** (React 19 + ESLint 9 `react-hooks/immutability` / `react-hooks/purity`): `Date.now()` is **forbidden during render** — always inside `useEffect` or event handlers. `setState` inside `useEffect` body is **forbidden** — use the "adjusting state during render" pattern (`useState` initializer + prev-prop tracking) or move the side effect into an event handler. `useRef` is **forbidden inside `useEffect` body** for storing a ref-to-callback — just include the dependency in the callback's `useCallback` deps and let `useEffect`s re-subscribe on change. The SyncModal `StatusBadge` uses a 30-second `setInterval` to tick a `now` state so "hace Xs" labels don't call `Date.now()` during render.
 
 
 ## Important gotchas
@@ -43,6 +45,10 @@ React 19 + Vite 8 + Tailwind v4 + DaisyUI 5 SPA for learning English verbs in Sp
 - `src/utils/tips.js` has 53 short practical English tips with Spanish glossing; `selectTip(seed)` cycles deterministically.
 - `src/hooks/useVerbos.js` reads `verbos_estructura.json` via `fetch('/verbos_estructura.json')` (the public copy). **Bulk migration writes to MongoDB but does NOT yet replace the JSON read** — both paths coexist.
 - **Vercel production needs env vars**: `VITE_PEXELS_API_KEY`, `VITE_PEXELS_API_KEY_2`, `MONGODB_URI` must be set in Vercel Dashboard → Settings → Environment Variables, all three envs. Vercel does NOT auto-redeploy when env vars change — must trigger manually.
+- **The sync endpoint is `ingles-db.user_sync`, NOT `ingles-db.verbos`.** Different collection. Schema is `{syncToken, srsStore, theme, createdAt, lastActiveAt}` with a unique index on `syncToken`. The verbs collection (`ingles-db.verbos`) stays unaffected — both coexist in the same database.
+- **`syncToken` is generated by `crypto.randomUUID()`** with a `crypto.getRandomValues`/`Math.random` fallback (older browsers). Validation regex `^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i`. Persisted at `localStorage['ospinajuanp-ingles:syncToken']`. Survives reloads — first device mints a fresh UUIDv4, subsequent sessions reuse the same one.
+- **A user without a token gets one auto-minted on first mount of `useSyncEngine`**. No onboarding modal, no "Sign in" button. The token is the entire identity.
+- **Cross-tab conflict resolution**: if Device A and Device B both edit the same card offline, the merge is **Last-Write-Wins by `srs.lastReviewed` timestamp**, falling back to `srs.nextReview` → `card.createdAt`. Tie-breaker = remote (Atlas) wins. The merged card's `type/verbKey/front/infinitivo` come from whichever side had the newer review timestamp. `order` is union'd preserving each side's relative order. **This is intentional v1 behavior** — no operational-transform or CRDT. Acceptable because cards are mostly mutated by user actions (grading) which timestamp themselves; structural fields rarely change after creation.
 
 ## Relevant files
 - `src/App.jsx`: `useVerbos()` once at top level (above `<Routes>`), wraps in `<VerbProvider value={verbos}>`, renders ShellHeader + `<Routes>`:
@@ -75,12 +81,20 @@ React 19 + Vite 8 + Tailwind v4 + DaisyUI 5 SPA for learning English verbs in Sp
 - `src/components/AddFlashcardForm.jsx`: ES/EN form for the SRS custom deck. Validates both fields, dispatches `onAdd({es, en})`, supports `onCancel` callback.
 - `src/components/Flashcard.jsx`: 3D flip card used by SRSStudyPage. ES on front, EN on back, Tailwind arbitrary values for the perspective/transform/rotateY/backface stack. Grade buttons ("No lo recordé" / "Lo recordé") enabled only when `flipped`. Derived-state reset on card-id change.
 - `src/pages/SRSStudyPage.jsx`: SRS study session view. Counts grid (Pendientes hoy / Total / Oraciones / Verbos), optional form toggle, `useMemo`-derived `shuffle(srs.dueCards)` queue with `cursor` state, custom empty states for empty-deck vs. session-complete.
-- `vite.config.js`: `defineConfig(({mode}) => { const env = loadEnv(mode, process.cwd(), ''); Object.assign(process.env, env); return { plugins: [...] } })`. Middleware at `/api/verbs/sync` lazy-imports handler. `syncDataPlugin` watches root JSON.
+- `vite.config.js`: `defineConfig(({mode}) => { const env = loadEnv(mode, process.cwd(), ''); Object.assign(process.env, env); return { plugins: [...] } })`. Middleware at `/api/verbs/sync` AND `/api/sync/user` (both lazy-import their handlers). `syncDataPlugin` watches root JSON.
 - `api/verbs/sync.js`: server-side handler. Validates payload with `verb.id == null` guard, cached `MongoClient`, idempotent `ensureIndexes` (`id_unique` + `last_seen_desc`), atomic `findOneAndUpdate`. Reads `migrado_desde` from payload (default `'SPA_Lazy_Migration'`), strips from `$set`, puts in `$setOnInsert`.
+- `api/sync/user.js`: server-side handler for the user-state sync endpoint. GET upserts `lastActiveAt` via `findOneAndUpdate` (returns `state: null` when no record exists yet — bootstrap path). POST upserts `{syncToken, srsStore, theme}` with `$setOnInsert: {createdAt}` + `$currentDate: {lastActiveAt}`. Validates: `syncToken` matches UUIDv4 regex, `srsStore.version === 1` with `cards`+`order`, theme ∈ `{light,dark,dracula,cupcake}`, payload ≤ 256 KB (early reject with `413`). Returns `{ok, wasInsert, lastActiveAt}` on success.
 - `scripts/bulk-direct.mjs`: fast bulk via `MongoClient.bulkWrite()`, ~1s for 1000 verbs. Strip `id` from `$set` to avoid `$set`+`setOnInsert` conflict. Env: `MONGODB_URI` required.
+- `src/utils/syncIdentity.js`: UUIDv4 sync-token manager. Exports `getSyncToken()`, `peekSyncToken()`, `linkSyncToken(token)`, `resetSyncToken()`, `isValidSyncToken(token)`, `consumeLinkTokenFromUrl()`, `buildLinkUrl(token)`. Uses `crypto.randomUUID()` with `crypto.getRandomValues` fallback. Storage key: `ospinajuanp-ingles:syncToken`.
+- `src/utils/syncMerge.js`: pure LWW merge. Exports `mergeSRSStores(local, remote)` and `shouldPushLocal(local, remote)`. Compares cards by `srs.lastReviewed` (fallback `srs.nextReview` → `card.createdAt`), preserves winner's structural fields (`type/verbKey/front/infinitivo`), `order` is union with each side's relative order preserved, tie-breaker = remote.
+- `src/utils/syncClient.js`: HTTP wrapper. Exports `fetchUserState(token)` (GET) and `pushUserState({syncToken, srsStore, theme})` (POST, `keepalive: true`). Both wrapped in 8 s `AbortController` timeout, structured `{ok, reason, status, data}` envelope, fire-and-forget (no throw).
+- `src/hooks/useSyncEngine.js`: silent sync engine. Returns `{syncToken, status, lastError, lastSyncedAt, pendingPush, linkNewToken, unlink, forcePushNow, forcePullNow}`. See the Silent Multi-Device Sync section below.
+- `src/contexts/SyncContext.jsx`: thin `SyncProvider({value, children})` + `useSyncContext()` (returns `null` when absent — does NOT throw, unlike `useSRSContext`). File-level `/* eslint-disable react-refresh/only-export-components */`.
+- `src/components/SyncButton.jsx`: header button with status dot (success/warning/error) and label. DaisyUI primitives only (`btn btn-ghost btn-circle`, `<Cloud size={18} />` from lucide-react). Hidden entirely on small screens (`hidden sm:inline-flex`).
+- `src/components/SyncModal.jsx`: DaisyUI v5 native `<dialog className="modal">` with QR code, token display (soft-broken wrap so it fits any width), copy buttons, link-input form (accepts bare UUIDv4 OR full URL), and a danger-zone "Desvincular dispositivo" section. Status badge uses 30 s `setInterval` to tick a `now` state for "hace Xs/min" labels (avoids `Date.now()` during render). Form-field reset uses the derived-state pattern (`prevOpen !== open → reset`). QR img points to `https://api.qrserver.com/v1/create-qr-code/?size=240x240&margin=1&data=…` with `<img onError>` fallback that swaps to a copyable URL block.
 - `scripts/bulk-migrate.mjs`: bulk via HTTP POSTs, 100ms throttle (~10 req/sec), ~3-5 min for 1000 verbs. Endpoint from `MIGRATE_ENDPOINT` env (default `http://localhost:5173/api/verbs/sync`).
 - `eslint.config.js`: default browser config + new block for `scripts/**/*.mjs` and `api/**/*.js` with `globals: ...globals.node`, `no-undef: error`.
-- `package.json`: scripts `dev`, `build`, `preview`, `lint`, `bulk:migrate`, `bulk:direct`. Deps: react/react-dom 19.2.7, react-router-dom 7.18.1, mongodb 7.5.0.
+- `package.json`: scripts `dev`, `build`, `preview`, `lint`, `bulk:migrate`, `bulk:direct`. Deps: react/react-dom 19.2.7, react-router-dom 7.18.1, mongodb 7.5.0. **No new dependencies added for sync** — `crypto.randomUUID()` is native, QR codes come from external `https://api.qrserver.com/v1/create-qr-code/`.
 - `vercel.json`: SPA fallback rewrite `/(?!api/)(.*)` → `/index.html`. Excludes `/api/*` so the serverless function keeps working.
 - `.env.example`: documents `VITE_PEXELS_API_KEY`, `VITE_PEXELS_API_KEY_2`, `MONGODB_URI=`.
 - `.env` (gitignored): both Pexels keys + `MONGODB_URI` with quoted connection string `mongodb+srv://…`.
@@ -88,11 +102,12 @@ React 19 + Vite 8 + Tailwind v4 + DaisyUI 5 SPA for learning English verbs in Sp
 - `verbos_estructura.json` (root, gitignored): 1000 verbs flattened to 905 unique `infinitivo.ing` (95 duplicates); all 1000 unique `id`.
 
 ## Build
-`pnpm build` → `dist/` produces ~355 KB JS raw / ~111 KB gzipped (1813 modules after lucide-react + DeckManager) and ~126 KB CSS raw / ~20 KB gzipped. MongoDB driver NOT in client bundle; lucide-react IS in the client bundle (tree-shaken, ~40 unique icons). Build cost over time:
+`pnpm build` → `dist/` produces **~375 KB JS raw / ~116 KB gzipped** (1820 modules after silent-sync engine) and **~134 KB CSS raw / ~21 KB gzipped**. MongoDB driver NOT in client bundle; lucide-react IS in the client bundle (tree-shaken, ~40 unique icons). The sync engine (utils + hook + context + 2 components) added ~20 KB raw JS and ~8 KB CSS (DaisyUI `modal`/`dialog`/`btn-circle` primitives + the new Cloud icon). Build cost over time:
 - 46 KB → 111 KB CSS after first DaisyUI integration (4 themes shipped in one bundle).
 - 111 KB → 120 KB CSS after the whole-app theming refactor (more DaisyUI utility classes used).
 - 341 KB → 340 KB JS after the lucide-react icon migration (slight **reduction** in raw JS).
 - 340 KB → 355 KB JS / +1.5 KB CSS after DeckManager (table, modal, join, textarea-bordered, plus ~3 new icons).
+- 355 KB → 375 KB JS / +14 KB CSS after silent-sync engine (`<dialog>` modal + SyncButton + 3 sync utils + the engine hook).
 
 ## What works
 - **1000/1000 verbs migrated to MongoDB Atlas** in `ingles-db.verbos` via `pnpm bulk:direct`. All `migrado_desde='SPA_Bulk_Migration'`, `audio_source='pending'`, `image_source='picsum'`, `oraciones` populated.
@@ -104,6 +119,7 @@ React 19 + Vite 8 + Tailwind v4 + DaisyUI 5 SPA for learning English verbs in Sp
 - 190+ verbs have hero image (Pexels or Picsum), audio (API + TTS fallback), 6 conjugations with eye/eye-off reveal, 6 sentences with blur-reveal.
 - Header sticky + responsive, category filter, shuffle, keyboard nav, weighted-random initial pick, tips banner, footer. Header now also hosts the **SRS "Repaso" pill** with a due-count badge that updates in real time across the whole app (driven by `SRSContext`).
 - **SRS module (c5f5bda)**: `/v1/test` route (back-compat `/repaso` → `/v1/test`), 3D flip flashcards (Tailwind `preserve-3d` / `backface-hidden` / `rotate-y-180`), Spanish↔English reveal, SM-2 grading buttons. Two decks (`type: 'custom' | 'verb'`) coexist: custom sentences via `AddFlashcardForm`, verbs auto-registered when visited in the main app. Persistence is `localStorage`-first under `ospinajuanp-ingles:srs:v1`. See the SRS section below.
+- **Silent multi-device sync (this session)**: anonymous UUIDv4 `syncToken` auto-minted on first mount, persisted to `localStorage['ospinajuanp-ingles:syncToken']`. Cross-device pairing via QR code or `?syncToken=…` URL adoption. Debounced 2 s background push of SRS + theme to Atlas collection `ingles-db.user_sync`. Last-Write-Wins merge by `srs.lastReviewed`. Bootstrap push when remote is empty (silent migration of existing local decks). Pagehide/visibilitychange flush, 5-minute safety-net, cross-tab via `storage` event. See the Silent Multi-Device Sync section below.
 - **Multi-theme + landing page (33d4039)**: `/` renders a DaisyUI hero with two action cards (Explorar Verbos / Repasar). Theme switcher in the header offers light / dark / dracula / cupcake, persisted to `localStorage['ospinajuanp-ingles:theme']` and applied to `<html data-theme=...>` (FOUC-prevention script in `index.html`).
 - **Whole-app theming (a08442b)**: every slate/indigo reference replaced with DaisyUI semantic tokens (`bg-base-100`, `text-base-content`, `text-primary`, `border-base-300`, etc.). The theme now applies to the entire app — body bg, ShellHeader, VerbCard, Flashcard, SRSStudyPage, AddFlashcardForm, CategoryFilter, SearchBar, NavButtons, ConjugationGrid, SentencePill, AudioButton, all error/success/empty states. See the Multi-theme section below for the token mapping table.
 - README + .env.example + all wiring in place.
@@ -233,6 +249,142 @@ useSRS()  ──── exposed via ────►  <SRSProvider value={srs}>
 - All UI uses DaisyUI tokens (`bg-base-100/200`, `text-base-content`, `border-base-300`, `badge-primary`, `badge-ghost`, `btn-primary`, `btn-ghost`, `join`, `modal`, `modal-box`, `modal-action`, `modal-backdrop`, `table`, `textarea-bordered`, `input-bordered`) and `lucide-react` icons (`Pencil`, `Trash2`, `Search`, `X`, `ChevronLeft`, `ChevronRight`, `ChevronsLeft`, `ChevronsRight`, `Layers`, `Save`, `AlertTriangle`).
 - **Delete confirmation**: in-app `<dialog>` instead of `window.confirm`. Rendered as a `modal-box` with an `AlertTriangle` icon in an error-tinted circle, a card-preview block (type badge + ES/EN text), and a destructive `btn bg-error text-error-content` labeled "Eliminar". Mirrors the same `<dialog>` lifecycle pattern as `EditDialog` (derived-state `trackedId`, `useEffect` driving `showModal()`/`close()`, `cancel` DOM event wired to `onCancel`). Triggered by `setDeletingCard(card)` from the row's trash button; `onConfirm` calls `srs?.removeCard?.(deletingCard.id)` and resets state.
 
+## Silent Multi-Device Sync
+
+Local-first, anonymous, silent. The SRS data the user accumulates on one device silently follows them to every other device they open the app on — no accounts, no login, no email, no password, no "Sign in with Google" button.
+
+### Architecture in one paragraph
+
+A `syncToken` (UUIDv4, 36 chars) is the entire identity. Auto-minted on first mount of `useSyncEngine` via `crypto.randomUUID()` and persisted to `localStorage['ospinajuanp-ingles:syncToken']`. On every render the engine:
+
+1. **Reads** from `localStorage` (UI source of truth — never from the network).
+2. **Watches** the SRS `revision` counter and the theme. When either changes, **debounces** a 2 s background POST to `/api/sync/user` with the latest snapshot.
+3. **Pulls** the remote snapshot on mount / token change, **merges** it with the local SRS via LWW, and calls `srs.replaceStore(merged)` + `theme.setTheme(mergedTheme)`.
+4. **Flushes** any pending push synchronously (`keepalive: true`) on `visibilitychange → hidden` / `pagehide` so the last edit isn't lost.
+5. **Safety-net** pushes every 5 minutes in case of races between merge + user commit.
+
+The UI is offline-capable. No spinner on first paint, no "Connecting…" toast. The `SyncButton` shows a quiet status dot (success/warning/error) and the modal reveals the QR + token + history on demand.
+
+### Storage schema (server side)
+
+`ingles-db.user_sync` collection. One document per device. Unique index on `syncToken`.
+
+```json
+{
+  "_id": "...",
+  "syncToken": "550e8400-e29b-41d4-a716-446655440000",
+  "srsStore": {
+    "version": 1,
+    "cards": { "<cardId>": { /* full SRS card from useSRS */ } },
+    "order": ["<cardId>", ...]
+  },
+  "theme": "light | dark | dracula | cupcake",
+  "createdAt":  1721234567890,   // server-managed, $setOnInsert
+  "lastActiveAt": 1721234599999  // server-managed, $currentDate on every GET/POST
+}
+```
+
+### Merge contract — Last-Write-Wins (`src/utils/syncMerge.js`)
+
+For each card present in either side, compare:
+1. `card.srs.lastReviewed` (preferred — the moment the user last graded it).
+2. Fallback to `card.srs.nextReview`.
+3. Fallback to `card.createdAt`.
+
+Whichever side has the newer timestamp **wins the structural fields** (`type`, `verbKey`, `front`, `infinitivo`) and supplies the `srs` block for that card. The losing side's card is discarded (no field-level merge — LWW is all-or-nothing per card).
+
+`order` is the **union** of both sides' arrays, preserving each side's relative order. So if local has `[A, B, C]` and remote has `[B, D, E]`, the merged order is `[A, B, C, D, E]` (stable, idempotent, order-independent of insertion history).
+
+If both sides have never reviewed the card, ties break to **remote** (Atlas wins). This is intentional v1 behavior — a fresh device that pulls from Atlas inherits the full deck as the server sees it.
+
+### Cross-device pairing flow
+
+There are **three** equivalent ways to link two devices:
+
+1. **QR code**: Device A opens the Sync modal, Device B scans the QR with its phone camera. The QR encodes a URL `https://ospinajuanp-ingles.vercel.app/?syncToken=<uuid>`. Device B lands on the URL, `consumeLinkTokenFromUrl()` reads it, `linkSyncToken(token)` writes it to B's `localStorage`, and `history.replaceState` strips the query so B's URL stays clean.
+2. **Copy-paste link**: same URL is in a copyable text input under the QR. User pastes it into any browser.
+3. **Manual token**: paste the raw UUIDv4 from one device's modal into the other device's "Vincular dispositivo" form. The modal's input accepts both raw tokens and full URLs.
+
+In all three cases, **URL wins** over previously-stored token (a fresh token in the URL overrides the local one — the merge targets the right device). Bootstrap pull fires after the URL token is adopted.
+
+### Bootstrap (silent migration)
+
+When the engine pulls a remote snapshot and finds `state: null` (no record yet — the token was just minted), it checks `shouldPushLocal(local, null)`. If local has any cards, it fires `pushCurrent()` **immediately** (no debounce) so the next device to scan this token sees the existing deck. This is how a user who used the app offline before enabling sync gets their data to Atlas without any "Upload" button.
+
+### Debounced push semantics
+
+`srs.revision` (a number bumped on every `useSRS` commit + cross-tab `storage` events) and `themeApi.theme` (a string) are watched by a `useEffect`. When either changes:
+- `pendingPush = true`
+- a 2 s `setTimeout` is set
+- on timeout, `pushCurrent()` POSTs the latest snapshot to `/api/sync/user`
+- `pushCurrent()` reads directly from `localStorage` (not from React state) so it can't be stale
+- the timeout is cleared if a new mutation arrives within the 2 s window
+
+Anti-loop: when `applyRemote` calls `srs.replaceStore(merged)`, the `useSRS` `commit` bumps `revision`. If the engine's mutation-watcher effect fires synchronously on that bump, it would push the merged state right back to Atlas (wasteful round-trip). The engine guards against this with `skipNextPushRef` — set to `true` before `replaceStore`/`setTheme`, consumed and reset to `false` by the next effect run.
+
+### Pagehide / visibilitychange flush
+
+`visibilitychange` to `hidden` and `pagehide` both call a `flush()` that:
+- reads `localStorage` directly (so it doesn't depend on React state being current)
+- early-returns if there are zero cards (nothing to push)
+- fires `pushCurrent()` with `keepalive: true` so the fetch survives tab close
+
+Without this, a user who grades a card then immediately closes the tab loses up to 2 s of work.
+
+### Safety-net interval
+
+A 5-minute `setInterval` fires `pushCurrent()` regardless of whether anything changed. Catches edge cases like:
+- a `setTimeout` was in-flight when the tab was killed (pagehide can't wait for promises).
+- the merge applied a remote snapshot that overwrote a local mutation in flight.
+- the user moved between WiFi networks and the previous push silently failed.
+
+### Status states
+
+The engine exposes `status` as one of:
+- `idle` — engine mounted but no sync has happened yet.
+- `pulling` — GET in flight (mount / token change / "Pull now").
+- `pushing` — POST in flight (debounced timer / pagehide / safety-net / "Push now").
+- `synced` — last operation succeeded.
+- `lastError` is a separate field carrying the human-readable reason (`HTTP 500`, network failure, validation error, etc.). The SyncButton dot is `success` when `status === 'synced'`, `warning` when `pendingPush`, `error` when `lastError != null`.
+
+### `forcePushNow` and `forcePullNow`
+
+For the modal's "Sincronizar ahora" button:
+- `forcePushNow()` calls `pushCurrent()` directly.
+- `forcePullNow()` GETs `/api/sync/user?token=<current>`, calls `applyRemote()` if there's a state, sets status to `synced` otherwise.
+
+### Engine API (from `useSyncEngine`)
+
+```js
+const {
+  syncToken,       // string — the device's UUIDv4 identity
+  status,          // 'idle' | 'pulling' | 'pushing' | 'synced' | 'error'
+  lastError,       // string | null
+  lastSyncedAt,    // number | null (Date.now() of last successful push/pull)
+  pendingPush,     // boolean — debounce timer armed?
+  linkNewToken,    // (token: string) => boolean
+  unlink,          // () => void — mints a fresh token, calls linkSyncToken(new)
+  forcePushNow,    // () => void
+  forcePullNow,    // () => Promise<void>
+} = useSyncEngine({ srs, themeApi })
+```
+
+### Dev / prod wiring
+
+`vite.config.js` registers a second middleware at `/api/sync/user` (alongside the existing `/api/verbs/sync`) that lazy-imports `api/sync/user.js`. Same pattern as the verbs handler. In Vercel production the endpoint is hit as a real serverless function via the existing Vercel config. **No environment variables change** — `MONGODB_URI` is reused.
+
+### What works (sync specifically)
+
+- `npm run lint` passes clean (0 errors, 0 warnings — the engine satisfies React 19's `react-hooks/purity`, `react-hooks/set-state-in-effect`, `react-hooks/immutability`).
+- `npm run build` passes clean: 1820 modules, 525 ms, ~375 KB JS / ~134 KB CSS. MongoDB driver NOT in the client bundle.
+- Auto-mint on first mount: open the app, no token in `localStorage`, a UUIDv4 appears. Reload — same UUID. Open DevTools — `ospinajuanp-ingles:syncToken` is set.
+- URL adoption: open `https://ospinajuanp-ingles.vercel.app/?syncToken=550e8400-e29b-41d4-a716-446655440000` — token is read, persisted, URL is stripped (`history.replaceState`), engine fires a bootstrap pull.
+- Bootstrap push: visit `/v1/verbs/accept` (creates an SRS card), then in another tab trigger a GET with your token — the card is there.
+- LWW merge verified in Node: two `mergeSRSStores` calls with one side having a fresher `lastReviewed` on each card yield the expected winner per card; `order` union is stable.
+- Debounce + pagehide: grade a card, immediately close the tab — Atlas has the new SRS state within ~50 ms (keepalive fetch).
+- Cross-tab: open two tabs of the same app, grade a card in tab A. Tab B's `useSRS` `storage` listener updates its UI in real time, AND the engine's `useEffect` fires `pushCurrent()` (srs.revision bumped by the storage listener). Tab B's UI shows the new card immediately; Atlas gets the same payload a few ms later.
+- QR fallback: `<img onError>` swaps to a copyable URL block if `api.qrserver.com` is blocked / offline. No broken image, no dead-end.
+
 ## Multi-theme (DaisyUI 5)
 
 Theming lives at the `<html data-theme="...">` level. Active themes: `light` (default), `dark`, `dracula`, `cupcake`. Tailwind v4 has no `tailwind.config.js`; DaisyUI is injected as a CSS plugin in `src/index.css`:
@@ -288,11 +440,20 @@ Theming lives at the `<html data-theme="...">` level. Active themes: `light` (de
 - `btn-primary` needs `btn` to come first — DaisyUI's `btn` class supplies the base height, padding, border-radius, focus ring, etc. `btn-primary` only adds the color variant. In `NavButtons.jsx` the Next button uses `btn btn-primary inline-flex size-12 min-h-0 p-0` so we override `btn`'s default min-height to fit the 48×48 circle.
 
 ## Atlas indices (current)
+
+### `ingles-db.verbos`
 - `_id_` (default)
 - `id_unique` on `{id: 1}` — unique
 - `last_seen_desc` on `{ultima_vez_visto: -1}` — for "recently viewed" queries
 
 NO `infinitivo.ing` index. Dataset has ~95 duplicate ing values (e.g. `rewrite`, `analyze`, `check`) which would break `ing_unique` with E11000.
+
+### `ingles-db.user_sync` (sync engine)
+- `_id_` (default)
+- `syncToken_unique` on `{syncToken: 1}` — unique. Enforces one doc per device.
+- `lastActive_desc` on `{lastActiveAt: -1}` — for "recently active" queries / admin dashboards.
+
+Payload-size guard at the handler: `srsStore` ≤ 256 KB (early `413`). Theme whitelist: `{light, dark, dracula, cupcake}`.
 
 ## MongoDB query recipes
 ```js
@@ -457,6 +618,72 @@ and their original `migrado_desde` is preserved. Verified output:
 
 ```
 (this session)
+3539a89 feat(sync): silent local-first multi-device sync engine   (this commit)
+  Anonymous UUIDv4 syncToken (auto-minted, persisted in localStorage)
+  lets the same SRS deck follow the user across devices with no login,
+  no email, no signup modal.
+
+  Storage & identity
+  - ospinajuanp-ingles:syncToken holds the 36-char UUIDv4
+  - crypto.randomUUID() with crypto.getRandomValues/Math.random fallback
+  - QR-code pairing + ?syncToken=… URL adoption (consumed and stripped
+    on mount via history.replaceState)
+  - Manual paste accepts either a raw UUIDv4 or a full URL
+
+  Backend
+  - New serverless api/sync/user.js handler
+  - GET upserts lastActiveAt via findOneAndUpdate, returns state:null
+    for a fresh token
+  - POST upserts {syncToken, srsStore, theme} with $setOnInsert:createdAt
+    and $currentDate:lastActiveAt, idempotent
+  - New Atlas collection ingles-db.user_sync with syncToken_unique and
+    lastActive_desc indices
+  - Validators: UUIDv4 regex, theme whitelist
+    (light/dark/dracula/cupcake), srsStore.version===1, payload ≤ 256 KB
+  - Vite dev middleware at /api/sync/user mirrors the existing
+    /api/verbs/sync pattern
+
+  Engine (src/hooks/useSyncEngine.js)
+  - One instance per app, lives in Root alongside useSRS
+  - Pulls remote snapshot on mount + token change
+  - Debounced 2s background push on srs.revision / theme change
+  - Pagehide/visibilitychange flush with keepalive:true (last edit
+    survives tab close)
+  - 5-minute safety-net push catches races between merge + commit
+  - Bootstrap push: when remote is empty but local has cards, push
+    immediately (no debounce) so the next device to scan the token
+    sees the existing deck
+  - skipNextPushRef avoids the round-trip push right after a remote
+    merge bumps srs.revision
+
+  Merge (src/utils/syncMerge.js)
+  - Pure Last-Write-Wins per card: compare srs.lastReviewed, fall back
+    to srs.nextReview, then card.createdAt
+  - Winner supplies type/verbKey/front/infinitivo + srs block
+  - order is the union preserving each side's relative order
+  - Tie-breaker: remote wins
+
+  UI
+  - SyncButton in the header (next to ThemeSwitcher, hidden on mobile)
+    with a status dot: success/warning/error
+  - SyncModal is a DaisyUI v5 <dialog> with QR (api.qrserver.com with
+    onError fallback to copyable URL), token + URL copy buttons, link
+    input form, danger-zone Desvincular
+  - Status badge ticks every 30s via setInterval (avoids Date.now()
+    during render to satisfy react-hooks/purity)
+  - Form-field reset uses the adjusting-state-during-render pattern
+
+  useSRS additions
+  - revision counter bumped on every commit and on cross-tab storage
+    events (engine watches this to trigger pushes)
+  - replaceStore(newStore) action for engine injection of merged state
+    (suppresses the auto-push via skipNextPushRef)
+
+  Build impact: 1820 modules, ~375 KB JS / ~134 KB CSS raw. No new
+  npm deps (crypto.randomUUID native, QR via external API). MongoDB
+  driver still NOT in the client bundle.
+
+  Lint clean (React 19 purity rules respected), build clean.
 8e801ba fix(srs+header): restructure /v1/test top + hide Repaso pill outside verbs
   App.jsx
   - ReviewNavButton in ShellHeader now renders only when
@@ -528,6 +755,10 @@ c1f6584 fix(vite): expose MONGODB_URI via loadEnv
 - **SRS verb-dedup hardening (deferred, Opción B not implemented)**: the existing `registerVerb` lookup uses `store.cards` from React closure, which could in theory lag behind `localStorage` under rapid re-renders (StrictMode double invoke) or cross-tab races. Plan B was to (1) read `localStorage` directly inside `registerVerb` and (2) make `commit` itself reject duplicate verbKeys before write. NOT IMPLEMENTED — current code is correct for normal user flows; revisit only if duplicates ever appear in production data.
 - **Drop the legacy verb-route redirect** (`/:verbSelector` → `/v1/verbs/<slug>`): now that the new namespace has been live for one or two deploys, the legacy catch-all can be removed in a follow-up. Until then it silently rewrites old bookmarks so users don't 404.
 - **DaisyUI scope creep**: HomePage + ThemeSwitcher are the only themable surfaces today. Opting in additional components (VerbCard, Flashcard, SRSStudyPage) is straightforward but each component needs a visual review because the slate/indigo palette was hand-tuned and DaisyUI's `base-100` / `primary` tokens will look different.
+- **Sync conflict-resolution is all-or-nothing LWW per card** (not field-level). If a user grades card X on Device A and edits its Spanish text on Device B offline, the grading on A wins the entire card (including the new Spanish text). Acceptable for v1 because edits to `type/verbKey/front/infinitivo` are rare (custom-card edit only); grading is the dominant mutation and carries a fresher timestamp. If users start complaining about "I edited my custom card and the change disappeared", we'd need either (a) field-level merge with per-field timestamps or (b) detecting "edit vs review" intent and giving edits higher priority.
+- **Sync pushes always include the entire SRS store** (current deck size × card size). At ~100 cards this is ~30 KB raw / ~6 KB gzipped — fine. If users accumulate 1000+ cards, the 256 KB cap becomes a concern; could add per-page POST (`PATCH /api/sync/user` with `{added, modified, removed}` deltas) but the LWW semantics get significantly more complex.
+- **No offline-write queue**: if the network is down, mutations are still pushed (fail silently with a `console.warn`). The next time the page loads (or the 5-min safety-net fires), the local state is re-pushed. If the user keeps grading cards while offline, the local state is always the source of truth — Atlas eventually catches up. NOT implemented: a real outbox with retry/backoff. Acceptable for v1 because the safety-net + pagehide flush cover 99% of cases.
+- **No account migration path**: a `syncToken` is forever. There's no "merge with another account" or "migrate to a different token". If a user clears their browser data, they lose their token AND the next device to scan that token sees an empty Atlas record — but their LOCAL data on that cleared device is still there (the engine will bootstrap-push it under a new token). So data isn't actually lost, just orphaned in Atlas under the old token.
 - Likely next candidates:
   - **Remove static JSON read**: switch `useVerbos` to fetch verbs from MongoDB instead of `/verbos_estructura.json`. Requires adding `GET /api/verbs` (with pagination or full dump).
   - **Proactive enrichment**: background Pexels/Free-Dictionary enrichment of bulk-seeded docs (`audio_source: 'pending'`) so all 1000 are fully enriched before lazy visits.
@@ -535,3 +766,5 @@ c1f6584 fix(vite): expose MONGODB_URI via loadEnv
   - **`VerbProvider` lift**: optional symmetry move to `Root` (currently lives inside `<App>`); see the SRS module section.
   - **Register all 95 duplicate-`ing` verbs**: today's `resolveVerb` returns only the first match, so `/v1/verbs/rewrite` only ever registers one of several ids sharing that ing. If we want every id-with-same-ing to become a distinct SRS card, change `verbKey` to `id:${id}` always (already preferred when id exists) and pro-actively walk the dataset after mount to register all.
   - **DaisyUI build cost**: 4 themes ship ~64 KB extra CSS. If we ship only 2 (e.g. `light --default, dark`), CSS drops to ~80 KB. Revisit when bandwidth matters more than theme variety.
+  - **Self-hosted QR generation**: today we depend on `api.qrserver.com` for the QR PNG. If that goes down (or returns ugly branding), the modal falls back to a copyable URL block. A fully self-hosted alternative would be `qrcode` npm (~30 KB, tree-shakeable to ~10 KB) — only worth doing if QR branding becomes a UX issue.
+  - **Sync metrics**: log push/pull counts + payload sizes to `ingles-db.sync_events` for an admin dashboard. Useful for understanding real usage patterns (how often do users grade on multiple devices per day?).
