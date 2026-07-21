@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { ArrowLeft, Plus, CheckCircle2 } from 'lucide-react'
 import AddFlashcardForm from '../components/AddFlashcardForm'
 import Flashcard from '../components/Flashcard'
 import { useSRSContext } from '../contexts/SRSContext'
@@ -50,18 +51,7 @@ export default function SRSStudyPage() {
           to="/"
           className="inline-flex w-fit items-center gap-2 rounded-full border border-base-300 bg-base-100 px-4 py-2 text-sm font-medium text-base-content shadow-sm transition hover:bg-base-200 active:scale-95"
         >
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="size-4"
-            aria-hidden="true"
-          >
-            <path d="m15 18-6-6 6-6" />
-          </svg>
+          <ArrowLeft className="size-4" aria-hidden="true" />
           Volver a verbos
         </Link>
       </div>
@@ -80,18 +70,7 @@ export default function SRSStudyPage() {
             onClick={() => setShowForm(true)}
             className="inline-flex items-center gap-2 rounded-full border border-dashed border-base-300 bg-base-100 px-4 py-2 text-sm font-medium text-base-content/70 shadow-sm transition hover:border-primary hover:text-primary active:scale-95"
           >
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="size-4"
-              aria-hidden="true"
-            >
-              <path d="M12 5v14M5 12h14" />
-            </svg>
+            <Plus className="size-4" aria-hidden="true" />
             Agregar oración
           </button>
         ) : (
@@ -162,18 +141,7 @@ function EmptyState({ dueCount, totalCount, onShowForm }) {
   return (
     <div className="rounded-2xl border border-success/30 bg-success/10 p-8 text-center">
       <div className="mx-auto mb-3 inline-flex size-12 items-center justify-center rounded-full bg-success/20 text-success">
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="size-6"
-          aria-hidden="true"
-        >
-          <path d="M20 6 9 17l-5-5" />
-        </svg>
+        <CheckCircle2 className="size-6" aria-hidden="true" />
       </div>
       <p className="text-lg font-semibold text-base-content">¡Todo al día!</p>
       <p className="mt-1 text-sm text-base-content/70">

@@ -1,4 +1,5 @@
 import { useCallback, useState } from 'react'
+import { Eye, EyeOff, Lightbulb } from 'lucide-react'
 import { selectTip } from '../utils/tips'
 
 function ConjugationCell({ time, value, valueEsp }) {
@@ -22,6 +23,7 @@ function ConjugationCell({ time, value, valueEsp }) {
       : 'blur-sm opacity-60 group-hover:blur-0 group-hover:opacity-100')
 
   const hasSpanish = Boolean(valueEsp)
+  const RevealIcon = revealed ? Eye : EyeOff
 
   return (
     <div
@@ -49,35 +51,7 @@ function ConjugationCell({ time, value, valueEsp }) {
             }
             aria-hidden="true"
           >
-            {revealed ? (
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="size-3"
-              >
-                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7S2 12 2 12z" />
-                <circle cx="12" cy="12" r="3" />
-              </svg>
-            ) : (
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="size-3"
-              >
-                <path d="M17.94 17.94A10.94 10.94 0 0 1 12 19c-7 0-10-7-10-7a18.45 18.45 0 0 1 4.06-5.94" />
-                <path d="M9.9 4.24A10.94 10.94 0 0 1 12 4c7 0 10 7 10 7a18.5 18.5 0 0 1-2.16 3.19" />
-                <path d="M14.12 14.12A3 3 0 1 1 9.88 9.88" />
-                <path d="m1 1 22 22" />
-              </svg>
-            )}
+            <RevealIcon className="size-3" />
           </span>
         ) : null}
       </div>
@@ -97,18 +71,7 @@ function TipCell({ tipTitle, value }) {
   return (
     <div className="relative overflow-hidden rounded-xl border border-primary/20 bg-gradient-to-br from-primary/10 via-base-100 to-warning/10 px-3 py-2.5 sm:px-4 sm:py-3">
       <div className="flex items-center gap-1.5 text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-primary">
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="size-3.5"
-          aria-hidden="true"
-        >
-          <path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26A7 7 0 0 0 12 2z" />
-        </svg>
+        <Lightbulb className="size-3.5" aria-hidden="true" />
         <span>{tipTitle}</span>
       </div>
       <p className="mt-1 whitespace-pre-line text-sm font-medium leading-snug text-base-content/80">{value}</p>

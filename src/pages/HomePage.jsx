@@ -10,67 +10,8 @@
 // visuals — only this page + the theme switcher pull from DaisyUI.
 
 import { Link } from 'react-router-dom'
+import { Sparkles, LayoutGrid, ArrowRight } from 'lucide-react'
 import { useVerbosContext } from '../contexts/VerbContext'
-
-function SparkleIcon() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="size-6"
-      aria-hidden="true"
-    >
-      <path d="M12 2v6" />
-      <path d="M12 16v6" />
-      <path d="M4.93 4.93l4.24 4.24" />
-      <path d="M14.83 14.83l4.24 4.24" />
-      <path d="M2 12h6" />
-      <path d="M16 12h6" />
-      <path d="M4.93 19.07l4.24-4.24" />
-      <path d="M14.83 9.17l4.24-4.24" />
-    </svg>
-  )
-}
-
-function CardsIcon() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="size-6"
-      aria-hidden="true"
-    >
-      <rect x="3" y="5" width="14" height="14" rx="2" />
-      <rect x="7" y="9" width="14" height="10" rx="2" />
-    </svg>
-  )
-}
-
-function ArrowRightIcon() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="size-4"
-      aria-hidden="true"
-    >
-      <path d="M5 12h14" />
-      <path d="m12 5 7 7-7 7" />
-    </svg>
-  )
-}
 
 export default function HomePage() {
   const verbos = useVerbosContext()
@@ -86,7 +27,7 @@ export default function HomePage() {
       <div className="hero-content w-full max-w-5xl flex-col gap-10 py-12 sm:py-16">
         <div className="text-center">
           <span className="badge badge-primary badge-outline mb-4 gap-2 px-3 py-3 text-[0.65rem] font-bold uppercase tracking-[0.18em]">
-            <SparkleIcon />
+            <Sparkles className="size-4" aria-hidden="true" />
             Aprende conjugando
           </span>
           <h1 className="text-balance text-4xl font-extrabold tracking-tight text-base-content sm:text-5xl">
@@ -107,8 +48,8 @@ export default function HomePage() {
         <div className="grid w-full grid-cols-1 gap-5 sm:grid-cols-2">
           <article className="card bg-base-100 border border-base-300 shadow-sm transition hover:shadow-md">
             <div className="card-body gap-4">
-              <div className="inline-flex size-12 items-center justify-center rounded-2xl bg-indigo-50 text-indigo-600">
-                <CardsIcon />
+              <div className="inline-flex size-12 items-center justify-center rounded-2xl bg-primary/15 text-primary">
+                <LayoutGrid className="size-6" aria-hidden="true" />
               </div>
               <h2 className="card-title text-2xl font-bold text-base-content">
                 Explorar Verbos
@@ -126,7 +67,7 @@ export default function HomePage() {
                   className="btn btn-primary gap-2 rounded-full px-5 normal-case shadow-sm transition active:scale-95 disabled:opacity-60"
                 >
                   Empezar
-                  <ArrowRightIcon />
+                  <ArrowRight className="size-4" aria-hidden="true" />
                 </button>
               </div>
             </div>
@@ -134,8 +75,8 @@ export default function HomePage() {
 
           <article className="card bg-base-100 border border-base-300 shadow-sm transition hover:shadow-md">
             <div className="card-body gap-4">
-              <div className="inline-flex size-12 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-600">
-                <SparkleIcon />
+              <div className="inline-flex size-12 items-center justify-center rounded-2xl bg-success/15 text-success">
+                <Sparkles className="size-6" aria-hidden="true" />
               </div>
               <h2 className="card-title text-2xl font-bold text-base-content">
                 Repasar
@@ -150,7 +91,7 @@ export default function HomePage() {
                   className="btn btn-outline btn-primary gap-2 rounded-full px-5 normal-case shadow-sm transition active:scale-95"
                 >
                   Abrir repaso
-                  <ArrowRightIcon />
+                  <ArrowRight className="size-4" aria-hidden="true" />
                 </Link>
               </div>
             </div>

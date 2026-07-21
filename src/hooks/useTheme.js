@@ -7,6 +7,7 @@
 // default theme before React mounts.
 
 import { useCallback, useEffect, useState } from 'react'
+import { Sun, Moon, Skull, Cake } from 'lucide-react'
 
 export const THEMES = [
   { id: 'light', label: 'Claro' },
@@ -14,6 +15,17 @@ export const THEMES = [
   { id: 'dracula', label: 'Drácula' },
   { id: 'cupcake', label: 'Cupcake' },
 ]
+
+// Lucide icon per theme. The ThemeSwitcher trigger renders the icon for
+// the currently active theme (changes on switch), and each dropdown row
+// renders its own icon next to the label. Add an entry here when adding
+// a new theme; the ThemeSwitcher falls back to `Sun` if no icon is set.
+export const THEME_ICONS = {
+  light: Sun,
+  dark: Moon,
+  dracula: Skull,
+  cupcake: Cake,
+}
 
 export const DEFAULT_THEME = 'light'
 export const STORAGE_KEY = 'ospinajuanp-ingles:theme'
@@ -52,5 +64,5 @@ export function useTheme() {
     setThemeState(next)
   }, [])
 
-  return { theme, setTheme, themes: THEMES }
+  return { theme, setTheme, themes: THEMES, themeIcons: THEME_ICONS }
 }

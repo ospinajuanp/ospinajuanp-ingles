@@ -4,12 +4,21 @@
 // plus the `.btn .btn-circle .btn-ghost` modifiers so it inherits our
 // theme tokens (`base-100`, `base-content`, `primary`) without any
 // custom colors. Sits next to ReviewNavButton in the ShellHeader.
+//
+// Icons:
+//   - Trigger renders the icon for the CURRENTLY ACTIVE theme (changes
+//     on switch: Sun ↔ Moon ↔ Skull ↔ Cake). Fallback to Sun if the
+//     theme id has no entry in THEME_ICONS.
+//   - Each dropdown row renders its theme's icon next to the label, plus
+//     a Check for the active row.
 
+import { Check } from 'lucide-react'
 import { useTheme } from '../hooks/useTheme'
 
 export default function ThemeSwitcher({ className = '' }) {
-  const { theme, setTheme, themes } = useTheme()
+  const { theme, setTheme, themes, themeIcons } = useTheme()
   const currentLabel = themes.find((t) => t.id === theme)?.label ?? theme
+  const TriggerIcon = themeIcons[theme] ?? themeIcons.light
 
   return (
     <div className={`dropdown dropdown-end ${className}`.trim()}>
@@ -20,20 +29,7 @@ export default function ThemeSwitcher({ className = '' }) {
         className="inline-flex items-center justify-center rounded-full border border-base-300 bg-base-100 p-2.5 text-base-content shadow-sm transition hover:border-primary/40 hover:text-primary hover:shadow-md active:scale-95"
         title={`Tema: ${currentLabel}`}
       >
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="size-4"
-          aria-hidden="true"
-        >
-          <circle cx="12" cy="12" r="9" />
-          <path d="M12 3v18" />
-          <path d="M12 3a9 9 0 0 1 0 18" />
-        </svg>
+        <TriggerIcon className="size-4" aria-hidden="true" />
       </div>
       <ul
         tabIndex={0}
@@ -42,36 +38,30 @@ export default function ThemeSwitcher({ className = '' }) {
         <li className="menu-title px-2 pt-1 text-[0.65rem] uppercase tracking-[0.18em] text-base-content/50">
           Tema
         </li>
-        {themes.map(({ id, label }) => (
-          <li key={id}>
-            <button
-              type="button"
-              onClick={() => setTheme(id)}
-              aria-pressed={theme === id}
-              className={`flex items-center justify-between gap-3 rounded-xl px-3 py-2 text-sm font-medium transition ${
-                theme === id
-                  ? 'bg-primary/15 text-primary'
-                  : 'text-base-content hover:bg-base-200'
-              }`}
-            >
-              <span>{label}</span>
-              {theme === id ? (
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="size-4 shrink-0 text-primary"
-                  aria-hidden="true"
-                >
-                  <path d="M20 6 9 17l-5-5" />
-                </svg>
-              ) : null}
-            </button>
-          </li>
-        ))}
+        {themes.map(({ id, label }) => {
+          const RowIcon = themeIcons[id] ?? themeIcons.light
+          const isActive = theme === id
+          return (
+            <li key={id}>
+              <button
+                type="button"
+                onClick={() => setTheme(id)}
+                aria-pressed={isActive}
+                className={`flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium transition ${
+                  isActive
+                    ? 'bg-primary/15 text-primary'
+                    : 'text-base-content hover:bg-base-200'
+                }`}
+              >
+                <RowIcon className="size-4 shrink-0" aria-hidden="true" />
+                <span className="flex-1 truncate">{label}</span>
+                {isActive ? (
+                  <Check className="size-4 shrink-0" aria-hidden="true" />
+                ) : null}
+              </button>
+            </li>
+          )
+        })}
       </ul>
     </div>
   )

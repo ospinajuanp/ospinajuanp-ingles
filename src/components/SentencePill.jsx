@@ -1,4 +1,5 @@
 import { useCallback, useState } from 'react'
+import { Eye, EyeOff } from 'lucide-react'
 
 const PRONOMBRE_LABEL = {
   yo: 'Yo',
@@ -28,6 +29,7 @@ export function SentencePill({ timeKey, data }) {
   const onEnter = useCallback(() => setRevealed(true), [])
   const onLeave = useCallback(() => setRevealed(false), [])
   const onClick = useCallback(() => setRevealed((r) => !r), [])
+  const RevealIcon = revealed ? Eye : EyeOff
 
   return (
     <div
@@ -64,35 +66,7 @@ export function SentencePill({ timeKey, data }) {
           }
           aria-hidden="true"
         >
-          {revealed ? (
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="size-4"
-            >
-              <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7S2 12 2 12z" />
-              <circle cx="12" cy="12" r="3" />
-            </svg>
-          ) : (
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="size-4"
-            >
-              <path d="M17.94 17.94A10.94 10.94 0 0 1 12 19c-7 0-10-7-10-7a18.45 18.45 0 0 1 4.06-5.94" />
-              <path d="M9.9 4.24A10.94 10.94 0 0 1 12 4c7 0 10 7 10 7a18.5 18.5 0 0 1-2.16 3.19" />
-              <path d="M14.12 14.12A3 3 0 1 1 9.88 9.88" />
-              <path d="m1 1 22 22" />
-            </svg>
-          )}
+          <RevealIcon className="size-4" />
         </span>
       </div>
 

@@ -6,7 +6,7 @@ React 19 + Vite 8 + Tailwind v4 + DaisyUI 5 SPA for learning English verbs in Sp
 ## Repo
 - GitHub: `ospinajuanp/ospinajuanp-ingles`, branch `main`
 - Live: `https://ospinajuanp-ingles.vercel.app/`
-- Working tree: clean, last commit `a08442b fix(theme): apply daisyUI tokens across all components (whole-app theming)`
+- Working tree: clean, last commit `e5ecff1 feat(header): brand icon + title are a link to / (HomePage)` (next: lucide-react icon migration)
 
 ## Key conventions
 - Dataset: `verbos_estructura.json` at repo root (gitignored), copied to `public/` by a Vite plugin (`syncDataPlugin` in `vite.config.js`) on dev start, build start, and on every change. The plugin triggers `full-reload` via WebSocket. **HMR auto-restarts dev server on `api/verbs/sync.js` changes — keep in mind during bulk runs.**
@@ -88,9 +88,10 @@ React 19 + Vite 8 + Tailwind v4 + DaisyUI 5 SPA for learning English verbs in Sp
 - `verbos_estructura.json` (root, gitignored): 1000 verbs flattened to 905 unique `infinitivo.ing` (95 duplicates); all 1000 unique `id`.
 
 ## Build
-`pnpm build` → `dist/` produces ~341 KB JS raw / ~106 KB gzipped (53 modules total) and ~118 KB CSS raw / ~19 KB gzipped. MongoDB driver NOT in client bundle. CSS jump breakdown:
-- 46 KB → 111 KB after first DaisyUI integration (4 themes shipped as one CSS bundle).
-- 111 KB → 118 KB after `a08442b` (more DaisyUI utility classes used: `btn`, `textarea-bordered`, etc. — DaisyUI ships them on-demand, so the bump is proportional to how many we actually use).
+`pnpm build` → `dist/` produces ~340 KB JS raw / ~108 KB gzipped (1812 modules after lucide-react, ~53 before) and ~120 KB CSS raw / ~19 KB gzipped. MongoDB driver NOT in client bundle; lucide-react IS in the client bundle (tree-shaken, ~38 unique icons). Build cost:
+- 46 KB → 111 KB CSS after DaisyUI (4 themes shipped in one bundle).
+- 111 KB → 120 KB CSS after the whole-app theming refactor (more DaisyUI utility classes used).
+- 341 KB → 340 KB JS after the lucide-react icon migration (Slight **reduction** in raw JS — inline SVGs replaced by tree-shaken components — but +1.8 KB gzipped due to module fragmentation).
 
 ## What works
 - **1000/1000 verbs migrated to MongoDB Atlas** in `ingles-db.verbos` via `pnpm bulk:direct`. All `migrado_desde='SPA_Bulk_Migration'`, `audio_source='pending'`, `image_source='picsum'`, `oraciones` populated.
@@ -307,6 +308,61 @@ db.verbos.findOne({ id: 0 })                                  // → accept
 db.verbos.findOne({ id: 999 })
 ```
 
+## Icons (lucide-react)
+
+All UI icons come from **`lucide-react@1.25.0`** (tree-shakeable, ESM, React 19 ready). 28 hand-rolled SVGs were replaced across 12 files. SVG literals appear only in two places that are NOT icons:
+- `src/components/HeroIllustration.jsx` — artistic landscape behind the verb hero image.
+- `public/favicon`, brand `<img>` in ShellHeader — static asset, not an icon.
+
+### Per-theme icons (THEME_ICONS map)
+
+Defined in `src/hooks/useTheme.js` and exposed via `useTheme().themeIcons`:
+
+| Theme    | Icon       | Lucide category            |
+|----------|------------|---------------------------|
+| light    | `Sun`      | accessibility / weather   |
+| dark     | `Moon`     | accessibility             |
+| dracula  | `Skull`    | gaming                    |
+| cupcake  | `Cake`     | food-beverage / social    |
+
+**ThemeSwitcher trigger** renders the icon for the currently active theme (changes on switch: Sun ↔ Moon ↔ Skull ↔ Cake). Each dropdown row renders its own icon next to the label plus a `Check` for the active row. The trigger falls back to `themeIcons.light` (Sun) if a theme id has no entry.
+
+To add a new theme: import the icon from `lucide-react`, add an entry in `THEME_ICONS`, add the entry to `THEMES` with `{ id, label }`.
+
+### Icon inventory (per file)
+
+| File                              | Lucide icons used |
+|-----------------------------------|---|
+| `src/App.jsx`                     | `TriangleAlert` (ErrorState) |
+| `src/components/ReviewNavButton.jsx` | `RotateCw` |
+| `src/components/SearchBar.jsx`    | `Search`, `X` |
+| `src/components/CategoryFilter.jsx` | `SlidersHorizontal`, `ChevronDown`, `RotateCcw`, `Check` |
+| `src/components/NavButtons.jsx`   | `ChevronLeft`, `ChevronRight`, `Dices` |
+| `src/components/AudioButton.jsx`  | `Loader2`, `Pause` (filled), `VolumeX`, `AlertCircle`, `Play` (filled) |
+| `src/components/Flashcard.jsx`    | `X`, `HelpCircle`, `Check`, `Star` (4 grade buttons) |
+| `src/components/ConjugationGrid.jsx` | `Eye`, `EyeOff`, `Lightbulb` |
+| `src/components/SentencePill.jsx` | `Eye`, `EyeOff` |
+| `src/components/VerbCard.jsx`     | `Maximize2`, `Minimize2`, `Loader2`, `Camera`, `SearchX` (overlay buttons + EmptyState) |
+| `src/components/ImageCredit.jsx`  | `Camera` |
+| `src/components/AddFlashcardForm.jsx` | `X`, `Plus` |
+| `src/components/ThemeSwitcher.jsx` | (uses `themeIcons` map + `Check`) |
+| `src/pages/HomePage.jsx`          | `Sparkles`, `LayoutGrid`, `ArrowRight` |
+| `src/pages/SRSStudyPage.jsx`      | `ArrowLeft`, `Plus`, `CheckCircle2` |
+
+### Pattern
+
+```javascript
+import { IconName, OtherIcon } from 'lucide-react'
+
+// Class-driven sizing + color (inherit currentColor):
+<IconName className="size-5 text-primary" aria-hidden="true" />
+
+// Filled variants (Play, Pause) explicitly opt in:
+<Pause fill="currentColor" className="size-5" aria-hidden="true" />
+```
+
+Lucide default `stroke-width="2"`. The 4 Flashcard grade buttons get `stroke-width="2.25"` to look slightly bolder at small sizes (3.5 in the sm+ layout). All other icons use Lucide defaults.
+
 ## How to run
 ```bash
 pnpm install
@@ -385,6 +441,17 @@ and their original `migrado_desde` is preserved. Verified output:
 
 ```
 (this session)
+  feat(icons): migrate 28 hand-rolled SVGs to lucide-react + per-theme icons
+    - pnpm add lucide-react@1.25.0
+    - useTheme.js exports THEME_ICONS map (Sun/Moon/Skull/Cake)
+    - ThemeSwitcher: trigger becomes contextual (renders active theme's
+      icon), each dropdown row gets its theme's icon + Check for active
+    - All inline SVGs in App.jsx + 11 components + 2 pages replaced
+    - Flashcard grade buttons use Icon field in GRADE_BUTTONS array
+    - AudioButton Play/Pause kept filled (fill="currentColor")
+  feat(header): brand icon + title are a link to / (HomePage) (predecessor)
+e5ecff1 docs(handoff): record whole-app daisyUI theming + token mapping table
+a08442b feat(theme): apply daisyUI tokens across all components (whole-app theming)
   fix(theme): apply daisyUI tokens across all components (whole-app theming)
     - body bg-base-200 / text-base-content
     - ShellHeader bg-base-100/85 + border-base-300

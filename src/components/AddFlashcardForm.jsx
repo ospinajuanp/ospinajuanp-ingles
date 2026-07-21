@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { X, Plus } from 'lucide-react'
 
 export default function AddFlashcardForm({ onAdd, onCancel }) {
   const [es, setEs] = useState('')
@@ -42,19 +43,7 @@ export default function AddFlashcardForm({ onAdd, onCancel }) {
             aria-label="Cerrar formulario"
             className="inline-flex size-8 shrink-0 items-center justify-center rounded-full text-base-content/50 transition hover:bg-base-200 hover:text-base-content active:scale-95"
           >
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="size-4"
-              aria-hidden="true"
-            >
-              <path d="M18 6 6 18" />
-              <path d="m6 6 12 12" />
-            </svg>
+            <X className="size-4" aria-hidden="true" />
           </button>
         ) : null}
       </div>
@@ -106,18 +95,7 @@ export default function AddFlashcardForm({ onAdd, onCancel }) {
           disabled={!canSubmit}
           className="btn btn-primary gap-2 rounded-full px-5 normal-case shadow-sm disabled:bg-base-300 disabled:text-base-content/40"
         >
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="size-4"
-            aria-hidden="true"
-          >
-            <path d="M12 5v14M5 12h14" />
-          </svg>
+          <Plus className="size-4" aria-hidden="true" />
           Agregar tarjeta
         </button>
       </div>

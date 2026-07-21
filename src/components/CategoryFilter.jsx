@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
+import { SlidersHorizontal, ChevronDown, RotateCcw, Check } from 'lucide-react'
 
 const PRETTY_NAMES = {
   generales: 'Generales',
@@ -86,18 +87,7 @@ export default function CategoryFilter({
             : 'border-base-300 bg-base-100 text-base-content hover:bg-base-200')
         }
       >
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="size-3.5"
-          aria-hidden="true"
-        >
-          <path d="M3 6h18M6 12h12M10 18h4" />
-        </svg>
+        <SlidersHorizontal className="size-3.5" aria-hidden="true" />
         <span className="max-w-[10rem] truncate">
           {activeCategoryLabel(category, subcategory)}
         </span>
@@ -113,18 +103,10 @@ export default function CategoryFilter({
             {triggerCount}
           </span>
         ) : null}
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
+        <ChevronDown
           className={'size-3.5 transition-transform ' + (open ? 'rotate-180' : '')}
           aria-hidden="true"
-        >
-          <path d="m6 9 6 6 6-6" />
-        </svg>
+        />
       </button>
 
       {open ? (
@@ -205,19 +187,7 @@ export default function CategoryFilter({
                 onClick={reset}
                 className="inline-flex w-full items-center justify-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-semibold text-base-content/70 transition hover:bg-base-200 hover:text-base-content"
               >
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="size-3.5"
-                  aria-hidden="true"
-                >
-                  <path d="M3 12a9 9 0 1 0 9-9" />
-                  <path d="M3 4v5h5" />
-                </svg>
+                <RotateCcw className="size-3.5" aria-hidden="true" />
                 Limpiar filtros
               </button>
             </div>
@@ -251,19 +221,7 @@ function Row({ active, label, count, onClick, disabled = false }) {
           }
           aria-hidden="true"
         >
-          {active ? (
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="3"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="size-2.5"
-            >
-              <path d="m5 12 5 5 9-11" />
-            </svg>
-          ) : null}
+          {active ? <Check className="size-2.5" strokeWidth={3} /> : null}
         </span>
         <span className="truncate">{label}</span>
       </span>

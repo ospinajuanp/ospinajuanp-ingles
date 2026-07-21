@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { Maximize2, Minimize2, Loader2, Camera, SearchX } from 'lucide-react'
 import ConjugationGrid from './ConjugationGrid'
 import SentencesList from './SentencePill'
 import NavButtons from './NavButtons'
@@ -250,37 +251,9 @@ function VerbImageOverlay({
         className="absolute top-2 left-2 z-30 inline-flex size-9 items-center justify-center rounded-full bg-black/50 text-white shadow-md backdrop-blur-sm transition hover:scale-105 hover:bg-black/70 active:scale-95 motion-reduce:animate-none"
       >
         {heroExpanded ? (
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="size-4"
-            aria-hidden="true"
-          >
-            <path d="M8 3v3a2 2 0 0 1-2 2H3" />
-            <path d="M21 8h-3a2 2 0 0 1-2-2V3" />
-            <path d="M3 16h3a2 2 0 0 1 2 2v3" />
-            <path d="M16 21v-3a2 2 0 0 1 2-2h3" />
-          </svg>
+          <Minimize2 className="size-4" aria-hidden="true" />
         ) : (
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="size-4"
-            aria-hidden="true"
-          >
-            <path d="M8 3H5a2 2 0 0 0-2 2v3" />
-            <path d="M21 8V5a2 2 0 0 0-2-2h-3" />
-            <path d="M3 16v3a2 2 0 0 0 2 2h3" />
-            <path d="M16 21h3a2 2 0 0 0 2-2v-3" />
-          </svg>
+          <Maximize2 className="size-4" aria-hidden="true" />
         )}
       </button>
       <div
@@ -305,34 +278,12 @@ function VerbImageOverlay({
           className="absolute top-2 right-2 z-30 inline-flex size-9 items-center justify-center rounded-full bg-black/50 text-white shadow-md backdrop-blur-sm transition hover:scale-105 hover:bg-black/70 active:scale-95 disabled:opacity-50 disabled:hover:scale-100 motion-reduce:animate-none"
         >
           {refreshing ? (
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+            <Loader2
               className="size-4 animate-spin motion-reduce:animate-none"
               aria-hidden="true"
-            >
-              <path d="M21 12a9 9 0 1 1-6.219-8.56" />
-            </svg>
+            />
           ) : (
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="size-4"
-              aria-hidden="true"
-            >
-              <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z" />
-              <circle cx="12" cy="13" r="3.5" />
-              <path d="M21 8l-2-2" />
-              <path d="m17 6 4 4" />
-            </svg>
+            <Camera className="size-4" aria-hidden="true" />
           )}
         </button>
       ) : null}
@@ -352,19 +303,7 @@ function EmptyState() {
   return (
     <div className="rounded-2xl border border-base-300 bg-base-100 p-10 text-center shadow-sm">
       <div className="mx-auto mb-3 inline-flex size-12 items-center justify-center rounded-full bg-base-200 text-base-content/50">
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="size-6"
-          aria-hidden="true"
-        >
-          <circle cx="11" cy="11" r="7" />
-          <path d="m20 20-3.5-3.5" />
-        </svg>
+        <SearchX className="size-6" aria-hidden="true" />
       </div>
       <p className="text-lg font-semibold text-base-content">No se encontraron verbos</p>
       <p className="mt-1 text-sm text-base-content/70">

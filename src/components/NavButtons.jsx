@@ -1,3 +1,5 @@
+import { ChevronLeft, ChevronRight, Dices } from 'lucide-react'
+
 export default function NavButtons({
   onPrev,
   onNext,
@@ -17,18 +19,7 @@ export default function NavButtons({
         aria-label="Verbo anterior"
         className="inline-flex size-12 items-center justify-center rounded-full border border-base-300 bg-base-100 text-base-content/80 shadow-sm transition hover:border-primary/40 hover:bg-primary/10 hover:text-primary hover:-translate-y-0.5 active:scale-95 disabled:opacity-40 disabled:hover:translate-y-0 disabled:hover:bg-base-100 disabled:hover:text-base-content/80"
       >
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="size-5"
-          aria-hidden="true"
-        >
-          <path d="m15 18-6-6 6-6" />
-        </svg>
+        <ChevronLeft className="size-5" aria-hidden="true" />
       </button>
 
       <div
@@ -51,18 +42,7 @@ export default function NavButtons({
         aria-label="Siguiente verbo"
         className="btn btn-primary inline-flex size-12 min-h-0 items-center justify-center rounded-full p-0 shadow-sm transition hover:-translate-y-0.5 active:scale-95 disabled:opacity-40 disabled:hover:translate-y-0"
       >
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="size-5"
-          aria-hidden="true"
-        >
-          <path d="m9 18 6-6-6-6" />
-        </svg>
+        <ChevronRight className="size-5" aria-hidden="true" />
       </button>
 
       <button
@@ -73,23 +53,7 @@ export default function NavButtons({
         title="Verbo aleatorio"
         className="inline-flex size-12 items-center justify-center rounded-full border-2 border-primary/40 bg-base-100 text-primary shadow-sm transition hover:border-primary hover:bg-primary/10 hover:-translate-y-0.5 active:scale-95 disabled:opacity-40 disabled:hover:translate-y-0 disabled:hover:bg-base-100"
       >
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="size-5"
-          aria-hidden="true"
-        >
-          <rect x="3" y="3" width="18" height="18" rx="3" />
-          <circle cx="8" cy="8" r="1.2" fill="currentColor" />
-          <circle cx="16" cy="8" r="1.2" fill="currentColor" />
-          <circle cx="12" cy="12" r="1.2" fill="currentColor" />
-          <circle cx="8" cy="16" r="1.2" fill="currentColor" />
-          <circle cx="16" cy="16" r="1.2" fill="currentColor" />
-        </svg>
+        <Dices className="size-5" aria-hidden="true" />
       </button>
     </div>
   )

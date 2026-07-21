@@ -1,4 +1,5 @@
 import { forwardRef, useCallback, useEffect, useRef, useState } from 'react'
+import { Loader2, Pause, VolumeX, AlertCircle, Play } from 'lucide-react'
 import {
   getCachedAudio,
   isTTSSupported,
@@ -295,75 +296,24 @@ export default forwardRef(function AudioButton({ word, onResolved }, ref) {
   let icon
   if (state === 'loading') {
     icon = (
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+      <Loader2
         className="size-5 animate-spin motion-reduce:animate-none"
         aria-hidden="true"
-      >
-        <path d="M21 12a9 9 0 1 1-6.219-8.56" />
-      </svg>
+      />
     )
   } else if (state === 'playing') {
-    icon = (
-      <svg
-        viewBox="0 0 24 24"
-        fill="currentColor"
-        className="size-5"
-        aria-hidden="true"
-      >
-        <rect x="6" y="5" width="4" height="14" rx="1" />
-        <rect x="14" y="5" width="4" height="14" rx="1" />
-      </svg>
-    )
+    icon = <Pause className="size-5" aria-hidden="true" fill="currentColor" />
   } else if (state === 'unavailable') {
-    icon = (
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="size-5"
-        aria-hidden="true"
-      >
-        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
-        <line x1="23" y1="9" x2="17" y2="15" />
-        <line x1="17" y1="9" x2="23" y2="15" />
-      </svg>
-    )
+    icon = <VolumeX className="size-5" aria-hidden="true" />
   } else if (state === 'error') {
-    icon = (
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="size-5"
-        aria-hidden="true"
-      >
-        <circle cx="12" cy="12" r="10" />
-        <line x1="12" y1="8" x2="12" y2="12" />
-        <line x1="12" y1="16" x2="12.01" y2="16" />
-      </svg>
-    )
+    icon = <AlertCircle className="size-5" aria-hidden="true" />
   } else {
     icon = (
-      <svg
-        viewBox="0 0 24 24"
-        fill="currentColor"
+      <Play
         className="size-5 translate-x-[1px] transition group-hover/audio:scale-110"
         aria-hidden="true"
-      >
-        <path d="M8 5v14l11-7z" />
-      </svg>
+        fill="currentColor"
+      />
     )
   }
 

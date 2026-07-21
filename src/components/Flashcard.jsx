@@ -21,6 +21,7 @@
 // (rose / amber / emerald / sky) so the meaning travels across themes.
 
 import { useCallback, useState } from 'react'
+import { X, HelpCircle, Check, Star } from 'lucide-react'
 
 const FLIP_DURATION_MS = 600
 
@@ -31,9 +32,7 @@ const GRADE_BUTTONS = [
     hint: 'Repetir mañana',
     classes:
       'border border-error/40 bg-base-100 text-error hover:bg-error/10',
-    icon: (
-      <path d="M18 6 6 18M6 6l12 12" />
-    ),
+    Icon: X,
   },
   {
     grade: 'hard',
@@ -41,13 +40,7 @@ const GRADE_BUTTONS = [
     hint: 'Me costó recordar',
     classes:
       'border border-warning/40 bg-base-100 text-warning hover:bg-warning/10',
-    icon: (
-      <>
-        <circle cx="12" cy="12" r="9" />
-        <path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1 .9-1 1.7" />
-        <path d="M12 17h.01" />
-      </>
-    ),
+    Icon: HelpCircle,
   },
   {
     grade: 'good',
@@ -55,7 +48,7 @@ const GRADE_BUTTONS = [
     hint: 'Lo recordé',
     classes:
       'border border-success/40 bg-base-100 text-success hover:bg-success/10',
-    icon: <path d="M20 6 9 17l-5-5" />,
+    Icon: Check,
   },
   {
     grade: 'easy',
@@ -63,11 +56,7 @@ const GRADE_BUTTONS = [
     hint: 'Al instante',
     classes:
       'border border-info/40 bg-gradient-to-br from-info to-info/80 text-white shadow-md hover:from-info/90 hover:to-info/70',
-    icon: (
-      <>
-        <path d="m12 2 2.4 5 5.6.6-4.2 3.7 1.2 5.7L12 14.3 7 17l1.2-5.7L4 7.6 9.6 7z" />
-      </>
-    ),
+    Icon: Star,
   },
 ]
 
@@ -168,7 +157,7 @@ export default function Flashcard({ card, onGrade }) {
         aria-hidden={!flipped}
         className="mx-auto mt-6 grid max-w-xl grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-3"
       >
-        {GRADE_BUTTONS.map(({ grade, label, hint, classes, icon }) => (
+        {GRADE_BUTTONS.map(({ grade, label, hint, classes, Icon }) => (
           <button
             key={grade}
             type="button"
@@ -177,18 +166,11 @@ export default function Flashcard({ card, onGrade }) {
             aria-label={`${label} — ${hint}`}
             className={`inline-flex items-center justify-center gap-1.5 rounded-2xl px-3 py-2.5 text-sm font-semibold transition active:scale-95 disabled:cursor-not-allowed disabled:opacity-50 sm:flex-col sm:gap-0 sm:rounded-full sm:px-2 sm:py-2.5 ${classes}`}
           >
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+            <Icon
               className="size-4 shrink-0 sm:size-3.5"
               aria-hidden="true"
-            >
-              {icon}
-            </svg>
+              strokeWidth={grade === 'easy' ? 2 : 2.25}
+            />
             <span>{label}</span>
             <span className="hidden text-[0.65rem] font-medium uppercase tracking-wider opacity-70 sm:inline">
               {hint}
