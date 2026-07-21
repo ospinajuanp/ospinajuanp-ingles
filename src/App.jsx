@@ -6,6 +6,8 @@ import CategoryFilter from './components/CategoryFilter'
 import VerbCard from './components/VerbCard'
 import ReviewNavButton from './components/ReviewNavButton'
 import ThemeSwitcher from './components/ThemeSwitcher'
+import SyncButton from './components/SyncButton'
+import SyncModal from './components/SyncModal'
 import { useVerbos } from './hooks/useVerbos'
 import { VerbProvider, useVerbosContext } from './contexts/VerbContext'
 import { checkPexelsStatus } from './utils/pexels'
@@ -80,7 +82,7 @@ function ErrorState({ error, onRetry }) {
   )
 }
 
-function ShellHeader() {
+function ShellHeader({ onOpenSync }) {
   const verbos = useVerbosContext()
   const { pathname } = useLocation()
   const isVerbRoute = pathname.startsWith('/v1/verbs')
@@ -123,6 +125,7 @@ function ShellHeader() {
           />
         ) : null}
         {isVerbRoute ? <ReviewNavButton /> : null}
+        <SyncButton onClick={onOpenSync} />
         <ThemeSwitcher />
       </div>
     </Header>
@@ -171,6 +174,7 @@ function LegacyVerbRedirect() {
 
 export default function App() {
   const [retryKey, setRetryKey] = useState(0)
+  const [syncOpen, setSyncOpen] = useState(false)
   const verbos = useVerbos()
 
   useEffect(() => {
@@ -180,7 +184,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-base-200 text-base-content">
       <VerbProvider value={verbos}>
-        <ShellHeader />
+        <ShellHeader onOpenSync={() => setSyncOpen(true)} />
 
         <main className="mx-auto max-w-4xl px-4 py-6 sm:px-6 sm:py-8">
           {verbos.error && !verbos.loading ? (
@@ -203,6 +207,8 @@ export default function App() {
             </Routes>
           )}
         </main>
+
+        <SyncModal open={syncOpen} onClose={() => setSyncOpen(false)} />
       </VerbProvider>
     </div>
   )

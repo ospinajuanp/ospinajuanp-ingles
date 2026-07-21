@@ -5,16 +5,24 @@ import { BrowserRouter } from 'react-router-dom'
 import './index.css'
 import App from './App.jsx'
 import { SRSProvider } from './contexts/SRSContext'
+import { SyncProvider } from './contexts/SyncContext'
 import { useSRS } from './hooks/useSRS'
+import { useTheme } from './hooks/useTheme'
+import { useSyncEngine } from './hooks/useSyncEngine'
 
 function Root() {
-  // SRS state lives at the top of the tree so any hook called inside
-  // <App> (notably useVerbos, which auto-registers the current verb)
-  // can read it via useSRSContext without racing the provider mount.
+  // SRS + Theme are the two stateful inputs the sync engine needs to
+  // observe. Both are loaded here (above <App>) so the engine can read
+  // them on its very first effect run — no race against <App> mount.
   const srs = useSRS()
+  const themeApi = useTheme()
+  const sync = useSyncEngine({ srs, themeApi })
+
   return (
     <SRSProvider value={srs}>
-      <App />
+      <SyncProvider value={sync}>
+        <App />
+      </SyncProvider>
     </SRSProvider>
   )
 }

@@ -49,6 +49,21 @@ function syncDataPlugin() {
           }
         }
       })
+
+      // /api/sync/user → anonymous multi-device sync slot.
+      server.middlewares.use('/api/sync/user', async (req, res) => {
+        try {
+          const mod = await import('./api/sync/user.js')
+          await mod.default(req, res)
+        } catch (err) {
+          console.error('[vite:middleware] /api/sync/user', err)
+          if (!res.headersSent) {
+            res.statusCode = 500
+            res.setHeader('content-type', 'application/json')
+            res.end(JSON.stringify({ ok: false, error: err.message }))
+          }
+        }
+      })
     },
   }
 }

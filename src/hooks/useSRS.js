@@ -77,12 +77,17 @@ function makeId(prefix) {
 
 export function useSRS() {
   const [store, setStore] = useState(() => readStore())
+  // Bumped on every local commit and on every cross-tab `storage` event.
+  // Consumers (notably the sync engine) watch this number to react to
+  // mutations without having to diff the full SRS payload.
+  const [revision, setRevision] = useState(0)
 
   // Cross-tab sync: another tab wrote to the same key, pull it in.
   useEffect(() => {
     function onStorage(e) {
       if (e.key !== LOCAL_STORAGE_KEY) return
       setStore(readStore())
+      setRevision((r) => r + 1)
     }
     window.addEventListener('storage', onStorage)
     return () => window.removeEventListener('storage', onStorage)
@@ -106,6 +111,7 @@ export function useSRS() {
       writeStore(safeNext)
       return safeNext
     })
+    setRevision((r) => r + 1)
   }, [])
 
   // ── Mutations ────────────────────────────────────────────────────────
@@ -246,6 +252,28 @@ export function useSRS() {
     [commit, store.cards],
   )
 
+  /**
+   * Wholesale replace the SRS store. Used by the sync engine to inject
+   * a Last-Write-Wins merge result coming from another device. Bumps
+   * `revision` so downstream watchers (including the sync engine's own
+   * debounced push) see the change.
+   */
+  const replaceStore = useCallback((incoming) => {
+    if (!incoming || typeof incoming !== 'object') return false
+    const safe = {
+      version: 1,
+      cards:
+        incoming.cards && typeof incoming.cards === 'object' && incoming.cards !== null
+          ? incoming.cards
+          : {},
+      order: Array.isArray(incoming.order) ? incoming.order : [],
+    }
+    setStore(safe)
+    writeStore(safe)
+    setRevision((r) => r + 1)
+    return true
+  }, [])
+
   // ── Selectors (derived state — safe to recompute every render) ───────
 
   const allCards = store.order
@@ -272,11 +300,17 @@ export function useSRS() {
     // lists
     dueCards,
 
+    // mutation counter — bumped on every commit (incl. cross-tab
+    // `storage` events). The sync engine watches this to decide when
+    // to debounce-push the latest snapshot to MongoDB Atlas.
+    revision,
+
     // actions
     addCustomSentence,
     registerVerb,
     gradeCard,
     removeCard,
     editCustomCard,
+    replaceStore,
   }
 }
