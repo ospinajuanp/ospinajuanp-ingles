@@ -1,17 +1,21 @@
 # Agent Handoff — ospinajuanp-ingles
 
 ## Project
-React 19 + Vite 8 + Tailwind v4 SPA for learning English verbs in Spanish. On-demand Pexels hero images, Free Dictionary audio (with `SpeechSynthesis` fallback), weighted-random initial verb, progressive-disclosure UX (blur-reveal of Spanish), URL-driven dual routing, MongoDB Atlas lazy+bulk sync, **SM-2 spaced repetition / SRS module at `/repaso`** with 3D-flip flashcards and `localStorage`-first persistence.
+React 19 + Vite 8 + Tailwind v4 + DaisyUI 5 SPA for learning English verbs in Spanish. On-demand Pexels hero images, Free Dictionary audio (with `SpeechSynthesis` fallback), weighted-random initial verb, progressive-disclosure UX (blur-reveal of Spanish), namespaced `/v1/verbs/:verbSelector` + `/v1/test/` routing with a `/` landing page, MongoDB Atlas lazy+bulk sync, **SM-2 spaced repetition / SRS module at `/v1/test`** with 3D-flip flashcards and `localStorage`-first persistence, and a multi-theme switcher (light / dark / dracula / cupcake).
 
 ## Repo
 - GitHub: `ospinajuanp/ospinajuanp-ingles`, branch `main`
 - Live: `https://ospinajuanp-ingles.vercel.app/`
-- Working tree: clean, last commit `c5f5bda feat(srs): spaced repetition module at /repaso with 4-level SM-2`
+- Working tree: clean, last commit `33d4039 feat(routing+theme): namespace /v1 + landing page + DaisyUI multi-theme`
 
 ## Key conventions
 - Dataset: `verbos_estructura.json` at repo root (gitignored), copied to `public/` by a Vite plugin (`syncDataPlugin` in `vite.config.js`) on dev start, build start, and on every change. The plugin triggers `full-reload` via WebSocket. **HMR auto-restarts dev server on `api/verbs/sync.js` changes — keep in mind during bulk runs.**
-- Routing: **URL is the single source of truth**. React Router v7.14.0. `/` redirects (replace) to `/<slug>` via weighted-random; `/:verbSelector` accepts digits (`verb.id`) or string (`infinitivo.ing` case-insensitive trimmed); `/repaso` renders the SRS study page; unknown selector → `<Navigate to="/" replace />`. **Reserved non-verb routes** (currently `repaso`) live in `RESERVED_ROUTES` (module-scope Set at top of `src/hooks/useVerbos.js`); `useVerbos`'s URL-parsing fallback returns `null` for them, AND the root-redirect effect bails when current `pathname` is reserved — this prevents `/repaso` from being hijacked into a random verb.
-- `useParams()` only works inside `<Route>`. `useVerbos` lives in `<App>` ABOVE `<Routes>`, so reads `useLocation().pathname` and parses with regex `/^\/(.+)$/` + `decodeURIComponent` as `effectiveSelector`. Falls back to `useParams()` value when present.
+- Routing: **URL is the single source of truth**. React Router v7.18.1. **Namespaced under `/v1`**:
+  - `/` → `<HomePage>` (landing menu, two DaisyUI cards: Explorar Verbos / Repasar). Does **not** auto-pick a verb.
+  - `/v1/verbs/:verbSelector` → `<VerbView>`. `verbSelector` accepts digits (`verb.id`) or string (`infinitivo.ing` case-insensitive trimmed).
+  - `/v1/test` (and `/v1/test/`) → `<SRSStudyPage>`.
+  - `/repaso` and `/:verbSelector` are kept as **back-compat redirects**: `/repaso` → `/v1/test`, `/<slug>` → `/v1/verbs/<slug>`. Any other unknown URL → `<Navigate to="/" replace />`.
+- `useParams()` only works inside `<Route>`. `useVerbos` lives in `<App>` ABOVE `<Routes>`, so reads `useLocation().pathname` and parses with regex `/^\/v1\/verbs\/([^/]+)\/?$/` + `decodeURIComponent` as `effectiveSelector`. The regex is scoped to the verb namespace — `/`, `/v1/test`, and `/repaso` no longer trigger any verb parsing. Falls back to `useParams()` value when present. **No more `RESERVED_ROUTES` set** — the namespaced regex replaces it.
 - Weighted random: buckets A (≤10, 50%), B (10.1–500, 30%), C (500.1–1000, 20%). Lives in `src/utils/weightedRandom.js`.
 - Env: `.env` / `.env.*` are gitignored, `.env.example` is force-added via `!.env.example` negation. Two Pexels keys (`VITE_PEXELS_API_KEY` + optional `VITE_PEXELS_API_KEY_2`, automatic fallback on 401/403/429/5xx/network) + `MONGODB_URI` (server-side only).
 - ESLint 9 flat config: forbids `setState` in `useEffect` (`react-hooks/set-state-in-effect`). Use derived-state pattern (setState during render, like VerbCard lines 425-433) OR `useState` initializer. New Node-globals block for `scripts/**/*.mjs` and `api/**/*.js` with `no-undef: error`. `src/main.jsx` and the context files use `/* eslint-disable react-refresh/only-export-components */` at the top of the file (matches the existing context-file pattern).
@@ -41,11 +45,19 @@ React 19 + Vite 8 + Tailwind v4 SPA for learning English verbs in Spanish. On-de
 - **Vercel production needs env vars**: `VITE_PEXELS_API_KEY`, `VITE_PEXELS_API_KEY_2`, `MONGODB_URI` must be set in Vercel Dashboard → Settings → Environment Variables, all three envs. Vercel does NOT auto-redeploy when env vars change — must trigger manually.
 
 ## Relevant files
-- `src/App.jsx`: `useVerbos()` once at top level (above `<Routes>`), wraps in `<VerbProvider value={verbos}>`, renders ShellHeader + `<Routes>` (`/repaso`, `/`, `/:verbSelector`, `*` catch-all `<Navigate to="/" replace />`). Does NOT call `useSRS()` — that lives in `Root` (`src/main.jsx`). `checkPexelsStatus()` on mount.
+- `src/App.jsx`: `useVerbos()` once at top level (above `<Routes>`), wraps in `<VerbProvider value={verbos}>`, renders ShellHeader + `<Routes>`:
+  - `/` → `<HomePage>`
+  - `/v1/verbs/:verbSelector` → `<VerbView retryKey={...} />`
+  - `/v1/test` and `/v1/test/` → `<SRSStudyPage />`
+  - `/repaso` → `<Navigate to="/v1/test" replace />` (legacy redirect)
+  - `/:verbSelector` → `<LegacyVerbRedirect>` (rewrites to `/v1/verbs/<slug>`)
+  - `*` catch-all → `<Navigate to="/" replace />`
+  
+  Does NOT call `useSRS()` — that lives in `Root` (`src/main.jsx`). `checkPexelsStatus()` on mount. ShellHeader now includes `ThemeSwitcher` next to `ReviewNavButton`; `SearchBar` + `CategoryFilter` render only when `pathname.startsWith('/v1/verbs')` (hidden on `/` and `/v1/test`).
 - `src/main.jsx`: wraps a local `Root` component in `<BrowserRouter>` + `<StrictMode>`. `Root` calls `useSRS()` once and wraps `<App />` in `<SRSProvider value={srs}>`. File-level `/* eslint-disable react-refresh/only-export-components */`.
 - `src/contexts/VerbContext.jsx`: `VerbProvider({value, children})` + `useVerbosContext()` hook. File-level `/* eslint-disable react-refresh/only-export-components */`.
 - `src/contexts/SRSContext.jsx`: `SRSProvider({value, children})` + `useSRSContext()` (throws if used outside the provider). Same eslint-disable directive at top.
-- `src/hooks/useVerbos.js`: URL-driven via `useLocation` regex fallback; exposes `current`, `currentVerb`, `currentIndex`, `oraciones`, `conjugationEntries`, `prev/next/shuffle/goTo`, `reportEnrichment`. Three useEffects: root-route redirect (bails when pathname is reserved), 404 fallback, filter-excludes-verb redirect. Auto-registers `currentVerb` into the SRS store via `useSRSContext()` (idempotent). **`RESERVED_ROUTES`** (module-scope `Set`) whitelists non-verb paths; **never** treat id=0 as falsy — `verb.id == null` always.
+- `src/hooks/useVerbos.js`: URL-driven via `useLocation` regex fallback scoped to `/v1/verbs/<slug>`. Exposes `current`, `currentVerb`, `currentIndex`, `oraciones`, `conjugationEntries`, `prev/next/shuffle/goTo/goToRandomVerb`, `reportEnrichment`, `categories`, `counts`, `filtered`. **No more root auto-pick** — HomePage drives the initial verb via `goToRandomVerb()`. Two useEffects remain: invalid-selector-redirect to `/`, and filter-excludes-verb redirect within the verb namespace. Auto-registers `currentVerb` into the SRS store via `useSRSContext()` (idempotent). `verbHref(slug)` helper centralizes the `/v1/verbs/<slug>` URL shape — use it instead of building the string inline. **Never** treat id=0 as falsy — `verb.id == null` always.
 - `src/hooks/useSRS.js`: the single-instance SRS hook. Reads from / writes to `localStorage['ospinajuanp-ingles:srs:v1']`. Exposes `cards`, `dueCards`, `dueCount`, `totalCount`, `customCount`, `verbCount` and actions `addCustomSentence`, `registerVerb`, `gradeCard`, `removeCard`. Cross-tab sync via `window.addEventListener('storage', …)`. `commit(updater)` wraps `setStore((prev) => { … })` and has a defensive guard defaulting to `draft` when the returned value lacks `cards`/`order` — every action's updater MUST still `return draft` explicitly.
 - `src/utils/srs.js`: pure SM-2 functions. Exports `SRS_MIN_EF = 1.3`, `SRS_INITIAL_EF = 2.5`, `createInitialSRSState(initialIntervalDays = 0)`, `calculateNextReview(currentInterval, currentEF, isSuccess)`, `isDue(state, now?)`. No React, no I/O.
 - `src/utils/mongoSync.js`: fire-and-forget `fetch('/api/verbs/sync', {method:'POST', keepalive:true})` with `console.warn` on errors. Uses `payload.id == null` guard.
@@ -55,7 +67,10 @@ React 19 + Vite 8 + Tailwind v4 SPA for learning English verbs in Spanish. On-de
 - `src/components/VerbImage.jsx` (inside VerbCard.jsx): eager Pexels fetch on mount; derived-state sync updates src/credit/stage when `word` changes AND cache has photos. Returns to picsum fallback when Pexels unavailable.
 - `src/components/AudioButton.jsx`: `forwardRef`, accepts `onResolved({audio_url, audio_source})`. **Eager resolution on mount** (cache check → fetch from dictionaryapi.dev). Fires on mount and after every resolution path. `console.warn` only on fetch failure.
 - `src/components/CategoryFilter.jsx`: dropdown with per-category counts, "Limpiar filtros" reset.
-- `src/components/ReviewNavButton.jsx`: header pill `<Link to="/repaso">` with rotating badge showing `dueCount`. Hidden badge when zero; `99+` cap. Reads via `useSRSContext()`.
+- `src/components/ReviewNavButton.jsx`: header pill `<Link to="/v1/test">` with rotating badge showing `dueCount`. Hidden badge when zero; `99+` cap. Reads via `useSRSContext()`.
+- `src/components/ThemeSwitcher.jsx`: DaisyUI 5 dropdown (`dropdown dropdown-end`, `menu dropdown-content`) with theme options. Renders check-mark on the active theme. Uses DaisyUI tokens (`bg-base-100`, `text-base-content`) so it adapts to all themes. ARIA-labelled trigger button. Lives in the ShellHeader right column after `ReviewNavButton`.
+- `src/hooks/useTheme.js`: persists `localStorage['ospinajuanp-ingles:theme']`, sets `<html data-theme="...">` in `useEffect`. Exports `THEMES` (array of `{id, label}`), `DEFAULT_THEME='light'`, `STORAGE_KEY='ospinajuanp-ingles:theme'`, and `{ theme, setTheme, themes }`. Mirrors a small inline `<script>` in `index.html` that pre-applies the theme before React mounts (FOUC prevention).
+- `src/pages/HomePage.jsx`: landing page (NEW). DaisyUI `hero` + two `card` blocks (Explorar Verbos / Repasar). "Empezar" calls `verbos.goToRandomVerb()` (weighted random + `navigate('/v1/verbs/<slug>')`); "Abrir repaso" is `<Link to="/v1/test">`. Uses DaisyUI theme tokens (`bg-base-100/200/300`, `text-base-content`, `btn-primary`) so the page re-skins instantly when the theme switches.
 - `src/components/SearchBar.jsx`, `src/components/ConjugationGrid.jsx`, `src/components/SentencePill.jsx`, `src/components/NavButtons.jsx`, `src/components/HeroIllustration.jsx`, `src/components/ImageCredit.jsx`: stable, prop-driven.
 - `src/components/AddFlashcardForm.jsx`: ES/EN form for the SRS custom deck. Validates both fields, dispatches `onAdd({es, en})`, supports `onCancel` callback.
 - `src/components/Flashcard.jsx`: 3D flip card used by SRSStudyPage. ES on front, EN on back, Tailwind arbitrary values for the perspective/transform/rotateY/backface stack. Grade buttons ("No lo recordé" / "Lo recordé") enabled only when `flipped`. Derived-state reset on card-id change.
@@ -73,18 +88,19 @@ React 19 + Vite 8 + Tailwind v4 SPA for learning English verbs in Spanish. On-de
 - `verbos_estructura.json` (root, gitignored): 1000 verbs flattened to 905 unique `infinitivo.ing` (95 duplicates); all 1000 unique `id`.
 
 ## Build
-`pnpm build` → `dist/` produces ~333 KB JS raw / ~104 KB gzipped after this session's SRS module additions (50 modules total, up from 48). MongoDB driver NOT in client bundle. Net SRS overhead: ~16 KB raw / ~4 KB gzipped (utils + hook + context + components + page).
+`pnpm build` → `dist/` produces ~341 KB JS raw / ~106 KB gzipped (53 modules total). MongoDB driver NOT in client bundle. Net change after the routing+theme refactor: +7 KB raw / +1.4 KB gzipped. CSS bundle jumps from ~46 KB to ~111 KB raw (18 KB gzipped) because DaisyUI ships all four theme palettes in the bundle — the cost of multi-theme is one-shot; per-theme activation is just a `data-theme` swap.
 
 ## What works
 - **1000/1000 verbs migrated to MongoDB Atlas** in `ingles-db.verbos` via `pnpm bulk:direct`. All `migrado_desde='SPA_Bulk_Migration'`, `audio_source='pending'`, `image_source='picsum'`, `oraciones` populated.
 - Idempotency verified: re-running `pnpm bulk:direct` returns `matched: 1000, modified: 1000, upserted: 0, inserted: 0, errors: 0`.
 - Lazy sync fires automatically on every verb visit (random button, arrows, keyboard, direct URL). Existing docs get refreshed URLs, new ones get `migrado_desde='SPA_Lazy_Migration'`.
 - id=0 ("accept") specifically verified to update after the `!id` → `== null` fix.
-- Routing fully working: `/`, `/0`, `/accept`, `/feel`, `/tell`, `/know` all render VerbCard. `/xyz-falso` redirects to `/`. **`/repaso` opens the SRS study page without hijacking into a verb.**
+- Routing fully working under the `/v1` namespace: `/` (HomePage landing), `/v1/verbs/0`, `/v1/verbs/accept`, `/v1/verbs/feel`, `/v1/verbs/tell`, `/v1/verbs/know` all render VerbCard. `/v1/test` opens the SRS study page. Legacy redirects still work: old `/<slug>` → `/v1/verbs/<slug>`, old `/repaso` → `/v1/test`. Unknown URLs → HomePage.
 - Vercel SPA fallback: direct URLs like `/accept` work (rewrite to `index.html`).
 - 190+ verbs have hero image (Pexels or Picsum), audio (API + TTS fallback), 6 conjugations with eye/eye-off reveal, 6 sentences with blur-reveal.
 - Header sticky + responsive, category filter, shuffle, keyboard nav, weighted-random initial pick, tips banner, footer. Header now also hosts the **SRS "Repaso" pill** with a due-count badge that updates in real time across the whole app (driven by `SRSContext`).
-- **SRS module (this session)**: `/repaso` route, 3D flip flashcards (Tailwind `preserve-3d` / `backface-hidden` / `rotate-y-180`), Spanish↔English reveal, SM-2 grading buttons. Two decks (`type: 'custom' | 'verb'`) coexist: custom sentences via `AddFlashcardForm`, verbs auto-registered when visited in the main app. Persistence is `localStorage`-first under `ospinajuanp-ingles:srs:v1`. See the SRS section below.
+- **SRS module (c5f5bda)**: `/v1/test` route (back-compat `/repaso` → `/v1/test`), 3D flip flashcards (Tailwind `preserve-3d` / `backface-hidden` / `rotate-y-180`), Spanish↔English reveal, SM-2 grading buttons. Two decks (`type: 'custom' | 'verb'`) coexist: custom sentences via `AddFlashcardForm`, verbs auto-registered when visited in the main app. Persistence is `localStorage`-first under `ospinajuanp-ingles:srs:v1`. See the SRS section below.
+- **Multi-theme + landing page (33d4039)**: `/` renders a DaisyUI hero with two action cards (Explorar Verbos / Repasar). Theme switcher in the header offers light / dark / dracula / cupcake, persisted to `localStorage['ospinajuanp-ingles:theme']` and applied to `<html data-theme=...>` (FOUC-prevention script in `index.html`). HomePage re-skins via DaisyUI tokens; VerbCard/SRS pages intentionally keep the slate/indigo palette to avoid touching the verb-exploration visuals. See the Multi-theme section below.
 - README + .env.example + all wiring in place.
 
 ## SRS module — Spaced Repetition
@@ -190,12 +206,42 @@ useSRS()  ──── exposed via ────►  <SRSProvider value={srs}>
 - `src/hooks/useVerbos.js` — imports `useSRSContext`. After `currentVerb` is computed, runs `useEffect(() => { if (currentVerb && srs) srs.registerVerb(currentVerb) }, [currentVerb, srs])`. Idempotent — repeat visits are no-ops. Also has the `RESERVED_ROUTES` guard so non-verb routes don't get hijacked into random-verb redirect.
 
 ### What works (SRS specifically)
-- `/repaso` renders with no console errors. Manually visiting the URL and clicking the header "Repaso" pill both work.
+- `/v1/test` (and the legacy `/repaso` redirect) renders with no console errors. Manually visiting the URL and clicking the header "Repaso" pill both work.
 - Cards drawn on load, custom + verb decks mixed and shuffled into one queue.
 - **4-level grading UI** ("Otra vez" / "Difícil" / "Bien" / "Fácil"). Each grade updates `localStorage` synchronously via `srs.gradeCard(cardId, grade)` and advances the cursor; the header badge decrements in real time on every other route.
 - EF math verified in Node: starting at 2.50, six consecutive `fail` grades hit the 1.30 floor (clamped); a `hard` (-0.10) + `easy` (+0.15) cycle nets +0.05 EF — "El Camino de la Recuperación".
 - Adding a custom sentence persists, appears in the queue if due today.
-- **Re-visit idempotency**: visiting `/accept`, `/0`, or `/Accept` any number of times always produces exactly one SRS card for that verb. `registerVerb` looks up by `verbKey` (`id:${id}`) and returns the existing card on subsequent calls.
+- **Re-visit idempotency**: visiting `/v1/verbs/accept`, `/v1/verbs/0`, or `/v1/verbs/Accept` any number of times always produces exactly one SRS card for that verb. `registerVerb` looks up by `verbKey` (`id:${id}`) and returns the existing card on subsequent calls.
+
+## Multi-theme (DaisyUI 5)
+
+Theming lives at the `<html data-theme="...">` level. Active themes: `light` (default), `dark`, `dracula`, `cupcake`. Tailwind v4 has no `tailwind.config.js`; DaisyUI is injected as a CSS plugin in `src/index.css`:
+
+```css
+@import "tailwindcss";
+@plugin "daisyui" { themes: light --default, dark, dracula, cupcake; }
+```
+
+### Storage + application
+- `localStorage['ospinajuanp-ingles:theme']` holds the active theme id. `useTheme()` (in `src/hooks/useTheme.js`) reads it on mount, validates against `THEMES`, falls back to `light`, and persists every change.
+- `useEffect(() => { document.documentElement.setAttribute('data-theme', theme); localStorage.setItem(STORAGE_KEY, theme) }, [theme])`.
+- **FOUC prevention**: a tiny inline `<script>` in `index.html` runs BEFORE React boots and applies the persisted theme to `<html>`. Without this, users with a non-default theme see one frame of the default theme on each load.
+
+### What uses DaisyUI tokens
+- **`src/pages/HomePage.jsx`** — the only fully-themable page. Uses `bg-base-200` (hero surface), `bg-base-100` + `border-base-300` (cards), `text-base-content` (titles/captions), `text-base-content/70` (muted), `btn-primary` (primary CTA), `btn-outline btn-primary` (secondary CTA), `badge-primary badge-outline` (eyebrow chip).
+- **`src/components/ThemeSwitcher.jsx`** — the dropdown menu uses `bg-base-100` for the surface and `hover:bg-base-200` for the row hover. The active-row indicator (`bg-indigo-50 text-indigo-700`) is intentionally **not** themed so the active marker is recognizable across all four themes.
+- **`src/components/ShellHeader`** sticks with `bg-white/85` (kept as a brand surface, NOT themed) — the header is the navigation chrome and should feel consistent regardless of theme.
+
+### What does NOT use DaisyUI (intentional)
+- **`src/components/VerbCard.jsx`**, **`src/components/Flashcard.jsx`**, **`src/components/SRSStudyPage.jsx`**, **`src/components/AudioButton.jsx`** — keep the hand-rolled slate/indigo palette. They were carefully tuned for the verb-exploration flow; switching them to DaisyUI tokens wholesale would risk visual regressions (overlap with the image/audio overlays, the 3D flip stack, the grade button colors mapped to fail/hard/good/easy, etc.). Each individual component can opt into DaisyUI tokens later without changing the rest.
+- **`@layer base body { @apply bg-slate-50 text-slate-800 font-sans }`** in `src/index.css` is kept verbatim. DaisyUI does NOT override Tailwind's preflight when used as `@plugin`, so our body color stays slate on every theme — providing a consistent canvas for the verb-exploration pages.
+
+### DaisyUI v5 gotchas (this codebase)
+- DaisyUI's reset is light (it does not include Tailwind's preflight by itself), so our existing `@layer base` rules keep working.
+- DaisyUI 5 themes use OKLCH color tokens (`--color-base-100`, `--color-primary`, etc.). Any element using `bg-base-100`, `text-base-content`, `btn-primary` re-skins automatically when the user switches themes.
+- DaisyUI's `dropdown` requires the trigger to be the first child with `tabindex=0` and `role=button` (or a `<button>`). `ThemeSwitcher` uses a `<div tabIndex={0} role="button">` trigger and a `<ul tabIndex={0} class="menu dropdown-content">` panel — exact structure DaisyUI expects.
+- `dropdown-content` panels sit at `z-50` so they overlay the sticky header.
+- DaisyUI's `.menu` adds `margin-inline-end: 4px` to buttons inside the menu — fine for our use, the `mx` is on the `card-actions` containers instead of inside the menu.
 
 ## Atlas indices (current)
 - `_id_` (default)
@@ -312,16 +358,16 @@ and their original `migrado_desde` is preserved. Verified output:
 
 ```
 (this session)
-  feat(srs): SM-2 spaced repetition module at /repaso
-    - utils/srs.js: pure 4-level SM-2 (fail/hard/good/easy)
-    - hooks/useSRS.js: localStorage-first store, cross-tab sync, commit-with-guard
-    - contexts/SRSContext.jsx: SRSProvider + useSRSContext
-    - components/{Flashcard,AddFlashcardForm,ReviewNavButton}.jsx
-    - pages/SRSStudyPage.jsx: study session UI
-    - main.jsx: Root wraps <App> in <SRSProvider> (single useSRS() instance)
-    - useVerbos.js: auto-register currentVerb into SRS + RESERVED_ROUTES guard
-    - App.jsx: render <ReviewNavButton />, add /repaso <Route>
-  docs(handoff): record SRS module + 4-level grading + idempotency contract
+  feat(routing+theme): namespace /v1 + landing page + DaisyUI multi-theme
+    - routes: /, /v1/verbs/:verbSelector, /v1/test (legacy redirects)
+    - useVerbos.js: scoped regex, no root auto-pick, new goToRandomVerb()
+    - DaisyUI 5 plugin via @plugin in src/index.css (4 themes)
+    - useTheme hook + ThemeSwitcher in ShellHeader
+    - HomePage.jsx with DaisyUI hero + two cards
+    - FOUC-prevention inline script in index.html
+  docs(handoff): record c5f5bda as last commit
+c5f5bda feat(srs): SM-2 spaced repetition module at /repaso (predecessor)
+ba78609 docs(handoff): record c5f5bda as last commit
 634a6a0 cleanup: remove diagnostic console.info logs after confirmed fix
 6ec80c1 fix(sync): use == null instead of !id for id guard        (this session)
 f19a551 fix(verb-card): combine verbKey + renderId as key         (this session)
@@ -339,9 +385,12 @@ c1f6584 fix(vite): expose MONGODB_URI via loadEnv
 
 ## Open / parked
 - **SRS verb-dedup hardening (deferred, Opción B not implemented)**: the existing `registerVerb` lookup uses `store.cards` from React closure, which could in theory lag behind `localStorage` under rapid re-renders (StrictMode double invoke) or cross-tab races. Plan B was to (1) read `localStorage` directly inside `registerVerb` and (2) make `commit` itself reject duplicate verbKeys before write. NOT IMPLEMENTED — current code is correct for normal user flows; revisit only if duplicates ever appear in production data.
+- **Drop the legacy verb-route redirect** (`/:verbSelector` → `/v1/verbs/<slug>`): now that the new namespace has been live for one or two deploys, the legacy catch-all can be removed in a follow-up. Until then it silently rewrites old bookmarks so users don't 404.
+- **DaisyUI scope creep**: HomePage + ThemeSwitcher are the only themable surfaces today. Opting in additional components (VerbCard, Flashcard, SRSStudyPage) is straightforward but each component needs a visual review because the slate/indigo palette was hand-tuned and DaisyUI's `base-100` / `primary` tokens will look different.
 - Likely next candidates:
   - **Remove static JSON read**: switch `useVerbos` to fetch verbs from MongoDB instead of `/verbos_estructura.json`. Requires adding `GET /api/verbs` (with pagination or full dump).
   - **Proactive enrichment**: background Pexels/Free-Dictionary enrichment of bulk-seeded docs (`audio_source: 'pending'`) so all 1000 are fully enriched before lazy visits.
   - **SRS card animations**: add haptic/animation feedback (green flash on correct, red on wrong) and humanized "próxima: mañana / en 3 días / en 2 meses" labels.
   - **`VerbProvider` lift**: optional symmetry move to `Root` (currently lives inside `<App>`); see the SRS module section.
-  - **Register all 95 duplicate-`ing` verbs**: today's `resolveVerb` returns only the first match, so `/rewrite` only ever registers one of several ids sharing that ing. If we want every id-with-same-ing to become a distinct SRS card, change `verbKey` to `id:${id}` always (already preferred when id exists) and pro-actively walk the dataset after mount to register all.
+  - **Register all 95 duplicate-`ing` verbs**: today's `resolveVerb` returns only the first match, so `/v1/verbs/rewrite` only ever registers one of several ids sharing that ing. If we want every id-with-same-ing to become a distinct SRS card, change `verbKey` to `id:${id}` always (already preferred when id exists) and pro-actively walk the dataset after mount to register all.
+  - **DaisyUI build cost**: 4 themes ship ~64 KB extra CSS. If we ship only 2 (e.g. `light --default, dark`), CSS drops to ~80 KB. Revisit when bandwidth matters more than theme variety.
