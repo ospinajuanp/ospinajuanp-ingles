@@ -6,7 +6,7 @@ React 19 + Vite 8 + Tailwind v4 + DaisyUI 5 SPA for learning English verbs in Sp
 ## Repo
 - GitHub: `ospinajuanp/ospinajuanp-ingles`, branch `main`
 - Live: `https://ospinajuanp-ingles.vercel.app/`
-- Working tree: clean, last commit `ae991dd feat(icons): migrate 28 hand-rolled SVGs to lucide-react + per-theme icons`
+- Working tree: clean, last commit `3f3506f feat(srs): DeckManager + editCustomCard + Estudiar/Gestionar toggle`
 
 ## Key conventions
 - Dataset: `verbos_estructura.json` at repo root (gitignored), copied to `public/` by a Vite plugin (`syncDataPlugin` in `vite.config.js`) on dev start, build start, and on every change. The plugin triggers `full-reload` via WebSocket. **HMR auto-restarts dev server on `api/verbs/sync.js` changes — keep in mind during bulk runs.**
@@ -88,10 +88,11 @@ React 19 + Vite 8 + Tailwind v4 + DaisyUI 5 SPA for learning English verbs in Sp
 - `verbos_estructura.json` (root, gitignored): 1000 verbs flattened to 905 unique `infinitivo.ing` (95 duplicates); all 1000 unique `id`.
 
 ## Build
-`pnpm build` → `dist/` produces ~340 KB JS raw / ~108 KB gzipped (1812 modules after lucide-react, ~53 before) and ~120 KB CSS raw / ~19 KB gzipped. MongoDB driver NOT in client bundle; lucide-react IS in the client bundle (tree-shaken, ~38 unique icons). Build cost:
-- 46 KB → 111 KB CSS after DaisyUI (4 themes shipped in one bundle).
+`pnpm build` → `dist/` produces ~355 KB JS raw / ~111 KB gzipped (1813 modules after lucide-react + DeckManager) and ~126 KB CSS raw / ~20 KB gzipped. MongoDB driver NOT in client bundle; lucide-react IS in the client bundle (tree-shaken, ~40 unique icons). Build cost over time:
+- 46 KB → 111 KB CSS after first DaisyUI integration (4 themes shipped in one bundle).
 - 111 KB → 120 KB CSS after the whole-app theming refactor (more DaisyUI utility classes used).
-- 341 KB → 340 KB JS after the lucide-react icon migration (Slight **reduction** in raw JS — inline SVGs replaced by tree-shaken components — but +1.8 KB gzipped due to module fragmentation).
+- 341 KB → 340 KB JS after the lucide-react icon migration (slight **reduction** in raw JS).
+- 340 KB → 355 KB JS / +1.5 KB CSS after DeckManager (table, modal, join, textarea-bordered, plus ~3 new icons).
 
 ## What works
 - **1000/1000 verbs migrated to MongoDB Atlas** in `ingles-db.verbos` via `pnpm bulk:direct`. All `migrado_desde='SPA_Bulk_Migration'`, `audio_source='pending'`, `image_source='picsum'`, `oraciones` populated.
@@ -198,11 +199,12 @@ useSRS()  ──── exposed via ────►  <SRSProvider value={srs}>
 ### SRS-relevant files
 - `src/utils/srs.js` — pure SM-2 functions + `createInitialSRSState()`, `isDue()`.
 - `src/contexts/SRSContext.jsx` — `SRSProvider` + `useSRSContext()` (throws if used outside the provider).
-- `src/hooks/useSRS.js` — single-instance hook owning `localStorage` access. Exposes `cards`, `dueCards`, `dueCount`, `totalCount`, `customCount`, `verbCount`, and actions: `addCustomSentence`, `registerVerb`, `gradeCard`, `removeCard`. Cross-tab sync via `storage` event. `commit()` has a defensive guard (defaults to `draft` if updater returns a malformed value).
+- `src/hooks/useSRS.js` — single-instance hook owning `localStorage` access. Exposes `cards`, `dueCards`, `dueCount`, `totalCount`, `customCount`, `verbCount`, and actions: `addCustomSentence`, `registerVerb`, `gradeCard`, `removeCard`, **`editCustomCard`** (preserves SRS state). Cross-tab sync via `storage` event. `commit()` has a defensive guard (defaults to `draft` if updater returns a malformed value).
 - `src/components/AddFlashcardForm.jsx` — ES/EN form with submit + cancel + inline error.
+- `src/components/DeckManager.jsx` — table-based deck-management interface: real-time search across Español + Inglés, pagination 10/page (`join` button group with ellipsis gaps), per-row actions (`Pencil` only on custom cards, `Trash2` always). Edit uses a native `<dialog className="modal">` with `showModal()`/`close()` controlled by `useEffect`; form-field reset uses derived-state pattern.
 - `src/components/Flashcard.jsx` — 3D flip card. Pure CSS via Tailwind arbitrary values: outer container has `[perspective:1200px]`, inner button has `[transform-style:preserve-3d]` + `transition: transform 600ms`, front face has `[backface-visibility:hidden]`, back face adds `[transform:rotateY(180deg)]`. Reset on card change via derived-state pattern (matches `VerbCard`/`VerbImage`). Below the card: **4 grade buttons** in a 2×2 / 4-col grid: "Otra vez" (fail, rose), "Difícil" (hard, amber), "Bien" (good, emerald), "Fácil" (easy, sky-gradient). Hidden hint subtitles appear on `sm+`. All four enabled only when flipped.
-- `src/components/ReviewNavButton.jsx` — header pill `<Link to="/repaso">` with rotating badge (`dueCount`, hidden when 0, `99+` cap). Lives in the header right column next to `CategoryFilter`.
-- `src/pages/SRSStudyPage.jsx` — study session UI: counters row (Pendientes hoy / Total / Oraciones / Verbos), optional form toggle, shuffled queue (`useMemo(shuffle(srs.dueCards), [srs.dueCards])`), cursor-driven progression. Empty states for "deck empty" vs "session complete".
+- `src/components/ReviewNavButton.jsx` — header pill `<Link to="/v1/test">` with rotating badge (`dueCount`, hidden when 0, `99+` cap). Lives in the header right column next to `CategoryFilter`.
+- `src/pages/SRSStudyPage.jsx` — study session UI: counters row (Pendientes hoy / Total / Oraciones / Verbos), optional form toggle, shuffled queue (`useMemo(shuffle(srs.dueCards), [srs.dueCards])`), cursor-driven progression. Empty states for "deck empty" vs "session complete". **Has a `ModeToggle` join group (BookOpen / ListFilter icons) to switch between "Estudiar" and "Gestionar Mazo" without leaving the page.**
 
 ### Entry / hookup changes
 - `src/main.jsx` — introduces `Root` component that owns the single `useSRS()` instance and wraps `<App />` with `<SRSProvider value={srs}>`. File-level `/* eslint-disable react-refresh/only-export-components */` (matches the context-file pattern).
@@ -216,6 +218,19 @@ useSRS()  ──── exposed via ────►  <SRSProvider value={srs}>
 - EF math verified in Node: starting at 2.50, six consecutive `fail` grades hit the 1.30 floor (clamped); a `hard` (-0.10) + `easy` (+0.15) cycle nets +0.05 EF — "El Camino de la Recuperación".
 - Adding a custom sentence persists, appears in the queue if due today.
 - **Re-visit idempotency**: visiting `/v1/verbs/accept`, `/v1/verbs/0`, or `/v1/verbs/Accept` any number of times always produces exactly one SRS card for that verb. `registerVerb` looks up by `verbKey` (`id:${id}`) and returns the existing card on subsequent calls.
+- **Deck Manager** (3f3506f): header has a `ModeToggle` join group ("Estudiar" / "Gestionar Mazo"). The Gestionar tab shows a DaisyUI table with columns (Tipo / Español / Inglés / Estado SRS / Acciones), a real-time search input (matches either language), pagination 10/page with prev/next + first/last + numeric shortcuts + ellipsis gaps, edit (only `custom` cards via a native `<dialog className="modal">`) and delete (any card, with `window.confirm`). Verb cards show a disabled Pencil (their text comes from the official dataset and cannot be edited from the SRS side).
+
+### Deck management actions (useSRS)
+- `editCustomCard(cardId, { es, en })`: validates both fields non-empty, returns `null` if the card is missing or not `type: 'custom'`. Mutates `draft.cards[cardId].front` via `commit()` and **preserves** the SRS state (interval / ef / repetitions / lastReviewed / nextReview) — editing the prompt does not reset the schedule. Returns the updated card or `null` on failure. Updater ends with `return draft` to satisfy the `commit()` guard.
+- `removeCard(cardId)`: deletes from `cards` + `order`. Updater ends with `return draft`.
+
+### Deck management UI (`src/components/DeckManager.jsx`)
+- Pulls `cards` (full list), `removeCard`, `editCustomCard` from `useSRSContext()`.
+- Local state: `searchTerm`, `page`, `editingId`. Page resets to 1 when searchTerm changes (derived-state pattern, no setState in useEffect).
+- `PAGE_SIZE = 10`. `totalPages = Math.max(1, ceil(filtered / 10))`. `safePage = Math.min(page, totalPages)` clamps if the active page becomes empty after filtering.
+- `buildPageList(page, total)` returns `[1, total, page-1, page, page+1]` deduplicated and sorted, with `'…'` gaps for >7 pages.
+- `<dialog>` lifecycle: `useEffect` watches `card` and calls `dialog.showModal()` / `dialog.close()` on the imperative DOM API. Form-field reset uses the derived-state pattern (`trackedId !== card.id → setEs/setEn`). The `cancel` DOM event (ESC key) is wired to `onClose` via `dialog.addEventListener('cancel', …)`.
+- All UI uses DaisyUI tokens (`bg-base-100/200`, `text-base-content`, `border-base-300`, `badge-primary`, `badge-ghost`, `btn-primary`, `btn-ghost`, `join`, `modal`, `modal-box`, `modal-action`, `modal-backdrop`, `table`, `textarea-bordered`, `input-bordered`) and `lucide-react` icons (`Pencil`, `Trash2`, `Search`, `X`, `ChevronLeft`, `ChevronRight`, `ChevronsLeft`, `ChevronsRight`, `Layers`, `Save`).
 
 ## Multi-theme (DaisyUI 5)
 
@@ -441,6 +456,10 @@ and their original `migrado_desde` is preserved. Verified output:
 
 ```
 (this session)
+  feat(srs): DeckManager + editCustomCard + Estudiar/Gestionar toggle
+    - useSRS.js: editCustomCard(cardId, {es,en}) preserves SRS state
+    - DeckManager.jsx: table + search + pagination + edit modal
+    - SRSStudyPage.jsx: ModeToggle join group (BookOpen/ListFilter)
   feat(icons): migrate 28 hand-rolled SVGs to lucide-react + per-theme icons
     - pnpm add lucide-react@1.25.0
     - useTheme.js exports THEME_ICONS map (Sun/Moon/Skull/Cake)
