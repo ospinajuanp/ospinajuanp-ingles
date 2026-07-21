@@ -6,7 +6,7 @@ React 19 + Vite 8 + Tailwind v4 SPA for learning English verbs in Spanish. On-de
 ## Repo
 - GitHub: `ospinajuanp/ospinajuanp-ingles`, branch `main`
 - Live: `https://ospinajuanp-ingles.vercel.app/`
-- Working tree: see latest commit on `main` (this session added the SRS module + 4-level SM-2 grading + auto-register of visited verbs + idempotency contract docs).
+- Working tree: clean, last commit `c5f5bda feat(srs): spaced repetition module at /repaso with 4-level SM-2`
 
 ## Key conventions
 - Dataset: `verbos_estructura.json` at repo root (gitignored), copied to `public/` by a Vite plugin (`syncDataPlugin` in `vite.config.js`) on dev start, build start, and on every change. The plugin triggers `full-reload` via WebSocket. **HMR auto-restarts dev server on `api/verbs/sync.js` changes — keep in mind during bulk runs.**
