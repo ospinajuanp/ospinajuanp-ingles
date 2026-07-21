@@ -217,6 +217,35 @@ export function useSRS() {
     [commit],
   )
 
+  /**
+   * Edit a custom sentence's front fields (es/en). Only `type: 'custom'`
+   * cards are editable; verb cards come from the official dataset and are
+   * immutable on the SRS side. SRS state (interval/ef/repetitions/etc.)
+   * is preserved — editing the prompt does not reset the schedule.
+   * Returns the updated card or `null` if the id is missing / not custom.
+   */
+  const editCustomCard = useCallback(
+    (cardId, { es, en }) => {
+      const trimmedEs = (es ?? '').trim()
+      const trimmedEn = (en ?? '').trim()
+      if (!trimmedEs || !trimmedEn) return null
+
+      const existing = store.cards[cardId]
+      if (!existing || existing.type !== 'custom') return null
+
+      let updated = null
+      commit((draft) => {
+        const card = draft.cards[cardId]
+        if (!card || card.type !== 'custom') return draft
+        card.front = { es: trimmedEs, en: trimmedEn }
+        updated = card
+        return draft
+      })
+      return updated
+    },
+    [commit, store.cards],
+  )
+
   // ── Selectors (derived state — safe to recompute every render) ───────
 
   const allCards = store.order
@@ -248,5 +277,6 @@ export function useSRS() {
     registerVerb,
     gradeCard,
     removeCard,
+    editCustomCard,
   }
 }
