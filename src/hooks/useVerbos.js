@@ -4,8 +4,11 @@ import { collectCategories, flattenVerbos } from '../utils/flatten'
 import { pickWeightedIndex } from '../utils/weightedRandom'
 import { WEIGHT_MAP } from '../data/weightedVerbs'
 import { syncVerbToMongo } from '../utils/mongoSync'
+import { useSRSContext } from '../contexts/SRSContext'
 
 const JSON_URL = `${import.meta.env.BASE_URL}verbos_estructura.json`
+
+const RESERVED_ROUTES = new Set(['repaso'])
 
 const TIME_KEYS = [
   'infinitivo',
@@ -60,15 +63,22 @@ export function useVerbos() {
   // hook would think verbSelector is null on /tell, /accept, /0, etc.
   // Fall back to parsing the pathname directly via useLocation, which works
   // everywhere in the tree.
+  //
+  // Routes reserved for other features are explicitly excluded so the
+  // resolver doesn't try to interpret them as verb selectors.
   const location = useLocation()
   const verbSelectorFromUrl = useMemo(() => {
     const m = location.pathname.match(/^\/(.+)$/)
     if (!m || !m[1]) return null
+    let raw
     try {
-      return decodeURIComponent(m[1])
+      raw = decodeURIComponent(m[1])
     } catch {
-      return m[1]
+      raw = m[1]
     }
+    const first = raw.split('/')[0]
+    if (RESERVED_ROUTES.has(first)) return null
+    return raw
   }, [location.pathname])
   const effectiveSelector = verbSelector ?? verbSelectorFromUrl
 
@@ -106,6 +116,14 @@ export function useVerbos() {
   useEffect(() => {
     if (allVerbs.length === 0) return
 
+    // Only act on verb URLs. If we're on a reserved route like /repaso,
+    // effectiveSelector is null but pathname is NOT '/' — don't hijack
+    // the user into a random verb.
+    const isReserved =
+      location.pathname !== '/' &&
+      RESERVED_ROUTES.has(location.pathname.split('/')[1] ?? '')
+    if (isReserved) return
+
     if (effectiveSelector == null) {
       if (initialPickDone.current) return
       initialPickDone.current = true
@@ -118,7 +136,7 @@ export function useVerbos() {
     if (resolveVerb(effectiveSelector, allVerbs) == null) {
       navigate('/', { replace: true })
     }
-  }, [effectiveSelector, allVerbs, navigate])
+  }, [effectiveSelector, allVerbs, navigate, location.pathname])
 
   const categories = useMemo(() => collectCategories(allVerbs), [allVerbs])
 
@@ -172,6 +190,16 @@ export function useVerbos() {
     [effectiveSelector, allVerbs],
   )
   const currentVerb = current?.verb ?? null
+
+  // ── SRS auto-register ──
+  // Every verb the user lands on gets added to the SRS "Verbos vistos"
+  // deck. `registerVerb` is idempotent per `verbKey`, so re-visits are
+  // safe (no duplicate cards). `currentVerb` is memoized upstream, so
+  // its reference is stable while the verb stays the same.
+  const srs = useSRSContext()
+  useEffect(() => {
+    if (currentVerb && srs) srs.registerVerb(currentVerb)
+  }, [currentVerb, srs])
 
   const currentIndex = useMemo(() => {
     if (!current || !currentVerb) return -1

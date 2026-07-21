@@ -3,9 +3,11 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import SearchBar from './components/SearchBar'
 import CategoryFilter from './components/CategoryFilter'
 import VerbCard from './components/VerbCard'
+import ReviewNavButton from './components/ReviewNavButton'
 import { useVerbos } from './hooks/useVerbos'
 import { VerbProvider, useVerbosContext } from './contexts/VerbContext'
 import { checkPexelsStatus } from './utils/pexels'
+import SRSStudyPage from './pages/SRSStudyPage'
 
 function BrandIcon() {
   return (
@@ -110,7 +112,7 @@ function ShellHeader() {
         <SearchBar value={verbos.search} onChange={verbos.setSearch} />
       </div>
 
-      <div className="lg:justify-self-end">
+      <div className="flex flex-wrap items-center justify-end gap-2 lg:justify-self-end">
         <CategoryFilter
           categories={verbos.categories}
           category={verbos.category}
@@ -119,6 +121,7 @@ function ShellHeader() {
           setSubcategory={verbos.setSubcategory}
           counts={verbos.counts}
         />
+        <ReviewNavButton />
       </div>
     </Header>
   )
@@ -174,6 +177,7 @@ export default function App() {
             />
           ) : (
             <Routes>
+              <Route path="/repaso" element={<SRSStudyPage />} />
               <Route path="/" element={<VerbView retryKey={retryKey} />} />
               <Route
                 path="/:verbSelector"
