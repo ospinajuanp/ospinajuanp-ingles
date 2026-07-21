@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Navigate, Route, Routes, useLocation, useParams } from 'react-router-dom'
+import { Navigate, Route, Routes, useLocation, useParams, Link } from 'react-router-dom'
 import SearchBar from './components/SearchBar'
 import CategoryFilter from './components/CategoryFilter'
 import VerbCard from './components/VerbCard'
@@ -99,19 +99,23 @@ function ShellHeader() {
 
   return (
     <Header>
-      <div className="flex items-center gap-3">
+      <Link
+        to="/"
+        aria-label="Ir a la página principal"
+        className="group flex items-center gap-3 rounded-xl outline-none transition hover:opacity-80 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-base-100"
+      >
         <div className="shrink-0 overflow-hidden rounded-xl shadow-sm ring-1 ring-base-300/80" aria-hidden="true">
           <BrandIcon />
         </div>
         <div className="min-w-0">
-          <h1 className="truncate text-base font-bold text-base-content sm:text-lg">
+          <h1 className="truncate text-base font-bold text-base-content transition-colors group-hover:text-primary sm:text-lg">
             Verbos en Inglés
           </h1>
           <p className="hidden truncate text-xs text-base-content/60 sm:block">
             Aprende conjugando, una frase a la vez
           </p>
         </div>
-      </div>
+      </Link>
 
       <div className="lg:mx-auto lg:w-full lg:max-w-xl">
         {isVerbRoute ? (
