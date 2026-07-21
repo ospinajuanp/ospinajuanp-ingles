@@ -11,6 +11,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <script>
+      // Apply persisted theme before React mounts to avoid a flash of the
+      // default theme. Mirrors the keys read by src/hooks/useTheme.js so
+      // both sides stay in sync.
+      (function () {
+        try {
+          var t = localStorage.getItem('ospinajuanp-ingles:theme');
+          if (t) document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {}
+      })();
+    </script>
     <title>Verbos Inglés — Aprende conjugando</title>
   </head>
   <body>

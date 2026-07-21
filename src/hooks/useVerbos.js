@@ -8,7 +8,11 @@ import { useSRSContext } from '../contexts/SRSContext'
 
 const JSON_URL = `${import.meta.env.BASE_URL}verbos_estructura.json`
 
-const RESERVED_ROUTES = new Set(['repaso'])
+export const VERBS_BASE = '/v1/verbs'
+
+function verbHref(slug) {
+  return `${VERBS_BASE}/${encodeURIComponent(slug)}`
+}
 
 const TIME_KEYS = [
   'infinitivo',
@@ -55,20 +59,15 @@ export function useVerbos() {
 
   const { verbSelector = null } = useParams()
   const navigate = useNavigate()
-  const initialPickDone = useRef(false)
-
-  // Safety net: useParams() only returns a value when the calling component
-  // is INSIDE a matched <Route>. If useVerbos is ever invoked from a parent
-  // that lives above <Routes> (e.g. App), useParams() returns {} and the
-  // hook would think verbSelector is null on /tell, /accept, /0, etc.
-  // Fall back to parsing the pathname directly via useLocation, which works
-  // everywhere in the tree.
-  //
-  // Routes reserved for other features are explicitly excluded so the
-  // resolver doesn't try to interpret them as verb selectors.
   const location = useLocation()
+
+  // The hook is invoked in <App>, ABOVE <Routes>, so useParams() returns {}
+  // there even when the URL has a verb selector. Fall back to parsing the
+  // pathname directly, scoped to the /v1/verbs/:verbSelector namespace so
+  // that /, /v1/test, and any other route return null instead of being
+  // mistaken for verb selectors.
   const verbSelectorFromUrl = useMemo(() => {
-    const m = location.pathname.match(/^\/(.+)$/)
+    const m = location.pathname.match(/^\/v1\/verbs\/([^/]+)\/?$/)
     if (!m || !m[1]) return null
     let raw
     try {
@@ -76,8 +75,6 @@ export function useVerbos() {
     } catch {
       raw = m[1]
     }
-    const first = raw.split('/')[0]
-    if (RESERVED_ROUTES.has(first)) return null
     return raw
   }, [location.pathname])
   const effectiveSelector = verbSelector ?? verbSelectorFromUrl
@@ -104,39 +101,17 @@ export function useVerbos() {
     }
   }, [])
 
-  // Root route ("/"): pick a weighted random verb once data is ready and
-  // silently replace the URL. Guarded against StrictMode double-invoke via
-  // initialPickDone ref (preserves the cameFromEmpty contract from the
-  // pre-routing version).
-  //
-  // Also: if the URL has a selector that resolves to no verb in allVerbs
-  // (e.g. /nope-123), redirect to "/" so the root handler picks a new one.
-  // Both branches are guarded so they fire at most once per actual selector
-  // change — no thrashing.
+  // If we're on a verb URL but the selector doesn't resolve (deleted verb,
+  // typo, etc.), bounce the user back to the home page so the menu is
+  // always reachable. No random-pick on `/` — HomePage owns that flow now
+  // via goToRandomVerb().
   useEffect(() => {
     if (allVerbs.length === 0) return
-
-    // Only act on verb URLs. If we're on a reserved route like /repaso,
-    // effectiveSelector is null but pathname is NOT '/' — don't hijack
-    // the user into a random verb.
-    const isReserved =
-      location.pathname !== '/' &&
-      RESERVED_ROUTES.has(location.pathname.split('/')[1] ?? '')
-    if (isReserved) return
-
-    if (effectiveSelector == null) {
-      if (initialPickDone.current) return
-      initialPickDone.current = true
-      const idx = pickWeightedIndex(allVerbs, WEIGHT_MAP)
-      const slug = slugify(allVerbs[idx]?.verb)
-      if (slug) navigate(`/${encodeURIComponent(slug)}`, { replace: true })
-      return
-    }
-
+    if (effectiveSelector == null) return
     if (resolveVerb(effectiveSelector, allVerbs) == null) {
       navigate('/', { replace: true })
     }
-  }, [effectiveSelector, allVerbs, navigate, location.pathname])
+  }, [effectiveSelector, allVerbs, navigate])
 
   const categories = useMemo(() => collectCategories(allVerbs), [allVerbs])
 
@@ -209,23 +184,20 @@ export function useVerbos() {
   }, [current, currentVerb, filtered])
 
   // Auto-redirect when the URL selector points to a verb that exists in
-  // allVerbs but is no longer reachable due to current filter. We still
-  // want prev/next to navigate within `filtered`, so this only triggers
-  // when the displayed verb is genuinely absent from the visible set.
+  // allVerbs but is no longer reachable due to the current filter. We
+  // still want prev/next to navigate within `filtered`, so this only
+  // triggers when the displayed verb is genuinely absent from the
+  // visible set.
   useEffect(() => {
     if (effectiveSelector == null) return
     if (loading || error) return
     if (allVerbs.length === 0) return
     if (current === null) return
     if (currentIndex !== -1) return
-    // Selector matched a verb in allVerbs but not in filtered (filter
-    // excluded it). Reset to / so the root-route effect picks a new one
-    // inside the filter — or simply force-pick a random verb from the
-    // filter to be predictable.
     if (filtered.length === 0) return
     const idx = Math.floor(Math.random() * filtered.length)
     const slug = slugify(filtered[idx]?.verb)
-    if (slug) navigate(`/${encodeURIComponent(slug)}`, { replace: true })
+    if (slug) navigate(verbHref(slug), { replace: true })
   }, [
     effectiveSelector,
     loading,
@@ -236,17 +208,6 @@ export function useVerbos() {
     filtered,
     navigate,
   ])
-
-  const goTo = useCallback(
-    (idx) => {
-      if (filtered.length === 0) return
-      const nextIdx =
-        ((idx % filtered.length) + filtered.length) % filtered.length
-      const slug = slugify(filtered[nextIdx]?.verb)
-      if (slug) navigate(`/${encodeURIComponent(slug)}`)
-    },
-    [filtered, navigate],
-  )
 
   // ── MongoDB sync ──
   // VerbCard reports enrichment (image + audio) via reportEnrichment().
@@ -268,6 +229,17 @@ export function useVerbos() {
     [],
   )
 
+  const goTo = useCallback(
+    (idx) => {
+      if (filtered.length === 0) return
+      const nextIdx =
+        ((idx % filtered.length) + filtered.length) % filtered.length
+      const slug = slugify(filtered[nextIdx]?.verb)
+      if (slug) navigate(verbHref(slug))
+    },
+    [filtered, navigate],
+  )
+
   const next = useCallback(() => {
     if (currentIndex < 0) goTo(0)
     else goTo(currentIndex + 1)
@@ -282,8 +254,18 @@ export function useVerbos() {
     if (filtered.length === 0) return
     const idx = pickWeightedIndex(filtered, WEIGHT_MAP)
     const slug = slugify(filtered[idx]?.verb)
-    if (slug) navigate(`/${encodeURIComponent(slug)}`)
+    if (slug) navigate(verbHref(slug))
   }, [filtered, navigate])
+
+  // Exposed for HomePage's "Explorar Verbos" CTA. Picks a weighted-random
+  // verb from the FULL corpus (not the current filter, since there is no
+  // filter on the home page) and navigates into the verb view.
+  const goToRandomVerb = useCallback(() => {
+    if (allVerbs.length === 0) return
+    const idx = pickWeightedIndex(allVerbs, WEIGHT_MAP)
+    const slug = slugify(allVerbs[idx]?.verb)
+    if (slug) navigate(verbHref(slug))
+  }, [allVerbs, navigate])
 
   useEffect(() => {
     function onKey(e) {
@@ -337,6 +319,7 @@ export function useVerbos() {
     prev,
     shuffle,
     goTo,
+    goToRandomVerb,
     total: filtered.length,
     verbSelector: effectiveSelector,
     reportEnrichment,

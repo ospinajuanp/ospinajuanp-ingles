@@ -7,7 +7,7 @@ export default function ReviewNavButton() {
 
   return (
     <Link
-      to="/repaso"
+      to="/v1/test"
       aria-label={
         due > 0
           ? `Repaso espaciado, ${due} ${due === 1 ? 'tarjeta pendiente' : 'tarjetas pendientes'}`

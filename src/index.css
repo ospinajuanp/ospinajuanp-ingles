@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+@plugin "daisyui" {
+  themes: light --default, dark, dracula, cupcake;
+}
+
 @theme {
   --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
   --animate-verb-enter: verb-enter 480ms cubic-bezier(0.22, 1, 0.36, 1) both;

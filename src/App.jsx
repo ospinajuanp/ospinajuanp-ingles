@@ -1,13 +1,15 @@
 import { useEffect, useState } from 'react'
-import { Navigate, Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes, useLocation, useParams } from 'react-router-dom'
 import SearchBar from './components/SearchBar'
 import CategoryFilter from './components/CategoryFilter'
 import VerbCard from './components/VerbCard'
 import ReviewNavButton from './components/ReviewNavButton'
+import ThemeSwitcher from './components/ThemeSwitcher'
 import { useVerbos } from './hooks/useVerbos'
 import { VerbProvider, useVerbosContext } from './contexts/VerbContext'
 import { checkPexelsStatus } from './utils/pexels'
 import SRSStudyPage from './pages/SRSStudyPage'
+import HomePage from './pages/HomePage'
 
 function BrandIcon() {
   return (
@@ -92,6 +94,9 @@ function ErrorState({ error, onRetry }) {
 
 function ShellHeader() {
   const verbos = useVerbosContext()
+  const { pathname } = useLocation()
+  const isVerbRoute = pathname.startsWith('/v1/verbs')
+
   return (
     <Header>
       <div className="flex items-center gap-3">
@@ -109,19 +114,24 @@ function ShellHeader() {
       </div>
 
       <div className="lg:mx-auto lg:w-full lg:max-w-xl">
-        <SearchBar value={verbos.search} onChange={verbos.setSearch} />
+        {isVerbRoute ? (
+          <SearchBar value={verbos.search} onChange={verbos.setSearch} />
+        ) : null}
       </div>
 
       <div className="flex flex-wrap items-center justify-end gap-2 lg:justify-self-end">
-        <CategoryFilter
-          categories={verbos.categories}
-          category={verbos.category}
-          setCategory={verbos.setCategory}
-          subcategory={verbos.subcategory}
-          setSubcategory={verbos.setSubcategory}
-          counts={verbos.counts}
-        />
+        {isVerbRoute ? (
+          <CategoryFilter
+            categories={verbos.categories}
+            category={verbos.category}
+            setCategory={verbos.setCategory}
+            subcategory={verbos.subcategory}
+            setSubcategory={verbos.setSubcategory}
+            counts={verbos.counts}
+          />
+        ) : null}
         <ReviewNavButton />
+        <ThemeSwitcher />
       </div>
     </Header>
   )
@@ -156,6 +166,17 @@ function VerbView({ retryKey }) {
   )
 }
 
+// Backward-compat redirects. The verb namespace moved from /<slug> to
+// /v1/verbs/<slug> and SRS moved from /repaso to /v1/test. Old links
+// keep working instead of 404'ing.
+function LegacyVerbRedirect() {
+  const { verbSelector } = useParams()
+  const target = verbSelector
+    ? `/v1/verbs/${encodeURIComponent(verbSelector)}`
+    : '/'
+  return <Navigate to={target} replace />
+}
+
 export default function App() {
   const [retryKey, setRetryKey] = useState(0)
   const verbos = useVerbos()
@@ -177,12 +198,15 @@ export default function App() {
             />
           ) : (
             <Routes>
-              <Route path="/repaso" element={<SRSStudyPage />} />
-              <Route path="/" element={<VerbView retryKey={retryKey} />} />
+              <Route path="/" element={<HomePage />} />
               <Route
-                path="/:verbSelector"
+                path="/v1/verbs/:verbSelector"
                 element={<VerbView retryKey={retryKey} />}
               />
+              <Route path="/v1/test" element={<SRSStudyPage />} />
+              <Route path="/v1/test/" element={<SRSStudyPage />} />
+              <Route path="/repaso" element={<Navigate to="/v1/test" replace />} />
+              <Route path="/:verbSelector" element={<LegacyVerbRedirect />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           )}
