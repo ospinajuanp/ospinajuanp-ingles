@@ -6,7 +6,7 @@ React 19 + Vite 8 + Tailwind v4 SPA for learning English verbs in Spanish. On-de
 ## Repo
 - GitHub: `ospinajuanp/ospinajuanp-ingles`, branch `main`
 - Live: `https://ospinajuanp-ingles.vercel.app/`
-- Working tree: clean, last commit `6ec80c1 fix(sync): use == null instead of !id for id guard`
+- Working tree: clean, last commit `634a6a0 cleanup: remove diagnostic console.info logs after confirmed fix`
 
 ## Key conventions
 - Dataset: `verbos_estructura.json` at repo root (gitignored), copied to `public/` by a Vite plugin (`syncDataPlugin` in `vite.config.js`) on dev start, build start, and on every change. The plugin triggers `full-reload` via WebSocket. **HMR auto-restarts dev server on `api/verbs/sync.js` changes — keep in mind during bulk runs.**
@@ -62,7 +62,7 @@ React 19 + Vite 8 + Tailwind v4 SPA for learning English verbs in Spanish. On-de
 - `verbos_estructura.json` (root, gitignored): 1000 verbs flattened to 905 unique `infinitivo.ing` (95 duplicates); all 1000 unique `id`.
 
 ## Build
-`pnpm build` → `dist/` produces ~318 KB JS raw / ~100 KB gzipped (after routing + mongo client wrapper + diagnostic logs cleaned up). MongoDB driver NOT in client bundle.
+`pnpm build` → `dist/` produces ~317 KB JS raw / ~100 KB gzipped (after routing + mongo client wrapper + diagnostic logs cleaned up in `634a6a0`). MongoDB driver NOT in client bundle.
 
 ## What works
 - **1000/1000 verbs migrated to MongoDB Atlas** in `ingles-db.verbos` via `pnpm bulk:direct`. All `migrado_desde='SPA_Bulk_Migration'`, `audio_source='pending'`, `image_source='picsum'`, `oraciones` populated.
@@ -189,6 +189,7 @@ and their original `migrado_desde` is preserved. Verified output:
 ## Session commit log
 
 ```
+634a6a0 cleanup: remove diagnostic console.info logs after confirmed fix  (this session)
 6ec80c1 fix(sync): use == null instead of !id for id guard        (this session)
 f19a551 fix(verb-card): combine verbKey + renderId as key         (this session)
 52bf3e4 fix(verb-card): wrap VerbImage in key-bound div           (this session)
