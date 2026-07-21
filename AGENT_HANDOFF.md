@@ -6,7 +6,7 @@ React 19 + Vite 8 + Tailwind v4 + DaisyUI 5 SPA for learning English verbs in Sp
 ## Repo
 - GitHub: `ospinajuanp/ospinajuanp-ingles`, branch `main`
 - Live: `https://ospinajuanp-ingles.vercel.app/`
-- Working tree: clean, last commit `3f3506f feat(srs): DeckManager + editCustomCard + Estudiar/Gestionar toggle`
+- Working tree: clean, last commit `8e801ba fix(srs+header): restructure /v1/test top + hide Repaso pill outside verbs`
 
 ## Key conventions
 - Dataset: `verbos_estructura.json` at repo root (gitignored), copied to `public/` by a Vite plugin (`syncDataPlugin` in `vite.config.js`) on dev start, build start, and on every change. The plugin triggers `full-reload` via WebSocket. **HMR auto-restarts dev server on `api/verbs/sync.js` changes — keep in mind during bulk runs.**
@@ -25,7 +25,7 @@ React 19 + Vite 8 + Tailwind v4 + DaisyUI 5 SPA for learning English verbs in Sp
 - Maximize button (top-left, `data-overlay-control="expand"`, persists to `localStorage['verbos:heroExpanded']`): collapsed = `object-cover h-44 sm:h-52 md:h-56`; expanded = `object-contain h-[min(70vh,560px)] min-h-[280px] bg-slate-900/95`.
 - Tips rewritten with Spanish glossing: each English example has Spanish translation + per-word Spanish equivalents. `whitespace-pre-line` rendered in `<p>`.
 - Image overlay z-index: blur `z-0`, audio wrapper `z-10`, refresh + ImageCredit + maximize `z-30`.
-- Header: sticky. Mobile `flex-col gap-3`; desktop `lg:grid lg:grid-cols-[1fr_2fr_1fr]`. The right column is a `flex flex-wrap items-center justify-end gap-2` containing `CategoryFilter` then `ReviewNavButton` (the "Repaso" pill).
+- Header: sticky. Mobile `flex-col gap-3`; desktop `lg:grid lg:grid-cols-[1fr_2fr_1fr]`. The right column is a `flex flex-wrap items-center justify-end gap-2` containing `CategoryFilter` then `ReviewNavButton` then `ThemeSwitcher`. **`SearchBar` + `CategoryFilter` + `ReviewNavButton` all gate on `isVerbRoute` (`pathname.startsWith('/v1/verbs')`); `ThemeSwitcher` is the only header control always visible.** On `/` and `/v1/test` the right column is just `ThemeSwitcher`.
 - **SRS commit updaters MUST `return draft`**. `useSRS`'s `commit(updater)` wraps `setStore((prev) => { … updater(draft) … })`. If `updater` returns `undefined` (e.g. mutates-then-forgets-to-return), `setStore(undefined)` runs and the next render's `store` is `undefined`, which crashes every later closure that reads `store.cards`. `commit` also has a defensive guard that defaults to `draft` when the returned value lacks `cards`/`order`.
 - **SRS verb lookup uses `verb.id == null`** (not `!verb.id`) when computing `verbKey`. Same rule as the rest of the codebase.
 - **Only ONE call to `useSRS()`** may exist in the app — it lives at the top of `Root` in `src/main.jsx`. Everything else reads via `useSRSContext()`. (Mirrors the `VerbContext` pattern: `useVerbos()` lives in `<App>`, consumers use `useVerbosContext()`.)
@@ -53,7 +53,7 @@ React 19 + Vite 8 + Tailwind v4 + DaisyUI 5 SPA for learning English verbs in Sp
   - `/:verbSelector` → `<LegacyVerbRedirect>` (rewrites to `/v1/verbs/<slug>`)
   - `*` catch-all → `<Navigate to="/" replace />`
   
-  Does NOT call `useSRS()` — that lives in `Root` (`src/main.jsx`). `checkPexelsStatus()` on mount. ShellHeader now includes `ThemeSwitcher` next to `ReviewNavButton`; `SearchBar` + `CategoryFilter` render only when `pathname.startsWith('/v1/verbs')` (hidden on `/` and `/v1/test`).
+  Does NOT call `useSRS()` — that lives in `Root` (`src/main.jsx`). `checkPexelsStatus()` on mount. ShellHeader includes `ThemeSwitcher` plus gated `SearchBar` + `CategoryFilter` + `ReviewNavButton`; all three render only when `pathname.startsWith('/v1/verbs')` (hidden on `/` and `/v1/test`). On those non-verb routes only `ThemeSwitcher` shows in the right column.
 - `src/main.jsx`: wraps a local `Root` component in `<BrowserRouter>` + `<StrictMode>`. `Root` calls `useSRS()` once and wraps `<App />` in `<SRSProvider value={srs}>`. File-level `/* eslint-disable react-refresh/only-export-components */`.
 - `src/contexts/VerbContext.jsx`: `VerbProvider({value, children})` + `useVerbosContext()` hook. File-level `/* eslint-disable react-refresh/only-export-components */`.
 - `src/contexts/SRSContext.jsx`: `SRSProvider({value, children})` + `useSRSContext()` (throws if used outside the provider). Same eslint-disable directive at top.
@@ -67,7 +67,7 @@ React 19 + Vite 8 + Tailwind v4 + DaisyUI 5 SPA for learning English verbs in Sp
 - `src/components/VerbImage.jsx` (inside VerbCard.jsx): eager Pexels fetch on mount; derived-state sync updates src/credit/stage when `word` changes AND cache has photos. Returns to picsum fallback when Pexels unavailable.
 - `src/components/AudioButton.jsx`: `forwardRef`, accepts `onResolved({audio_url, audio_source})`. **Eager resolution on mount** (cache check → fetch from dictionaryapi.dev). Fires on mount and after every resolution path. `console.warn` only on fetch failure.
 - `src/components/CategoryFilter.jsx`: dropdown with per-category counts, "Limpiar filtros" reset.
-- `src/components/ReviewNavButton.jsx`: header pill `<Link to="/v1/test">` with rotating badge showing `dueCount`. Hidden badge when zero; `99+` cap. Reads via `useSRSContext()`.
+- `src/components/ReviewNavButton.jsx`: header pill `<Link to="/v1/test">` with rotating badge showing `dueCount`. Hidden badge when zero; `99+` cap. Reads via `useSRSContext()`. **Only rendered inside `ShellHeader` when `pathname.startsWith('/v1/verbs')`** — same gate as `SearchBar` / `CategoryFilter`. Outside the verb namespace (e.g. on `/v1/test` itself) it is not rendered so the header doesn't show a self-referential pill.
 - `src/components/ThemeSwitcher.jsx`: DaisyUI 5 dropdown (`dropdown dropdown-end`, `menu dropdown-content`) with theme options. Renders check-mark on the active theme. Uses DaisyUI tokens (`bg-base-100`, `text-base-content`) so it adapts to all themes. ARIA-labelled trigger button. Lives in the ShellHeader right column after `ReviewNavButton`.
 - `src/hooks/useTheme.js`: persists `localStorage['ospinajuanp-ingles:theme']`, sets `<html data-theme="...">` in `useEffect`. Exports `THEMES` (array of `{id, label}`), `DEFAULT_THEME='light'`, `STORAGE_KEY='ospinajuanp-ingles:theme'`, and `{ theme, setTheme, themes }`. Mirrors a small inline `<script>` in `index.html` that pre-applies the theme before React mounts (FOUC prevention).
 - `src/pages/HomePage.jsx`: landing page (NEW). DaisyUI `hero` + two `card` blocks (Explorar Verbos / Repasar). "Empezar" calls `verbos.goToRandomVerb()` (weighted random + `navigate('/v1/verbs/<slug>')`); "Abrir repaso" is `<Link to="/v1/test">`. Uses DaisyUI theme tokens (`bg-base-100/200/300`, `text-base-content`, `btn-primary`) so the page re-skins instantly when the theme switches.
@@ -204,7 +204,7 @@ useSRS()  ──── exposed via ────►  <SRSProvider value={srs}>
 - `src/components/DeckManager.jsx` — table-based deck-management interface: real-time search across Español + Inglés, pagination 10/page (`join` button group with ellipsis gaps), per-row actions (`Pencil` only on custom cards, `Trash2` always). Edit uses a native `<dialog className="modal">` with `showModal()`/`close()` controlled by `useEffect`; form-field reset uses derived-state pattern.
 - `src/components/Flashcard.jsx` — 3D flip card. Pure CSS via Tailwind arbitrary values: outer container has `[perspective:1200px]`, inner button has `[transform-style:preserve-3d]` + `transition: transform 600ms`, front face has `[backface-visibility:hidden]`, back face adds `[transform:rotateY(180deg)]`. Reset on card change via derived-state pattern (matches `VerbCard`/`VerbImage`). Below the card: **4 grade buttons** in a 2×2 / 4-col grid: "Otra vez" (fail, rose), "Difícil" (hard, amber), "Bien" (good, emerald), "Fácil" (easy, sky-gradient). Hidden hint subtitles appear on `sm+`. All four enabled only when flipped.
 - `src/components/ReviewNavButton.jsx` — header pill `<Link to="/v1/test">` with rotating badge (`dueCount`, hidden when 0, `99+` cap). Lives in the header right column next to `CategoryFilter`.
-- `src/pages/SRSStudyPage.jsx` — study session UI: counters row (Pendientes hoy / Total / Oraciones / Verbos), optional form toggle, shuffled queue (`useMemo(shuffle(srs.dueCards), [srs.dueCards])`), cursor-driven progression. Empty states for "deck empty" vs "session complete". **Has a `ModeToggle` join group (BookOpen / ListFilter icons) to switch between "Estudiar" and "Gestionar Mazo" without leaving the page.**
+- `src/pages/SRSStudyPage.jsx` — study session UI: counters row (Pendientes hoy / Total / Oraciones / Verbos), optional form toggle, shuffled queue (`useMemo(shuffle(srs.dueCards), [srs.dueCards])`), cursor-driven progression. Empty states for "deck empty" vs "session complete". **Has a `ModeToggle` join group (BookOpen / ListFilter icons) to switch between "Estudiar" and "Gestionar Mazo" without leaving the page.** The top of the page is laid out in three layers: (1) compact "Volver" pill (`ArrowLeft`, `text-xs`) at the top-left, above the title container; (2) the title container itself is `flex flex-col gap-4 border-b border-base-300 pb-5 mb-6 sm:flex-row sm:items-end sm:justify-between` and holds "Repaso espaciado" + subtitle on the left and the `ModeToggle` aligned to `sm:justify-end` on the right; (3) the page content below the border.
 
 ### Entry / hookup changes
 - `src/main.jsx` — introduces `Root` component that owns the single `useSRS()` instance and wraps `<App />` with `<SRSProvider value={srs}>`. File-level `/* eslint-disable react-refresh/only-export-components */` (matches the context-file pattern).
@@ -456,7 +456,28 @@ and their original `migrado_desde` is preserved. Verified output:
 
 ```
 (this session)
-  feat(srs): DeckManager + editCustomCard + Estudiar/Gestionar toggle
+8e801ba fix(srs+header): restructure /v1/test top + hide Repaso pill outside verbs
+  App.jsx
+  - ReviewNavButton in ShellHeader now renders only when
+    isVerbRoute (pathname.startsWith('/v1/verbs')), same gate as
+    SearchBar + CategoryFilter. ThemeSwitcher stays always.
+  - Effect: visiting /v1/test no longer shows a 'Repaso' pill in
+    the header that points to the page the user is already on.
+  SRSStudyPage.jsx
+  - Restructured the top region into three layers:
+    1. Back button (small rounded pill, text-xs) at top-left, above
+       the title container.
+    2. Title container (border-b border-base-300 pb-5 mb-6):
+       - Left: 'Repaso espaciado' h1 + subtitle (study/manage copy).
+       - Right: ModeToggle (Estudiar / Gestionar Mazo), aligned to
+         sm:justify-end.
+    3. Content (stats grid + form + cards OR DeckManager).
+  - 'Volver a verbos' button removed from the title row (replaced by
+    the compact 'Volver' pill at the top-left).
+  - ModeToggle stays as a DaisyUI join group with the same BookOpen /
+    ListFilter icons; only the surrounding layout changed.
+f5b1da5 docs(handoff): record DeckManager + editCustomCard (3f3506f)
+3f3506f feat(srs): DeckManager + editCustomCard + Estudiar/Gestionar toggle
     - useSRS.js: editCustomCard(cardId, {es,en}) preserves SRS state
     - DeckManager.jsx: table + search + pagination + edit modal
     - SRSStudyPage.jsx: ModeToggle join group (BookOpen/ListFilter)
