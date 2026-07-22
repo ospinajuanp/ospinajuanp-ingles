@@ -1,0 +1,378 @@
+'use client'
+import { forwardRef, useCallback, useEffect, useRef, useState } from 'react'
+import { Loader2, Pause, VolumeX, AlertCircle, Play } from 'lucide-react'
+import {
+  getCachedAudio,
+  isTTSSupported,
+  isUnavailable,
+  markTTSSupported,
+  setCachedAudio,
+  setUnavailable,
+} from '@/lib/utils/audioCache'
+import type { AudioResolution } from '@/lib/types/media'
+
+const API_BASE = 'https://api.dictionaryapi.dev/api/v2/entries/en/'
+
+interface Phonetic {
+  audio?: string
+}
+
+interface DictionaryEntry {
+  phonetics?: Phonetic[]
+}
+
+interface FetchResult {
+  url: string | null
+  reason: 'missing' | 'no-audio' | null
+}
+
+interface AudioButtonProps {
+  word: string | null
+  onResolved?: (info: AudioResolution | null) => void
+}
+
+type AudioState = 'unavailable' | 'idle' | 'playing' | 'loading' | 'error'
+
+function pickFirstAudio(entry: DictionaryEntry | undefined): string | null {
+  const phonetics = entry?.phonetics
+  if (!Array.isArray(phonetics)) return null
+  for (const p of phonetics) {
+    if (p?.audio) return p.audio
+  }
+  return null
+}
+
+async function fetchAudioUrl(word: string): Promise<FetchResult> {
+  const res = await fetch(`${API_BASE}${encodeURIComponent(word)}`)
+  if (!res.ok) {
+    if (res.status === 404) return { url: null, reason: 'missing' }
+    throw new Error(`HTTP ${res.status}`)
+  }
+  const data: unknown = await res.json()
+  const entry = Array.isArray(data) ? (data[0] as DictionaryEntry | undefined) : undefined
+  const url = pickFirstAudio(entry)
+  return { url, reason: url ? null : 'no-audio' }
+}
+
+function speakWithSpeechSynthesis(word: string): Promise<void> {
+  return new Promise((resolve, reject) => {
+    if (typeof window === 'undefined' || !('speechSynthesis' in window)) {
+      reject(new Error('SpeechSynthesis not available'))
+      return
+    }
+    const synth = window.speechSynthesis
+    try {
+      synth.cancel()
+    } catch {
+      // ignore cancel errors
+    }
+
+    const utterance = new SpeechSynthesisUtterance(word)
+    utterance.lang = 'en-US'
+    utterance.rate = 0.9
+    utterance.pitch = 1
+
+    let settled = false
+    const settle = (fn: () => void): void => {
+      if (settled) return
+      settled = true
+      fn()
+    }
+
+    utterance.onend = () => settle(resolve)
+    utterance.onerror = (e: SpeechSynthesisErrorEvent) =>
+      settle(() => reject(new Error(e?.error || 'TTS error')))
+
+    try {
+      synth.speak(utterance)
+    } catch (err) {
+      settle(() => reject(err))
+    }
+  })
+}
+
+const AudioButton = forwardRef<HTMLButtonElement, AudioButtonProps>(function AudioButton(
+  { word, onResolved },
+  ref,
+) {
+  const audioRef = useRef<HTMLAudioElement | null>(null)
+  const isMountedRef = useRef(true)
+  const ttsActiveRef = useRef(false)
+  const [state, setState] = useState<AudioState>(() => {
+    if (!word) return 'unavailable'
+    if (isUnavailable(word)) return 'unavailable'
+    return 'idle'
+  })
+
+  const reportResolution = useCallback((): void => {
+    if (!word || !onResolved) return
+    const cached = getCachedAudio(word)
+    if (cached) onResolved({ audio_url: cached, audio_source: 'dictionaryapi.dev' })
+    else if (isUnavailable(word)) onResolved({ audio_url: null, audio_source: 'none' })
+    else if (isTTSSupported(word)) onResolved({ audio_url: null, audio_source: 'tts' })
+    else onResolved(null)
+  }, [word, onResolved])
+
+  useEffect(() => {
+    if (!word || !onResolved) return
+
+    let cancelled = false
+    const fire = (info: AudioResolution | null): void => {
+      if (cancelled) return
+      if (info) onResolved(info)
+    }
+
+    const cached = getCachedAudio(word)
+    if (cached) {
+      fire({ audio_url: cached, audio_source: 'dictionaryapi.dev' })
+      return
+    }
+    if (isUnavailable(word)) {
+      fire({ audio_url: null, audio_source: 'none' })
+      return
+    }
+    if (isTTSSupported(word)) {
+      fire({ audio_url: null, audio_source: 'tts' })
+      return
+    }
+
+    fetchAudioUrl(word)
+      .then(({ url, reason }) => {
+        if (cancelled) return
+        if (url) {
+          setCachedAudio(word, url)
+          fire({ audio_url: url, audio_source: 'dictionaryapi.dev' })
+        } else if (reason === 'no-audio') {
+          markTTSSupported(word)
+          fire({ audio_url: null, audio_source: 'tts' })
+        } else if (reason === 'missing') {
+          setUnavailable(word)
+          fire({ audio_url: null, audio_source: 'none' })
+        }
+      })
+      .catch((err: unknown) => {
+        const message = err instanceof Error ? err.message : String(err)
+        console.warn('[audio-eager] fetch failed for', word, message)
+      })
+
+    return () => {
+      cancelled = true
+    }
+  }, [word, onResolved])
+
+  useEffect(() => {
+    isMountedRef.current = true
+    return () => {
+      isMountedRef.current = false
+      const audio = audioRef.current
+      if (audio) {
+        audio.pause()
+        audio.removeAttribute('src')
+      }
+      if (
+        ttsActiveRef.current &&
+        typeof window !== 'undefined' &&
+        'speechSynthesis' in window
+      ) {
+        try {
+          window.speechSynthesis.cancel()
+        } catch {
+          // ignore
+        }
+      }
+    }
+  }, [])
+
+  const stopPlayback = useCallback((): void => {
+    const audio = audioRef.current
+    if (audio) {
+      audio.pause()
+      audio.currentTime = 0
+    }
+    if (
+      ttsActiveRef.current &&
+      typeof window !== 'undefined' &&
+      'speechSynthesis' in window
+    ) {
+      try {
+        window.speechSynthesis.cancel()
+      } catch {
+        // ignore
+      }
+    }
+    ttsActiveRef.current = false
+  }, [])
+
+  const playUrl = useCallback((url: string): void => {
+    if (!url) return
+    if (!audioRef.current) {
+      const a = new Audio()
+      a.preload = 'none'
+      a.onended = () => {
+        if (isMountedRef.current) setState('idle')
+      }
+      a.onerror = () => {
+        if (isMountedRef.current) setState('error')
+      }
+      audioRef.current = a
+    }
+    const audio = audioRef.current
+    if (!audio) return
+    audio.src = url
+    audio.currentTime = 0
+    const p = audio.play()
+    if (p && typeof p.then === 'function') {
+      p.then(() => {
+        if (isMountedRef.current) setState('playing')
+      }).catch(() => {
+        if (isMountedRef.current) setState('error')
+      })
+    } else {
+      setState('playing')
+    }
+  }, [])
+
+  const playTTS = useCallback(async (): Promise<void> => {
+    if (!word) return
+    setState('playing')
+    ttsActiveRef.current = true
+    try {
+      await speakWithSpeechSynthesis(word)
+      if (isMountedRef.current) {
+        ttsActiveRef.current = false
+        setState('idle')
+      }
+    } catch {
+      if (isMountedRef.current) {
+        ttsActiveRef.current = false
+        setState('error')
+      }
+    }
+  }, [word])
+
+  const handleClick = useCallback(async (): Promise<void> => {
+    if (!word) return
+
+    if (state === 'playing') {
+      stopPlayback()
+      setState('idle')
+      return
+    }
+    if (state === 'loading') return
+    if (state === 'unavailable') return
+
+    const cached = getCachedAudio(word)
+    if (cached) {
+      playUrl(cached)
+      reportResolution()
+      return
+    }
+
+    if (isTTSSupported(word)) {
+      void playTTS()
+      reportResolution()
+      return
+    }
+
+    setState('loading')
+    try {
+      const { url, reason } = await fetchAudioUrl(word)
+      if (!isMountedRef.current) {
+        if (url) setCachedAudio(word, url)
+        else if (reason === 'missing') setUnavailable(word)
+        else if (reason === 'no-audio') markTTSSupported(word)
+        return
+      }
+
+      if (url) {
+        setCachedAudio(word, url)
+        playUrl(url)
+        reportResolution()
+        return
+      }
+
+      if (reason === 'no-audio') {
+        try {
+          await speakWithSpeechSynthesis(word)
+          markTTSSupported(word)
+          if (isMountedRef.current) setState('idle')
+          reportResolution()
+        } catch {
+          setUnavailable(word)
+          if (isMountedRef.current) setState('unavailable')
+          reportResolution()
+        }
+        return
+      }
+
+      if (reason === 'missing') {
+        setUnavailable(word)
+        setState('unavailable')
+        reportResolution()
+      }
+    } catch {
+      if (isMountedRef.current) setState('error')
+    }
+  }, [word, state, playUrl, playTTS, stopPlayback, reportResolution])
+
+  const baseClass =
+    'group/audio inline-flex size-12 items-center justify-center rounded-full bg-base-100/95 text-primary shadow-lg ring-1 ring-base-content/10 backdrop-blur-sm transition hover:scale-105 hover:bg-base-100 hover:shadow-xl active:scale-95 disabled:opacity-50 disabled:hover:scale-100 disabled:hover:bg-base-100/95 motion-reduce:animate-none'
+
+  const ariaLabel =
+    state === 'unavailable'
+      ? `Sin audio disponible para ${word}`
+      : state === 'playing'
+        ? `Pausar pronunciación de ${word}`
+        : `Escuchar pronunciación de ${word}`
+
+  let icon: React.ReactNode
+  if (state === 'loading') {
+    icon = (
+      <Loader2
+        className="size-5 animate-spin motion-reduce:animate-none"
+        aria-hidden="true"
+      />
+    )
+  } else if (state === 'playing') {
+    icon = <Pause className="size-5" aria-hidden="true" fill="currentColor" />
+  } else if (state === 'unavailable') {
+    icon = <VolumeX className="size-5" aria-hidden="true" />
+  } else if (state === 'error') {
+    icon = <AlertCircle className="size-5" aria-hidden="true" />
+  } else {
+    icon = (
+      <Play
+        className="size-5 translate-x-[1px] transition group-hover/audio:scale-110"
+        aria-hidden="true"
+        fill="currentColor"
+      />
+    )
+  }
+
+  return (
+    <button
+      ref={ref}
+      type="button"
+      onClick={() => void handleClick()}
+      disabled={!word || state === 'unavailable' || state === 'loading'}
+      aria-label={ariaLabel}
+      title={
+        state === 'unavailable'
+          ? 'Sin pronunciación disponible'
+          : state === 'error'
+            ? 'Error al cargar, reintentar'
+            : 'Escuchar'
+      }
+      className={
+        baseClass +
+        (state === 'playing'
+          ? ' animate-pulse motion-reduce:animate-none ring-2 ring-primary/60'
+          : '')
+      }
+    >
+      {icon}
+    </button>
+  )
+})
+
+export default AudioButton
